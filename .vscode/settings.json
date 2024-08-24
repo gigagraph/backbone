@@ -1,0 +1,6 @@
+{
+  "python.analysis.extraPaths": [
+    // Path to the installed simple inkscape scripting extension
+    "${env:HOME}/.config/inkscape/extensions/org.inkscape.extension.29361/simple_inkscape_scripting",
+  ],
+}
