@@ -23,15 +23,15 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="1.4778116"
-     inkscape:cx="1568.5355"
-     inkscape:cy="779.86937"
-     inkscape:window-width="3424"
-     inkscape:window-height="1355"
-     inkscape:window-x="8"
-     inkscape:window-y="40"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="g47"
+     inkscape:zoom="2.21183"
+     inkscape:cx="1246.027"
+     inkscape:cy="612.38883"
+     inkscape:window-width="3440"
+     inkscape:window-height="1371"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g19"
      showguides="true" />
   <defs
      id="defs1" />
@@ -93,7 +93,7 @@
                id="g22-9-3-1-7-3"
                inkscape:label="L2 Shifted">
               <rect
-                 style="fill:#ffe7bf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect18-1-8-0-8-2"
                  width="45"
                  height="15"
@@ -102,7 +102,7 @@
                  inkscape:label="L2 Shift rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="55.8125"
                  y="88.609161"
                  id="text29-7-60-2-9-5"
@@ -113,7 +113,7 @@
                    y="88.609161">L2 + Shift</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="58.780079"
                  y="94.459999"
                  id="text34-1-2-1-1-3"
@@ -127,7 +127,7 @@
                id="g24-5-8-7-4-6"
                inkscape:label="L2">
               <rect
-                 style="fill:#ffcfbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect16-1-9-34-1-3-0"
                  width="45"
                  height="20"
@@ -136,7 +136,7 @@
                  inkscape:label="L2 rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="57.120499"
                  y="71.595169"
                  id="text27-7-2-3-5-6"
@@ -147,7 +147,7 @@
                    y="71.595169">L2</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="66.780045"
                  y="76.959999"
                  id="text32-6-51-2-7-6"
@@ -165,7 +165,7 @@
                id="g21-6-6-8-5-8"
                inkscape:label="L1 Shifted">
               <rect
-                 style="fill:#dfffbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect19-5-98-7-0-6"
                  width="45"
                  height="15"
@@ -174,7 +174,7 @@
                  inkscape:label="L1 Shift rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="10.8125"
                  y="88.609161"
                  id="text28-6-13-4-1-7"
@@ -185,7 +185,7 @@
                    y="88.609161">L1 + Shift</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="14.102745"
                  y="94.459999"
                  id="text33-9-79-2-5-4"
@@ -199,7 +199,7 @@
                id="g23-8-67-4-0-6"
                inkscape:label="L1">
               <rect
-                 style="fill:#bfffbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect16-1-3-1-0-5-7-0"
                  width="45"
                  height="20"
@@ -208,7 +208,7 @@
                  inkscape:label="L1 rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="12.1205"
                  y="71.552498"
                  id="text26-2-48-9-8-5"
@@ -219,7 +219,7 @@
                    y="71.552498">L1</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="22.102709"
                  y="76.938667"
                  id="text30-3-16-2-9-3"
@@ -252,13 +252,13 @@
                  id="tspan51-6-5-0-6-4-4"
                  style="font-size:13.3333px;stroke-width:0.264583"
                  x="38.173428"
-                 y="52.346653">Proto</tspan></text>
+                 y="52.346653">L2</tspan></text>
           </g>
           <g
              id="g20-0-64-4-5-9"
              inkscape:label="Shifted">
             <rect
-               style="fill:#ffffbe;fill-opacity:1;stroke:#262626;stroke-opacity:1"
+               style="fill:#b2b2b2;fill-opacity:1;stroke:#262626;stroke-opacity:1"
                id="rect16-9-99-0-5-6"
                width="90"
                height="20"
@@ -267,7 +267,7 @@
                inkscape:label="Shift rect" />
             <text
                xml:space="preserve"
-               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
+               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
                x="12.344292"
                y="16.594955"
                id="text19-6-0-9-5-7"
@@ -279,7 +279,7 @@
                  style="font-size:5.33333px;fill:#737373;fill-opacity:1;stroke:#737373;stroke-opacity:1">Shift</tspan></text>
             <text
                xml:space="preserve"
-               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
                x="32.812077"
                y="22.940001"
                id="text20-8-14-5-6-3"
@@ -310,7 +310,7 @@
                id="g22-9-8-9-2-0"
                inkscape:label="L2 Shifted">
               <rect
-                 style="fill:#ffe7bf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect18-1-1-9-9-4"
                  width="45"
                  height="15"
@@ -319,7 +319,7 @@
                  inkscape:label="L2 Shift rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="55.8125"
                  y="88.609161"
                  id="text29-7-0-5-6-5"
@@ -330,21 +330,21 @@
                    y="88.609161">L2 + Shift</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="58.780079"
                  y="94.459999"
                  id="text34-1-0-1-5-2"
                  inkscape:label="L2 Shift text"><tspan
                    sodipodi:role="line"
                    id="tspan34-1-4-3-3-8"
-                   x="58.780079"
-                   y="94.459999">Proto Shift L2</tspan></text>
+                   x="0"
+                   y="0">Proto Shift L2</tspan></text>
             </g>
             <g
                id="g24-5-4-0-8-6"
                inkscape:label="L2">
               <rect
-                 style="fill:#ffcfbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect16-1-9-4-9-6-8"
                  width="45"
                  height="20"
@@ -353,7 +353,7 @@
                  inkscape:label="L2 rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="57.120499"
                  y="71.595169"
                  id="text27-7-4-9-7-5"
@@ -364,7 +364,7 @@
                    y="71.595169">L2</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="66.780045"
                  y="76.959999"
                  id="text32-6-6-3-6-4"
@@ -382,7 +382,7 @@
                id="g21-6-7-8-6-7"
                inkscape:label="L1 Shifted">
               <rect
-                 style="fill:#dfffbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect19-5-5-5-9-7"
                  width="45"
                  height="15"
@@ -391,7 +391,7 @@
                  inkscape:label="L1 Shift rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="10.8125"
                  y="88.609161"
                  id="text28-6-9-7-3-8"
@@ -402,7 +402,7 @@
                    y="88.609161">L1 + Shift</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="14.102745"
                  y="94.459999"
                  id="text33-9-2-3-8-8"
@@ -416,7 +416,7 @@
                id="g23-8-7-9-5-7"
                inkscape:label="L1">
               <rect
-                 style="fill:#bfffbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect16-1-3-1-8-5-2-8"
                  width="45"
                  height="20"
@@ -425,7 +425,7 @@
                  inkscape:label="L1 rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="12.1205"
                  y="71.552498"
                  id="text26-2-5-5-4-3"
@@ -436,7 +436,7 @@
                    y="71.552498">L1</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="22.102709"
                  y="76.938667"
                  id="text30-3-4-8-0-7"
@@ -469,13 +469,13 @@
                  id="tspan51-6-5-7-6-9-4"
                  style="font-size:13.3333px;stroke-width:0.264583"
                  x="38.173428"
-                 y="52.346653">Proto</tspan></text>
+                 y="52.346653">L1</tspan></text>
           </g>
           <g
              id="g20-0-5-1-4-8"
              inkscape:label="Shifted">
             <rect
-               style="fill:#ffffbe;fill-opacity:1;stroke:#262626;stroke-opacity:1"
+               style="fill:#b2b2b2;fill-opacity:1;stroke:#262626;stroke-opacity:1"
                id="rect16-9-3-8-6-0"
                width="90"
                height="20"
@@ -484,7 +484,7 @@
                inkscape:label="Shift rect" />
             <text
                xml:space="preserve"
-               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
+               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
                x="12.344292"
                y="16.594955"
                id="text19-6-8-7-8-6"
@@ -496,7 +496,7 @@
                  style="font-size:5.33333px;fill:#737373;fill-opacity:1;stroke:#737373;stroke-opacity:1">Shift</tspan></text>
             <text
                xml:space="preserve"
-               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
                x="32.812077"
                y="22.940001"
                id="text20-8-3-5-23-6"
@@ -686,13 +686,13 @@
                  id="tspan51-6-5-3-3-0"
                  style="font-size:13.3333px;stroke-width:0.264583"
                  x="38.173428"
-                 y="52.346653">Proto</tspan></text>
+                 y="52.346653">Space</tspan></text>
           </g>
           <g
              id="g20-0-4-8-3"
              inkscape:label="Shifted">
             <rect
-               style="fill:#ffffbe;fill-opacity:1;stroke:#262626;stroke-opacity:1"
+               style="fill:#b2b2b2;fill-opacity:1;stroke:#262626;stroke-opacity:1"
                id="rect16-9-66-5-2"
                width="90"
                height="20"
@@ -701,7 +701,7 @@
                inkscape:label="Shift rect" />
             <text
                xml:space="preserve"
-               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
+               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
                x="12.344292"
                y="16.594955"
                id="text19-6-02-5-8"
@@ -713,7 +713,7 @@
                  style="font-size:5.33333px;fill:#737373;fill-opacity:1;stroke:#737373;stroke-opacity:1">Shift</tspan></text>
             <text
                xml:space="preserve"
-               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
                x="32.812077"
                y="22.940001"
                id="text20-8-8-1-4"
@@ -744,7 +744,7 @@
                id="g22-9-97-2-13"
                inkscape:label="L2 Shifted">
               <rect
-                 style="fill:#ffe7bf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect18-1-49-1-02"
                  width="45"
                  height="15"
@@ -753,7 +753,7 @@
                  inkscape:label="L2 Shift rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="55.8125"
                  y="88.609161"
                  id="text29-7-1-7-9"
@@ -764,7 +764,7 @@
                    y="88.609161">L2 + Shift</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="58.780079"
                  y="94.459999"
                  id="text34-1-60-9-09"
@@ -778,7 +778,7 @@
                id="g24-5-3-6-4"
                inkscape:label="L2">
               <rect
-                 style="fill:#ffcfbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect16-1-9-94-2-3"
                  width="45"
                  height="20"
@@ -787,7 +787,7 @@
                  inkscape:label="L2 rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="57.120499"
                  y="71.595169"
                  id="text27-7-1-7-6"
@@ -798,7 +798,7 @@
                    y="71.595169">L2</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="66.780045"
                  y="76.959999"
                  id="text32-6-41-5-3"
@@ -816,7 +816,7 @@
                id="g21-6-49-4-1"
                inkscape:label="L1 Shifted">
               <rect
-                 style="fill:#dfffbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect19-5-8-5-0"
                  width="45"
                  height="15"
@@ -825,7 +825,7 @@
                  inkscape:label="L1 Shift rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="10.8125"
                  y="88.609161"
                  id="text28-6-3-6-9"
@@ -836,7 +836,7 @@
                    y="88.609161">L1 + Shift</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="14.102745"
                  y="94.459999"
                  id="text33-9-22-6-5"
@@ -850,7 +850,7 @@
                id="g23-8-70-4-2"
                inkscape:label="L1">
               <rect
-                 style="fill:#bfffbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect16-1-3-1-34-8-5"
                  width="45"
                  height="20"
@@ -859,7 +859,7 @@
                  inkscape:label="L1 rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="12.1205"
                  y="71.552498"
                  id="text26-2-6-8-91"
@@ -870,7 +870,7 @@
                    y="71.552498">L1</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="22.102709"
                  y="76.938667"
                  id="text30-3-63-8-7"
@@ -903,13 +903,13 @@
                  id="tspan51-6-5-25-5-1"
                  style="font-size:13.3333px;stroke-width:0.264583"
                  x="38.173428"
-                 y="52.346653">Proto</tspan></text>
+                 y="52.346653">Enter ↵</tspan></text>
           </g>
           <g
              id="g20-0-8-0-3"
              inkscape:label="Shifted">
             <rect
-               style="fill:#ffffbe;fill-opacity:1;stroke:#262626;stroke-opacity:1"
+               style="fill:#b2b2b2;fill-opacity:1;stroke:#262626;stroke-opacity:1"
                id="rect16-9-90-5-8"
                width="90"
                height="20"
@@ -918,7 +918,7 @@
                inkscape:label="Shift rect" />
             <text
                xml:space="preserve"
-               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
+               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
                x="12.344292"
                y="16.594955"
                id="text19-6-24-7-7"
@@ -930,7 +930,7 @@
                  style="font-size:5.33333px;fill:#737373;fill-opacity:1;stroke:#737373;stroke-opacity:1">Shift</tspan></text>
             <text
                xml:space="preserve"
-               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
                x="32.812077"
                y="22.940001"
                id="text20-8-65-2-93"
@@ -1033,7 +1033,7 @@
                id="g21-6-35-2-0"
                inkscape:label="L1 Shifted">
               <rect
-                 style="fill:#dfffbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect19-5-65-0-5"
                  width="45"
                  height="15"
@@ -1042,7 +1042,7 @@
                  inkscape:label="L1 Shift rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="10.8125"
                  y="88.609161"
                  id="text28-6-99-2-92"
@@ -1053,7 +1053,7 @@
                    y="88.609161">L1 + Shift</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="14.102745"
                  y="94.459999"
                  id="text33-9-6-9-8"
@@ -1095,7 +1095,7 @@
                    sodipodi:role="line"
                    id="tspan30-9-12-4-8"
                    x="22.102709"
-                   y="76.938667">Proto L1</tspan></text>
+                   y="76.938667">Shift ⤴</tspan></text>
             </g>
           </g>
           <g
@@ -1120,13 +1120,13 @@
                  id="tspan51-6-5-27-2-6"
                  style="font-size:13.3333px;stroke-width:0.264583"
                  x="38.173428"
-                 y="52.346653">Proto</tspan></text>
+                 y="52.346653">Space</tspan></text>
           </g>
           <g
              id="g20-0-40-7-2"
              inkscape:label="Shifted">
             <rect
-               style="fill:#ffffbe;fill-opacity:1;stroke:#262626;stroke-opacity:1"
+               style="fill:#b2b2b2;fill-opacity:1;stroke:#262626;stroke-opacity:1"
                id="rect16-9-32-7-97"
                width="90"
                height="20"
@@ -1135,7 +1135,7 @@
                inkscape:label="Shift rect" />
             <text
                xml:space="preserve"
-               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
+               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
                x="12.344292"
                y="16.594955"
                id="text19-6-80-9-0"
@@ -1147,7 +1147,7 @@
                  style="font-size:5.33333px;fill:#737373;fill-opacity:1;stroke:#737373;stroke-opacity:1">Shift</tspan></text>
             <text
                xml:space="preserve"
-               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
                x="32.812077"
                y="22.940001"
                id="text20-8-0-1-7"
@@ -1178,7 +1178,7 @@
                id="g22-9-3-1-7"
                inkscape:label="L2 Shifted">
               <rect
-                 style="fill:#ffe7bf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect18-1-8-0-8"
                  width="45"
                  height="15"
@@ -1187,7 +1187,7 @@
                  inkscape:label="L2 Shift rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="55.8125"
                  y="88.609161"
                  id="text29-7-60-2-9"
@@ -1198,7 +1198,7 @@
                    y="88.609161">L2 + Shift</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="58.780079"
                  y="94.459999"
                  id="text34-1-2-1-1"
@@ -1212,7 +1212,7 @@
                id="g24-5-8-7-4"
                inkscape:label="L2">
               <rect
-                 style="fill:#ffcfbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect16-1-9-34-1-3"
                  width="45"
                  height="20"
@@ -1221,7 +1221,7 @@
                  inkscape:label="L2 rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="57.120499"
                  y="71.595169"
                  id="text27-7-2-3-5"
@@ -1232,7 +1232,7 @@
                    y="71.595169">L2</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="66.780045"
                  y="76.959999"
                  id="text32-6-51-2-7"
@@ -1250,7 +1250,7 @@
                id="g21-6-6-8-5"
                inkscape:label="L1 Shifted">
               <rect
-                 style="fill:#dfffbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect19-5-98-7-0"
                  width="45"
                  height="15"
@@ -1259,7 +1259,7 @@
                  inkscape:label="L1 Shift rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="10.8125"
                  y="88.609161"
                  id="text28-6-13-4-1"
@@ -1270,7 +1270,7 @@
                    y="88.609161">L1 + Shift</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="14.102745"
                  y="94.459999"
                  id="text33-9-79-2-5"
@@ -1284,7 +1284,7 @@
                id="g23-8-67-4-0"
                inkscape:label="L1">
               <rect
-                 style="fill:#bfffbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect16-1-3-1-0-5-7"
                  width="45"
                  height="20"
@@ -1293,7 +1293,7 @@
                  inkscape:label="L1 rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="12.1205"
                  y="71.552498"
                  id="text26-2-48-9-8"
@@ -1304,7 +1304,7 @@
                    y="71.552498">L1</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="22.102709"
                  y="76.938667"
                  id="text30-3-16-2-9"
@@ -1337,13 +1337,13 @@
                  id="tspan51-6-5-0-6-4"
                  style="font-size:13.3333px;stroke-width:0.264583"
                  x="38.173428"
-                 y="52.346653">Proto</tspan></text>
+                 y="52.346653">Ctrl</tspan></text>
           </g>
           <g
              id="g20-0-64-4-5"
              inkscape:label="Shifted">
             <rect
-               style="fill:#ffffbe;fill-opacity:1;stroke:#262626;stroke-opacity:1"
+               style="fill:#b2b2b2;fill-opacity:1;stroke:#262626;stroke-opacity:1"
                id="rect16-9-99-0-5"
                width="90"
                height="20"
@@ -1352,7 +1352,7 @@
                inkscape:label="Shift rect" />
             <text
                xml:space="preserve"
-               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
+               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
                x="12.344292"
                y="16.594955"
                id="text19-6-0-9-5"
@@ -1364,7 +1364,7 @@
                  style="font-size:5.33333px;fill:#737373;fill-opacity:1;stroke:#737373;stroke-opacity:1">Shift</tspan></text>
             <text
                xml:space="preserve"
-               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
                x="32.812077"
                y="22.940001"
                id="text20-8-14-5-6"
@@ -1395,7 +1395,7 @@
                id="g22-9-8-9-2"
                inkscape:label="L2 Shifted">
               <rect
-                 style="fill:#ffe7bf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect18-1-1-9-9"
                  width="45"
                  height="15"
@@ -1404,7 +1404,7 @@
                  inkscape:label="L2 Shift rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="55.8125"
                  y="88.609161"
                  id="text29-7-0-5-6"
@@ -1415,7 +1415,7 @@
                    y="88.609161">L2 + Shift</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="58.780079"
                  y="94.459999"
                  id="text34-1-0-1-5"
@@ -1429,7 +1429,7 @@
                id="g24-5-4-0-8"
                inkscape:label="L2">
               <rect
-                 style="fill:#ffcfbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect16-1-9-4-9-6"
                  width="45"
                  height="20"
@@ -1438,7 +1438,7 @@
                  inkscape:label="L2 rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="57.120499"
                  y="71.595169"
                  id="text27-7-4-9-7"
@@ -1449,7 +1449,7 @@
                    y="71.595169">L2</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="66.780045"
                  y="76.959999"
                  id="text32-6-6-3-6"
@@ -1467,7 +1467,7 @@
                id="g21-6-7-8-6"
                inkscape:label="L1 Shifted">
               <rect
-                 style="fill:#dfffbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect19-5-5-5-9"
                  width="45"
                  height="15"
@@ -1476,7 +1476,7 @@
                  inkscape:label="L1 Shift rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="10.8125"
                  y="88.609161"
                  id="text28-6-9-7-3"
@@ -1487,7 +1487,7 @@
                    y="88.609161">L1 + Shift</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="14.102745"
                  y="94.459999"
                  id="text33-9-2-3-8"
@@ -1501,7 +1501,7 @@
                id="g23-8-7-9-5"
                inkscape:label="L1">
               <rect
-                 style="fill:#bfffbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect16-1-3-1-8-5-2"
                  width="45"
                  height="20"
@@ -1510,7 +1510,7 @@
                  inkscape:label="L1 rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="12.1205"
                  y="71.552498"
                  id="text26-2-5-5-4"
@@ -1521,7 +1521,7 @@
                    y="71.552498">L1</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="22.102709"
                  y="76.938667"
                  id="text30-3-4-8-0"
@@ -1554,13 +1554,13 @@
                  id="tspan51-6-5-7-6-9"
                  style="font-size:13.3333px;stroke-width:0.264583"
                  x="38.173428"
-                 y="52.346653">Proto</tspan></text>
+                 y="52.346653">Meta</tspan></text>
           </g>
           <g
              id="g20-0-5-1-4"
              inkscape:label="Shifted">
             <rect
-               style="fill:#ffffbe;fill-opacity:1;stroke:#262626;stroke-opacity:1"
+               style="fill:#b2b2b2;fill-opacity:1;stroke:#262626;stroke-opacity:1"
                id="rect16-9-3-8-6"
                width="90"
                height="20"
@@ -1569,7 +1569,7 @@
                inkscape:label="Shift rect" />
             <text
                xml:space="preserve"
-               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
+               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
                x="12.344292"
                y="16.594955"
                id="text19-6-8-7-8"
@@ -1581,7 +1581,7 @@
                  style="font-size:5.33333px;fill:#737373;fill-opacity:1;stroke:#737373;stroke-opacity:1">Shift</tspan></text>
             <text
                xml:space="preserve"
-               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
                x="32.812077"
                y="22.940001"
                id="text20-8-3-5-23"
@@ -1612,7 +1612,7 @@
                id="g22-9-09-6"
                inkscape:label="L2 Shifted">
               <rect
-                 style="fill:#ffe7bf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect18-1-0-8"
                  width="45"
                  height="15"
@@ -1621,7 +1621,7 @@
                  inkscape:label="L2 Shift rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="55.8125"
                  y="88.609161"
                  id="text29-7-4-2"
@@ -1632,7 +1632,7 @@
                    y="88.609161">L2 + Shift</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="58.780079"
                  y="94.459999"
                  id="text34-1-37-6"
@@ -1646,7 +1646,7 @@
                id="g24-5-13-3"
                inkscape:label="L2">
               <rect
-                 style="fill:#ffcfbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect16-1-9-03-3"
                  width="45"
                  height="20"
@@ -1655,7 +1655,7 @@
                  inkscape:label="L2 rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="57.120499"
                  y="71.595169"
                  id="text27-7-21-6"
@@ -1666,7 +1666,7 @@
                    y="71.595169">L2</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="66.780045"
                  y="76.959999"
                  id="text32-6-65-0"
@@ -1684,7 +1684,7 @@
                id="g21-6-72-5"
                inkscape:label="L1 Shifted">
               <rect
-                 style="fill:#dfffbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect19-5-41-1"
                  width="45"
                  height="15"
@@ -1693,7 +1693,7 @@
                  inkscape:label="L1 Shift rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="10.8125"
                  y="88.609161"
                  id="text28-6-657-2"
@@ -1704,7 +1704,7 @@
                    y="88.609161">L1 + Shift</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="14.102745"
                  y="94.459999"
                  id="text33-9-27-7"
@@ -1718,7 +1718,7 @@
                id="g23-8-47-8"
                inkscape:label="L1">
               <rect
-                 style="fill:#bfffbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect16-1-3-1-9-0"
                  width="45"
                  height="20"
@@ -1727,7 +1727,7 @@
                  inkscape:label="L1 rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="12.1205"
                  y="71.552498"
                  id="text26-2-7-9"
@@ -1738,7 +1738,7 @@
                    y="71.552498">L1</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="22.102709"
                  y="76.938667"
                  id="text30-3-163-1"
@@ -1771,13 +1771,13 @@
                  id="tspan51-6-5-3-3"
                  style="font-size:13.3333px;stroke-width:0.264583"
                  x="38.173428"
-                 y="52.346653">Proto</tspan></text>
+                 y="52.346653">Alt</tspan></text>
           </g>
           <g
              id="g20-0-4-8"
              inkscape:label="Shifted">
             <rect
-               style="fill:#ffffbe;fill-opacity:1;stroke:#262626;stroke-opacity:1"
+               style="fill:#b2b2b2;fill-opacity:1;stroke:#262626;stroke-opacity:1"
                id="rect16-9-66-5"
                width="90"
                height="20"
@@ -1786,7 +1786,7 @@
                inkscape:label="Shift rect" />
             <text
                xml:space="preserve"
-               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
+               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
                x="12.344292"
                y="16.594955"
                id="text19-6-02-5"
@@ -1798,7 +1798,7 @@
                  style="font-size:5.33333px;fill:#737373;fill-opacity:1;stroke:#737373;stroke-opacity:1">Shift</tspan></text>
             <text
                xml:space="preserve"
-               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
                x="32.812077"
                y="22.940001"
                id="text20-8-8-1"
@@ -2467,7 +2467,7 @@
              y="389.57925"
              id="text22"><tspan
                sodipodi:role="line"
-               id="tspan22"></tspan></text>
+               id="tspan22" /></text>
         </g>
         <g
            id="proto-key-4-42-7-7-2"
@@ -3022,7 +3022,7 @@
                    sodipodi:role="line"
                    id="tspan33-4-36-5-0"
                    x="14.102745"
-                   y="94.459999">Proto Shift L1</tspan></text>
+                   y="94.459999">|</tspan></text>
             </g>
             <g
                id="g23-8-47-6-4"
@@ -3056,7 +3056,7 @@
                    sodipodi:role="line"
                    id="tspan30-9-02-9-2"
                    x="22.102709"
-                   y="76.938667">Proto L1</tspan></text>
+                   y="76.938667">\</tspan></text>
             </g>
           </g>
           <g
@@ -3139,7 +3139,7 @@
                id="g22-9-9-0-7"
                inkscape:label="L2 Shifted">
               <rect
-                 style="fill:#ffe7bf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect18-1-09-8-2"
                  width="45"
                  height="15"
@@ -3148,7 +3148,7 @@
                  inkscape:label="L2 Shift rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="55.8125"
                  y="88.609161"
                  id="text29-7-8-3-5"
@@ -3159,7 +3159,7 @@
                    y="88.609161">L2 + Shift</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="58.780079"
                  y="94.459999"
                  id="text34-1-84-8-7"
@@ -3211,7 +3211,7 @@
                id="g21-6-3-7-5"
                inkscape:label="L1 Shifted">
               <rect
-                 style="fill:#dfffbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b2b2b2;fill-opacity:1;stroke:#000000"
                  id="rect19-5-7-3-8"
                  width="45"
                  height="15"
@@ -3220,7 +3220,7 @@
                  inkscape:label="L1 Shift rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="10.8125"
                  y="88.609161"
                  id="text28-6-12-8-5"
@@ -3231,7 +3231,7 @@
                    y="88.609161">L1 + Shift</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="14.102745"
                  y="94.459999"
                  id="text33-9-217-3-9"
@@ -3304,7 +3304,7 @@
              id="g20-0-9-9-6"
              inkscape:label="Shifted">
             <rect
-               style="fill:#ffffbe;fill-opacity:1;stroke:#262626;stroke-opacity:1"
+               style="fill:#b2b2b2;fill-opacity:1;stroke:#262626;stroke-opacity:1"
                id="rect16-9-6-8-3"
                width="90"
                height="20"
@@ -3313,7 +3313,7 @@
                inkscape:label="Shift rect" />
             <text
                xml:space="preserve"
-               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
+               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
                x="12.344292"
                y="16.594955"
                id="text19-6-48-8-9"
@@ -3325,7 +3325,7 @@
                  style="font-size:5.33333px;fill:#737373;fill-opacity:1;stroke:#737373;stroke-opacity:1">Shift</tspan></text>
             <text
                xml:space="preserve"
-               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
                x="32.812077"
                y="22.940001"
                id="text20-8-10-3-8"
@@ -4389,7 +4389,7 @@
              id="g20-0-4-4"
              inkscape:label="Shifted">
             <rect
-               style="fill:#ffffbe;fill-opacity:1;stroke:#262626;stroke-opacity:1"
+               style="fill:#b2b2b2;fill-opacity:1;stroke:#262626;stroke-opacity:1"
                id="rect16-9-66-7"
                width="90"
                height="20"
@@ -4398,7 +4398,7 @@
                inkscape:label="Shift rect" />
             <text
                xml:space="preserve"
-               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
+               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
                x="12.344292"
                y="16.594955"
                id="text19-6-02-8"
@@ -4410,7 +4410,7 @@
                  style="font-size:5.33333px;fill:#737373;fill-opacity:1;stroke:#737373;stroke-opacity:1">Shift</tspan></text>
             <text
                xml:space="preserve"
-               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
                x="32.812077"
                y="22.940001"
                id="text20-8-8-3"
@@ -4642,7 +4642,7 @@
         <g
            id="proto-key-4-6-0-3"
            inkscape:label="23"
-           transform="translate(1589.6536,2275.0338)">
+           transform="translate(1589.7247,2280.5447)">
           <rect
              style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
              id="proto-rect-9-46-6-07"
@@ -4758,7 +4758,7 @@
                    sodipodi:role="line"
                    id="tspan33-4-2-8-3"
                    x="14.102745"
-                   y="94.459999">Proto Shift L1</tspan></text>
+                   y="94.459999">+</tspan></text>
             </g>
             <g
                id="g23-8-70-4-0"
@@ -4792,7 +4792,7 @@
                    sodipodi:role="line"
                    id="tspan30-9-3-7-01"
                    x="22.102709"
-                   y="76.938667">Proto L1</tspan></text>
+                   y="76.938667">=</tspan></text>
             </g>
           </g>
           <g
@@ -4859,7 +4859,7 @@
         <g
            id="proto-key-4-85-2-3"
            inkscape:label="22"
-           transform="translate(1460.7746,2277.4482)">
+           transform="translate(1454.6893,2281.4677)">
           <rect
              style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
              id="proto-rect-9-10-1-1"
@@ -4937,7 +4937,7 @@
                    sodipodi:role="line"
                    id="tspan32-7-0-1-85"
                    x="66.780045"
-                   y="76.959999">Proto L2</tspan></text>
+                   y="76.959999">Right →</tspan></text>
             </g>
           </g>
           <g
@@ -4975,7 +4975,7 @@
                    sodipodi:role="line"
                    id="tspan33-4-3-7-43"
                    x="14.102745"
-                   y="94.459999">Proto Shift L1</tspan></text>
+                   y="94.459999">_</tspan></text>
             </g>
             <g
                id="g23-8-76-4-7"
@@ -5009,7 +5009,7 @@
                    sodipodi:role="line"
                    id="tspan30-9-12-4-0"
                    x="22.102709"
-                   y="76.938667">Proto L1</tspan></text>
+                   y="76.938667">-</tspan></text>
             </g>
           </g>
           <g
@@ -5154,7 +5154,7 @@
                    sodipodi:role="line"
                    id="tspan32-7-75-0-2"
                    x="66.780045"
-                   y="76.959999">Proto L2</tspan></text>
+                   y="76.959999">Up ↑</tspan></text>
             </g>
           </g>
           <g
@@ -5371,7 +5371,7 @@
                    sodipodi:role="line"
                    id="tspan32-7-3-4-6"
                    x="66.780045"
-                   y="76.959999">Proto L2</tspan></text>
+                   y="76.959999">Down ↓</tspan></text>
             </g>
           </g>
           <g
@@ -5588,7 +5588,7 @@
                    sodipodi:role="line"
                    id="tspan32-7-42-0"
                    x="66.780045"
-                   y="76.959999">Proto L2</tspan></text>
+                   y="76.959999">Left ←</tspan></text>
             </g>
           </g>
           <g
@@ -5626,7 +5626,7 @@
                    sodipodi:role="line"
                    id="tspan33-4-36-2"
                    x="14.102745"
-                   y="94.459999">Proto Shift L1</tspan></text>
+                   y="94.459999">~</tspan></text>
             </g>
             <g
                id="g23-8-47-2"
@@ -5660,7 +5660,7 @@
                    sodipodi:role="line"
                    id="tspan30-9-02-5"
                    x="22.102709"
-                   y="76.938667">Proto L1</tspan></text>
+                   y="76.938667">`</tspan></text>
             </g>
           </g>
           <g
@@ -6239,7 +6239,7 @@
                    sodipodi:role="line"
                    id="tspan32-7-0-1"
                    x="66.780045"
-                   y="76.959999">Proto L2</tspan></text>
+                   y="76.959999">Right →</tspan></text>
             </g>
           </g>
           <g
@@ -6456,7 +6456,7 @@
                    sodipodi:role="line"
                    id="tspan32-7-75-0"
                    x="66.780045"
-                   y="76.959999">Proto L2</tspan></text>
+                   y="76.959999">Down ↓</tspan></text>
             </g>
           </g>
           <g
@@ -6494,7 +6494,7 @@
                    sodipodi:role="line"
                    id="tspan33-4-8-4"
                    x="14.102745"
-                   y="94.459999">Proto Shift L1</tspan></text>
+                   y="94.459999">?</tspan></text>
             </g>
             <g
                id="g23-8-67-4"
@@ -6528,7 +6528,7 @@
                    sodipodi:role="line"
                    id="tspan30-9-8-8"
                    x="22.102709"
-                   y="76.938667">Proto L1</tspan></text>
+                   y="76.938667">/</tspan></text>
             </g>
           </g>
           <g
@@ -6673,7 +6673,7 @@
                    sodipodi:role="line"
                    id="tspan32-7-3-4"
                    x="66.780045"
-                   y="76.959999">Proto L2</tspan></text>
+                   y="76.959999">Left ←</tspan></text>
             </g>
           </g>
           <g
@@ -6993,7 +6993,7 @@
              id="g20-0-4"
              inkscape:label="Shifted">
             <rect
-               style="fill:#ffffbe;fill-opacity:1;stroke:#262626;stroke-opacity:1"
+               style="fill:#b2b2b2;fill-opacity:1;stroke:#262626;stroke-opacity:1"
                id="rect16-9-66"
                width="90"
                height="20"
@@ -7002,7 +7002,7 @@
                inkscape:label="Shift rect" />
             <text
                xml:space="preserve"
-               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
+               style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-opacity:1"
                x="12.344292"
                y="16.594955"
                id="text19-6-02"
@@ -7014,7 +7014,7 @@
                  style="font-size:5.33333px;fill:#737373;fill-opacity:1;stroke:#737373;stroke-opacity:1">Shift</tspan></text>
             <text
                xml:space="preserve"
-               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
+               style="font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#737373;fill-opacity:1;stroke:#737373;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1"
                x="32.812077"
                y="22.940001"
                id="text20-8-8"
@@ -7023,13 +7023,13 @@
                  id="tspan20-5-9"
                  x="32.812077"
                  y="22.940001"
-                 style="font-size:8px;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1">Proto Shift</tspan></text>
+                 style="font-size:8px;fill:#737373;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1">Proto Shift</tspan></text>
           </g>
         </g>
         <g
            id="proto-key-4-2"
            inkscape:label="12"
-           transform="translate(1675.0489,2137.633)">
+           transform="translate(1781.0272,2137.6847)">
           <rect
              style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
              id="proto-rect-9-1"
@@ -7362,7 +7362,7 @@
                    sodipodi:role="line"
                    id="tspan33-4-5"
                    x="14.102745"
-                   y="94.459999">Proto Shift L1</tspan></text>
+                   y="94.459999">)</tspan></text>
             </g>
             <g
                id="g23-8-9"
@@ -7396,7 +7396,7 @@
                    sodipodi:role="line"
                    id="tspan30-9-5"
                    x="22.102709"
-                   y="76.938667">Proto L1</tspan></text>
+                   y="76.938667">0</tspan></text>
             </g>
           </g>
           <g
@@ -7579,7 +7579,7 @@
                    sodipodi:role="line"
                    id="tspan33-4-02"
                    x="14.102745"
-                   y="94.459999">Proto Shift L1</tspan></text>
+                   y="94.459999">(</tspan></text>
             </g>
             <g
                id="g23-8-94"
@@ -7613,7 +7613,7 @@
                    sodipodi:role="line"
                    id="tspan30-9-14"
                    x="22.102709"
-                   y="76.938667">Proto L1</tspan></text>
+                   y="76.938667">9</tspan></text>
             </g>
           </g>
           <g
@@ -7796,7 +7796,7 @@
                    sodipodi:role="line"
                    id="tspan33-4-96"
                    x="14.102745"
-                   y="94.459999">Proto Shift L1</tspan></text>
+                   y="94.459999">*</tspan></text>
             </g>
             <g
                id="g23-8-04"
@@ -7830,7 +7830,7 @@
                    sodipodi:role="line"
                    id="tspan30-9-7"
                    x="22.102709"
-                   y="76.938667">Proto L1</tspan></text>
+                   y="76.938667">8</tspan></text>
             </g>
           </g>
           <g
@@ -8013,7 +8013,7 @@
                    sodipodi:role="line"
                    id="tspan33-4-19"
                    x="14.102745"
-                   y="94.459999">Proto Shift L1</tspan></text>
+                   y="94.459999">&amp;</tspan></text>
             </g>
             <g
                id="g23-8-6"
@@ -8047,7 +8047,7 @@
                    sodipodi:role="line"
                    id="tspan30-9-73"
                    x="22.102709"
-                   y="76.938667">Proto L1</tspan></text>
+                   y="76.938667">7</tspan></text>
             </g>
           </g>
           <g
@@ -8230,7 +8230,7 @@
                    sodipodi:role="line"
                    id="tspan33-4-51"
                    x="14.102745"
-                   y="94.459999">Proto Shift L1</tspan></text>
+                   y="94.459999">^</tspan></text>
             </g>
             <g
                id="g23-8-03"
@@ -8264,7 +8264,7 @@
                    sodipodi:role="line"
                    id="tspan30-9-04"
                    x="22.102709"
-                   y="76.938667">Proto L1</tspan></text>
+                   y="76.938667">6</tspan></text>
             </g>
           </g>
           <g
@@ -8447,7 +8447,7 @@
                    sodipodi:role="line"
                    id="tspan33-4-517"
                    x="14.102745"
-                   y="94.459999">Proto Shift L1</tspan></text>
+                   y="94.459999">%</tspan></text>
             </g>
             <g
                id="g23-8-4"
@@ -8481,7 +8481,7 @@
                    sodipodi:role="line"
                    id="tspan30-9-08"
                    x="22.102709"
-                   y="76.938667">Proto L1</tspan></text>
+                   y="76.938667">5</tspan></text>
             </g>
           </g>
           <g
@@ -8664,7 +8664,7 @@
                    sodipodi:role="line"
                    id="tspan33-4-2"
                    x="14.102745"
-                   y="94.459999">Proto Shift L1</tspan></text>
+                   y="94.459999">$</tspan></text>
             </g>
             <g
                id="g23-8-70"
@@ -8698,7 +8698,7 @@
                    sodipodi:role="line"
                    id="tspan30-9-3"
                    x="22.102709"
-                   y="76.938667">Proto L1</tspan></text>
+                   y="76.938667">4</tspan></text>
             </g>
           </g>
           <g
@@ -8881,7 +8881,7 @@
                    sodipodi:role="line"
                    id="tspan33-4-3"
                    x="14.102745"
-                   y="94.459999">Proto Shift L1</tspan></text>
+                   y="94.459999">#</tspan></text>
             </g>
             <g
                id="g23-8-76"
@@ -8915,7 +8915,7 @@
                    sodipodi:role="line"
                    id="tspan30-9-12"
                    x="22.102709"
-                   y="76.938667">Proto L1</tspan></text>
+                   y="76.938667">3</tspan></text>
             </g>
           </g>
           <g
@@ -9060,7 +9060,7 @@
                    sodipodi:role="line"
                    id="tspan32-7-75"
                    x="66.780045"
-                   y="76.959999">Proto L2</tspan></text>
+                   y="76.959999">Up ↑</tspan></text>
             </g>
           </g>
           <g
@@ -9098,7 +9098,7 @@
                    sodipodi:role="line"
                    id="tspan33-4-8"
                    x="14.102745"
-                   y="94.459999">Proto Shift L1</tspan></text>
+                   y="94.459999">@</tspan></text>
             </g>
             <g
                id="g23-8-67"
@@ -9132,7 +9132,7 @@
                    sodipodi:role="line"
                    id="tspan30-9-8"
                    x="22.102709"
-                   y="76.938667">Proto L1</tspan></text>
+                   y="76.938667">2</tspan></text>
             </g>
           </g>
           <g
@@ -9315,7 +9315,7 @@
                    sodipodi:role="line"
                    id="tspan33-4-1"
                    x="14.102745"
-                   y="94.459999">Proto Shift L1</tspan></text>
+                   y="94.459999">!</tspan></text>
             </g>
             <g
                id="g23-8-7"
@@ -9349,7 +9349,7 @@
                    sodipodi:role="line"
                    id="tspan30-9-1"
                    x="22.102709"
-                   y="76.938667">Proto L1</tspan></text>
+                   y="76.938667">1</tspan></text>
             </g>
           </g>
           <g
@@ -9532,7 +9532,7 @@
                    sodipodi:role="line"
                    id="tspan33-4"
                    x="14.102745"
-                   y="94.459999">Proto Shift L1</tspan></text>
+                   y="94.459999">~</tspan></text>
             </g>
             <g
                id="g23-8"
@@ -9566,7 +9566,7 @@
                    sodipodi:role="line"
                    id="tspan30-9"
                    x="22.102709"
-                   y="76.938667">Proto L1</tspan></text>
+                   y="76.938667">`</tspan></text>
             </g>
           </g>
           <g
@@ -9630,6 +9630,553 @@
                  style="font-size:8px;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1">Proto Shift</tspan></text>
           </g>
         </g>
+        <g
+           inkscape:groupmode="layer"
+           id="layer3"
+           inkscape:label="Notes">
+          <g
+             id="g66-3-3-9-2-0"
+             inkscape:label="L2"
+             transform="translate(1004.8806,-136.9181)">
+            <rect
+               style="fill:#faff8c;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-dasharray:none"
+               id="rect66-5-7-4-7-9"
+               width="124.9836"
+               height="42.506012"
+               x="425.47479"
+               y="2720.8303"
+               inkscape:label="Bounding rect" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66-5-7-4-7-9);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+               x="20.93289"
+               y="2725.1445"
+               id="text56-6-5-7-2-1"
+               inkscape:label="Text"><tspan
+                 x="425.47461"
+                 y="2728.0061"
+                 id="tspan2">Modifies the alphabetical keys </tspan><tspan
+                 x="425.47461"
+                 y="2738.0061"
+                 id="tspan4">to perform actions other than </tspan><tspan
+                 x="425.47461"
+                 y="2748.0061"
+                 id="tspan5">inserting charaters. E.g </tspan><tspan
+                 x="425.47461"
+                 y="2758.0061"
+                 id="tspan6">navigation</tspan></text>
+          </g>
+          <g
+             id="g66-3-3-9-2"
+             inkscape:label="L1"
+             transform="translate(872.4403,-136.9181)">
+            <rect
+               style="fill:#faff8c;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-dasharray:none"
+               id="rect66-5-7-4-7"
+               width="90.122993"
+               height="56.36964"
+               x="330.931"
+               y="2819.8452"
+               inkscape:label="Bounding rect" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66-5-7-4-7);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+               x="20.93289"
+               y="2725.1445"
+               id="text56-6-5-7-2"
+               inkscape:label="Text"><tspan
+                 x="330.93164"
+                 y="2827.0217"
+                 id="tspan7">Modifies the keyboard </tspan><tspan
+                 x="330.93164"
+                 y="2837.0217"
+                 id="tspan8">layout to fit non </tspan><tspan
+                 x="330.93164"
+                 y="2847.0217"
+                 id="tspan9">alphabetical symbols  </tspan><tspan
+                 x="330.93164"
+                 y="2857.0217"
+                 id="tspan11">under the alphabetical </tspan><tspan
+                 x="330.93164"
+                 y="2867.0217"
+                 id="tspan13">keys</tspan></text>
+          </g>
+          <g
+             id="g66-3-3-9"
+             inkscape:label="Enter"
+             transform="translate(558.5142,-232.1764)">
+            <rect
+               style="fill:#faff8c;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-dasharray:none"
+               id="rect66-5-7-4"
+               width="113.9085"
+               height="63.008892"
+               x="332.17297"
+               y="2829.7305"
+               inkscape:label="Bounding rect" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66-5-7-4);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+               x="20.93289"
+               y="2725.1445"
+               id="text56-6-5-7"
+               inkscape:label="Text"><tspan
+                 x="332.17383"
+                 y="2836.9065"
+                 id="tspan14">Enter under the thumb and </tspan><tspan
+                 x="332.17383"
+                 y="2846.9065"
+                 id="tspan15">just the right distance to </tspan><tspan
+                 x="332.17383"
+                 y="2856.9065"
+                 id="tspan16">press fast and </tspan><tspan
+                 x="332.17383"
+                 y="2866.9065"
+                 id="tspan17">unobstructively while giving </tspan><tspan
+                 x="332.17383"
+                 y="2876.9065"
+                 id="tspan18">an opportunity to think when </tspan><tspan
+                 x="332.17383"
+                 y="2886.9065"
+                 id="tspan23">in doubt</tspan></text>
+          </g>
+          <g
+             id="g66-3-3-9-26"
+             inkscape:label="Space with shift on L1"
+             transform="matrix(1.0280579,0,0,0.99972906,344.76556,-265.32489)"
+             style="stroke-width:0.49319658;stroke-dasharray:none">
+            <rect
+               style="fill:#faff8c;fill-opacity:1;stroke:#000000;stroke-width:0.49319658;stroke-dasharray:none"
+               id="rect66-5-7-4-1"
+               width="86.510025"
+               height="39.568039"
+               x="306.40598"
+               y="2810.3447"
+               inkscape:label="Bounding rect" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66-5-7-4-1);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+               x="20.93289"
+               y="2725.1445"
+               id="text56-6-5-7-8"
+               inkscape:label="Text"><tspan
+                 x="306.40625"
+                 y="2817.5197"
+                 id="tspan25"><tspan
+                   style="stroke-width:0.493197"
+                   id="tspan24">Space. Changes to </tspan></tspan><tspan
+                 x="306.40625"
+                 y="2827.5197"
+                 id="tspan53"><tspan
+                   style="stroke-width:0.493197"
+                   id="tspan52">shift on L1 to not </tspan></tspan><tspan
+                 x="306.40625"
+                 y="2837.5197"
+                 id="tspan55"><tspan
+                   style="stroke-width:0.493197"
+                   id="tspan54">reach out to regular </tspan></tspan><tspan
+                 x="306.40625"
+                 y="2847.5197"
+                 id="tspan57"><tspan
+                   style="stroke-width:0.493197"
+                   id="tspan56">shift with a pinky</tspan></tspan></text>
+          </g>
+          <g
+             id="g66-3-3-9-7"
+             inkscape:label="Backslash and Pipe"
+             transform="translate(721.45281,-315.56072)">
+            <rect
+               style="fill:#faff8c;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-dasharray:none"
+               id="rect66-5-7-4-76"
+               width="73.070244"
+               height="63.598141"
+               x="282.66818"
+               y="2787.2324"
+               inkscape:label="Bounding rect" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66-5-7-4-76);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+               x="20.93289"
+               y="2725.1445"
+               id="text56-6-5-7-7"
+               inkscape:label="Text"><tspan
+                 x="282.66797"
+                 y="2794.4084"
+                 id="tspan58">B for backslash on </tspan><tspan
+                 x="282.66797"
+                 y="2804.4084"
+                 id="tspan59">L1. To be </tspan><tspan
+                 x="282.66797"
+                 y="2814.4084"
+                 id="tspan60">consistent with </tspan><tspan
+                 x="282.66797"
+                 y="2824.4084"
+                 id="tspan61">standard layout, </tspan><tspan
+                 x="282.66797"
+                 y="2834.4084"
+                 id="tspan62">addin shift will </tspan><tspan
+                 x="282.66797"
+                 y="2844.4084"
+                 id="tspan63">make it a pipe</tspan></text>
+          </g>
+          <g
+             id="g66-3-3-0"
+             inkscape:label="Ctrl"
+             transform="translate(250.28787,-172.58189)">
+            <rect
+               style="fill:#faff8c;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-dasharray:none"
+               id="rect66-5-7-6"
+               width="71.337334"
+               height="43.080948"
+               x="187.75494"
+               y="2767.0315"
+               inkscape:label="Bounding rect" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66-5-7-6);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+               x="20.93289"
+               y="2725.1445"
+               id="text56-6-5-3"
+               inkscape:label="Text"><tspan
+                 x="187.75586"
+                 y="2774.2072"
+                 id="tspan64">Ctrl under the </tspan><tspan
+                 x="187.75586"
+                 y="2784.2072"
+                 id="tspan65">thumb because its </tspan><tspan
+                 x="187.75586"
+                 y="2794.2072"
+                 id="tspan66">most frequently </tspan><tspan
+                 x="187.75586"
+                 y="2804.2072"
+                 id="tspan67">used</tspan></text>
+          </g>
+          <g
+             id="g66-3-3-0-7-4"
+             inkscape:label="Meta"
+             transform="translate(241.46716,-208.2733)"
+             style="stroke-width:0.5;stroke-dasharray:none">
+            <rect
+               style="fill:#faff8c;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-dasharray:none"
+               id="rect66-5-7-6-6-7"
+               width="59.924168"
+               height="31.804619"
+               x="114.16477"
+               y="2802.7017"
+               inkscape:label="Bounding rect" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66-5-7-6-6-7);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+               x="20.93289"
+               y="2725.1445"
+               id="text56-6-5-3-5-4"
+               inkscape:label="Text"><tspan
+                 x="114.16406"
+                 y="2809.8772"
+                 id="tspan68">Meta's </tspan><tspan
+                 x="114.16406"
+                 y="2819.8772"
+                 id="tspan69">position </tspan><tspan
+                 x="114.16406"
+                 y="2829.8772"
+                 id="tspan70">remains as is</tspan></text>
+          </g>
+          <g
+             id="g66-3-3-0-7"
+             inkscape:label="Alt"
+             transform="translate(-127.24871,-171.4923)">
+            <rect
+               style="fill:#faff8c;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-dasharray:none"
+               id="rect66-5-7-6-6"
+               width="71.246704"
+               height="60.190723"
+               x="187.80026"
+               y="2767.0769"
+               inkscape:label="Bounding rect" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66-5-7-6-6);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+               x="20.93289"
+               y="2725.1445"
+               id="text56-6-5-3-5"
+               inkscape:label="Text"><tspan
+                 x="187.80078"
+                 y="2774.2522"
+                 id="tspan71">Alt is least </tspan><tspan
+                 x="187.80078"
+                 y="2784.2522"
+                 id="tspan72">frequently used, </tspan><tspan
+                 x="187.80078"
+                 y="2794.2522"
+                 id="tspan73">so its further </tspan><tspan
+                 x="187.80078"
+                 y="2804.2522"
+                 id="tspan74">and may be </tspan><tspan
+                 x="187.80078"
+                 y="2814.2522"
+                 id="tspan75">pressed with a </tspan><tspan
+                 x="187.80078"
+                 y="2824.2522"
+                 id="tspan76">pinky</tspan></text>
+          </g>
+          <g
+             id="g66-3-3-0-1"
+             inkscape:label="Ctrl, Meta, Alt consistent across layers"
+             transform="translate(200.21816,-207.3176)"
+             style="stroke-width:0.5;stroke-dasharray:none">
+            <rect
+               style="fill:#faff8c;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-dasharray:none"
+               id="rect66-5-7-6-4"
+               width="469.62653"
+               height="25.019428"
+               x="-59.549431"
+               y="2767.2703"
+               inkscape:label="Bounding rect" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66-5-7-6-4);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+               x="20.93289"
+               y="2725.1445"
+               id="text56-6-5-3-9"
+               inkscape:label="Text"><tspan
+                 x="-59.548828"
+                 y="2774.4455"
+                 id="tspan77">Regardless of the layer, Ctrl, Meta, and Alt must remain as it. I.e. they must be available on all layers at the same </tspan><tspan
+                 x="-59.548828"
+                 y="2784.4455"
+                 id="tspan78">positions</tspan></text>
+          </g>
+          <g
+             id="g66-3-3"
+             inkscape:label="Remove text"
+             transform="translate(668.7745,-319.577)">
+            <rect
+               style="fill:#faff8c;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-dasharray:none"
+               id="rect66-5-7"
+               width="52.136368"
+               height="43.16547"
+               x="206.99808"
+               y="2766.9893"
+               inkscape:label="Bounding rect" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66-5-7);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+               x="20.93289"
+               y="2725.1445"
+               id="text56-6-5"
+               inkscape:label="Text"><tspan
+                 x="206.99805"
+                 y="2774.1643"
+                 id="tspan79">Remove text </tspan><tspan
+                 x="206.99805"
+                 y="2784.1643"
+                 id="tspan80">with this </tspan><tspan
+                 x="206.99805"
+                 y="2794.1643"
+                 id="tspan81">button</tspan></text>
+          </g>
+          <g
+             id="g66-3-6"
+             inkscape:label="Note hjkl"
+             transform="translate(906.71362,-398.45061)">
+            <rect
+               style="fill:#faff8c;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-dasharray:none"
+               id="rect66-5-1"
+               width="477.36942"
+               height="14.545408"
+               x="176.94055"
+               y="2785.6917"
+               inkscape:label="Bounding rect" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66-5-1);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+               x="20.93289"
+               y="2725.1445"
+               id="text56-6-8"
+               inkscape:label="Text"><tspan
+                 x="176.94141"
+                 y="2792.8674"
+                 id="tspan82">Arrows on hjkl (matching vim) for L2</tspan></text>
+          </g>
+          <g
+             id="g66-3-3-94"
+             inkscape:label="Slash and Question mark"
+             transform="translate(190.57552,-374.4839)">
+            <rect
+               style="fill:#faff8c;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-dasharray:none"
+               id="rect66-5-7-8"
+               width="89.724678"
+               height="44.913853"
+               x="204.75925"
+               y="2767.0737"
+               inkscape:label="Bounding rect" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66-5-7-8);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+               x="20.93289"
+               y="2725.1445"
+               id="text56-6-5-1"
+               inkscape:label="Text"><tspan
+                 x="204.75977"
+                 y="2774.2502"
+                 id="tspan83">S for slash on L1. </tspan><tspan
+                 x="204.75977"
+                 y="2784.2502"
+                 id="tspan84">Consistently with std </tspan><tspan
+                 x="204.75977"
+                 y="2794.2502"
+                 id="tspan85">layout, shift will </tspan><tspan
+                 x="204.75977"
+                 y="2804.2502"
+                 id="tspan86">make it a ?</tspan></text>
+          </g>
+          <g
+             id="g66-3-3-94-0"
+             inkscape:label="Tick and Tile at home"
+             transform="translate(790.00985,-431.87495)">
+            <rect
+               style="fill:#faff8c;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-dasharray:none"
+               id="rect66-5-7-8-9"
+               width="85.018494"
+               height="69.39502"
+               x="204.81174"
+               y="2742.54"
+               inkscape:label="Bounding rect" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66-5-7-8-9);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+               x="20.93289"
+               y="2725.1445"
+               id="text56-6-5-1-6"
+               inkscape:label="Text"><tspan
+                 x="204.8125"
+                 y="2749.7151"
+                 id="tspan87">H for home on L1 </tspan><tspan
+                 x="204.8125"
+                 y="2759.7151"
+                 id="tspan88">because it includes </tspan><tspan
+                 x="204.8125"
+                 y="2769.7151"
+                 id="tspan89">tile. Tick and tilde </tspan><tspan
+                 x="204.8125"
+                 y="2779.7151"
+                 id="tspan90">with shift for </tspan><tspan
+                 x="204.8125"
+                 y="2789.7151"
+                 id="tspan91">consistency with std </tspan><tspan
+                 x="204.8125"
+                 y="2799.7151"
+                 id="tspan92">layout</tspan></text>
+          </g>
+          <g
+             id="g66-3-3-94-0-7"
+             inkscape:label="Minus, underscore, equals, plus"
+             transform="translate(1263.189,-487.05284)">
+            <rect
+               style="fill:#faff8c;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-dasharray:none"
+               id="rect66-5-7-8-9-59"
+               width="224.85901"
+               height="34.564079"
+               x="201.88976"
+               y="2736.7356"
+               inkscape:label="Bounding rect" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66-5-7-8-9-59);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+               x="20.93289"
+               y="2725.1445"
+               id="text56-6-5-1-6-2"
+               inkscape:label="Text"><tspan
+                 x="201.89062"
+                 y="2743.9123"
+                 id="tspan93">Continuation of the numbers row under the last number </tspan><tspan
+                 x="201.89062"
+                 y="2753.9123"
+                 id="tspan94">due to the row end on L1. This make it easy to remember </tspan><tspan
+                 x="201.89062"
+                 y="2763.9123"
+                 id="tspan95">as it is ideologically consistent with the numbers row</tspan></text>
+          </g>
+          <g
+             id="g66-3"
+             inkscape:label="Note WASD"
+             transform="translate(83.703184,-509.0801)">
+            <rect
+               style="fill:#faff8c;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-dasharray:none"
+               id="rect66-5"
+               width="358.4306"
+               height="14.744567"
+               x="176.97549"
+               y="2785.7266"
+               inkscape:label="Bounding rect" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66-5);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+               x="20.93289"
+               y="2725.1445"
+               id="text56-6"
+               inkscape:label="Text"><tspan
+                 x="176.97461"
+                 y="2792.9026"
+                 id="tspan96">Arrows on WASD for L2</tspan></text>
+          </g>
+          <g
+             id="g66-3-3-94-0-3"
+             inkscape:label="Tick and Tile before numbers"
+             transform="translate(-159.20083,-550.57324)">
+            <rect
+               style="fill:#faff8c;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-dasharray:none"
+               id="rect66-5-7-8-9-5"
+               width="85.167534"
+               height="39.346409"
+               x="205.93372"
+               y="2770.7039"
+               inkscape:label="Bounding rect" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66-5-7-8-9-5);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+               x="20.93289"
+               y="2725.1445"
+               id="text56-6-5-1-6-6"
+               inkscape:label="Text"><tspan
+                 x="205.93359"
+                 y="2777.8791"
+                 id="tspan97">Tick and tilde (with </tspan><tspan
+                 x="205.93359"
+                 y="2787.8791"
+                 id="tspan98">shift) before numbers </tspan><tspan
+                 x="205.93359"
+                 y="2797.8791"
+                 id="tspan99">on L1 for consistency </tspan><tspan
+                 x="205.93359"
+                 y="2807.8791"
+                 id="tspan100">with std layout</tspan></text>
+          </g>
+          <g
+             id="g66-3-3-0-1-4"
+             inkscape:label="Numbers consistent"
+             transform="translate(200.16606,-647.90562)"
+             style="stroke-width:0.5;stroke-dasharray:none">
+            <rect
+               style="fill:#faff8c;fill-opacity:1;stroke:#000000;stroke-width:0.614504;stroke-dasharray:none"
+               id="rect66-5-7-6-4-9"
+               width="1505.6887"
+               height="11.787015"
+               x="-59.312744"
+               y="2782.9961"
+               inkscape:label="Bounding rect" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66-5-7-6-4-9);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+               x="20.93289"
+               y="2725.1445"
+               id="text56-6-5-3-9-5"
+               inkscape:label="Text"><tspan
+                 x="-59.3125"
+                 y="2790.1721"
+                 id="tspan101">Numbers remain on the top row under the L1 to be consistent with the regular row above the top alphabetical row. Shift makes the numbers into corresponding symbols same as on the regular layout
+</tspan></text>
+          </g>
+        </g>
       </g>
       <g
          id="g67"
@@ -9645,38 +10192,65 @@
            inkscape:label="Bounding rect" />
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect67);fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect67);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
            x="242.5607"
            y="2727.6975"
            id="text23"
            inkscape:label="Text"><tspan
              x="371.33203"
              y="2805.8936"
-             id="tspan3"><tspan
+             id="tspan103"><tspan
    style="font-weight:bold"
-   id="tspan1">Keys covered so far</tspan>:<tspan
-   dx="6.666626"
-   id="tspan2" /></tspan><tspan
+   id="tspan102">Keys covered so far</tspan>:
+</tspan><tspan
              x="371.33203"
              y="2822.5601"
-             id="tspan4">q w e r t y u i o p a s d f g h j k l z x c v b n m
+             id="tspan104">q w e r t y u i o p a s d f g h j k l z x c v b n m
 </tspan><tspan
              x="371.33203"
              y="2839.2266"
-             id="tspan6">Q W E R T Y U I O P A S D F G H J K L Z X C V B N M<tspan
-   dx="6.666626"
-   id="tspan5" /></tspan><tspan
+             id="tspan105">Q W E R T Y U I O P A S D F G H J K L Z X C V B N M
+</tspan><tspan
              x="371.33203"
              y="2855.8931"
-             id="tspan7">; : , . &lt; &gt;
+             id="tspan106">; : , . 
 </tspan><tspan
              x="371.33203"
              y="2872.5596"
-             id="tspan8">
+             id="tspan107">() &lt; &gt;
 </tspan><tspan
              x="371.33203"
              y="2889.2261"
-             id="tspan9">Esc</tspan></text>
+             id="tspan108">` ~
+</tspan><tspan
+             x="371.33203"
+             y="2905.8926"
+             id="tspan109">/ ? \ |
+</tspan><tspan
+             x="371.33203"
+             y="2922.5591"
+             id="tspan110">1 2 3 4 5 6 7 8 9 0
+</tspan><tspan
+             x="371.33203"
+             y="2939.2256"
+             id="tspan111">! @ # $ % ^ &amp; * - _ = +
+</tspan><tspan
+             x="371.33203"
+             y="2955.8921"
+             id="tspan112">
+</tspan><tspan
+             x="371.33203"
+             y="2973.9986"
+             id="tspan113">Shift ⤴ Esc ⎋ Space Ctlr Alt Meta Enter ↵  L1 L2
+</tspan><tspan
+             x="371.33203"
+             y="2990.6653"
+             id="tspan114">Left ←  Down ↓ Up ↑ Right →
+</tspan><tspan
+             x="371.33203"
+             y="3007.3318"
+             id="tspan115">
+</tspan></text>
       </g>
       <g
          id="g66"
@@ -9692,78 +10266,32 @@
            inkscape:label="Bounding rect" />
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66);fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';white-space:pre;shape-inside:url(#rect66);display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
            x="20.93289"
            y="2725.1445"
            id="text56"
            inkscape:label="Text"><tspan
              x="177.35938"
              y="2798.0693"
-             id="tspan12"><tspan
+             id="tspan117"><tspan
    style="font-weight:bold"
-   id="tspan10">Keys to cover</tspan>:<tspan
-   dx="6.6666183"
-   id="tspan11" /></tspan><tspan
+   id="tspan116">Keys to cover</tspan>:
+</tspan><tspan
              x="177.35938"
              y="2814.7358"
-             id="tspan14">[ ] { } ( ) &lt; &gt;<tspan
-   dx="6.666626"
-   id="tspan13" /></tspan><tspan
+             id="tspan118">[ ] { } ( ) &lt; &gt;
+</tspan><tspan
              x="177.35938"
              y="2831.4024"
-             id="tspan16">` ~ <tspan
-   dx="6.6666241"
-   id="tspan15" /></tspan><tspan
+             id="tspan119">' &quot;
+</tspan><tspan
              x="177.35938"
              y="2848.0689"
-             id="tspan18">1 2 3 4 5 6 7 8 9 0<tspan
-   dx="6.6666183"
-   id="tspan17" /></tspan><tspan
+             id="tspan120">Home End PageUp PageDown
+</tspan><tspan
              x="177.35938"
              y="2864.7354"
-             id="tspan24">! @ # $ % ^ &amp; *<tspan
-   dx="6.666626"
-   id="tspan23" /></tspan><tspan
-             x="177.35938"
-             y="2881.4019"
-             id="tspan25">- _ = +
-</tspan><tspan
-             x="177.35938"
-             y="2898.0684"
-             id="tspan52">\ |
-</tspan><tspan
-             x="177.35938"
-             y="2914.7349"
-             id="tspan53">/ ?
-</tspan><tspan
-             x="177.35938"
-             y="2931.4014"
-             id="tspan55">' &quot;<tspan
-   dx="6.666625"
-   id="tspan54" /></tspan><tspan
-             x="177.35938"
-             y="2948.0679"
-             id="tspan59" /><tspan
-             x="177.35938"
-             y="2964.7344"
-             id="tspan68">Ctrl Alt Meta Space Enter<tspan
-   dx="6.666626"
-   id="tspan67" /></tspan><tspan
-             x="177.35938"
-             y="2981.4009"
-             id="tspan69">L1 L2
-</tspan><tspan
-             x="177.35938"
-             y="2998.0674"
-             id="tspan70">Left Down Up Right
-</tspan><tspan
-             x="177.35938"
-             y="3014.7339"
-             id="tspan71">PageUp PageDown Home End
-</tspan><tspan
-             x="177.35938"
-             y="3031.4004"
-             id="tspan72">Insert</tspan></text>
+             id="tspan121">Insert</tspan></text>
       </g>
     </g>
   </g>
