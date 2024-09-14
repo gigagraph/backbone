@@ -1,8 +1,8 @@
 {
     "keyboard_name": "Keychron Q10 Max",
     "manufacturer": "Keychron",
-    "url": "https://github.com/Keychron",
-    "maintainer": "lokher",
+    "url": "https://github.com/tymur-l/workspace-setup/tree/main/keyboard",
+    "maintainer": "tymur-l",
     "processor": "STM32F401",
     "bootloader": "stm32-dfu",
     "usb": {
@@ -10,14 +10,14 @@
     },
     "features": {
         "bootmagic": true,
-        "extrakey" : true,
-        "mousekey" : true,
-        "dip_switch" : true,
+        "extrakey": true,
+        "mousekey": true,
+        "dip_switch": true,
         "encoder": true,
         "encoder_map": true,
-        "nkro" : true,
+        "nkro": true,
         "rgb_matrix": true,
-        "raw" : true,
+        "raw": true,
         "send_string": true
     },
     "matrix_pins": {
@@ -36,7 +36,7 @@
             }
         ]
     },
-    "dip_switch" :{
+    "dip_switch": {
         "pins": ["B7"]
     },
     "rgb_matrix": {
