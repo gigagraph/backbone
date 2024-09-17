@@ -24,14 +24,14 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      inkscape:zoom="1.564"
-     inkscape:cx="1143.2225"
-     inkscape:cy="736.2532"
+     inkscape:cx="1265.665"
+     inkscape:cy="657.6087"
      inkscape:window-width="3424"
      inkscape:window-height="1355"
      inkscape:window-x="8"
      inkscape:window-y="40"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g19"
+     inkscape:current-layer="g17-3-1-5"
      showguides="false" />
   <defs
      id="defs1" />
@@ -6089,14 +6089,14 @@
               <text
                  xml:space="preserve"
                  style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
-                 x="22.102709"
-                 y="76.938667"
+                 x="31.366667"
+                 y="76.813332"
                  id="text30-3-63-8"
                  inkscape:label="L1 text"><tspan
                    sodipodi:role="line"
                    id="tspan30-9-3-7"
-                   x="22.102709"
-                   y="76.938667">)</tspan></text>
+                   x="31.366667"
+                   y="76.813332">)</tspan></text>
             </g>
           </g>
           <g
@@ -6306,14 +6306,14 @@
               <text
                  xml:space="preserve"
                  style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
-                 x="22.102709"
-                 y="76.938667"
+                 x="30.966667"
+                 y="76.813332"
                  id="text30-3-08-1"
                  inkscape:label="L1 text"><tspan
                    sodipodi:role="line"
                    id="tspan30-9-12-4"
-                   x="22.102709"
-                   y="76.938667">(</tspan></text>
+                   x="30.966667"
+                   y="76.813332">(</tspan></text>
             </g>
           </g>
           <g
@@ -6489,13 +6489,13 @@
               <text
                  xml:space="preserve"
                  style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
-                 x="14.102745"
+                 x="31.172001"
                  y="94.459999"
                  id="text33-9-79-2"
                  inkscape:label="L1 Shift text"><tspan
                    sodipodi:role="line"
                    id="tspan33-4-8-4"
-                   x="14.102745"
+                   x="31.172001"
                    y="94.459999">?</tspan></text>
             </g>
             <g
@@ -6523,14 +6523,14 @@
               <text
                  xml:space="preserve"
                  style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
-                 x="22.102709"
-                 y="76.938667"
+                 x="31.166668"
+                 y="76.813332"
                  id="text30-3-16-2"
                  inkscape:label="L1 text"><tspan
                    sodipodi:role="line"
                    id="tspan30-9-8-8"
-                   x="22.102709"
-                   y="76.938667">/</tspan></text>
+                   x="31.166668"
+                   y="76.813332">/</tspan></text>
             </g>
           </g>
           <g
@@ -6685,7 +6685,7 @@
                id="g21-6-7-8"
                inkscape:label="L1 Shifted">
               <rect
-                 style="fill:#dfffbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b3b3b3;fill-opacity:1;stroke:#000000"
                  id="rect19-5-5-5"
                  width="45"
                  height="15"
@@ -6694,7 +6694,7 @@
                  inkscape:label="L1 Shift rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:3.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="10.8125"
                  y="88.609161"
                  id="text28-6-9-7"
@@ -6705,7 +6705,7 @@
                    y="88.609161">L1 + Shift</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="14.102745"
                  y="94.459999"
                  id="text33-9-2-3"
@@ -6719,7 +6719,7 @@
                id="g23-8-7-9"
                inkscape:label="L1">
               <rect
-                 style="fill:#bfffbf;fill-opacity:1;stroke:#000000"
+                 style="fill:#b3b3b3;fill-opacity:1;stroke:#000000"
                  id="rect16-1-3-1-8-5"
                  width="45"
                  height="20"
@@ -6728,7 +6728,7 @@
                  inkscape:label="L1 rect" />
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="12.1205"
                  y="71.552498"
                  id="text26-2-5-5"
@@ -6739,7 +6739,7 @@
                    y="71.552498">L1</tspan></text>
               <text
                  xml:space="preserve"
-                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
+                 style="font-size:5.33333px;font-family:'Iosevka Nerd Font Mono';-inkscape-font-specification:'Iosevka Nerd Font Mono';display:none;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-dasharray:none;stroke-opacity:1"
                  x="22.102709"
                  y="76.938667"
                  id="text30-3-4-8"
@@ -9657,16 +9657,16 @@
                inkscape:label="Text"><tspan
                  x="425.47461"
                  y="2728.0061"
-                 id="tspan3">Modifies the alphabetical keys </tspan><tspan
+                 id="tspan1">Modifies the alphabetical keys </tspan><tspan
                  x="425.47461"
                  y="2738.0061"
-                 id="tspan10">to perform actions other than </tspan><tspan
+                 id="tspan2">to perform actions other than </tspan><tspan
                  x="425.47461"
                  y="2748.0061"
-                 id="tspan12">inserting charaters. E.g </tspan><tspan
+                 id="tspan4">inserting charaters. E.g </tspan><tspan
                  x="425.47461"
                  y="2758.0061"
-                 id="tspan118">navigation</tspan></text>
+                 id="tspan5">navigation</tspan></text>
           </g>
           <g
              id="g66-3-3-9-2"
@@ -9689,19 +9689,19 @@
                inkscape:label="Text"><tspan
                  x="330.93164"
                  y="2827.0217"
-                 id="tspan119">Modifies the keyboard </tspan><tspan
+                 id="tspan6">Modifies the keyboard </tspan><tspan
                  x="330.93164"
                  y="2837.0217"
-                 id="tspan120">layout to fit non </tspan><tspan
+                 id="tspan7">layout to fit non </tspan><tspan
                  x="330.93164"
                  y="2847.0217"
-                 id="tspan121">alphabetical symbols  </tspan><tspan
+                 id="tspan8">alphabetical symbols  </tspan><tspan
                  x="330.93164"
                  y="2857.0217"
-                 id="tspan122">under the alphabetical </tspan><tspan
+                 id="tspan9">under the alphabetical </tspan><tspan
                  x="330.93164"
                  y="2867.0217"
-                 id="tspan123">keys</tspan></text>
+                 id="tspan10">keys</tspan></text>
           </g>
           <g
              id="g66-3-3-9"
@@ -9724,22 +9724,22 @@
                inkscape:label="Text"><tspan
                  x="332.17383"
                  y="2836.9065"
-                 id="tspan124">Enter under the thumb and </tspan><tspan
+                 id="tspan11">Enter under the thumb and </tspan><tspan
                  x="332.17383"
                  y="2846.9065"
-                 id="tspan125">just the right distance to </tspan><tspan
+                 id="tspan12">just the right distance to </tspan><tspan
                  x="332.17383"
                  y="2856.9065"
-                 id="tspan126">press fast and </tspan><tspan
+                 id="tspan13">press fast and </tspan><tspan
                  x="332.17383"
                  y="2866.9065"
-                 id="tspan127">unobstructively while giving </tspan><tspan
+                 id="tspan14">unobstructively while giving </tspan><tspan
                  x="332.17383"
                  y="2876.9065"
-                 id="tspan128">an opportunity to think when </tspan><tspan
+                 id="tspan15">an opportunity to think when </tspan><tspan
                  x="332.17383"
                  y="2886.9065"
-                 id="tspan129">in doubt</tspan></text>
+                 id="tspan16">in doubt</tspan></text>
           </g>
           <g
              id="g66-3-3-9-26"
@@ -9763,13 +9763,13 @@
                inkscape:label="Text"><tspan
                  x="306.41992"
                  y="2817.5354"
-                 id="tspan130">Space. Changes to shift on L1 </tspan><tspan
+                 id="tspan17">Space. Changes to shift on L1 </tspan><tspan
                  x="306.41992"
                  y="2827.5354"
-                 id="tspan131">and L2 to not reach out to </tspan><tspan
+                 id="tspan18">and L2 to not reach out to </tspan><tspan
                  x="306.41992"
                  y="2837.5354"
-                 id="tspan132">regular shift with a pinky</tspan></text>
+                 id="tspan23">regular shift with a pinky</tspan></text>
           </g>
           <g
              id="g66-3-3-9-2-0-6"
@@ -9792,16 +9792,16 @@
                inkscape:label="Text"><tspan
                  x="425.55273"
                  y="2728.803"
-                 id="tspan133">The position of coma, period, and angled brackets is </tspan><tspan
+                 id="tspan24">The position of coma, period, and angled brackets is </tspan><tspan
                  x="425.55273"
                  y="2738.803"
-                 id="tspan134">the same both on L1 and on the main layers. This makes </tspan><tspan
+                 id="tspan25">the same both on L1 and on the main layers. This makes </tspan><tspan
                  x="425.55273"
                  y="2748.803"
-                 id="tspan135">is cinvenient to put the brackets as on L1 the left </tspan><tspan
+                 id="tspan52">is cinvenient to put the brackets as on L1 the left </tspan><tspan
                  x="425.55273"
                  y="2758.803"
-                 id="tspan136">space becomes shift</tspan></text>
+                 id="tspan53">space becomes shift</tspan></text>
           </g>
           <g
              id="g66-3-3-9-7"
@@ -9824,22 +9824,22 @@
                inkscape:label="Text"><tspan
                  x="282.66797"
                  y="2794.4084"
-                 id="tspan137">B for backslash on </tspan><tspan
+                 id="tspan54">B for backslash on </tspan><tspan
                  x="282.66797"
                  y="2804.4084"
-                 id="tspan138">L1. To be </tspan><tspan
+                 id="tspan55">L1. To be </tspan><tspan
                  x="282.66797"
                  y="2814.4084"
-                 id="tspan139">consistent with </tspan><tspan
+                 id="tspan56">consistent with </tspan><tspan
                  x="282.66797"
                  y="2824.4084"
-                 id="tspan140">standard layout, </tspan><tspan
+                 id="tspan57">standard layout, </tspan><tspan
                  x="282.66797"
                  y="2834.4084"
-                 id="tspan141">addin shift will </tspan><tspan
+                 id="tspan58">addin shift will </tspan><tspan
                  x="282.66797"
                  y="2844.4084"
-                 id="tspan142">make it a pipe</tspan></text>
+                 id="tspan59">make it a pipe</tspan></text>
           </g>
           <g
              id="g66-3-3-0"
@@ -9862,16 +9862,16 @@
                inkscape:label="Text"><tspan
                  x="187.75586"
                  y="2774.2072"
-                 id="tspan143">Ctrl under the </tspan><tspan
+                 id="tspan60">Ctrl under the </tspan><tspan
                  x="187.75586"
                  y="2784.2072"
-                 id="tspan144">thumb because its </tspan><tspan
+                 id="tspan61">thumb because its </tspan><tspan
                  x="187.75586"
                  y="2794.2072"
-                 id="tspan145">most frequently </tspan><tspan
+                 id="tspan62">most frequently </tspan><tspan
                  x="187.75586"
                  y="2804.2072"
-                 id="tspan146">used</tspan></text>
+                 id="tspan63">used</tspan></text>
           </g>
           <g
              id="g66-3-3-0-7-4"
@@ -9895,13 +9895,13 @@
                inkscape:label="Text"><tspan
                  x="114.16406"
                  y="2809.8772"
-                 id="tspan147">Meta's </tspan><tspan
+                 id="tspan64">Meta's </tspan><tspan
                  x="114.16406"
                  y="2819.8772"
-                 id="tspan148">position </tspan><tspan
+                 id="tspan65">position </tspan><tspan
                  x="114.16406"
                  y="2829.8772"
-                 id="tspan149">remains as is</tspan></text>
+                 id="tspan66">remains as is</tspan></text>
           </g>
           <g
              id="g66-3-3-0-7"
@@ -9924,22 +9924,22 @@
                inkscape:label="Text"><tspan
                  x="187.80078"
                  y="2774.2522"
-                 id="tspan150">Alt is least </tspan><tspan
+                 id="tspan67">Alt is least </tspan><tspan
                  x="187.80078"
                  y="2784.2522"
-                 id="tspan151">frequently used, </tspan><tspan
+                 id="tspan68">frequently used, </tspan><tspan
                  x="187.80078"
                  y="2794.2522"
-                 id="tspan152">so its further </tspan><tspan
+                 id="tspan69">so its further </tspan><tspan
                  x="187.80078"
                  y="2804.2522"
-                 id="tspan153">and may be </tspan><tspan
+                 id="tspan70">and may be </tspan><tspan
                  x="187.80078"
                  y="2814.2522"
-                 id="tspan154">pressed with a </tspan><tspan
+                 id="tspan71">pressed with a </tspan><tspan
                  x="187.80078"
                  y="2824.2522"
-                 id="tspan155">pinky</tspan></text>
+                 id="tspan72">pinky</tspan></text>
           </g>
           <g
              id="g66-3-3-0-1"
@@ -9963,10 +9963,10 @@
                inkscape:label="Text"><tspan
                  x="-59.548828"
                  y="2774.4455"
-                 id="tspan156">Regardless of the layer, Ctrl, Meta, and Alt must remain as it. I.e. they must be available on all layers at the same </tspan><tspan
+                 id="tspan73">Regardless of the layer, Ctrl, Meta, and Alt must remain as it. I.e. they must be available on all layers at the same </tspan><tspan
                  x="-59.548828"
                  y="2784.4455"
-                 id="tspan157">positions</tspan></text>
+                 id="tspan74">positions</tspan></text>
           </g>
           <g
              id="g66-3-3"
@@ -9989,13 +9989,13 @@
                inkscape:label="Text"><tspan
                  x="206.99805"
                  y="2774.1643"
-                 id="tspan158">Remove text </tspan><tspan
+                 id="tspan75">Remove text </tspan><tspan
                  x="206.99805"
                  y="2784.1643"
-                 id="tspan159">with this </tspan><tspan
+                 id="tspan76">with this </tspan><tspan
                  x="206.99805"
                  y="2794.1643"
-                 id="tspan160">button</tspan></text>
+                 id="tspan77">button</tspan></text>
           </g>
           <g
              id="g66-3-6"
@@ -10018,7 +10018,7 @@
                inkscape:label="Text"><tspan
                  x="176.93945"
                  y="2792.8655"
-                 id="tspan161">Arrows on hjkl (matching vim) for L2</tspan></text>
+                 id="tspan78">Arrows on hjkl (matching vim) for L2</tspan></text>
           </g>
           <g
              id="g66-3-3-3-0"
@@ -10041,7 +10041,7 @@
                inkscape:label="Text"><tspan
                  x="206.38086"
                  y="2774.178"
-                 id="tspan162">Braces and brackets under the parenthesis</tspan></text>
+                 id="tspan79">Braces and brackets under the parenthesis</tspan></text>
           </g>
           <g
              id="g66-3-3-94"
@@ -10064,16 +10064,16 @@
                inkscape:label="Text"><tspan
                  x="204.75977"
                  y="2774.2502"
-                 id="tspan163">S for slash on L1. </tspan><tspan
+                 id="tspan80">S for slash on L1. </tspan><tspan
                  x="204.75977"
                  y="2784.2502"
-                 id="tspan164">Consistently with std </tspan><tspan
+                 id="tspan81">Consistently with std </tspan><tspan
                  x="204.75977"
                  y="2794.2502"
-                 id="tspan165">layout, shift will </tspan><tspan
+                 id="tspan82">layout, shift will </tspan><tspan
                  x="204.75977"
                  y="2804.2502"
-                 id="tspan166">make it a ?</tspan></text>
+                 id="tspan83">make it a ?</tspan></text>
           </g>
           <g
              id="g66-3-3-94-0"
@@ -10096,22 +10096,22 @@
                inkscape:label="Text"><tspan
                  x="204.8125"
                  y="2749.7151"
-                 id="tspan167">H for home on L1 </tspan><tspan
+                 id="tspan84">H for home on L1 </tspan><tspan
                  x="204.8125"
                  y="2759.7151"
-                 id="tspan168">because it includes </tspan><tspan
+                 id="tspan85">because it includes </tspan><tspan
                  x="204.8125"
                  y="2769.7151"
-                 id="tspan169">tile. Tick and tilde </tspan><tspan
+                 id="tspan86">tile. Tick and tilde </tspan><tspan
                  x="204.8125"
                  y="2779.7151"
-                 id="tspan170">with shift for </tspan><tspan
+                 id="tspan87">with shift for </tspan><tspan
                  x="204.8125"
                  y="2789.7151"
-                 id="tspan171">consistency with std </tspan><tspan
+                 id="tspan88">consistency with std </tspan><tspan
                  x="204.8125"
                  y="2799.7151"
-                 id="tspan172">layout</tspan></text>
+                 id="tspan89">layout</tspan></text>
           </g>
           <g
              id="g66-3-3-94-0-7-8"
@@ -10134,22 +10134,22 @@
                inkscape:label="Text"><tspan
                  x="298.86328"
                  y="2691.8733"
-                 id="tspan173">Insert further from </tspan><tspan
+                 id="tspan90">Insert further from </tspan><tspan
                  x="298.86328"
                  y="2701.8733"
-                 id="tspan174">the other L2 </tspan><tspan
+                 id="tspan91">the other L2 </tspan><tspan
                  x="298.86328"
                  y="2711.8733"
-                 id="tspan175">navigation keys </tspan><tspan
+                 id="tspan92">navigation keys </tspan><tspan
                  x="298.86328"
                  y="2721.8733"
-                 id="tspan176">becuase it is not </tspan><tspan
+                 id="tspan93">becuase it is not </tspan><tspan
                  x="298.86328"
                  y="2731.8733"
-                 id="tspan177">planned to be used </tspan><tspan
+                 id="tspan94">planned to be used </tspan><tspan
                  x="298.86328"
                  y="2741.8733"
-                 id="tspan178">frequently</tspan></text>
+                 id="tspan95">frequently</tspan></text>
           </g>
           <g
              id="g66-3-3-94-0-7"
@@ -10172,13 +10172,13 @@
                inkscape:label="Text"><tspan
                  x="201.89062"
                  y="2743.9123"
-                 id="tspan179">Continuation of the numbers row under the last number </tspan><tspan
+                 id="tspan96">Continuation of the numbers row under the last number </tspan><tspan
                  x="201.89062"
                  y="2753.9123"
-                 id="tspan180">due to the row end on L1. This make it easy to remember </tspan><tspan
+                 id="tspan97">due to the row end on L1. This make it easy to remember </tspan><tspan
                  x="201.89062"
                  y="2763.9123"
-                 id="tspan181">as it is ideologically consistent with the numbers row</tspan></text>
+                 id="tspan98">as it is ideologically consistent with the numbers row</tspan></text>
           </g>
           <g
              id="g66-3-3-94-0-7-5"
@@ -10201,10 +10201,10 @@
                inkscape:label="Text"><tspan
                  x="201.76953"
                  y="2751.8264"
-                 id="tspan182">Quotes are under the </tspan><tspan
+                 id="tspan99">Quotes are under the </tspan><tspan
                  x="201.76953"
                  y="2761.8264"
-                 id="tspan183">fastest fingers</tspan></text>
+                 id="tspan100">fastest fingers</tspan></text>
           </g>
           <g
              id="g66-3-3-3"
@@ -10227,7 +10227,7 @@
                inkscape:label="Text"><tspan
                  x="206.36328"
                  y="2774.1604"
-                 id="tspan184">Parentheses under the main fastest fingers</tspan></text>
+                 id="tspan101">Parentheses under the main fastest fingers</tspan></text>
           </g>
           <g
              id="g66-3-3-3-1"
@@ -10250,7 +10250,7 @@
                inkscape:label="Text"><tspan
                  x="206.44336"
                  y="2774.2405"
-                 id="tspan185">Home, End, Page Up, Page Down navigation keys are under L2 under the fast fingers</tspan></text>
+                 id="tspan102">Home, End, Page Up, Page Down navigation keys are under L2 under the fast fingers</tspan></text>
           </g>
           <g
              id="g66-3"
@@ -10273,7 +10273,7 @@
                inkscape:label="Text"><tspan
                  x="176.95312"
                  y="2792.8791"
-                 id="tspan186">Arrows on WASD for L2</tspan></text>
+                 id="tspan103">Arrows on WASD for L2</tspan></text>
           </g>
           <g
              id="g66-3-3-94-0-3"
@@ -10296,16 +10296,16 @@
                inkscape:label="Text"><tspan
                  x="205.93359"
                  y="2777.8791"
-                 id="tspan187">Tick and tilde (with </tspan><tspan
+                 id="tspan104">Tick and tilde (with </tspan><tspan
                  x="205.93359"
                  y="2787.8791"
-                 id="tspan188">shift) before numbers </tspan><tspan
+                 id="tspan105">shift) before numbers </tspan><tspan
                  x="205.93359"
                  y="2797.8791"
-                 id="tspan189">on L1 for consistency </tspan><tspan
+                 id="tspan106">on L1 for consistency </tspan><tspan
                  x="205.93359"
                  y="2807.8791"
-                 id="tspan190">with std layout</tspan></text>
+                 id="tspan107">with std layout</tspan></text>
           </g>
           <g
              id="g66-3-3-0-1-4"
@@ -10329,7 +10329,7 @@
                inkscape:label="Text"><tspan
                  x="-59.3125"
                  y="2790.1721"
-                 id="tspan191">Numbers remain on the top row under the L1 to be consistent with the regular row above the top alphabetical row. Shift makes the numbers into corresponding symbols same as on the regular layout
+                 id="tspan108">Numbers remain on the top row under the L1 to be consistent with the regular row above the top alphabetical row. Shift makes the numbers into corresponding symbols same as on the regular layout
 </tspan></text>
           </g>
         </g>
@@ -10355,69 +10355,69 @@
            inkscape:label="Text"><tspan
              x="371.33203"
              y="2805.8936"
-             id="tspan193"><tspan
+             id="tspan110"><tspan
    style="font-weight:bold"
-   id="tspan192">Keys covered so far</tspan>:
+   id="tspan109">Keys covered so far</tspan>:
 </tspan><tspan
              x="371.33203"
              y="2822.5601"
-             id="tspan194">q w e r t y u i o p a s d f g h j k l z x c v b n m
+             id="tspan111">q w e r t y u i o p a s d f g h j k l z x c v b n m
 </tspan><tspan
              x="371.33203"
              y="2839.2266"
-             id="tspan195">Q W E R T Y U I O P A S D F G H J K L Z X C V B N M
+             id="tspan112">Q W E R T Y U I O P A S D F G H J K L Z X C V B N M
 </tspan><tspan
              x="371.33203"
              y="2855.8931"
-             id="tspan196">; : , . 
+             id="tspan113">; : , . 
 </tspan><tspan
              x="371.33203"
              y="2872.5596"
-             id="tspan197">() [ ] { } &lt; &gt;
+             id="tspan114">() [ ] { } &lt; &gt;
 </tspan><tspan
              x="371.33203"
              y="2889.2261"
-             id="tspan198">' &quot;
+             id="tspan115">' &quot;
 </tspan><tspan
              x="371.33203"
              y="2905.8926"
-             id="tspan199">` ~
+             id="tspan116">` ~
 </tspan><tspan
              x="371.33203"
              y="2922.5591"
-             id="tspan200">/ ? \ |
+             id="tspan117">/ ? \ |
 </tspan><tspan
              x="371.33203"
              y="2939.2256"
-             id="tspan201">1 2 3 4 5 6 7 8 9 0
+             id="tspan118">1 2 3 4 5 6 7 8 9 0
 </tspan><tspan
              x="371.33203"
              y="2955.8921"
-             id="tspan202">! @ # $ % ^ &amp; * - _ = +
+             id="tspan119">! @ # $ % ^ &amp; * - _ = +
 </tspan><tspan
              x="371.33203"
              y="2972.5586"
-             id="tspan203">
+             id="tspan120">
 </tspan><tspan
              x="371.33203"
              y="2990.6651"
-             id="tspan204">Shift ⤴ Esc ⎋ Space Ctlr Alt Meta Enter ↵  L1 L2
+             id="tspan121">Shift ⤴ Esc ⎋ Space Ctlr Alt Meta Enter ↵  L1 L2
 </tspan><tspan
              x="371.33203"
              y="3007.3318"
-             id="tspan205">Left ←  Down ↓ Up ↑ Right →
+             id="tspan122">Left ←  Down ↓ Up ↑ Right →
 </tspan><tspan
              x="371.33203"
              y="3023.9983"
-             id="tspan206">
+             id="tspan123">
 </tspan><tspan
              x="371.33203"
              y="3040.6648"
-             id="tspan207">Home End PageUp PageDown
+             id="tspan124">Home End PageUp PageDown
 </tspan><tspan
              x="371.33203"
              y="3057.3313"
-             id="tspan208">Insert
+             id="tspan125">Insert
 </tspan></text>
       </g>
       <g
@@ -10441,9 +10441,9 @@
            inkscape:label="Text"><tspan
              x="177.35938"
              y="2798.0693"
-             id="tspan210"><tspan
+             id="tspan127"><tspan
    style="font-weight:bold"
-   id="tspan209">Keys to cover</tspan>:</tspan></text>
+   id="tspan126">Keys to cover</tspan>:</tspan></text>
       </g>
     </g>
   </g>
