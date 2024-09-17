@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         MC_2, /* \ */ KC_TAB,             KC_Q,   KC_W,     KC_E,    KC_R,    KC_T,           /* \/ */  KC_Y,     KC_U,   KC_I,   KC_O,        KC_P,     KC_LBRC, /* / */ KC_RBRC,  KC_BSLS,  KC_PGDN,
         MC_3, /* \ */ KC_ESC,             KC_A,   KC_S,     KC_D,    KC_F,    KC_G,           /* \/ */  KC_H,     KC_J,   KC_K,   KC_L,        KC_SCLN,           /* / */ KC_QUOT,  KC_ENT,   KC_HOME,
         MC_4, /* \ */ KC_LSFT,            KC_Z,   KC_X,     KC_C,    KC_V,    KC_BSPC,        /* \/ */  KC_B,     KC_N,   KC_M,   KC_COMM,     KC_DOT,            /* / */ KC_SLSH,  KC_RSFT,  KC_UP,
-        MC_5, /* \ */ KC_LALT,  KC_LGUI,          KC_LCTL,  KC_SPC,           KC_ENT,         /* \/ */  KC_SPC,                   MO(WIN_L1),  MO(WIN_L2),        /* / */           KC_LEFT,  KC_DOWN,  KC_RGHT),
+        MC_5, /* \ */ KC_LALT,  KC_LGUI,          KC_LCTL,  KC_SPC,           KC_ENT,         /* \/ */  KC_SPC,                   MO(WIN_L1),  MO(WIN_L2),        /* / */           KC_LEFT,  KC_DOWN,  KC_RIGHT),
 
     [WIN_L1] = LAYOUT_ansi_90(
         _______,         _______,            _______,  _______,  _______,  _______,  _______,  _______,  /* \/ */  _______,  _______,  _______,  _______,  _______,  _______,                   _______,  _______,
