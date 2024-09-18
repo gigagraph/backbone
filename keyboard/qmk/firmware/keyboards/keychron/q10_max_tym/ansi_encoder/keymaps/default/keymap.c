@@ -71,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                        /* TODO:  \/        \/ implement parentheses for d and f on L1 */
         BT_HST3, /* \ */ _______,            _______,  KC_SLSH,  _______,  _______,  _______,            /* \/ */  KC_GRV,   KC_QUOT,  _______,  KC_MINS,  KC_EQL,            /* / */ _______,  _______,   KC_END,
         P2P4G,   /* \ */ _______,            _______,  _______,  KC_LBRC,  KC_RBRC,  KC_DEL,             /* \/ */  KC_BSLS,  _______,  _______,  _______,  _______,           /* / */ _______,  _______,   RGB_SAI,
-        _______, /* \ */ _______,  _______,            _______,  KC_RSFT,            _______,            /* \/ */  _______,                      _______,  _______,           /* / */           RGB_RMOD,  RGB_SAD,  RGB_MOD),
+        _______, /* \ */ KC_RALT,  KC_RGUI,            KC_RCTL,  KC_RSFT,            _______,            /* \/ */  _______,                      _______,  _______,           /* / */           RGB_RMOD,  RGB_SAD,  RGB_MOD),
 
     [WIN_L2] = LAYOUT_ansi_90(
         RGB_TOG,         _______,            KC_BRID,  KC_BRIU,  RGB_VAD,  RGB_VAI,  KC_TASK,  KC_FILE,  /* \/ */  KC_VOLD,  KC_VOLU,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,                    RGB_TOG,   BAT_LVL,
@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         BT_HST2, /* \ */ _______,            _______,  KC_UP,    KC_HOME,   KC_END,   KC_PGUP,           /* \/ */  _______,  _______,  _______,  _______,   _______,  KC_INS,  /* / */ _______,  NK_TOGG,   RGB_SPD,
         BT_HST3, /* \ */ _______,            KC_LEFT,  KC_DOWN,  KC_RIGHT,  _______,  KC_PGDN,           /* \/ */  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RIGHT,  _______,           /* / */ _______,  _______,   KC_END,
         P2P4G,   /* \ */ _______,            _______,  _______,  _______,   _______,  _______,           /* \/ */  _______,  _______,  _______,  _______,   _______,           /* / */ _______,  _______,   RGB_SAI,
-        _______, /* \ */ _______,  _______,            _______,  KC_RSFT,             _______,           /* \/ */  _______,                      _______,   _______,           /* / */           RGB_RMOD,  RGB_SAD,  RGB_MOD),
+        _______, /* \ */ KC_RALT,  KC_RGUI,            KC_RCTL,  KC_RSFT,             _______,           /* \/ */  _______,                      _______,   _______,           /* / */           RGB_RMOD,  RGB_SAD,  RGB_MOD),
 };
 
 #if defined(ENCODER_MAP_ENABLE)
