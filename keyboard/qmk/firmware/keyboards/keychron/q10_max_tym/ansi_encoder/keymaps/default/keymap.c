@@ -26,6 +26,11 @@ enum layers {
     WIN_L2 = 5,
 };
 
+enum custom_keycodes {
+    CK_LPRT = SAFE_RANGE,
+    CK_RPRT = SAFE_RANGE + 1,
+};
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Template layer
@@ -52,14 +57,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         BT_HST1,         _______,             _______,  _______,  _______,  _______,  _______,  _______,  /* \/ */  _______,  _______,  _______,  _______,  RGB_HUD,  RGB_HUI,                   _______,   RGB_SPI,
                  /* -------------------------------------------------------------------------------------------------------------------------------------------------------------- */
         BT_HST2, /* \ */ KC_GRV,              KC_1,     KC_2,     KC_3,     KC_4,     KC_5,               /* \/ */  KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     _______, /* / */ _______,  NK_TOGG,   RGB_SPD,
-                                                        /* TODO:  \/        \/ implement parentheses for d and f on L1 */
-        BT_HST3, /* \ */ _______,             _______,  KC_SLSH,  _______,  _______,  _______,            /* \/ */  KC_GRV,   KC_QUOT,  _______,  KC_MINS,  KC_EQL,            /* / */ _______,  _______,   KC_END,
+        BT_HST3, /* \ */ _______,             _______,  KC_SLSH,  CK_LPRT,  CK_RPRT,  _______,            /* \/ */  KC_GRV,   KC_QUOT,  _______,  KC_MINS,  KC_EQL,            /* / */ _______,  _______,   KC_END,
         P2P4G,   /* \ */ _______,             _______,  _______,  KC_LBRC,  KC_RBRC,  KC_DEL,             /* \/ */  KC_BSLS,  _______,  _______,  _______,  _______,           /* / */ _______,  _______,   RGB_SAI,
         _______, /* \ */ KC_RCTL,  KC_ROPTN,            KC_RCMD,  KC_RSFT,            _______,            /* \/ */  _______,                      _______,  _______,           /* / */           RGB_RMOD,  RGB_SAD,  RGB_MOD),
 
     [MAC_L2] = LAYOUT_ansi_90(
-        RGB_TOG,         _______,             KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    /* \/ */  KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,                     RGB_TOG,   BAT_LVL,
-        BT_HST1,         _______,             _______,  _______,  _______,  _______,  _______,  _______,  /* \/ */  _______,  _______,  _______,  _______,  RGB_HUD,  RGB_HUI,                    _______,   RGB_SPI,
+        RGB_TOG,         _______,             KC_F1,    KC_F2,    KC_F3,     KC_F4,    KC_F5,    KC_F6,    /* \/ */  KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,                     RGB_TOG,   BAT_LVL,
+        BT_HST1,         _______,             _______,  _______,  _______,   _______,  _______,  _______,  /* \/ */  _______,  _______,  _______,  _______,  RGB_HUD,  RGB_HUI,                    _______,   RGB_SPI,
                  /* --------------------------------------------------------------------------------------------------------------------------------------------------------------- */
         BT_HST2, /* \ */ _______,             _______,  KC_UP,    KC_HOME,   KC_END,   KC_PGUP,           /* \/ */  _______,  _______,  _______,  _______,   _______,  KC_INS,  /* / */ _______,  NK_TOGG,   RGB_SPD,
         BT_HST3, /* \ */ _______,             KC_LEFT,  KC_DOWN,  KC_RIGHT,  _______,  KC_PGDN,           /* \/ */  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RIGHT,  _______,           /* / */ _______,  _______,   KC_END,
@@ -80,8 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         BT_HST1,         _______,            _______,  _______,  _______,  _______,  _______,  _______,  /* \/ */  _______,  _______,  _______,  _______,  RGB_HUD,  RGB_HUI,                   _______,   RGB_SPI,
                  /* -------------------------------------------------------------------------------------------------------------------------------------------------------------- */
         BT_HST2, /* \ */ KC_GRV,             KC_1,     KC_2,     KC_3,     KC_4,     KC_5,               /* \/ */  KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     _______, /* / */ _______,  NK_TOGG,   RGB_SPD,
-                                                       /* TODO:  \/        \/ implement parentheses for d and f on L1 */
-        BT_HST3, /* \ */ _______,            _______,  KC_SLSH,  _______,  _______,  _______,            /* \/ */  KC_GRV,   KC_QUOT,  _______,  KC_MINS,  KC_EQL,            /* / */ _______,  _______,   KC_END,
+        BT_HST3, /* \ */ _______,            _______,  KC_SLSH,  CK_LPRT,  CK_RPRT,  _______,            /* \/ */  KC_GRV,   KC_QUOT,  _______,  KC_MINS,  KC_EQL,            /* / */ _______,  _______,   KC_END,
         P2P4G,   /* \ */ _______,            _______,  _______,  KC_LBRC,  KC_RBRC,  KC_DEL,             /* \/ */  KC_BSLS,  _______,  _______,  _______,  _______,           /* / */ _______,  _______,   RGB_SAI,
         _______, /* \ */ KC_RALT,  KC_RGUI,            KC_RCTL,  KC_RSFT,            _______,            /* \/ */  _______,                      _______,  _______,           /* / */           RGB_RMOD,  RGB_SAD,  RGB_MOD),
 
@@ -111,5 +114,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_record_keychron_common(keycode, record)) {
         return false;
     }
+
+    switch (keycode) {
+        case CK_LPRT:
+            if (record->event.pressed) {
+                SEND_STRING("(");
+            }
+            return false;
+        case CK_RPRT:
+            if (record->event.pressed) {
+                SEND_STRING(")");
+            }
+            return false;
+        default:
+            break;
+    }
+
     return true;
 }
