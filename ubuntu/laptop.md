@@ -187,6 +187,20 @@ cd ./mantic-upgrader
 
 Repeat this process up until you get to the desired release.
 
+## Post-installation setup
+
+Before proceeding, set up the [Firefox Developer Edition browser][../system-setup/firefox.md].
+
+### Disable snap
+
+[Main guide][baeldung-disable-snaps].
+
+- [ ] TODO
+
+### Further system setup
+
+Once you finish the setup from this section - perform the desired setup from the [`system-setup`](./system-setup/README.md).
+
 ## Useful links
 
 ### Ubuntu installer
@@ -235,10 +249,9 @@ Repeat this process up until you get to the desired release.
 [ubuntu-eof-upgrades]: <https://help.ubuntu.com/community/EOLUpgrades>
 [ubuntu-meta-release]: <https://changelogs.ubuntu.com/meta-release>
 
----
+### Snaps
 
-### Disable snap
+- [baeldung-disable-snaps][baeldung-disable-snaps]
 
-- [ ] TODO
+[baeldung-disable-snaps]: https://www.baeldung.com/linux/snap-remove-disable
 
-https://www.baeldung.com/linux/snap-remove-disable
