@@ -220,8 +220,8 @@ Repeat this process up until you get to the desired release.
 - [wiki-lvm][wiki-lvm]
 - [arch-wiki-lvm][arch-wiki-lvm]
 
-- [wiki-lvm]: <https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)>
-- [arch-wiki-lvm]: <https://wiki.archlinux.org/title/LVM>
+[wiki-lvm]: <https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)>
+[arch-wiki-lvm]: <https://wiki.archlinux.org/title/LVM>
 
 ### Legacy installer + upgrade to the latest version
 
