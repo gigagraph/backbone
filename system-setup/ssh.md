@@ -22,6 +22,8 @@ Use [`ssh-copy-id`][linux-handbook-ssh-copy-id] to copy the **public** key to a 
 ssh-copy-id -i ~/.ssh/path/to/key.pub user@server-address
 ```
 
+Alternatively, just insert the contents of the public key file as a new line in `~/.ssh/authorized_key` file on the target host.
+
 ## SSH tunnelling
 
 [Main guide][baeldung-ssh-proxy].
