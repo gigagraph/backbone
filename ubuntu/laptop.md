@@ -235,3 +235,10 @@ Repeat this process up until you get to the desired release.
 [ubuntu-eof-upgrades]: <https://help.ubuntu.com/community/EOLUpgrades>
 [ubuntu-meta-release]: <https://changelogs.ubuntu.com/meta-release>
 
+---
+
+### Disable snap
+
+- [ ] TODO
+
+https://www.baeldung.com/linux/snap-remove-disable
