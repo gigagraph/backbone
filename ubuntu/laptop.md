@@ -195,7 +195,86 @@ Before proceeding, set up the [Firefox Developer Edition browser][../system-setu
 
 [Main guide][baeldung-disable-snaps].
 
-- [ ] TODO
+#### Check snap and packages
+
+Check if the system has snap installed and list the installed packages:
+
+```shell
+# Check the snap version
+snap --version
+
+# List the installed snaps
+snap list
+
+# Approximate output
+# Name                       Version           Rev    Tracking         Publisher   Notes
+# bare                       1.0               5      latest/stable    canonical✓  base
+# core22                     20241001          1663   latest/stable    canonical✓  base
+# firefox                    111.0-2           2453   latest/stable/…  mozilla✓    -
+# firmware-updater           0+git.7983059     147    1/stable/…       canonical✓  -
+# gnome-42-2204              0+git.09673a5     65     latest/stable/…  canonical✓  -
+# gtk-common-themes          0.1-81-g442e511   1535   latest/stable/…  canonical✓  -
+# snap-store                 41.3-76-g2e8f3b0  935    2/stable/…       canonical✓  -
+# snapd                      2.63              21759  latest/stable    canonical✓  snapd
+# snapd-desktop-integration  0.9               253    latest/stable/…  canonical✓  -
+```
+
+#### Remove snap packages
+
+Remove the snap packages. They must be removed in a topological order. Unfortunately, snap does not provide a way to return the installed packages in a topological order, so this guide provides generate the commands to remove the packages. You should run these commands manully and figure out the proper order:
+
+```shell
+snap list | tail -n +2 | awk '{ print $1 }' | sort -r | xargs -I {} -n 1 echo "sudo snap remove --purge {}"
+```
+
+#### Remove `snapd` daemon
+
+```shell
+sudo systemctl stop snapd
+sudo systemctl disable snapd
+sudo systemctl mask snapd
+sudo apt purge snapd -y
+sudo apt-mark hold snapd
+rm -rf "${HOME}/snap/"
+```
+
+#### Configure `apt` to not install snaps
+
+```shell
+sudo cat <<EOF | sudo tee /etc/apt/preferences.d/nosnap.pref
+Package: snapd
+Pin: release a=*
+Pin-Priority: -10
+EOF
+```
+
+Check that `apt` will not install snaps without an explicit reconfiguration. `chromium-browser` package is a package that `apt` will try to install with snap. The following command should fail:
+
+```shell
+sudo apt install chromium-browser
+
+# Reading package lists... Done
+# Building dependency tree... Done
+# Reading state information... Done
+# Some packages could not be installed. This may mean that you have
+# requested an impossible situation or if you are using the unstable
+# distribution that some required packages have not yet been created
+# or been moved out of Incoming.
+# The following information may help resolve the situation:
+#
+# The following packages have unmet dependencies:
+#  chromium-browser : PreDepends: snapd but it is not installable
+# E: Unable to correct problems, you have held broken packages.
+```
+
+#### Remove the rest of snap directories
+
+Find the directories that have the names `snap` or `snapd` and remove them manually (unless they are in system locations, e.g. like ``):
+
+```shell
+sudo find / -name "snap"
+sudo find / -name "snapd"
+```
 
 ### Further system setup
 
