@@ -76,6 +76,32 @@ Follow the istructions from the Firefox support [forum][firefox-support-disable-
 5. Set the `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`.
 6. Restart Firefox.
 
+## Set up fonts default fonts
+
+This section describes how to set up default Firefox fonts to [Nerd Fonts patched Iosevka, Iosevka Aile, and Iosevka Etoile](./fonts.md). You can use any other font instead.
+
+[More info on Firefox fonts configuration][arch-wiki-firefox-font].
+
+### Set up the font for the websites
+
+1. Go to settings and search for `Font`.
+2. Click `Advanced`.
+3. Select the following font mappings:
+  - `Serif` -> `Iosevka Etoile`.
+  - `Sans-serif` -> `Iosevka Aile`.
+  - `Monospace` -> `Iosevka Nerd Font`.
+
+### Set up the font for the Firefox UI
+
+Add the following to the `chrome/userChrome.css` under the `Profile Directory` [as described in "Disable tab bar" section](#disable-tab-bar):
+
+```shell
+/* Set Firefox UI font */
+* {
+    font-family: "Iosevka Aile";
+}
+```
+
 ## Configuration checklist
 
 - Go to the "Privacy & Security" tab and set proper settings.
@@ -88,7 +114,10 @@ Follow the istructions from the Firefox support [forum][firefox-support-disable-
 - [firefox-developer-edition][firefox-developer-edition]
 - [setup-firefox-developer-edition-on-ubuntu][setup-firefox-developer-edition-on-ubuntu]
 - [firefox-support-disable-tab-bar][firefox-support-disable-tab-bar]
+- [arch-wiki-firefox-font][arch-wiki-firefox-font]
 
 [firefox-developer-edition]: <https://www.mozilla.org/en-CA/firefox/developer/>
 [setup-firefox-developer-edition-on-ubuntu]: <https://dev.to/harrsh/how-to-setup-firefox-developer-edition-on-ubuntu-4inp>
 [firefox-support-disable-tab-bar]: <>https://support.mozilla.org/en-US/questions/1433369
+[arch-wiki-firefox-font]: <https://wiki.archlinux.org/title/Firefox/Tweaks#Fonts>
+[arch-wiki-firefox]: <https://wiki.archlinux.org/title/Firefox>
