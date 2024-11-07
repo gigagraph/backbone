@@ -40,6 +40,43 @@ sudo apt-get update
 sudo apt-get install libpam-yubico -y
 ```
 
+#### [`yubico-piv-tool`][yubico-piv-tool]
+
+> [!NOTE]
+>
+> Users must build [`yubico-piv-tool`][yubico-piv-tool] from sources. Therefore, ensure that you have [LLVM toolchain](./llvm-toolchain.md) before proceeding.
+
+Clone the git repo and switch to the latest stable version:
+
+```shell
+git clone git@github.com:Yubico/yubico-piv-tool.git
+cd ./yubico-piv-tool
+git checkout yubico-piv-tool-2.6.1
+```
+
+Install build dependencies:
+
+```
+cmake libtool libssl-dev pkg-config check libpcsclite-dev gengetopt help2man zlib-devel
+```
+
+E.g. for Ubuntu:
+
+```shell
+sudo apt update -y && sudo apt install -y \
+  cmake libtool libssl-dev pkg-config check libpcsclite-dev gengetopt help2man zlib1g zlib1g-dev
+```
+
+Build:
+
+```shell
+mkdir ./build; cd ./build
+CC="$(which clang)" CXX="$(which clang++)" cmake ..
+make
+sudo make install
+sudo ldconfig
+```
+
 ### Configure local user account authentication with PAM
 
 Based on the [official guide][yubico-pam-unix-user-login].
@@ -99,7 +136,57 @@ sudo pam-auth-update
 
 ### Configure SSH access with Yubikey
 
-- [ ] TODO: configure ssh and remote user login over ssh
+Generate the key:
+
+```shell
+yubico-piv-tool -a generate -s 9a -o ssh-public.pem
+```
+
+Create a self-signed certificate for the key:
+
+> [!NOTE]
+>
+> The following command will prompt for the PIV PIN. The default PIV PIN is 123456. Change the default PIN before generating keys with `yubico-piv-tool -a change-pin`.
+
+```shell
+yubico-piv-tool -a verify-pin -a selfsign-certificate -s 9a -S "/CN=SSH key/" -i ssh-public.pem -o ssh-cert.pem
+```
+
+Import the created certfificate to Yubikey:
+
+```shell
+yubico-piv-tool -a import-certificate -s 9a -i ssh-cert.pem
+```
+
+Find out where ykcs11 has been installed:
+
+- Debian-based system: `/usr/local/lib/libykcs11.so`.
+- MacOS: `/usr/local/lib/libykcs11.dylib`.
+
+Export the public keys from Yubikey and add them to the target system. The keys order corresponds to the slots on Yubikey.
+
+```shell
+ssh-keygen -D /usr/local/lib/libykcs11.so -e
+```
+
+Now you can access the hosts with added public SSH keys:
+
+```shell
+ssh -I /usr/local/lib/libykcs11.so user@host
+```
+
+Add the keys to the agent:
+
+```shell
+ssh-add -s /usr/local/lib/libykcs11.so
+
+# Check that agent added the keys
+ssh-add -L
+```
+
+You can delete the private certificate at this point. You should keep the public key just in case.
+
+- [ ] TODO: remote user login and sudo over ssh with Yubikey
 
 ## Configure fingerprint sensor
 
@@ -142,8 +229,9 @@ Users can configure authentication with fingerprint sensor in Gnome out of the b
     - [yubico-pgp-ssh-docs][yubico-pgp-ssh-docs]
   - [yubico-piv]
     - [yubico-secure-ssh-with-openpgp-or-piv][yubico-secure-ssh-with-openpgp-or-piv]
-    - [yubico-piv-ssh-pkcs11][yubico-piv-ssh-pkcs11]
-    - [yubico-ssh-user-certs-piv][yubico-ssh-user-certs-piv]
+      - [yubico-piv-ssh-pkcs11][yubico-piv-ssh-pkcs11]
+      - [yubico-ssh-user-certs-piv][yubico-ssh-user-certs-piv]
+    - [yubico-piv-tool][yubico-piv-tool]
 - [yubico-product-docs][yubico-product-docs]
   - [yubico-tech-docs][yubico-tech-docs]
 - [arch-wiki-fprint][arch-wiki-fprint]
@@ -169,6 +257,7 @@ Users can configure authentication with fingerprint sensor in Gnome out of the b
 [yubico-secure-ssh-with-openpgp-or-piv]: <https://developers.yubico.com/PIV/Guides/Securing_SSH_with_OpenPGP_or_PIV.html>
 [yubico-piv-ssh-pkcs11]: <https://developers.yubico.com/PIV/Guides/SSH_with_PIV_and_PKCS11.html>
 [yubico-ssh-user-certs-piv]: <https://developers.yubico.com/PIV/Guides/SSH_user_certificates.html>
+[yubico-piv-tool]: <https://developers.yubico.com/yubico-piv-tool/>
 [yubico-product-docs]: <https://docs.yubico.com/>
 [yubico-tech-docs]: <https://docs.yubico.com/hardware/yubikey/yk-tech-manual/index.html>
 [arch-wiki-fprint]: <https://wiki.archlinux.org/title/Fprint>
