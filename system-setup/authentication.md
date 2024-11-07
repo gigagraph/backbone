@@ -1,9 +1,5 @@
 # Authentication
 
-- [ ] TODO: setup PAM to enable authentication with:
-  - The fingerprint sensor
-  - Yubikeys
-- [ ] TODO: generate SSH keys using Yubikeys
 - [ ] TODO: figure out if it is possible to pass Yubikeys via SSH
 
 ## Authentication with Yubico Yubikey
@@ -44,7 +40,7 @@ sudo apt-get install libpam-yubico -y
 
 > [!NOTE]
 >
-> Users must build [`yubico-piv-tool`][yubico-piv-tool] from sources. Therefore, ensure that you have [LLVM toolchain](./llvm-toolchain.md) before proceeding.
+> Users must build [`yubico-piv-tool`][yubico-piv-tool] from sources. Therefore, ensure that you have [LLVM toolchain](./llvm-toolchain/README.md) before proceeding.
 
 Clone the git repo and switch to the latest stable version:
 
