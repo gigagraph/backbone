@@ -3,8 +3,8 @@
 ## Recommended SSH key setup
 
 Generate 2 keys:
-- One with a strong password. This key will enable access by just typing a password.
-- One with a Yubikey. This key will be convenient to use
+- [One with a strong password](#generate-ssh-keys-on-a-client). This key will enable access by just typing a password.
+- [One with a Yubikey](./authentication.md#configure-ssh-access-with-yubikey). This key will be convenient to use.
 
 ## Generate SSH keys on a client
 
@@ -13,6 +13,10 @@ Taken from the [official GitLab instructions][gitlab-generate-ssh-keys].
 ```shell
 ssh-keygen -t ed25519 -C "<comment>"
 ```
+
+## Set up SSH with Yubikey
+
+See the corresponding section in the [Authentication doc](./authentication.md#configure-ssh-access-with-yubikey).
 
 ## Add public SSH key to a remote server
 
@@ -61,16 +65,19 @@ ssh -A user@server-address
 ## SSH through jump hosts
 
 ```shell
-ssh -A -p 22 -J jump-user1@jump-server1,jump-user2@jump-server2 user@target-server-address-from-the-jump2-machine
+ssh -A -p 22 -J jump-user1@jump-server1:port1,jump-user2@jump-server2:port2 user@target-server-address-from-the-jump2-machine
 ```
 
 ## Useful link
 
 - [gitlab-generate-ssh-keys][gitlab-generate-ssh-keys]
+- [arch-wiki-open-ssh][arch-wiki-open-ssh]
 - [linux-handbook-ssh-copy-id][linux-handbook-ssh-copy-id]
 - [arch-wiki-forward-ssh-agent][arch-wiki-forward-ssh-agent]
+- [baeldung-ssh-proxy][baeldung-ssh-proxy]
 
 [gitlab-generate-ssh-keys]: <https://docs.gitlab.com/ee/user/ssh.html#generate-an-ssh-key-pair>
 [linux-handbook-ssh-copy-id]: <https://linuxhandbook.com/add-ssh-public-key-to-server/>
+[arch-wiki-open-ssh]: <https://wiki.archlinux.org/title/OpenSSH>
 [arch-wiki-forward-ssh-agent]: <https://wiki.archlinux.org/title/SSH_keys#Forwarding_ssh-agent>
 [baeldung-ssh-proxy]: <https://www.baeldung.com/linux/ssh-tunneling-and-proxying#forward-tcp-tunnels>
