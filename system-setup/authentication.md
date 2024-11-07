@@ -148,7 +148,9 @@ Create a self-signed certificate for the key:
 >
 > The following command will prompt for the PIV PIN. The default PIV PIN is 123456. Change the default PIN before generating keys with `yubico-piv-tool -a change-pin`.
 >
-> Additionally, you should change PUK as well, if it is the first setup for the Yubikey with `ykman piv access change-puk`.
+> Additionally, if it is the first setup for the Yubikey, you should:
+> - Change PUK as well,  with `ykman piv access change-puk`.
+> - Generate a new management `ykman piv access change-management-key --generate --protect`. `ykman` will store the generated key on the Yubikey and protect it with PIN.
 
 ```shell
 yubico-piv-tool -a verify-pin -a selfsign-certificate -s 9a -S "/CN=SSH key/" -i ssh-public.pem -o ssh-cert.pem
