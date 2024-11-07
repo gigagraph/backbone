@@ -118,6 +118,6 @@ Add the following to the `chrome/userChrome.css` under the `Profile Directory` [
 
 [firefox-developer-edition]: <https://www.mozilla.org/en-CA/firefox/developer/>
 [setup-firefox-developer-edition-on-ubuntu]: <https://dev.to/harrsh/how-to-setup-firefox-developer-edition-on-ubuntu-4inp>
-[firefox-support-disable-tab-bar]: <>https://support.mozilla.org/en-US/questions/1433369
+[firefox-support-disable-tab-bar]: <https://support.mozilla.org/en-US/questions/1433369>
 [arch-wiki-firefox-font]: <https://wiki.archlinux.org/title/Firefox/Tweaks#Fonts>
 [arch-wiki-firefox]: <https://wiki.archlinux.org/title/Firefox>
