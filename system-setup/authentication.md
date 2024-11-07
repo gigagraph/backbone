@@ -132,6 +132,10 @@ sudo pam-auth-update
 
 ### Configure SSH access with Yubikey
 
+> [!NOTE]
+>
+> Alternatively, you can use `ykman` to manage PIV.
+
 Generate the key:
 
 ```shell
@@ -143,6 +147,8 @@ Create a self-signed certificate for the key:
 > [!NOTE]
 >
 > The following command will prompt for the PIV PIN. The default PIV PIN is 123456. Change the default PIN before generating keys with `yubico-piv-tool -a change-pin`.
+>
+> Additionally, you should change PUK as well, if it is the first setup for the Yubikey with `ykman piv access change-puk`.
 
 ```shell
 yubico-piv-tool -a verify-pin -a selfsign-certificate -s 9a -S "/CN=SSH key/" -i ssh-public.pem -o ssh-cert.pem
