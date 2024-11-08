@@ -1,7 +1,5 @@
 # Authentication
 
-- [ ] TODO: figure out if it is possible to pass Yubikeys via SSH
-
 ## Authentication with Yubico Yubikey
 
 > [!IMPORTANT]
@@ -71,6 +69,14 @@ CC="$(which clang)" CXX="$(which clang++)" cmake ..
 make
 sudo make install
 sudo ldconfig
+```
+
+### Remove the default configuration for OTP slot 1
+
+By default, a new Yubikey comes with OTP slot 1 programmed. The default configuration will make Yubikey output a token when a user touches the button. This may be inconvenient when touched accidently. To remove this configuration run the following command:
+
+```shell
+ykman otp delete 1
 ```
 
 ### Configure local user account authentication with PAM
@@ -159,7 +165,7 @@ yubico-piv-tool -a verify-pin -a selfsign-certificate -s 9a -S "/CN=SSH key/" -i
 Import the created certfificate to Yubikey:
 
 ```shell
-yubico-piv-tool -a import-certificate -s 9a -i ssh-cert.pem
+yubico-piv-tool -a verify-pin -a import-certificate -s 9a --touch-policy always -i ssh-cert.pem
 ```
 
 Find out where ykcs11 has been installed:
@@ -190,7 +196,94 @@ ssh-add -L
 
 You can delete the private certificate at this point. You should keep the public key just in case.
 
-- [ ] TODO: remote user login and sudo over ssh with Yubikey
+### Authenticate sudo for unix user account remotely over ssh with Yubikey
+
+SSH to the remote server and configure authentication with [`pam_ssh_agent_auth`][pam-ssh-agent-auth-man] PAM module on the remote server.
+
+Install the `pam_ssh_agent_auth` PAM module:
+
+- FreeBSD:
+   - It must be built from sources.
+   - ```shell
+     git clone --recurse-submodules git@github.com:jbeverly/pam_ssh_agent_auth.git
+     cd pam_ssh_agent_auth
+     ./configure --without-openssl-header-check
+     make
+     sudo make install
+     sudo ln -s /usr/local/libexec/pam_ssh_agent_auth.so /usr/lib/pam_ssh_agent_auth.so
+     ```
+- Debian
+   - ```shell
+     sudo apt install -y libpam-ssh-agent-auth
+     ```
+
+> [!IMPORTANT]
+>
+> To ensure that you will not accidently lock yourself out while changing the PAM cofiguration, **connect to the server from a separate shell and run one one of the following commands to keep a superuser rescue shell session**:
+> - `su`
+> - `su -i`
+> - `sudo -s`
+
+- FreeBSD:
+   - Keep `SSH_AUTH_SOCK` env in sudoers. Add the follwing line to `/usr/local/etc/sudoers.d/pam_ssh_agent_auth`:
+     ```
+     Defaults    env_keep += "SSH_AUTH_SOCK"
+     ```
+   - ```shell
+     sudo visudo -f /usr/local/etc/sudoers.d/pam_ssh_agent_auth
+     sudo chmod 0440 /usr/local/etc/sudoers.d/pam_ssh_agent_auth
+     ```
+   - Add the public key to the `authorized_keys` file. If an associated private key is present in ssh agent on the server, the PAM authentication will succeed.
+     ```shell
+     sudo vi /etc/security/authorized_keys
+     sudo chmod u=rw,g=r,o= /etc/security/authorized_keys
+     ```
+   - Add the following line to `common-auth` PAM file that we will use later to enable authentication in other services/programs. The line will enable PAM to optionally authenticate a user with the `pam_ssh_agent_auth` module.
+     ```
+     auth	sufficient	pam_ssh_agent_auth.so file=/etc/security/authorized_keys
+     ```
+   - ```shell
+     sudo vi /etc/pam.d/common-auth
+     sudo vi /usr/local/etc/pam.d/common-auth
+     ```
+   - Add the following line to the PAM file for the specific services. The line will include the previous auth configuration in each file that imports it:
+     ```shell
+     auth     include        common-auth
+     ```
+   - ```shell
+     sudo vi /usr/local/etc/pam.d/sudo
+     sudo vi /etc/pam.d/ftp
+     sudo vi /etc/pam.d/imap
+     sudo vi /etc/pam.d/login
+     sudo vi /etc/pam.d/other 
+     sudo vi /etc/pam.d/pop3 
+     sudo vi /etc/pam.d/sshd 
+     sudo vi /etc/pam.d/su
+     sudo vi /etc/pam.d/system 
+     sudo vi /etc/pam.d/xdm
+     ```
+   - Test the configuration by creating a new ssh session with the server (ensure that you forward the local ssh-agent with `-A` flag) and running `sudo ls` with the Yubikey plugged in.
+- Debian:
+   - Keep `SSH_AUTH_SOCK` env in sudoers. Add the follwing line to `/etc/sudoers.d/pam_ssh_agent_auth`:
+     ```
+     Defaults    env_keep += "SSH_AUTH_SOCK"
+     ```
+   - ```shell
+     sudo visudo -f /etc/sudoers.d/pam_ssh_agent_auth
+     sudo chmod 0440 /etc/sudoers.d/pam_ssh_agent_auth
+     ```
+   - Add the public key to the `authorized_keys` file. If an associated private key is present in ssh agent on the server, the PAM authentication will succeed.
+     ```shell
+     sudo vi /etc/security/authorized_keys
+     sudo chmod u=rw,g=r,o= /etc/security/authorized_keys
+     ```
+   - Add the following line to `common-auth` PAM file that we will use later to enable authentication in other services/programs. The line will enable PAM to optionally authenticate a user with the `pam_ssh_agent_auth` module.
+     ```
+     auth	sufficient	pam_ssh_agent_auth.so file=/etc/security/authorized_keys
+     ```
+   - ```shell
+     sudo vi /etc/pam.d/common-auth
+     ```
 
 ## Configure fingerprint sensor
 
@@ -244,6 +337,8 @@ Users can configure authentication with fingerprint sensor in Gnome out of the b
 - [arch-wiki-polkit][arch-wiki-polkit]
 - [pam-8-man][pam-8-man]
 - [pam-conf-man][pam-conf-man]
+- [pam-ssh-agent-auth-man][pam-ssh-agent-auth-man]
+  - [pam-ssh-agent-auth-github][pam-ssh-agent-auth-github]
 
 [arch-wiki-yubikey]: <https://wiki.archlinux.org/title/YubiKey>
 [yubico-dev-docs]: <https://developers.yubico.com/>
@@ -270,3 +365,5 @@ Users can configure authentication with fingerprint sensor in Gnome out of the b
 [arch-wiki-polkit]: <https://wiki.archlinux.org/title/Polkit>
 [pam-8-man]: <https://man.archlinux.org/man/pam.8>
 [pam-conf-man]: <https://man.archlinux.org/man/pam.conf.5>
+[pam-ssh-agent-auth-man]: <https://linux.die.net/man/8/pam_ssh_agent_auth>
+[pam-ssh-agent-auth-github]: <https://github.com/jbeverly/pam_ssh_agent_auth-2.0>
