@@ -285,6 +285,21 @@ Install the `pam_ssh_agent_auth` PAM module:
      sudo vi /etc/pam.d/common-auth
      ```
 
+#### Configure PAM to require a keypress confirmation with Yubikey
+
+- [ ] TODO
+
+### Unenroll a Yubikey
+
+When a Yubikey is lost or compromized follow these instructions to remove it:
+
+- Remove SSH key from GitHub.
+- Local system:
+  - Remove the corresponding challenge-response file from `/etc/yubico-auth/`.
+- Remote machines:
+  - Remove the corresponding public key from users' `.ssh/authorized_keys`.
+  - Remove the corresponding public key from `/etc/security/authorized_keys`.
+
 ## Configure fingerprint sensor
 
 > [!NOTE]
