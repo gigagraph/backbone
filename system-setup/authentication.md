@@ -288,6 +288,10 @@ Install the `pam_ssh_agent_auth` PAM module:
 #### Configure PAM to require a keypress confirmation with Yubikey
 
 - [ ] TODO
+  - Possibly:
+    - Write a custom script/program, to prompt for a button press with `pam_exec`.
+    - Write a custom PAM module.
+    - Make sure the module is configurable to fail in non-interactve mode, if this is possible.
 
 ### Unenroll a Yubikey
 
