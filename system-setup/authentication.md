@@ -38,7 +38,7 @@ sudo apt-get install libpam-yubico -y
 
 > [!NOTE]
 >
-> Users must build [`yubico-piv-tool`][yubico-piv-tool] from sources. Therefore, ensure that you have [LLVM toolchain](./llvm-toolchain/README.md) before proceeding.
+> Users must build [`yubico-piv-tool`][yubico-piv-tool] from sources. Therefore, ensure that you have [LLVM toolchain](./toolchains/llvm/README.md) before proceeding.
 
 Clone the git repo and switch to the latest stable version:
 
