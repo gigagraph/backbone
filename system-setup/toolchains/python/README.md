@@ -22,12 +22,16 @@ sudo ./install-debian-deps.sh
 git clone git@github.com:python/cpython.git
 cd ./cpython
 git checkout v3.12.7
-env CC="$(which clang)" CXX="$(which clang++)" \
+env CC="$(which clang)" CFLAGS="-fPIC" CXX="$(which clang++)" CXXFLAGS="-fPIC" LD="lld" \
   ./configure --enable-optimizations --with-lto
 make
 make test
 sudo make install
 ```
+
+> [!NOTE]
+>
+> To remove everything that the `./configure` script created to start a fresh build, run `make distclean`.
 
 ### Add to `PATH`
 
