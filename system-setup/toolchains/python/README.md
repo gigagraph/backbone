@@ -59,6 +59,6 @@ List of common packages that have support for 3.13.
 - [cpython-github][cpython-github]
 - [cpython-build-dependencies][cpython-build-dependencies]
 
-- [python]: <https://www.python.org>
-- [cpython-github]: <https://github.com/python/cpython>
-- [cpython-build-dependencies]: <https://devguide.python.org/getting-started/setup-building/#build-dependencies>
+[python]: <https://www.python.org>
+[cpython-github]: <https://github.com/python/cpython>
+[cpython-build-dependencies]: <https://devguide.python.org/getting-started/setup-building/#build-dependencies>
