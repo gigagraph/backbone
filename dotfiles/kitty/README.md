@@ -139,14 +139,16 @@ Use the config from this repository on your system by creating symlinking the us
 - [build-kitty-from-source][build-kitty-from-source]
   - [kitty-deps][kitty-deps]
 - [debian-desktop-change-terminal-emulator][debian-desktop-change-terminal-emulator]
-- [kitty-mappings][kitty-mappings]
+- [kitty-docs-local][kitty-docs-local]
   - [kitty-mappings-local][kitty-mappings-local]
-- [kitty-hints][kitty-hints]
+    - [kitty-mappings][kitty-mappings]
   - [kitty-hints-local][kitty-hints-local]
+    - [kitty-hints][kitty-hints]
 
 [build-kitty-from-source]: <https://sw.kovidgoyal.net/kitty/build/>
 [kitty-deps]: <https://sw.kovidgoyal.net/kitty/build/#dependencies>
 [debian-desktop-change-terminal-emulator]: <https://askubuntu.com/questions/1135970/ctrl-alt-t-launches-a-different-terminal-than-that-from-the-launcher>
+[kitty-docs-local]: <file:///usr/local/share/doc/kitty/html/overview.html>
 [kitty-mappings]: <https://sw.kovidgoyal.net/kitty/mapping/>
 [kitty-mappings-local]: <file:///usr/local/share/doc/kitty/html/mapping.html>
 [kitty-hints]: <https://sw.kovidgoyal.net/kitty/kittens/hints/>

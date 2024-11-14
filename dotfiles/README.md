@@ -15,26 +15,20 @@ Configuration and setup instructions for the commonly used customized software.
 
 - In progress
   - [Kitty](./kitty/README.md)
-  - [`neovim`](#neovim)
+  - [`neovim`](./neovim/README.md)
+  - [zsh](./zsh/README.md)
   <!-- - [`home-manager`](#home-manager) -->
 - TODO
-  - zsh
-    - antidote
-    - powerlevel10k
-  - [Nerd fonts](https://github.com/ryanoasis/nerd-fonts)
-  - Hyperland
+  - zoxide
+    - https://www.youtube.com/watch?v=aghxkpyRVDY
+  - fzf
+    - https://github.com/junegunn/fzf
   - tmux
+    - https://www.youtube.com/watch?v=DzNmUNvnB04
+  - Hyperland
   - ollama
     - Code suggestions in text editors (perhaps using codellama).
       - Consider sourcegraph's Cody for text editor integration.
-
-### `neovim`
-
-Source: https://github.com/neovim/neovim.
-
-#### Installation
-
-- [ ] TODO
 
 <!--
 
