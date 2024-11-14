@@ -109,9 +109,28 @@ The `linux-package` target will "stage" all the kitty-related files in the `linu
 sudo cp -r ./linux-package/* /usr/local/
 ```
 
-- [ ] TODO: how to make ubuntu run kitty on ctrl+shift+t
+## Set kitty as default terminal
+
+### `update-alternatives`
+
+If your system uses `update-alternatives` to manage programs alternatives, you can do the following to make kitty the default termianal emulator:
+
+```shell
+sudo update-alternatives --install \
+  "$(update-alternatives --query x-terminal-emulator | awk '/Link: / { print $2 }')" \
+  x-terminal-emulator \
+  "$(which kitty)" \
+  1
+sudo update-alternatives --set x-terminal-emulator "$(which kitty)"
+```
 
 ## Configuration
+
+Use the config from this repository on your system by creating symlinking the user config default directory to the config dir in this repo (the script will prompt you for confirmation before running any configuration commands):
+
+```shell
+./setup-config.sh
+```
 
 - [ ] TODO
 
@@ -120,7 +139,15 @@ sudo cp -r ./linux-package/* /usr/local/
 - [build-kitty-from-source][build-kitty-from-source]
   - [kitty-deps][kitty-deps]
 - [debian-desktop-change-terminal-emulator][debian-desktop-change-terminal-emulator]
+- [kitty-mappings][kitty-mappings]
+  - [kitty-mappings-local][kitty-mappings-local]
+- [kitty-hints][kitty-hints]
+  - [kitty-hints-local][kitty-hints-local]
 
 [build-kitty-from-source]: <https://sw.kovidgoyal.net/kitty/build/>
 [kitty-deps]: <https://sw.kovidgoyal.net/kitty/build/#dependencies>
 [debian-desktop-change-terminal-emulator]: <https://askubuntu.com/questions/1135970/ctrl-alt-t-launches-a-different-terminal-than-that-from-the-launcher>
+[kitty-mappings]: <https://sw.kovidgoyal.net/kitty/mapping/>
+[kitty-mappings-local]: <file:///usr/local/share/doc/kitty/html/mapping.html>
+[kitty-hints]: <https://sw.kovidgoyal.net/kitty/kittens/hints/>
+[kitty-hints-local]: <file:///usr/local/share/doc/kitty/html/kittens/hints.html>
