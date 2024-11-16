@@ -329,6 +329,14 @@ Users can configure authentication with fingerprint sensor in Gnome out of the b
 3. Press enter to apply the settings.
 4. Open a new terminal session and run `sudo ls` to test the configuration.
 
+### Disable login for the `root` user
+
+After you set up the authentication and root access for your main user account, you can [disable login for the `root` user][arch-wiki-security-restricting-root]:
+
+```shell
+sudo passwd --lock root
+```
+
 ## Useful links
 
 - [arch-wiki-yubikey][arch-wiki-yubikey]
@@ -358,6 +366,7 @@ Users can configure authentication with fingerprint sensor in Gnome out of the b
 - [pam-conf-man][pam-conf-man]
 - [pam-ssh-agent-auth-man][pam-ssh-agent-auth-man]
   - [pam-ssh-agent-auth-github][pam-ssh-agent-auth-github]
+- [arch-wiki-security-restricting-root][arch-wiki-security-restricting-root]
 
 [arch-wiki-yubikey]: <https://wiki.archlinux.org/title/YubiKey>
 [yubico-dev-docs]: <https://developers.yubico.com/>
@@ -386,3 +395,4 @@ Users can configure authentication with fingerprint sensor in Gnome out of the b
 [pam-conf-man]: <https://man.archlinux.org/man/pam.conf.5>
 [pam-ssh-agent-auth-man]: <https://linux.die.net/man/8/pam_ssh_agent_auth>
 [pam-ssh-agent-auth-github]: <https://github.com/jbeverly/pam_ssh_agent_auth-2.0>
+[arch-wiki-security-restricting-root]: <https://wiki.archlinux.org/title/Security#Restricting_root>

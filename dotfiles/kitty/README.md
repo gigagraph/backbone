@@ -133,6 +133,26 @@ Use the config from this repository on your system by creating symlinking the us
 ```
 
 - [ ] TODO
+  - Don't scrollback after clear
+
+### Kittens bundle
+
+- [ ] TODO: setup
+  - https://github.com/mikesmithgh/kitty-scrollback.nvim
+  - https://github.com/jktr/matplotlib-backend-kitty
+  - https://github.com/itsjunetime/tdf
+  - https://github.com/trygveaa/kitty-kitten-search
+
+### Features
+
+#### Keyboard shortcuts
+
+- [ ] TODO: document useful frequent keyboard shortcuts
+  - Document the default keybindings from the [docs overview page][kitty-docs-local]
+
+#### Shell integration
+
+- [ ] [TODO][kitty-shell-integration]
 
 ## Useful links
 
@@ -144,12 +164,18 @@ Use the config from this repository on your system by creating symlinking the us
     - [kitty-mappings][kitty-mappings]
   - [kitty-hints-local][kitty-hints-local]
     - [kitty-hints][kitty-hints]
+  - [kitty-shell-integration-local][kitty-shell-integration-local]
+    - [kitty-shell-integration][kitty-shell-integration]
+- [arch-wiki-kitty][arch-wiki-kitty]
 
 [build-kitty-from-source]: <https://sw.kovidgoyal.net/kitty/build/>
 [kitty-deps]: <https://sw.kovidgoyal.net/kitty/build/#dependencies>
 [debian-desktop-change-terminal-emulator]: <https://askubuntu.com/questions/1135970/ctrl-alt-t-launches-a-different-terminal-than-that-from-the-launcher>
 [kitty-docs-local]: <file:///usr/local/share/doc/kitty/html/overview.html>
-[kitty-mappings]: <https://sw.kovidgoyal.net/kitty/mapping/>
+[kitty-shell-integration-local]: <file:///usr/local/share/doc/kitty/html/shell-integration.html>
+[kitty-shell-integration]: <https://sw.kovidgoyal.net/kitty/shell-integration/>
 [kitty-mappings-local]: <file:///usr/local/share/doc/kitty/html/mapping.html>
-[kitty-hints]: <https://sw.kovidgoyal.net/kitty/kittens/hints/>
+[kitty-mappings]: <https://sw.kovidgoyal.net/kitty/mapping/>
 [kitty-hints-local]: <file:///usr/local/share/doc/kitty/html/kittens/hints.html>
+[kitty-hints]: <https://sw.kovidgoyal.net/kitty/kittens/hints/>
+[arch-wiki-kitty]: <https://wiki.archlinux.org/title/Kitty>
