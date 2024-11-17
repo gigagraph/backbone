@@ -62,6 +62,17 @@ sudo make install
 sudo make install.info
 ```
 
+### Source `/etc/profile` from `/etc/zsh/zprofile`
+
+> [!IMPORTANT]
+>
+> [`/etc/profile` file should be sourced by all POSIX sh-compatible shells upon login][arch-wiki-startup-shutdown-files].
+
+```shell
+sudo mkdir -p /etc/zsh
+sudo echo ". /etc/profile" | sudo tee -a /etc/zsh/zprofile
+```
+
 ### Set zsh as a default login shell
 
 Ensure `zsh` is present in `/etc/shells`:
@@ -82,23 +93,52 @@ sudo chsh -s "$(which zsh)" "${USER}"
 
 ## Configuration
 
-See the [description of startup and shutdown files for zsh][arch-wiki-startup-shutdown-files]. Visally it looks as follows:
+Setup config from this repo on your system:
+
+```shell
+./setup-config.sh
+```
+
+For a reference, see the [description of startup and shutdown files for zsh][arch-wiki-startup-shutdown-files]. Visally it looks as follows:
 
 ![Well-known shells startup and shutdown files](./img/shell-startup-actual.png)
 
 - [ ] TODO
-  - Move current zsh config to this repo and implement a script to symbolic link the config to the user configuration dir
   - Select back with shift tab
-  - Configure such that all zsh files are in ~/.config/.zsh dir (set ZDOTDIR in ~/.zenv)
   - Figure out what to do with keybindings (how to jump between words conveniently)
 
-### Plugins
-
 - [ ] TODO
+  - Set default editor to nvim
+  - Edit long commands in the default editor https://nuclearsquid.com/writings/edit-long-commands/
 
 #### Antidote plugin manager
 
 - [ ] TODO
+  - antidote
+
+### Plugins
+
+- [ ] TODO
+  - https://github.com/jeffreytse/zsh-vi-mode
+  - history-substring-search
+  - zsh-syntax-highlighting
+  - zsh-completions
+  - zsh-autosuggestions
+  - fzf-tab
+    - ```shell
+      zstyle ':completion:*' menu no
+      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color "${realpath}"'
+      ```
+  - git
+  - sudo
+  - kubectl
+  - kubectx
+  - ...
+
+### Integrations
+
+- [ ] TODO
+  - fzf
 
 ## Useful links
 
@@ -111,6 +151,7 @@ See the [description of startup and shutdown files for zsh][arch-wiki-startup-sh
     - [zsh-faq][zsh-faq]
     - [zsh-manual-toc][zsh-manual-toc]
     - [zsh-user-guide-toc][zsh-user-guide-toc]
+- [youtube-zsh-dream-of-autonomy][youtube-zsh-dream-of-autonomy]
 
 [arch-wiki-change-default-shell]: <https://wiki.archlinux.org/title/Command-line_shell#Changing_your_default_shell>
 [arch-wiki-startup-shutdown-files]: <https://wiki.archlinux.org/title/Zsh#Startup/Shutdown_files>
@@ -120,3 +161,4 @@ See the [description of startup and shutdown files for zsh][arch-wiki-startup-sh
 [zsh-faq]: <https://zsh.sourceforge.io/FAQ/>
 [zsh-manual-toc]: <https://zsh.sourceforge.io/Doc/Release/zsh_toc.html>
 [zsh-user-guide-toc]: <https://zsh.sourceforge.io/Guide/zshguide.html>
+[youtube-zsh-dream-of-autonomy]: <https://www.youtube.com/watch?v=ud7YxC33Z3w>

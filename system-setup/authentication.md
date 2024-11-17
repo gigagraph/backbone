@@ -26,6 +26,10 @@ sudo apt install yubikey-manager -y
 source <(_YKMAN_COMPLETE=bash_source ykman | sudo tee /etc/bash_completion.d/ykman)
 ```
 
+###### zsh
+
+- [ ] TODO
+
 #### [`yubico-pam`][yubico-pam-github]
 
 ```shell
