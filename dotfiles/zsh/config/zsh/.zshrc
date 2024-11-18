@@ -1,22 +1,33 @@
 # zsh built-in
 
-## Options and variables
-
 setopt beep nomatch
 unsetopt autocd extendedglob notify
+
+## zle
+
+# TODO: explicitly set
+# match-words-by-style
+
+# TODO: edit-command-line with neovim
+
+## Multibyte characters
+
+setopt COMBINING_CHARS
+# TODO: figure out how to highligh such characters with zle_highlight
+
+## History
 
 HISTFILE=~/.histfile
 HISTSIZE=5000
 SAVEHIST=5000
-
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
+
+## Completions
 
 # TODO: research the following option
 # setopt CORRECT
 # What are the ae options and can I disable them?
-
-## Completions
 
 zstyle ':completion:*' auto-description 'arg: %d'
 zstyle ':completion:*' completer _complete _ignored _correct _approximate _prefix
@@ -37,6 +48,9 @@ zstyle ':completion:*' select-prompt '%SScrolling active: current selection at [
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' verbose true
 zstyle :compinstall filename "${HOME}/.config/zsh/.zshrc"
+
+# TODO: bind to shift tab
+# history-beginning-search-backward-end
 
 ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${HOST}"
 

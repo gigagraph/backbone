@@ -105,7 +105,6 @@ For a reference, see the [description of startup and shutdown files for zsh][arc
 
 - [ ] TODO
   - Select back with shift tab
-  - Figure out what to do with keybindings (how to jump between words conveniently)
 
 - [ ] TODO
   - Set default editor to nvim
@@ -138,7 +137,7 @@ For a reference, see the [description of startup and shutdown files for zsh][arc
 ### Integrations
 
 - [ ] TODO
-  - fzf
+  - `fzf` for history search and suggestions
 
 ## Useful links
 
@@ -150,6 +149,7 @@ For a reference, see the [description of startup and shutdown files for zsh][arc
     - [zsh-intro-doc][zsh-intro-doc]
     - [zsh-faq][zsh-faq]
     - [zsh-manual-toc][zsh-manual-toc]
+      - [zsh-options][zsh-options]
     - [zsh-user-guide-toc][zsh-user-guide-toc]
 - [youtube-zsh-dream-of-autonomy][youtube-zsh-dream-of-autonomy]
 
@@ -160,5 +160,6 @@ For a reference, see the [description of startup and shutdown files for zsh][arc
 [zsh-intro-doc]: <https://zsh.sourceforge.io/Intro/intro_toc.html>
 [zsh-faq]: <https://zsh.sourceforge.io/FAQ/>
 [zsh-manual-toc]: <https://zsh.sourceforge.io/Doc/Release/zsh_toc.html>
+[zsh-options]: <https://zsh.sourceforge.io/Doc/Release/Options.html>
 [zsh-user-guide-toc]: <https://zsh.sourceforge.io/Guide/zshguide.html>
 [youtube-zsh-dream-of-autonomy]: <https://www.youtube.com/watch?v=ud7YxC33Z3w>
