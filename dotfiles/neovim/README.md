@@ -4,10 +4,56 @@ Source: https://github.com/neovim/neovim.
 
 ## Installation
 
+> [!NOTE]
+>
+> Ensure you have the following language toolhcains:
+> - [C/C++](../system-setup/toolchains/llvm/README.md).
+>
+> [You can verify the versions of the installed toolcahins with the script](../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
+
+Clone the [neovim repo][github-neovim] locally:
+
+```shell
+git clone git@github.com:neovim/neovim.git
+cd ./neovim
+git checkout "${NEOVIM_VERSION}"
+```
+
+Install [build dependencies]():
+
+```shell
+./install-dependencies.sh
+```
+
+Build neovim from sources and test the build:
+
+```shell
+export CC="$(which clang)"
+export CFLAGS="--start-no-unused-arguments -fuse-ld=lld --end-no-unused-arguments"
+export CXX="$(which clang++)"
+export CXXFLAGS="--start-no-unused-arguments -fuse-ld=lld --end-no-unused-arguments"
+
+make CMAKE_BUILD_TYPE=Release 
+
+make test
+```
+
+Install the build locally:
+
+```shell
+sudo make install
+```
+
+## Configuration
+
 - [ ] TODO
 
 ## Useful links
 
-- [neovim-github][neovim-github]
+- [github-neovim][github-neovim]
+- [neovim-build-deps][neovim-build-deps]
+- [lua-key-conceps-in-15-minutes][lua-key-conceps-in-15-minutes]
 
-[neovim-github]: <https://github.com/neovim/neovim>
+[github-neovim]: <https://github.com/neovim/neovim>
+[neovim-build-deps]: <https://github.com/neovim/neovim/blob/master/BUILD.md#build-prerequisites>
+[lua-key-conceps-in-15-minutes]: <https://learnxinyminutes.com/docs/lua/>
