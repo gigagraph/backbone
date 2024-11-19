@@ -6,5 +6,5 @@
 - [Firefox](./firefox.md).
 - [Authentication](./authentication.md).
 - [Graphics](./graphics.md).
-- [Wayland](./wayland.md).
+- [Wayland](./wayland/README.md).
 - [Toolchains](./toolchains/README.md).

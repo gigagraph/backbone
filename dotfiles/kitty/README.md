@@ -36,7 +36,7 @@ E.g. for a Debian-based system run:
 
 Ensure you have the [graphics libraries](../../system-setup/graphics.md) set up for your system (specifcially, you will need OpenGL implementation for your graphics hardware vendor).
 
-Ensure that you have [Wayland](../system-setup/wayland.md) and the corresponding headers (i.e. the dev package) to build kitty with Wayland support.
+Ensure that you have [Wayland](../system-setup/wayland/README.md) and the corresponding headers (i.e. the dev package) to build kitty with Wayland support.
 
 Create a hardlink to the symbols Nerd Font file for the build:
 
