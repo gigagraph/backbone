@@ -124,28 +124,35 @@ git checkout "${ANTIDOTE_VERSION}"
 Add the following to `.zshrc` (already present in this config):
 
 ```shell
-# Antidote setup
+## Antidote
+### https://getantidote.github.io/install
 
 ANTIDOTE_PATH="${HOME}/.antidote"
 
 # Set the root name of the plugins files (.txt and .zsh) antidote will use.
-zsh_plugins="${ZDOTDIR:-~}/.zsh_plugins"
+zsh_plugins_txt="${ZDOTDIR:-~}/.zsh_plugins.txt"
+zsh_plugins_zsh="${XDG_STATE_HOME}/.zsh_plugins.zsh"
 
 # Ensure the .zsh_plugins.txt file exists so you can add plugins.
-[[ -f "${zsh_plugins}.txt" ]] || touch "${zsh_plugins}.txt"
+[[ -f "${zsh_plugins_txt}" ]] || touch "${zsh_plugins_txt}"
 
 # Lazy-load antidote from its functions directory.
-fpath=("${ANTIDOTE_PATH}/functions" "${fpath}")
+fpath=("${ANTIDOTE_PATH}/functions" ${fpath})
 autoload -Uz antidote
 
 # Generate a new static file whenever .zsh_plugins.txt is updated.
-if [[ ! "${zsh_plugins}.zsh" -nt "${zsh_plugins}.txt" ]]; then
-  antidote bundle <"${zsh_plugins}.txt" >|"${zsh_plugins}.zsh"
+if [[ ! "${zsh_plugins_zsh}" -nt "${zsh_plugins_txt}" ]]; then
+  antidote bundle <"${zsh_plugins_txt}" >|"${zsh_plugins_zsh}"
 fi
 
 # Source your static plugins file.
-source "${zsh_plugins}.zsh"
+source "${zsh_plugins_zsh}"
 ```
+
+### Prompt
+
+- TODO: starship: https://starship.rs/installing/
+  - TODO: before installing - set kitty fornt to Nerd Font Mono Iosevka
 
 ### Plugins
 
