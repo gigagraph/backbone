@@ -107,37 +107,79 @@ For a reference, see the [description of startup and shutdown files for zsh][arc
   - Select back with shift tab
 
 - [ ] TODO
-  - Set default editor to nvim
   - Edit long commands in the default editor https://nuclearsquid.com/writings/edit-long-commands/
 
-#### Antidote plugin manager
+### `antidote` plugin manager
 
-- [ ] TODO
-  - antidote
+#### [`antidote` installation][antidote-installation]
+
+Clone the `antidote` sources:
+
+```shell
+git clone https://github.com/mattmc3/antidote.git ~/.antidote
+cd ~/.antidote
+git checkout "${ANTIDOTE_VERSION}"
+```
+
+Add the following to `.zshrc` (already present in this config):
+
+```shell
+# Antidote setup
+
+ANTIDOTE_PATH="${HOME}/.antidote"
+
+# Set the root name of the plugins files (.txt and .zsh) antidote will use.
+zsh_plugins="${ZDOTDIR:-~}/.zsh_plugins"
+
+# Ensure the .zsh_plugins.txt file exists so you can add plugins.
+[[ -f "${zsh_plugins}.txt" ]] || touch "${zsh_plugins}.txt"
+
+# Lazy-load antidote from its functions directory.
+fpath=("${ANTIDOTE_PATH}/functions" "${fpath}")
+autoload -Uz antidote
+
+# Generate a new static file whenever .zsh_plugins.txt is updated.
+if [[ ! "${zsh_plugins}.zsh" -nt "${zsh_plugins}.txt" ]]; then
+  antidote bundle <"${zsh_plugins}.txt" >|"${zsh_plugins}.zsh"
+fi
+
+# Source your static plugins file.
+source "${zsh_plugins}.zsh"
+```
 
 ### Plugins
 
 - [ ] TODO
-  - https://github.com/jeffreytse/zsh-vi-mode
-  - history-substring-search
   - zsh-syntax-highlighting
   - zsh-completions
   - zsh-autosuggestions
-  - fzf-tab
-    - ```shell
-      zstyle ':completion:*' menu no
-      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color "${realpath}"'
-      ```
   - git
   - sudo
   - kubectl
   - kubectx
-  - ...
+  - history-substring-search
+
+Install new plugins with [`antidote`](#antidote-plugin-manager) (see the full list of [options][antidote-options]):
+
+```shell
+antidote install <plugin-url> [options]
+```
+
+`antidote` will add the given plugin to the [`./config/zsh/.zsh_plugins.txt`](./config/zsh/.zsh_plugins.txt) file.
+
+#### `zsh-vi-mode`
+
+[Configuration docs][github-zsh-vi-mode].
 
 ### Integrations
 
 - [ ] TODO
   - `fzf` for history search and suggestions
+    - Install plugin `fzf-tab`
+      - ```shell
+        zstyle ':completion:*' menu no
+        zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color "${realpath}"'
+        ```
 
 ## Useful links
 
@@ -152,6 +194,9 @@ For a reference, see the [description of startup and shutdown files for zsh][arc
       - [zsh-options][zsh-options]
     - [zsh-user-guide-toc][zsh-user-guide-toc]
 - [youtube-zsh-dream-of-autonomy][youtube-zsh-dream-of-autonomy]
+- [antidote-installation][antidote-installation]
+- [antidote-options][antidote-options]
+- [github-zsh-vi-mode][github-zsh-vi-mode]
 
 [arch-wiki-change-default-shell]: <https://wiki.archlinux.org/title/Command-line_shell#Changing_your_default_shell>
 [arch-wiki-startup-shutdown-files]: <https://wiki.archlinux.org/title/Zsh#Startup/Shutdown_files>
@@ -163,3 +208,6 @@ For a reference, see the [description of startup and shutdown files for zsh][arc
 [zsh-options]: <https://zsh.sourceforge.io/Doc/Release/Options.html>
 [zsh-user-guide-toc]: <https://zsh.sourceforge.io/Guide/zshguide.html>
 [youtube-zsh-dream-of-autonomy]: <https://www.youtube.com/watch?v=ud7YxC33Z3w>
+[antidote-installation]: <https://getantidote.github.io/install>
+[antidote-options]: <https://getantidote.github.io/options>
+[github-zsh-vi-mode]: <https://github.com/jeffreytse/zsh-vi-mode>

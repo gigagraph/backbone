@@ -1,21 +1,40 @@
-# zsh built-in
+# zsh options
 
 setopt beep nomatch
 unsetopt autocd extendedglob notify
 
-## zle
+# Path
+
+typeset -U path PATH
+path=(
+  ${path}
+  /usr/lib/llvm-18/bin
+  /usr/local/go/bin
+)
+export PATH
+
+# Aliases
+
+## TODO
+
+# Envs
+
+export EDITOR="$(which nvim)"
+export VISUAL="${EDITOR}"
+
+# zle
 
 # TODO: explicitly set
 # match-words-by-style
 
 # TODO: edit-command-line with neovim
 
-## Multibyte characters
+# Multibyte characters
 
 setopt COMBINING_CHARS
 # TODO: figure out how to highligh such characters with zle_highlight
 
-## History
+# History
 
 HISTFILE=~/.histfile
 HISTSIZE=5000
@@ -23,7 +42,7 @@ SAVEHIST=5000
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 
-## Completions
+# Completions
 
 # TODO: research the following option
 # setopt CORRECT
@@ -57,7 +76,7 @@ ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${HOST}"
 autoload -Uz compinit
 compinit -d "${ZSH_COMPDUMP}"
 
-## zsh keybindings
+# Keybindings
 
 bindkey -v
 
@@ -70,18 +89,31 @@ bindkey '^n' history-search-forward
 
 # Plugins
 
-## TODO
+## Antidote
+### https://getantidote.github.io/install
 
-# Aliases
+ANTIDOTE_PATH="${HOME}/.antidote"
 
-## TODO
+# Set the root name of the plugins files (.txt and .zsh) antidote will use.
+zsh_plugins_txt="${ZDOTDIR:-~}/.zsh_plugins.txt"
+zsh_plugins_zsh="${XDG_STATE_HOME}/.zsh_plugins.zsh"
 
-# Path
+# Ensure the .zsh_plugins.txt file exists so you can add plugins.
+[[ -f "${zsh_plugins_txt}" ]] || touch "${zsh_plugins_txt}"
 
-typeset -U path PATH
-path=(
-  ${path}
-  /usr/lib/llvm-18/bin
-  /usr/local/go/bin
-)
-export PATH
+# Lazy-load antidote from its functions directory.
+fpath=("${ANTIDOTE_PATH}/functions" ${fpath})
+autoload -Uz antidote
+
+# Generate a new static file whenever .zsh_plugins.txt is updated.
+if [[ ! "${zsh_plugins_zsh}" -nt "${zsh_plugins_txt}" ]]; then
+  antidote bundle <"${zsh_plugins_txt}" >|"${zsh_plugins_zsh}"
+fi
+
+# Source your static plugins file.
+source "${zsh_plugins_zsh}"
+
+## zsh-vim-mode (ZVM)
+### Docs: https://github.com/jeffreytse/zsh-vi-mode
+
+#### Empty

@@ -44,6 +44,13 @@ Install the build locally:
 sudo make install
 ```
 
+Set `nvim` as default alternative for editor
+
+```shell
+sudo update-alternatives --install /usr/bin/editor editor "$(which nvim)" 1
+lambda-laptop% sudo update-alternatives --set editor "$(which nvim)"
+```
+
 ## Configuration
 
 - [ ] TODO
