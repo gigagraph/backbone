@@ -6,7 +6,7 @@ Design and source code to customize the keyboard experience.
 
 ### [`qmk_firmware`](https://github.com/qmk/qmk_firmware)
 
-Keychron's fork of [`qmk_firmware`](https://github.com/qmk/qmk_firmware) at the branch `wireless_playground` (`568ab37cce`) is checked in to the sources of this repo using `git subtree` under the `,/qmk/firmware` path.
+Keychron's fork of [`qmk_firmware`](https://github.com/qmk/qmk_firmware) at the branch `wireless_playground` (`568ab37cce`) is checked in to the sources of this repo using `git subtree` under the `./qmk/firmware` path.
 
 #### Setup
 
