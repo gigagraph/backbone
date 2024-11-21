@@ -73,6 +73,7 @@ zstyle :compinstall filename "${HOME}/.config/zsh/.zshrc"
 
 ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${HOST}"
 
+fpath=("${ZSH_COMPLETIONS_DIR}" $fpath)
 autoload -Uz compinit
 compinit -d "${ZSH_COMPDUMP}"
 

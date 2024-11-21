@@ -8,6 +8,9 @@ XDG_STATE_HOME="${XDG_STATE_HOME:-${HOME}/.local/state}"
 # ZSH
 
 ZSH_CACHE_DIR="${XDG_CACHE_HOME}/zsh"
+ZSH_CUSTOM_PLUGINS_DIR="${HOME}/.zsh_custom_plugins"
+ZSH_COMPLETIONS_DIR="${ZSH_CUSTOM_PLUGINS_DIR}/completions"
+
 ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
 # Rust

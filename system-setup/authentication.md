@@ -28,6 +28,11 @@ source <(_YKMAN_COMPLETE=bash_source ykman | sudo tee /etc/bash_completion.d/ykm
 
 ###### zsh
 
+Assuming you store your zsh completions in `${ZSH_COMPLETIONS_DIR}` and it is in your `${fpath}`, the following command will enable zsh completions:
+
+```shell
+source <(_YKMAN_COMPLETE=zsh_source ykman | tee "${ZSH_COMPLETIONS_DIR}/_ykman")
+```
 - [ ] TODO
 
 #### [`yubico-pam`][yubico-pam-github]
