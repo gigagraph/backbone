@@ -9,3 +9,7 @@ XDG_STATE_HOME="${XDG_STATE_HOME:-${HOME}/.local/state}"
 
 ZSH_CACHE_DIR="${XDG_CACHE_HOME}/zsh"
 ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+
+# Rust
+
+. "$HOME/.cargo/env"

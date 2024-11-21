@@ -106,9 +106,6 @@ For a reference, see the [description of startup and shutdown files for zsh][arc
 - [ ] TODO
   - Select back with shift tab
 
-- [ ] TODO
-  - Edit long commands in the default editor https://nuclearsquid.com/writings/edit-long-commands/
-
 ### `antidote` plugin manager
 
 #### [`antidote` installation][antidote-installation]
@@ -151,14 +148,17 @@ source "${zsh_plugins_zsh}"
 
 ### Prompt
 
-- TODO: starship: https://starship.rs/installing/
-  - TODO: before installing - set kitty fornt to Nerd Font Mono Iosevka
+[`../starship/README.md`](../starship/README.md) provides more details on how to install and configure the prompt.
+
+- TODO:
+  - Once you install starship on your system, make sure your `.zshrc` contains the the following configuration:
 
 ### Plugins
 
 - [ ] TODO
   - zsh-syntax-highlighting
-  - zsh-completions
+  - [zsh-completions](https://github.com/zsh-users/zsh-completions/tree/master)
+  - [rust-zsh-completions](https://github.com/ryutok/rust-zsh-completions)
   - zsh-autosuggestions
   - git
   - sudo

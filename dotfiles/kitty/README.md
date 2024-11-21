@@ -134,6 +134,8 @@ Use the config from this repository on your system by creating symlinking the us
 
 - [ ] TODO
   - Don't scrollback after clear
+  - Set neovim as default pager
+    - https://sw.kovidgoyal.net/kitty/conf/#shortcut-kitty.Browse
 
 ### Kittens bundle
 

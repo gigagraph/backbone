@@ -5,6 +5,7 @@ TOOLCHAIN_VERSION_CMDS=(
   "clang++ --version"
   "python3.12 --version"
   "go version"
+  "rustc --version && cargo --version"
 )
 
 for TOOLCHAIN_VERSION_CMD in "${TOOLCHAIN_VERSION_CMDS[@]}"; do
