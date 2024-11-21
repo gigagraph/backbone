@@ -148,23 +148,37 @@ source "${zsh_plugins_zsh}"
 
 ### Prompt
 
-[`../starship/README.md`](../starship/README.md) provides more details on how to install and configure the prompt.
+#### Starship
 
-- TODO:
-  - Once you install starship on your system, make sure your `.zshrc` contains the the following configuration:
+Install [`../starship/README.md`](../starship/README.md) following the instructions.
+
+Once you [installed starship on your system](../starship/README.md#installation), export its initialization code to a file that you will load from your `.zshrc`:
+
+```shell
+starship init "${SHELL##*/}" > "${ZSH_CUSTOM_PLUGINS_DIR}/starship_init"
+```
+
+This guide recommends that your rerun this command and overwrite the existing init file every time you update starship.
+
+Then, make sure your `.zshrc` contains the the following configuration:
+
+```shell
+. "${ZSH_CUSTOM_PLUGINS_DIR}/starship_init"
+```
 
 ### Plugins
 
 - [ ] TODO
-  - zsh-syntax-highlighting
-  - [zsh-completions](https://github.com/zsh-users/zsh-completions/tree/master)
-  - [rust-zsh-completions](https://github.com/ryutok/rust-zsh-completions)
-  - zsh-autosuggestions
-  - git
-  - sudo
-  - kubectl
-  - kubectx
-  - history-substring-search
+  - [x] zsh-vim-mode
+  - [ ] zsh-syntax-highlighting
+  - [ ] [zsh-completions](https://github.com/zsh-users/zsh-completions/tree/master)
+  - [ ] [rust-zsh-completions](https://github.com/ryutok/rust-zsh-completions)
+  - [ ] zsh-autosuggestions
+  - [ ] git
+  - [ ] sudo
+  - [ ] kubectl
+  - [ ] kubectx
+  - [ ] history-substring-search
 
 Install new plugins with [`antidote`](#antidote-plugin-manager) (see the full list of [options][antidote-options]):
 

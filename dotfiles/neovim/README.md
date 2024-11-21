@@ -48,7 +48,9 @@ Set `nvim` as default alternative for editor
 
 ```shell
 sudo update-alternatives --install /usr/bin/editor editor "$(which nvim)" 1
-lambda-laptop% sudo update-alternatives --set editor "$(which nvim)"
+sudo update-alternatives --set editor "$(which nvim)"
+sudo update-alternatives --install /usr/bin/vi vi "$(which nvim)" 1
+sudo update-alternatives --set vi "$(which nvim)"
 ```
 
 ## Configuration

@@ -116,4 +116,10 @@ source "${zsh_plugins_zsh}"
 
 ## zsh-vim-mode (ZVM)
 ### Docs: https://github.com/jeffreytse/zsh-vi-mode
+
 #### Empty
+
+## Prompt (starship)
+### Docs: https://starship.rs/config/
+
+. "${ZSH_CUSTOM_PLUGINS_DIR}/starship_init"
