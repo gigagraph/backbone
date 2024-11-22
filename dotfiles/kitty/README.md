@@ -79,9 +79,9 @@ sudo mv /usr/bin/ld /usr/bin/ld.back
 sudo ln -s "$(which ld.lld)" /usr/bin/ld
 
 make linux-package \
-  CC="$(which clang)"\
-  CFLAGS="--start-no-unused-arguments -fuse-ld=lld --end-no-unused-arguments"\
-  CXX="$(which clang++)"\
+  CC="$(which clang)" \
+  CFLAGS="--start-no-unused-arguments -fuse-ld=lld --end-no-unused-arguments" \
+  CXX="$(which clang++)" \
   CXXFLAGS="--start-no-unused-arguments -fuse-ld=lld --end-no-unused-arguments" \
   LD="$(which ld.lld)"
 
