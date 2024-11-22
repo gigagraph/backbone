@@ -1,9 +1,5 @@
 # ZSH
 
-- [ ] TODO: plugins and customizations
-  - antidote
-  - powerlevel10k
-
 ## Installation
 
 > [!NOTE]
@@ -103,9 +99,6 @@ For a reference, see the [description of startup and shutdown files for zsh][arc
 
 ![Well-known shells startup and shutdown files](./img/shell-startup-actual.png)
 
-- [ ] TODO
-  - Select back with shift tab
-
 ### `antidote` plugin manager
 
 #### [`antidote` installation][antidote-installation]
@@ -168,17 +161,13 @@ Then, make sure your `.zshrc` contains the the following configuration:
 
 ### Plugins
 
-- [ ] TODO
-  - [x] zsh-vim-mode
-  - [ ] zsh-syntax-highlighting
-  - [ ] [zsh-completions](https://github.com/zsh-users/zsh-completions/tree/master)
-  - [ ] [rust-zsh-completions](https://github.com/ryutok/rust-zsh-completions)
-  - [ ] zsh-autosuggestions
-  - [ ] git
-  - [ ] sudo
-  - [ ] kubectl
-  - [ ] kubectx
-  - [ ] history-substring-search
+The [`antidote`](#antidote-plugin-manager) config in this repo installs the following plugins:
+
+- [`zsh-vim-mode`][zsh-vim-mode]
+- [`rust-zsh-completions`](https://github.com/ryutok/rust-zsh-completions)
+- [`zsh-syntax-highlighting`][zsh-syntax-highlighting]
+- [`zsh-completions`](https://github.com/zsh-users/zsh-completions/tree/master)
+- [`zsh-autosuggestions`](https://github.com/zsh-users/zsh-autosuggestions)
 
 Install new plugins with [`antidote`](#antidote-plugin-manager) (see the full list of [options][antidote-options]):
 
@@ -191,6 +180,19 @@ antidote install <plugin-url> [options]
 #### `zsh-vi-mode`
 
 [Configuration docs][github-zsh-vi-mode].
+
+#### `zsh-syntax-highlighting`
+
+##### Installation
+
+> [!NOTE]
+>
+> It is recommended to install [`zsh-syntax-highlighting`][github-zsh-syntax-highlighting] manually, because it should be sourced at the end of `.zshrc`.
+
+```shell
+mkdir -p "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting"
+git clone --branch "${ZSH_SYNTAX_HIGHLIGHTING_VERSION}" git@github.com:zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting"
+```
 
 ### Integrations
 
@@ -218,6 +220,7 @@ antidote install <plugin-url> [options]
 - [antidote-installation][antidote-installation]
 - [antidote-options][antidote-options]
 - [github-zsh-vi-mode][github-zsh-vi-mode]
+- [github-zsh-syntax-highlighting][github-zsh-syntax-highlighting]
 
 [arch-wiki-change-default-shell]: <https://wiki.archlinux.org/title/Command-line_shell#Changing_your_default_shell>
 [arch-wiki-startup-shutdown-files]: <https://wiki.archlinux.org/title/Zsh#Startup/Shutdown_files>
@@ -232,3 +235,4 @@ antidote install <plugin-url> [options]
 [antidote-installation]: <https://getantidote.github.io/install>
 [antidote-options]: <https://getantidote.github.io/options>
 [github-zsh-vi-mode]: <https://github.com/jeffreytse/zsh-vi-mode>
+[github-zsh-syntax-highlighting]: https://github.com/zsh-users/zsh-syntax-highlighting
