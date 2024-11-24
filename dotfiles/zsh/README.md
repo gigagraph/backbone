@@ -304,6 +304,20 @@ Then, make sure your `.zshrc` contains the following configuration after `compin
 
 This guide recommends to install [fzf-git][#github-fzf-git] with a [plugin manager](antidote-plugin-manager).
 
+#### `ripgrep`
+
+Before proceeding, [ensure that you have `ripgrep` installed on your system](../terminal-utils/ripgrep/README.md#installation).
+
+##### `ripgrep` shell completions
+
+Use `ripgrep` to generate completions for zsh:
+
+```shell
+rg --generate "complete-${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_rg"
+```
+
+After you generated the completions, ensure that the directory with the `_rg` completions file is on your zsh `fpath`.
+
 ## Useful links
 
 - [arch-wiki-change-default-shell][arch-wiki-change-default-shell]
@@ -325,7 +339,7 @@ This guide recommends to install [fzf-git][#github-fzf-git] with a [plugin manag
 - [github-zsh-autosuggestions][github-zsh-autosuggestions]
 - [github-zsh-bench][github-zsh-bench]
 - [fzf-shell-integration][fzf-shell-integration]
-- [github-fzf-tab][fzf-tab]
+- [github-fzf-tab][github-fzf-tab]
 - [github-fzf-git][github-fzf-git]
 
 [arch-wiki-change-default-shell]: <https://wiki.archlinux.org/title/Command-line_shell#Changing_your_default_shell>

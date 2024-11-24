@@ -2,6 +2,7 @@
 
 TOOL_VERSION_CMDS=(
   "fzf --version"
+  "rg --version"
 )
 
 for TOOL_VERSION_CMD in "${TOOL_VERSION_CMDS[@]}"; do

@@ -13,6 +13,8 @@
 >
 > Additionally, ensure that you have [Nerd Fonts](../system-setup/fonts.md#nerd-fonts) installed and cloned on your system.
 
+This guide recommends installing `starship` with `cargo`:
+
 ```shell
 cargo install starship --locked
 ```

@@ -1,9 +1,9 @@
 # Terminal utils
 
 - [`fzf`](./fzf/README.md)
+- [`ripgrep`](./ripgrep/README.md)
 
 - [ ] TODO:
-  - https://github.com/BurntSushi/ripgrep
   - https://github.com/eza-community/eza
   - https://github.com/ajeetdsouza/zoxide
     - https://www.youtube.com/watch?v=aghxkpyRVDY
