@@ -3,6 +3,12 @@
 setopt beep nomatch
 unsetopt autocd extendedglob notify
 
+# Shell options
+
+# Disable legacy feature to suspend and result terminal input and unassign the keybidnings for the start and stop characters.
+# When enabled (default), by default, it makes CTRL-S and CTRL-Q pause and resume the input in the terminal. These keybindings may interfere with keybindings from other plugins.
+stty -ixon ixoff start "" stop ""
+
 # Path
 
 typeset -U path PATH
@@ -44,6 +50,9 @@ bindkey '^[[B' history-search-forward
 function bind_after_zvm() {
   bindkey '^p' history-search-backward
   bindkey '^n' history-search-forward
+
+  # Unbind this key to enable fzf-git keybindings to work
+  bindkey -r '^g'
 }
 
 bindkey '^[[Z' reverse-menu-complete
@@ -124,18 +133,9 @@ compinit -d "${ZSH_COMPDUMP}"
 # fzf-tab
 ## Docs: https://github.com/Aloxaf/fzf-tab
 ##
-## fzf-tab must be sourced after the `compinit` but before the zsh-syntax-highlighting
+## fzf-tab must be sourced after the `compinit` but before the zsh-autosuggestions
 
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh"
-
-# zsh-syntax-highlighting
-##
-## In order for this to work, you must first clone the plugin repo manually to ${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting.
-##
-## Must be at the end as per docs:
-## https://github.com/zsh-users/zsh-syntax-highlighting/blob/0.8.0/INSTALL.md
-
-[ -f "${ZSH_CUSTOM_PLUGINS_DIR}"/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # zsh-autosuggestions
 ##

@@ -163,12 +163,13 @@ Then, make sure your `.zshrc` contains the the following configuration:
 
 The [`antidote`](#antidote-plugin-manager) config in this repo installs the following plugins:
 
-- [`zsh-vi-mode`][zsh-vi-mode]
-- [`zsh-syntax-highlighting`][zsh-syntax-highlighting]
-- [`zsh-autosuggestions`][zsh-autosuggestions]
+- [`zsh-vi-mode`](#zsh-vi-mode)
+- [`fast-syntax-highlighting`](#fast-syntax-highlighting)
+- [`zsh-autosuggestions`](#zsh-autosuggestions)
 - [`zsh-completions`](https://github.com/zsh-users/zsh-completions/tree/master)
 - [`rust-zsh-completions`](https://github.com/ryutok/rust-zsh-completions)
 - [`fzf-tab`](#use-fzf-to-match-completions-via-fzf-tab)
+- [`fzf-git`](#use-fzf-to-search-for-git-objects-via-fzf-git)
 
 Install new plugins with [`antidote`](#antidote-plugin-manager) (see the full list of [options][antidote-options]):
 
@@ -186,15 +187,25 @@ Additionally, see the [Integrations](#integrations) section to setup zsh to work
 
 > [!NOTE]
 >
-> This guide recommends to use `ZVM_INIT_MODE=sourcing`. You should setup custom keybindings with `zvm_after_init_commands` and `zvm_after_lazy_keybindings_commands` respoctively. Additionally, you should initialize this plugin before [fzf integration][fzf], [`fzf-tab`][use-fzf-to-match-completions-via-fzf-tab], [`zsh-syntax-highlighting`][zsh-syntax-highlighting], [`zsh-autosuggestions`][zsh-autosuggestions]. The guide recommends to initialize thees plugins in the specified order after the `zsh-vi-mode` directly in `.zshrc` file. Do not use `zvm_after_init_commands` to initialize these plugins.
+> This guide recommends to use `ZVM_INIT_MODE=sourcing`. You should setup custom keybindings with `zvm_after_init_commands` and `zvm_after_lazy_keybindings_commands` respoctively. Additionally, you should initialize this plugin before [fzf integration](#fzf), [`fzf-tab`](#use-fzf-to-match-completions-via-fzf-tab), and [`zsh-autosuggestions`](#zsh-autosuggestions). The guide recommends to initialize thees plugins in the specified order after the `zsh-vi-mode` directly in `.zshrc` file. Do not use `zvm_after_init_commands` to initialize these plugins.
+
+#### `fast-syntax-highlighting`
+
+This guide recommends to install [fast-syntax-highlighting][github-fast-syntax-highlighting] with a [plugin manager](antidote-plugin-manager).
 
 #### `zsh-syntax-highlighting`
+
+❌Not recommended. Use [`fast-syntax-highlighting`](#fast-syntax-highlighting) instead.❌
+
+> [!WARNING]
+>
+> This guide does not recommend to use `zsh-syntax-highlighting` due to incompatibility with [`zsh-vi-mode`](#zsh-vi-mode). For more details see this issue: https://github.com/zsh-users/zsh-syntax-highlighting/issues/871
 
 #####  `zsh-syntax-highlighting` installation
 
 > [!NOTE]
 >
-> This guide recommends to install [`zsh-syntax-highlighting`][github-zsh-syntax-highlighting] manually, because it should be sourced at the end of `.zshrc`.
+> If you decide to to install [`zsh-syntax-highlighting`][github-zsh-syntax-highlighting], the guide recommends that you do this manually, because it should be sourced at the end of `.zshrc`.
 
 ```shell
 mkdir -p "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting"
@@ -213,18 +224,22 @@ Then, make sure your `.zshrc` contains the the following configuration:
 
 > [!NOTE]
 >
-> This guide recommends to install [`zsh-autosuggestions`][zsh-autosuggestions] manually, because it should be initialized after the [`zsh-syntax-highlighting`][zsh-syntax-highlighting].
+> This guide recommends to install [`zsh-autosuggestions`][zsh-autosuggestions] manually to have a control for ordering when `.zshrc` sources it. You should source this plugin at the end of `.zshrc`.
 
 ```shell
 mkdir -p "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions"
 git clone --branch "${ZSH_AUTOSUGGESTIONS_VERSION}" git@github.com:zsh-users/zsh-autosuggestions.git "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions"
 ```
 
-Then, make sure your `.zshrc` contains the the following configuration after the [`zsh-syntax-highlighting`][zsh-syntax-highlighting]:
+Then, make sure your `.zshrc` contains the the following configuration:
 
 ```shell
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
 ```
+
+> [!NOTE]
+>
+> If you use [`zsh-syntax-highlighting`](#zsh-syntax-highlighting), source `zsh-autosuggestions` after it.
 
 ### Integrations
 
@@ -260,24 +275,24 @@ After you set up the integration, you can use the [following keys to use `fzf` t
 
 > [!NOTE]
 >
-> This guide recommends to install `fzf-tab` manually, because it must be sourced after the `compinit` but before plugins that wrap widgets (e.g. [`zsh-syntax-highlighting`][zsh-syntax-highlighting]).
+> tHis guide recommends to install `fzf-tab` manually, because it must be sourced after the `compinit` but before plugins that wrap widgets (e.g. [`zsh-autosuggestion`](#zsh-autosuggestion)).
 
 ```shell
 mkdir -p "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab"
 git clone --branch "${ZSH_FZF_TAB_VERSION}" git@github.com:Aloxaf/fzf-tab.git "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab"
 ```
 
-> [!NOTE]
+> [!IMPORTANT]
 >
-> Make sure you source the plugin after `compinit`, but before the [`zsh-syntax-highlighting`](#zsh-syntax-highlighting).
+> Make sure you source the plugin after `compinit`, but before [`zsh-autosuggestions`](#zsh-autosuggestions).
 
-Then, make sure your `.zshrc` contains the the following configuration after the [`zsh-syntax-highlighting`][zsh-syntax-highlighting]:
+Then, make sure your `.zshrc` contains the following configuration after `compinit`, but before [`zsh-autosuggestions`](#zsh-autosuggestions):
 
 ```shell
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh"
 ```
 
-- [ ] TODO
+- [ ] TODO?
     - ```shell
       zstyle ':completion:*' menu no
       zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color "${realpath}"'
@@ -285,8 +300,9 @@ Then, make sure your `.zshrc` contains the the following configuration after the
 
 ##### Use `fzf` to search for git objects via `fzf-git`
 
-- [ ] TODO
-  - Install [fzf-git](https://github.com/junegunn/fzf-git.sh)
+###### `fzf-git` installation
+
+This guide recommends to install [fzf-git][#github-fzf-git] with a [plugin manager](antidote-plugin-manager).
 
 ## Useful links
 
@@ -304,10 +320,13 @@ Then, make sure your `.zshrc` contains the the following configuration after the
 - [antidote-installation][antidote-installation]
 - [antidote-options][antidote-options]
 - [github-zsh-vi-mode][github-zsh-vi-mode]
+- [github-fast-syntax-highlighting][github-fast-syntax-highlighting]
 - [github-zsh-syntax-highlighting][github-zsh-syntax-highlighting]
 - [github-zsh-autosuggestions][github-zsh-autosuggestions]
 - [github-zsh-bench][github-zsh-bench]
 - [fzf-shell-integration][fzf-shell-integration]
+- [github-fzf-tab][fzf-tab]
+- [github-fzf-git][github-fzf-git]
 
 [arch-wiki-change-default-shell]: <https://wiki.archlinux.org/title/Command-line_shell#Changing_your_default_shell>
 [arch-wiki-startup-shutdown-files]: <https://wiki.archlinux.org/title/Zsh#Startup/Shutdown_files>
@@ -322,7 +341,10 @@ Then, make sure your `.zshrc` contains the the following configuration after the
 [antidote-installation]: <https://getantidote.github.io/install>
 [antidote-options]: <https://getantidote.github.io/options>
 [github-zsh-vi-mode]: <https://github.com/jeffreytse/zsh-vi-mode>
+[github-fast-syntax-highlighting]: <https://github.com/zdharma-continuum/fast-syntax-highlighting>
 [github-zsh-syntax-highlighting]: <https://github.com/zsh-users/zsh-syntax-highlighting>
 [github-zsh-autosuggestions]: <https://github.com/zsh-users/zsh-autosuggestions>
 [github-zsh-bench]: <https://github.com/romkatv/zsh-bench>
 [fzf-shell-integration]: <https://junegunn.github.io/fzf/shell-integration/>
+[github-fzf-tab]: <https://github.com/Aloxaf/fzf-tab>
+[github-fzf-git]: <https://github.com/junegunn/fzf-git.sh>
