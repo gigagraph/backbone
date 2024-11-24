@@ -156,18 +156,19 @@ This guide recommends that your rerun this command and overwrite the existing in
 Then, make sure your `.zshrc` contains the the following configuration:
 
 ```shell
-. "${ZSH_CUSTOM_PLUGINS_DIR}/starship_init"
+[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/starship_init" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/starship_init"
 ```
 
 ### Plugins
 
 The [`antidote`](#antidote-plugin-manager) config in this repo installs the following plugins:
 
-- [`zsh-vim-mode`][zsh-vim-mode]
-- [`rust-zsh-completions`](https://github.com/ryutok/rust-zsh-completions)
+- [`zsh-vi-mode`][zsh-vi-mode]
 - [`zsh-syntax-highlighting`][zsh-syntax-highlighting]
+- [`zsh-autosuggestions`][zsh-autosuggestions]
 - [`zsh-completions`](https://github.com/zsh-users/zsh-completions/tree/master)
-- [`zsh-autosuggestions`](https://github.com/zsh-users/zsh-autosuggestions)
+- [`rust-zsh-completions`](https://github.com/ryutok/rust-zsh-completions)
+- [`fzf-tab`](#use-fzf-to-match-completions-via-fzf-tab)
 
 Install new plugins with [`antidote`](#antidote-plugin-manager) (see the full list of [options][antidote-options]):
 
@@ -177,32 +178,115 @@ antidote install <plugin-url> [options]
 
 `antidote` will add the given plugin to the [`./config/zsh/.zsh_plugins.txt`](./config/zsh/.zsh_plugins.txt) file.
 
+Additionally, see the [Integrations](#integrations) section to setup zsh to work with other tools.
+
 #### `zsh-vi-mode`
 
-[Configuration docs][github-zsh-vi-mode].
-
-#### `zsh-syntax-highlighting`
-
-##### Installation
+[Configuration & default keybindings docs][github-zsh-vi-mode].
 
 > [!NOTE]
 >
-> It is recommended to install [`zsh-syntax-highlighting`][github-zsh-syntax-highlighting] manually, because it should be sourced at the end of `.zshrc`.
+> This guide recommends to use `ZVM_INIT_MODE=sourcing`. You should setup custom keybindings with `zvm_after_init_commands` and `zvm_after_lazy_keybindings_commands` respoctively. Additionally, you should initialize this plugin before [fzf integration][fzf], [`fzf-tab`][use-fzf-to-match-completions-via-fzf-tab], [`zsh-syntax-highlighting`][zsh-syntax-highlighting], [`zsh-autosuggestions`][zsh-autosuggestions]. The guide recommends to initialize thees plugins in the specified order after the `zsh-vi-mode` directly in `.zshrc` file. Do not use `zvm_after_init_commands` to initialize these plugins.
+
+#### `zsh-syntax-highlighting`
+
+#####  `zsh-syntax-highlighting` installation
+
+> [!NOTE]
+>
+> This guide recommends to install [`zsh-syntax-highlighting`][github-zsh-syntax-highlighting] manually, because it should be sourced at the end of `.zshrc`.
 
 ```shell
 mkdir -p "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting"
 git clone --branch "${ZSH_SYNTAX_HIGHLIGHTING_VERSION}" git@github.com:zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting"
 ```
 
+Then, make sure your `.zshrc` contains the the following configuration:
+
+```shell
+[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+```
+
+#### `zsh-autosuggestions`
+
+##### `zsh-autosuggestions` installation
+
+> [!NOTE]
+>
+> This guide recommends to install [`zsh-autosuggestions`][zsh-autosuggestions] manually, because it should be initialized after the [`zsh-syntax-highlighting`][zsh-syntax-highlighting].
+
+```shell
+mkdir -p "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions"
+git clone --branch "${ZSH_AUTOSUGGESTIONS_VERSION}" git@github.com:zsh-users/zsh-autosuggestions.git "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions"
+```
+
+Then, make sure your `.zshrc` contains the the following configuration after the [`zsh-syntax-highlighting`][zsh-syntax-highlighting]:
+
+```shell
+[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
+```
+
 ### Integrations
 
+#### `fzf`
+
+Before proceeding, [ensure that you have `fzf` installed on your system](../terminal-utils/fzf/README.md#installation).
+
+##### `fzf` shell integration for zsh
+
+> [!NOTE]
+>
+> For security reasons, this guide recommends to statically save the integration script to a file that you will load from your `.zshrc`. This also means that it is best to use `fzf` to update this script every time you update `fzf`.
+
+```shell
+fzf "--${SHELL##*/}" > "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh"
+```
+
+Then, make sure your `.zshrc` contains the the following configuration:
+
+```shell
+[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integation.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integation.zsh" 
+```
+
+After you set up the integration, you can use the [following keys to use `fzf` to peform common tasks in the interactive shell][fzf-shell-integration] (in the default configuration):
+
+- `CTRL-T` - opens a prompt where the user can search and select files under the current working directory. After the confirmation, the shell integration will **insert the selected files in the current command**.
+- `ALT-C` - opens a prompt where the user can search and select directories under the current working directory. After the confirmation, the shell integration will **change the current working directory to the selected one**.
+- `CRTL-R` - opens a prompt where the user can search the command history. After the configmation, the shell integration will insert the selected command in the current prompt.
+
+##### Use `fzf` to match completions via `fzf-tab`
+
+###### `fzf-tab` installation
+
+> [!NOTE]
+>
+> This guide recommends to install `fzf-tab` manually, because it must be sourced after the `compinit` but before plugins that wrap widgets (e.g. [`zsh-syntax-highlighting`][zsh-syntax-highlighting]).
+
+```shell
+mkdir -p "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab"
+git clone --branch "${ZSH_FZF_TAB_VERSION}" git@github.com:Aloxaf/fzf-tab.git "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab"
+```
+
+> [!NOTE]
+>
+> Make sure you source the plugin after `compinit`, but before the [`zsh-syntax-highlighting`](#zsh-syntax-highlighting).
+
+Then, make sure your `.zshrc` contains the the following configuration after the [`zsh-syntax-highlighting`][zsh-syntax-highlighting]:
+
+```shell
+[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh"
+```
+
 - [ ] TODO
-  - `fzf` for history search and suggestions
-    - Install plugin `fzf-tab`
-      - ```shell
-        zstyle ':completion:*' menu no
-        zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color "${realpath}"'
-        ```
+    - ```shell
+      zstyle ':completion:*' menu no
+      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color "${realpath}"'
+      ```
+
+##### Use `fzf` to search for git objects via `fzf-git`
+
+- [ ] TODO
+  - Install [fzf-git](https://github.com/junegunn/fzf-git.sh)
 
 ## Useful links
 
@@ -221,6 +305,9 @@ git clone --branch "${ZSH_SYNTAX_HIGHLIGHTING_VERSION}" git@github.com:zsh-users
 - [antidote-options][antidote-options]
 - [github-zsh-vi-mode][github-zsh-vi-mode]
 - [github-zsh-syntax-highlighting][github-zsh-syntax-highlighting]
+- [github-zsh-autosuggestions][github-zsh-autosuggestions]
+- [github-zsh-bench][github-zsh-bench]
+- [fzf-shell-integration][fzf-shell-integration]
 
 [arch-wiki-change-default-shell]: <https://wiki.archlinux.org/title/Command-line_shell#Changing_your_default_shell>
 [arch-wiki-startup-shutdown-files]: <https://wiki.archlinux.org/title/Zsh#Startup/Shutdown_files>
@@ -235,4 +322,7 @@ git clone --branch "${ZSH_SYNTAX_HIGHLIGHTING_VERSION}" git@github.com:zsh-users
 [antidote-installation]: <https://getantidote.github.io/install>
 [antidote-options]: <https://getantidote.github.io/options>
 [github-zsh-vi-mode]: <https://github.com/jeffreytse/zsh-vi-mode>
-[github-zsh-syntax-highlighting]: https://github.com/zsh-users/zsh-syntax-highlighting
+[github-zsh-syntax-highlighting]: <https://github.com/zsh-users/zsh-syntax-highlighting>
+[github-zsh-autosuggestions]: <https://github.com/zsh-users/zsh-autosuggestions>
+[github-zsh-bench]: <https://github.com/romkatv/zsh-bench>
+[fzf-shell-integration]: <https://junegunn.github.io/fzf/shell-integration/>

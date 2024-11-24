@@ -51,9 +51,11 @@ bindkey '^[[Z' reverse-menu-complete
 # zsh-vim-mode (ZVM)
 ## Docs: https://github.com/jeffreytse/zsh-vi-mode
 
+typeset -U zvm_after_init_commands
 zvm_after_init_commands+=(
-  bind_after_zvm
+  "bind_after_zvm"
 )
+ZVM_INIT_MODE="sourcing"
 
 # Antidote
 ## https://getantidote.github.io/install
@@ -114,10 +116,30 @@ compinit -d "${ZSH_COMPDUMP}"
 
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/starship_init" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/starship_init"
 
+# fzf
+## Docs: https://github.com/junegunn/fzf
+
+[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh"
+
+# fzf-tab
+## Docs: https://github.com/Aloxaf/fzf-tab
+##
+## fzf-tab must be sourced after the `compinit` but before the zsh-syntax-highlighting
+
+[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh"
+
 # zsh-syntax-highlighting
-## In order for this to work, you must first clone the plugin manually.
+##
+## In order for this to work, you must first clone the plugin repo manually to ${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting.
 ##
 ## Must be at the end as per docs:
 ## https://github.com/zsh-users/zsh-syntax-highlighting/blob/0.8.0/INSTALL.md
 
-[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+[ -f "${ZSH_CUSTOM_PLUGINS_DIR}"/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# zsh-autosuggestions
+##
+## Docs: https://github.com/zsh-users/zsh-autosuggestions
+## Should come after zsh-syntax-highlighting
+
+[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
