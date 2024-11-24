@@ -72,6 +72,26 @@ Add clang toolchain to `PATH` in `${HOME}/.bashrc`:
 echo 'export PATH="${PATH}:/usr/lib/llvm-'"${LLVM_VERSION}"'/bin"' >> "${HOME}/.bashrc"
 ```
 
+### Set as default `cc`, `cpp`, and `c++` with `update-alternatives`
+
+```shell
+sudo update-alternatives --install \
+  "$(update-alternatives --query cc | awk '/Link: / { print $2 }')" \
+  cc \
+  "$(which clang)" \
+  1
+sudo update-alternatives --set cc "$(which clang)"
+
+for cpp_alternative in 'cpp' 'c++'; do
+  sudo update-alternatives --install \
+    "$(update-alternatives --query "${cpp_alternative}" | awk '/Link: / { print $2 }')" \
+    "${cpp_alternative}"  \
+    "$(which clang++)" \
+    1
+  sudo update-alternatives --set "${cpp_alternative}"  "$(which clang++)"
+done
+```
+
 ## Building from source
 
 Follow the [official instructions for apt to build LLVM from source][apt-llvm].
