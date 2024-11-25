@@ -318,6 +318,27 @@ rg --generate "complete-${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_rg"
 
 After you generated the completions, ensure that the directory with the `_rg` completions file is on your zsh `fpath`.
 
+#### `eza`
+
+Before proceeding, [ensure that you have `eza` installed on your system](../terminal-utils/eza/README.md#installation).
+
+##### `eza` shell completions
+
+Clone the eza repo locally:
+
+```shell
+git clone git@github.com:eza-community/eza.git
+cd eza
+git checkout "${EZA_VERSION}"
+```
+
+Use `eza` to generate completions for zsh:
+
+```shell
+cp "$(pwd)/completions/zsh/_eza" "${ZSH_COMPLETIONS_DIR}/_eza"
+sed 's/__eza/_eza/g' --in-place "${ZSH_COMPLETIONS_DIR}/_eza"
+```
+
 ## Useful links
 
 - [arch-wiki-change-default-shell][arch-wiki-change-default-shell]
