@@ -22,7 +22,11 @@ export PATH
 # Aliases
 
 alias eza="eza --icons"
-alias e="eza --icons"
+alias e="eza"
+
+alias c="clear"
+
+alias g="git"
 
 # Envs
 
