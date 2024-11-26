@@ -136,13 +136,15 @@ compinit -d "${ZSH_COMPDUMP}"
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh"
 
 # fzf-tab
+##
 ## Docs: https://github.com/Aloxaf/fzf-tab
 ##
-## fzf-tab must be sourced after the `compinit` but before the zsh-autosuggestions
+## fzf-tab must be sourced after the `compinit` but before the zsh-autosuggestions.
 
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh"
 
 # fast-syntax-highlighting
+##
 ## Docs: https://github.com/zdharma-continuum/fast-syntax-highlighting
 
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
@@ -150,6 +152,7 @@ compinit -d "${ZSH_COMPDUMP}"
 # zsh-autosuggestions
 ##
 ## Docs: https://github.com/zsh-users/zsh-autosuggestions
-## Should come after zsh-syntax-highlighting
+##
+## Should come after fast-syntax-highlighting.
 
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
