@@ -62,14 +62,14 @@ function bind_after_zvm() {
 
 bindkey '^[[Z' reverse-menu-complete
 
-# zsh-vim-mode (ZVM)
+# zsh-vi-mode (ZVM)
 ## Docs: https://github.com/jeffreytse/zsh-vi-mode
 
 typeset -U zvm_after_init_commands
 zvm_after_init_commands+=(
   "bind_after_zvm"
 )
-ZVM_INIT_MODE="sourcing"
+export ZVM_INIT_MODE="sourcing"
 
 # Antidote
 ## https://getantidote.github.io/install
@@ -141,6 +141,11 @@ compinit -d "${ZSH_COMPDUMP}"
 ## fzf-tab must be sourced after the `compinit` but before the zsh-autosuggestions
 
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh"
+
+# fast-syntax-highlighting
+## Docs: https://github.com/zdharma-continuum/fast-syntax-highlighting
+
+[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 
 # zsh-autosuggestions
 ##

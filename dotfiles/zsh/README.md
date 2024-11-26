@@ -191,7 +191,29 @@ Additionally, see the [Integrations](#integrations) section to setup zsh to work
 
 #### `fast-syntax-highlighting`
 
-This guide recommends to install [fast-syntax-highlighting][github-fast-syntax-highlighting] with a [plugin manager](antidote-plugin-manager).
+> [!NOTE]
+>
+> This guide recommends to install [`fast-syntax-highlighting`][fast-syntax-highlighting] manually to have a control for ordering when `.zshrc` sources it. You should source this plugin at the end of `.zshrc`, after [`fzf-tab`](#use-fzf-to-match-completions-via-fzf-tab) and before [`zsh-autosuggestion`](#zsh-autosuggestions) if you use it.
+
+```shell
+mkdir -p "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-hihlighting"
+git clone git@github.com:zdharma-continuum/fast-syntax-highlighting "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting"
+cd "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting"
+git checkout "${FAST_SYNTAX_HIGHLIGHTING_COMMIT_ID}"
+```
+
+Then, make sure your `.zshrc` contains the the following configuration:
+
+```shell
+[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+```
+
+> [!NOTE]
+>
+> If you use:
+> - [`zsh-vi-mode`](#zsh-vi-mode), source `fast-syntax-highlighting` after it.
+> - [`fzf-tab`](#use-fzf-to-match-completions-via-fzf-tab), source `fast-syntax-highlighting` after it.
+> - [`zsh-autosuggestion`](#zsh-autosuggestions), source `fast-syntax-highlighting` before it.
 
 #### `zsh-syntax-highlighting`
 
@@ -239,7 +261,7 @@ Then, make sure your `.zshrc` contains the the following configuration:
 
 > [!NOTE]
 >
-> If you use [`zsh-syntax-highlighting`](#zsh-syntax-highlighting), source `zsh-autosuggestions` after it.
+> If you use [`zsh-syntax-highlighting`](#zsh-syntax-highlighting) or [`fast-syntax-highlighting`](#fast-syntax-highlighting), source `zsh-autosuggestions` after it.
 
 ### Integrations
 
