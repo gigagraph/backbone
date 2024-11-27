@@ -23,7 +23,7 @@ cargo install zoxide --all-features --locked
 
 See the corresponding section in the [zsh docs file in this repo](../../zsh/README.md#zoxide).
 
-#### neovim
+#### Neovim
 
 - [ ] TODO: refer to corresponding section in the [neovim docs](../../neovim/README.md), when it is ready. Potential plugins:
   - https://github.com/nanotee/zoxide.vim
