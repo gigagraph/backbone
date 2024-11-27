@@ -153,7 +153,7 @@ starship init "${SHELL##*/}" > "${ZSH_CUSTOM_PLUGINS_DIR}/starship_init"
 
 This guide recommends that your rerun this command and overwrite the existing init file every time you update starship.
 
-Then, make sure your `.zshrc` contains the the following configuration:
+Then, make sure your `.zshrc` contains the following configuration:
 
 ```shell
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/starship_init" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/starship_init"
@@ -202,7 +202,7 @@ cd "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting"
 git checkout "${FAST_SYNTAX_HIGHLIGHTING_COMMIT_ID}"
 ```
 
-Then, make sure your `.zshrc` contains the the following configuration:
+Then, make sure your `.zshrc` contains the following configuration:
 
 ```shell
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
@@ -234,7 +234,7 @@ mkdir -p "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting"
 git clone --branch "${ZSH_SYNTAX_HIGHLIGHTING_VERSION}" git@github.com:zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting"
 ```
 
-Then, make sure your `.zshrc` contains the the following configuration:
+Then, make sure your `.zshrc` contains the following configuration:
 
 ```shell
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
@@ -253,7 +253,7 @@ mkdir -p "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions"
 git clone --branch "${ZSH_AUTOSUGGESTIONS_VERSION}" git@github.com:zsh-users/zsh-autosuggestions.git "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions"
 ```
 
-Then, make sure your `.zshrc` contains the the following configuration:
+Then, make sure your `.zshrc` contains the following configuration:
 
 ```shell
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
@@ -279,10 +279,10 @@ Before proceeding, [ensure that you have `fzf` installed on your system](../term
 fzf "--${SHELL##*/}" > "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh"
 ```
 
-Then, make sure your `.zshrc` contains the the following configuration:
+Then, make sure your `.zshrc` contains the following configuration:
 
 ```shell
-[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integation.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integation.zsh" 
+[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh" 
 ```
 
 After you set up the integration, you can use the [following keys to use `fzf` to peform common tasks in the interactive shell][fzf-shell-integration] (in the default configuration):
@@ -297,7 +297,7 @@ After you set up the integration, you can use the [following keys to use `fzf` t
 
 > [!NOTE]
 >
-> tHis guide recommends to install `fzf-tab` manually, because it must be sourced after the `compinit` but before plugins that wrap widgets (e.g. [`zsh-autosuggestion`](#zsh-autosuggestion)).
+> This guide recommends to install `fzf-tab` manually, because it must be sourced after the `compinit` but before plugins that wrap widgets (e.g. [`zsh-autosuggestion`](#zsh-autosuggestion)).
 
 ```shell
 mkdir -p "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab"
@@ -360,6 +360,32 @@ Use `eza` to generate completions for zsh:
 cp "$(pwd)/completions/zsh/_eza" "${ZSH_COMPLETIONS_DIR}/_eza"
 sed 's/__eza/_eza/g' --in-place "${ZSH_COMPLETIONS_DIR}/_eza"
 ```
+
+#### `zoxide`
+
+Before proceeding, [ensure that you have `zoxide` installed on your system](../terminal-utils/zoxide/README.md#installation).
+
+##### `zoxide` shell integration
+
+> [!NOTE]
+>
+> For security reasons, this guide recommends to statically save the integration script to a file that you will load from your `.zshrc`. This also means that it is best to use `zoxide` to update this script every time you update `zoxide`.
+
+If you want to configure `zoxide`, set the environment variables before running the following command. If you want to reconfigure `zoxide` - set the envs and rerun the commands.
+
+```shell
+zoxide init "${SHELL##*/}" > "${ZSH_CUSTOM_PLUGINS_DIR}/zoxide-integration.zsh"
+```
+
+Then, make sure your `.zshrc` contains the following configuration **after the `compinit`**:
+
+```shell
+[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/zoxide-integration.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/zoxide-integration.zsh"
+```
+
+> [!NOTE]
+>
+> For completions to work, the above line must be added after compinit is called. You may have to rebuild your completions cache by running `rm ~/.zcompdump*; compinit`.
 
 ## Useful links
 

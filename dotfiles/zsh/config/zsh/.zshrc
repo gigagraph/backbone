@@ -21,12 +21,19 @@ export PATH
 
 # Aliases
 
-alias eza="eza --icons"
-alias e="eza"
+alias eza="'eza' --icons"
+alias e="'eza' --icons"
+alias ela="'eza' -la --icons"
+alias ls="'eza' --icons"
+alias tree="'eza' --icons --tree"
 
-alias c="clear"
+alias c="'clear'"
 
-alias g="git"
+alias g="'git'"
+
+alias grep="'rg'"
+
+alias cd="'z'"
 
 # Envs
 
@@ -126,11 +133,13 @@ autoload -Uz compinit
 compinit -d "${ZSH_COMPDUMP}"
 
 # Prompt (starship)
+##
 ## Docs: https://starship.rs/config/
 
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/starship_init" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/starship_init"
 
 # fzf
+##
 ## Docs: https://github.com/junegunn/fzf
 
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh"
@@ -142,6 +151,14 @@ compinit -d "${ZSH_COMPDUMP}"
 ## fzf-tab must be sourced after the `compinit` but before the zsh-autosuggestions.
 
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh"
+
+# zoxide
+##
+## Docs:
+## - https://github.com/ajeetdsouza/zoxide
+## - https://github.com/ajeetdsouza/zoxide/wiki
+
+[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/zoxide-integration.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/zoxide-integration.zsh"
 
 # fast-syntax-highlighting
 ##

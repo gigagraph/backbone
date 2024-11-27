@@ -2,11 +2,10 @@
 
 - [`fzf`](./fzf/README.md)
 - [`ripgrep`](./ripgrep/README.md)
+- [`eza`](./eza/README.md)
+- [`zoxide`](./zoxide/README.md)
 
 - [ ] TODO:
-  - https://github.com/eza-community/eza
-  - https://github.com/ajeetdsouza/zoxide
-    - https://www.youtube.com/watch?v=aghxkpyRVDY
   - https://github.com/sharkdp/bat
 
 ## Useful links
