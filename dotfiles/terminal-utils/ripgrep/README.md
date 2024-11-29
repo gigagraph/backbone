@@ -31,6 +31,10 @@ cargo install ripgrep --all-features --locked
 
 See the corresponding section in the [zsh docs file in this repo](../../zsh/README.md#ripgrep).
 
+#### `bat`
+
+- [ ] TODO: [](../bat/README.md)
+
 ## Useful links
 
 - [github-ripgrep][github-ripgrep]

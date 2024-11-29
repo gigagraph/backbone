@@ -29,6 +29,12 @@ Install the built binary on your system:
 sudo install -C -D ./target/fzf-* /usr/local/bin/fzf
 ```
 
+Install the manpages:
+
+```shell
+sudo cp -R ./man/* /usr/local/share/man/
+```
+
 ### Integrate `fzf` with other programs
 
 #### zsh
@@ -38,6 +44,16 @@ See the corresponding section in the [zsh docs file in this repo](../../zsh/READ
 #### Neovim
 
 - [ ] TODO
+
+#### `bat`
+
+- [ ] TODO: [](../bat/README.md)
+
+## Theming
+
+- TODO:
+  - https://github.com/junegunn/fzf#fzf-theme-playground
+  - https://github.com/junegunn/fzf/blob/master/ADVANCED.md#color-themes
 
 ## Useful links
 

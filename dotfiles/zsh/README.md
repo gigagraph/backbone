@@ -387,6 +387,16 @@ Then, make sure your `.zshrc` contains the following configuration **after the `
 >
 > For completions to work, the above line must be added after compinit is called. You may have to rebuild your completions cache by running `rm ~/.zcompdump*; compinit`.
 
+#### `bat`
+
+##### `bat` completions
+
+This guide assumes you followed the [instructions from this repo and inslled `bat` from sources](../terminal-utils/bat/README.md#installation). After the build, the target directory should now have the completions script. Copy it to where you install custom completions (`$ZSH_COMPLETIONS_DIR` in this guide):
+
+```shell
+cp ./target/release/build/bat-*/**/completions/bat."${SHELL##*/}" "${ZSH_COMPLETIONS_DIR}/_bat"
+```
+
 ## Useful links
 
 - [arch-wiki-change-default-shell][arch-wiki-change-default-shell]

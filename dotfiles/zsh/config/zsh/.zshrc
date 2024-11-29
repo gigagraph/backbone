@@ -31,6 +31,8 @@ alias grep="'rg'"
 
 alias cd="'z'"
 
+alias cat="'bat' --paging='never'"
+
 alias c="'clear'"
 
 alias g="'git'"
@@ -150,6 +152,19 @@ compinit -d "${ZSH_COMPDUMP}"
 ##
 ## Docs: https://github.com/junegunn/fzf
 
+FZF_CUSTOM_KEYBINDINGS=(
+  "--bind=ctrl-e:preview-down"
+  "--bind=ctrl-y:preview-up"
+)
+
+export FZF_CTRL_T_OPTS="
+  --preview 'bat -n --color=always {}'
+  ${FZF_CUSTOM_KEYBINDINGS}"
+
+export FZF_ALT_C_OPTS="
+  --preview 'eza -a --icons='always' --color='always' --tree --level=3 {}'
+  ${FZF_CUSTOM_KEYBINDINGS}"
+
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh"
 
 # fzf-tab
@@ -157,6 +172,12 @@ compinit -d "${ZSH_COMPDUMP}"
 ## Docs: https://github.com/Aloxaf/fzf-tab
 ##
 ## fzf-tab must be sourced after the `compinit` but before the zsh-autosuggestions.
+
+function _fzf_git_fzf() {
+  'fzf' \
+    ${FZF_CUSTOM_KEYBINDINGS} \
+    "$@"
+}
 
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh"
 
