@@ -3,7 +3,7 @@
 - [SSH](./ssh.md).
 - [Locale](./locale.md).
 - [Fonts](./fonts.md).
-- [Firefox](./firefox.md).
+- [Firefox](./firefox/README.md).
 - [Authentication](./authentication.md).
 - [Graphics](./graphics.md).
 - [Wayland](./wayland/README.md).

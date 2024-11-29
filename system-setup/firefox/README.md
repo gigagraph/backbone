@@ -59,6 +59,10 @@ Follow the instructions from [the guide][setup-firefox-developer-edition-on-ubun
 - [YouTube NonStop](https://addons.mozilla.org/en-US/firefox/addon/youtube-nonstop/).
 - [Vimium](https://addons.mozilla.org/en-CA/firefox/addon/vimium-ff).
 
+### Tree Style Tab customization
+
+Set fonts in Tree Style Tab by pasting the contents of [`./tree_style_tab.css`](./tree_style_tab.css) into the field in "User Style Sheets" in the plugin's "Advanced" settings.
+
 ## Disable tab bar
 
 Follow the istructions from the Firefox support [forum][firefox-support-disable-tab-bar]:
