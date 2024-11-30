@@ -4,7 +4,7 @@
 
 > [!NOTE]
 >
-> You need a [C/C++ toolchain](./llvm/README) to build Pyton.
+> You need a [C/C++ toolchain](./llvm/README.md) to build Pyton.
 
 This section describes how to install the latest stable version of [Cpython][python] interpreter systemwide on a linux distribution. On Linux, system admns should build Cpython from source. This guide will use [python 3.12, because not all packages support 3.13 for now](#minor-version-upgrade).
 
