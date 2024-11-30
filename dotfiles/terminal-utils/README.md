@@ -4,7 +4,11 @@
 - [`ripgrep`](./ripgrep/README.md)
 - [`eza`](./eza/README.md)
 - [`zoxide`](./zoxide/README.md)
+- [`entr`](./entr/README.md)
 - TODO: https://github.com/sharkdp/bat
+
+- TODO:
+  - [ ] https://github.com/dandavison/delta
 
 ## Other terminal utils
 

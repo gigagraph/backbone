@@ -7,7 +7,7 @@
 > Ensure you have the following language toolhcains:
 > - [Rust](../../system-setup/toolchains/rust/README.md).
 >
-> [You can verify the versions of the installed toolcahins with the script](../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
+> [You can verify the versions of the installed toolcahins with the script](../../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
 
 Ensure you install [`fzf`](../fzf/README.md) before proceeding.
 

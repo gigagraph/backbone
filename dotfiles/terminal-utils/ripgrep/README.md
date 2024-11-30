@@ -7,7 +7,7 @@
 > Ensure you have the following language toolhcains:
 > - [Rust](../../system-setup/toolchains/rust/README.md).
 >
-> [You can verify the versions of the installed toolcahins with the script](../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
+> [You can verify the versions of the installed toolcahins with the script](../../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
 
 Install the dependencies:
 
@@ -23,6 +23,12 @@ This guide recommends installing `ripgrep` with `cargo`:
 
 ```shell
 cargo install ripgrep --all-features --locked
+```
+
+After you installed `ripgrep`, install the manpage:
+
+```shell
+rg --generate=man | sudo dd of=/usr/local/share/man/man1/rg.1
 ```
 
 ### Integrate `ripgrep` with other programs

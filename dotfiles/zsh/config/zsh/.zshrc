@@ -31,11 +31,14 @@ alias grep="'rg'"
 
 alias cd="'z'"
 
-alias cat="'bat' --paging='never'"
+alias cat="'bat' --paging='never' --color='always'"
 
 alias c="'clear'"
 
 alias g="'git'"
+alias gst="'git' status"
+
+alias q="'exit'"
 
 # Envs
 
