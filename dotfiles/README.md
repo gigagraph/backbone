@@ -8,6 +8,7 @@ Configuration and setup instructions for the commonly used customized software.
 > - [C/C++](../system-setup/toolchains/llvm/README.md).
 > - [Python](../system-setup/toolchains/python/README.md).
 > - [Go](../system-setup/toolchains/go/README.md).
+> - [Rust](../system-setup/toolchains/rust/README.md).
 >
 > [You can verify the versions of the installed toolcahins with the script](../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
 
@@ -17,18 +18,14 @@ Configuration and setup instructions for the commonly used customized software.
   - [Kitty](./kitty/README.md)
   - [`neovim`](./neovim/README.md)
   - [zsh](./zsh/README.md)
-  <!-- - [`home-manager`](#home-manager) -->
+  - [tmux](./tmux/README.md)
+  - [Terminal utils](./terminal-utils/README.md)
 - TODO
-  - zoxide
-    - https://www.youtube.com/watch?v=aghxkpyRVDY
-  - fzf
-    - https://github.com/junegunn/fzf
-  - tmux
-    - https://www.youtube.com/watch?v=DzNmUNvnB04
   - Hyperland
   - ollama
     - Code suggestions in text editors (perhaps using codellama).
       - Consider sourcegraph's Cody for text editor integration.
+  - Make this setup (or a part of it) into a nix package
 
 <!--
 
