@@ -155,18 +155,34 @@ compinit -d "${ZSH_COMPDUMP}"
 ##
 ## Docs: https://github.com/junegunn/fzf
 
+FZF_CUSTOM_FLAGS=(
+  "--wrap"
+)
+
 FZF_CUSTOM_KEYBINDINGS=(
   "--bind=ctrl-e:preview-down"
   "--bind=ctrl-y:preview-up"
+  "--bind=ctrl-w:toggle-preview-wrap"
 )
 
-export FZF_CTRL_T_OPTS="
-  --preview 'bat -n --color=always {}'
-  ${FZF_CUSTOM_KEYBINDINGS}"
+# Options to fzf command
+FZF_COMPLETION_OPTS="${FZF_CUSTOM_FLAGS}"
 
-export FZF_ALT_C_OPTS="
+# Options for path completion (e.g. vim **<TAB>)
+FZF_COMPLETION_PATH_OPTS="
+  --preview 'bat -n --color=always {}'
+  ${FZF_CUSTOM_KEYBINDINGS}
+  ${FZF_CUSTOM_FLAGS}"
+
+# Options for directory completion (e.g. cd **<TAB>)
+FZF_COMPLETION_DIR_OPTS="
   --preview 'eza -a --icons='always' --color='always' --tree --level=3 {}'
-  ${FZF_CUSTOM_KEYBINDINGS}"
+  ${FZF_CUSTOM_KEYBINDINGS}
+  ${FZF_CUSTOM_FLAGS}"
+
+FZF_CTRL_T_OPTS="${FZF_COMPLETION_PATH_OPTS}"
+
+FZF_ALT_C_OPTS="${FZF_COMPLETION_DIR_OPTS}"
 
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh"
 
@@ -176,13 +192,18 @@ export FZF_ALT_C_OPTS="
 ##
 ## fzf-tab must be sourced after the `compinit` but before the zsh-autosuggestions.
 
+[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh"
+
+# fzf-git
+## Docs: https://github.com/junegunn/fzf-git.sh
+
 function _fzf_git_fzf() {
   'fzf' \
+    ${FZF_CUSTOM_FLAGS} \
     ${FZF_CUSTOM_KEYBINDINGS} \
     "$@"
 }
 
-[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh"
 
 # fast-syntax-highlighting
 ##
