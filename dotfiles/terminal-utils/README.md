@@ -7,8 +7,7 @@
 - [`entr`](./entr/README.md).
 - [`git`](./git/README.md).
 - [`delta`](./delta/README.md).
-
-- TODO: https://github.com/sharkdp/bat
+- [`bat`](./bat/README.md).
 
 ## Other terminal utils
 

@@ -151,6 +151,18 @@ compinit -d "${ZSH_COMPDUMP}"
 
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/zoxide-integration.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/zoxide-integration.zsh"
 
+# bat-extras
+##
+## Docs: https://github.com/eth-p/bat-extras
+
+### bat-extras configuration
+export BATDIFF_USE_DELTA="true"
+
+### Additional completions for the bat-extras scripts.
+compdef batdiff=diff
+compdef batwatch=watch
+compdef batgrep=rg
+
 # fzf
 ##
 ## Docs: https://github.com/junegunn/fzf

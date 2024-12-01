@@ -397,6 +397,20 @@ This guide assumes you followed the [instructions from this repo and inslled `ba
 cp ./target/release/build/bat-*/**/completions/bat."${SHELL##*/}" "${ZSH_COMPLETIONS_DIR}/_bat"
 ```
 
+##### `bat-extras` completions
+
+Unfortunately, [`bat-extras`](../terminal-utils/bat/README.nd#install-bat-extras) does not come with the completions. The best effort that the user can do to enable the completions is to configure zsh to use completions for the commands that `bat-extras` wrap. Add the following after `compinit`:
+
+```shell
+compdef batdiff=diff
+compdef batwatch=watch
+compdef batgrep=rg
+```
+
+> [!NOTE]
+>
+> This method may still not enable completions for some `bat-extras` commands.
+
 #### `delta`
 
 #### `delta` completions

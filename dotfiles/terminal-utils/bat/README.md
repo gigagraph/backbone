@@ -31,7 +31,57 @@ After the build is finished, install the manpage:
 sudo cp ./target/release/build/bat-*/**/manual/bat.1 /usr/local/share/man/man1
 ```
 
-- TODO: install extras
+#### Install `bat-extras`
+
+This guide recommends installing [`bat-extras`][github-bat-extras] from sources.
+
+Ensure you have the dependenices installed:
+
+```shell
+sudo apt update -y
+sudo apt install -y gawk
+```
+
+Clone the repo:
+
+```shell
+git clone git@github.com:eth-p/bat-extras.git
+cd bat-extras
+git checkout "${BAT_EXTRAS_VERSION}"
+```
+
+Build the scripts and test them:
+
+```shell
+./build.sh
+./test.sh
+```
+
+Install the preffered scripts. This guide installs only [`batgrep`][batgrep], [`batwatch`][batwatch], and [`batdiff`][batdiff]:
+
+```shell
+BAT_EXTRAS_TO_INSTALL=(
+  "batgrep"
+  "batwatch"
+  "batdiff"
+)
+for BAT_EXTRA_TO_INSTALL in "${BAT_EXTRAS_TO_INSTALL[@]}"; do
+  sudo install -C -D "./bin/${BAT_EXTRA_TO_INSTALL}" "/usr/local/bin/${BAT_EXTRA_TO_INSTALL}"
+done
+```
+
+Install the mangapages:
+
+```shell
+BAT_EXTRAS_TO_INSTALL=(
+  "batgrep"
+  "batwatch"
+  "batdiff"
+)
+for BAT_EXTRA_TO_INSTALL in "${BAT_EXTRAS_TO_INSTALL[@]}"; do
+  sudo install -C -D "./man/${BAT_EXTRA_TO_INSTALL}.1" "/usr/local/share/man/man1/${BAT_EXTRA_TO_INSTALL}.1"
+done
+```
 
 ### Integrate `bat` with other programs
 
@@ -45,7 +95,7 @@ You can use `bat` to preview files in [`fzf`](../fzf/README.md). See the [`fzf`'
 
 #### `ripgrep`
 
-- TODO
+Use `batgrep` from [`bat-extras`](#install-bat-extras) to display the output of `ripgrep` with `bat`.
 
 ### Customization
 
@@ -55,6 +105,12 @@ You can use `bat` to preview files in [`fzf`](../fzf/README.md). See the [`fzf`'
 
 - [github-bat][github-bat]
 - [github-bat-extras][github-bat-extras]
+  - [batgrep][batgrep]
+  - [batwatch][batwatch]
+  - [batdiff][batdiff]
 
 [github-bat]: <https://github.com/sharkdp/bat>
 [github-bat-extras]: <https://github.com/eth-p/bat-extras>
+[batgrep]: <https://github.com/eth-p/bat-extras/blob/master/doc/batgrep.md>
+[batwatch]: <https://github.com/eth-p/bat-extras/blob/master/doc/batwatch.md>
+[batdiff]: <https://github.com/eth-p/bat-extras/blob/master/doc/batdiff.md>
