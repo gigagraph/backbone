@@ -397,6 +397,16 @@ This guide assumes you followed the [instructions from this repo and inslled `ba
 cp ./target/release/build/bat-*/**/completions/bat."${SHELL##*/}" "${ZSH_COMPLETIONS_DIR}/_bat"
 ```
 
+#### `delta`
+
+#### `delta` completions
+
+[Use `delta` to generate completions for zsh](https://dandavison.github.io/delta/tips-and-tricks/shell-completion.html):
+
+```shell
+delta --generate-completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_delta"
+```
+
 ## Useful links
 
 - [arch-wiki-change-default-shell][arch-wiki-change-default-shell]

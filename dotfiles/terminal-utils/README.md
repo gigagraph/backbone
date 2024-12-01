@@ -1,14 +1,14 @@
 # Terminal utils
 
-- [`fzf`](./fzf/README.md)
-- [`ripgrep`](./ripgrep/README.md)
-- [`eza`](./eza/README.md)
-- [`zoxide`](./zoxide/README.md)
-- [`entr`](./entr/README.md)
-- TODO: https://github.com/sharkdp/bat
+- [`fzf`](./fzf/README.md).
+- [`ripgrep`](./ripgrep/README.md).
+- [`eza`](./eza/README.md).
+- [`zoxide`](./zoxide/README.md).
+- [`entr`](./entr/README.md).
+- [`git`](./git/README.md).
+- [`delta`](./delta/README.md).
 
-- TODO:
-  - [ ] https://github.com/dandavison/delta
+- TODO: https://github.com/sharkdp/bat
 
 ## Other terminal utils
 

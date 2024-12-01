@@ -189,7 +189,7 @@ Repeat this process up until you get to the desired release.
 
 ## Post-installation setup
 
-Before proceeding, setup [SSH keys](../system-setup/ssh.md), install the [fonts](../system-setup/fonts.md), and set up the [Firefox Developer Edition browser][../system-setup/firefox.md].
+Before proceeding, setup [SSH keys](../system-setup/ssh.md), install the [fonts](../system-setup/fonts.md), and set up the [Firefox Developer Edition browser](../system-setup/firefox.md).
 
 ### Disable snap
 
@@ -278,7 +278,7 @@ sudo find / -name "snapd"
 
 ### Further system setup
 
-Once you finish the setup from this section - perform the desired setup from the [`system-setup`](./system-setup/README.md).
+Once you finish the setup from this section - perform the desired setup from the [`system-setup`](../system-setup/README.md).
 
 ## Useful links
 

@@ -168,15 +168,18 @@ FZF_CUSTOM_KEYBINDINGS=(
 # Options to fzf command
 FZF_COMPLETION_OPTS="${FZF_CUSTOM_FLAGS}"
 
+FZF_FILE_PREVIEW_COMMAND='bat -n --color=always {}'
+FZF_DIRECTORY_PREVIEW_COMMAND='eza -a --icons=always --color=always --tree --level=3 {}'
+
 # Options for path completion (e.g. vim **<TAB>)
 FZF_COMPLETION_PATH_OPTS="
-  --preview 'bat -n --color=always {}'
+  --preview '${FZF_FILE_PREVIEW_COMMAND} || ${FZF_DIRECTORY_PREVIEW_COMMAND}'
   ${FZF_CUSTOM_KEYBINDINGS}
   ${FZF_CUSTOM_FLAGS}"
 
 # Options for directory completion (e.g. cd **<TAB>)
 FZF_COMPLETION_DIR_OPTS="
-  --preview 'eza -a --icons='always' --color='always' --tree --level=3 {}'
+  --preview '${FZF_DIRECTORY_PREVIEW_COMMAND}'
   ${FZF_CUSTOM_KEYBINDINGS}
   ${FZF_CUSTOM_FLAGS}"
 
@@ -203,7 +206,6 @@ function _fzf_git_fzf() {
     ${FZF_CUSTOM_KEYBINDINGS} \
     "$@"
 }
-
 
 # fast-syntax-highlighting
 ##
