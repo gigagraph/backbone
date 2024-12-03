@@ -1,14 +1,11 @@
-# TODO: remove after tests
-# zmodload zsh/zprof
-
-# Prompt (pure)
-##
-## Docs: https://github.com/sindresorhus/pure
-
 function zcompile-many() {
   local f
   for f; do zcompile -R -- "$f".zwc "$f"; done
 }
+
+# Prompt (pure)
+##
+## Docs: https://github.com/sindresorhus/pure
 
 if [ ! -e "${ZSH_CUSTOM_PLUGINS_DIR}/pure-prompt" ]; then
   git clone --branch="v1.23.0" --depth=1 git@github.com:sindresorhus/pure.git "${ZSH_CUSTOM_PLUGINS_DIR}/pure-prompt"
@@ -85,14 +82,8 @@ bindkey -v
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
-function bind_after_zvm() {
-  bindkey '^p' history-search-backward
-  bindkey '^n' history-search-forward
-
-  # Unbind this key to enable fzf-git keybindings to work
-  bindkey -r '^g'
-}
-# bind_after_zvm
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
 
 bindkey '^[[Z' reverse-menu-complete
 
@@ -127,18 +118,6 @@ if [ ! -e "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions" ]; then
   git clone --branch="v0.7.1" --depth=1 git@github.com:zsh-users/zsh-autosuggestions.git "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions"
   zcompile-many "${ZSH_CUSTOM_PLUGINS_DIR}"/zsh-autosuggestions/{zsh-autosuggestions.zsh,src/**/*.zsh}
 fi
-
-# TODO: decide what to do with the plugin
-# zsh-vi-mode (ZVM)
-## Docs: https://github.com/jeffreytse/zsh-vi-mode
-
-# TODO: try manual
-# TODO: Esc followed by instant c triggers completions. Figure out how to remove this
-typeset -U zvm_after_init_commands
-zvm_after_init_commands+=(
-  "bind_after_zvm"
-)
-export ZVM_INIT_MODE="sourcing"
 
 # Completion scripts
 
@@ -284,13 +263,14 @@ source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh"
 # fzf-git
 ## Docs: https://github.com/junegunn/fzf-git.sh
 
+source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-git/fzf-git.sh"
+
 function _fzf_git_fzf() {
   'fzf' \
     ${FZF_CUSTOM_FLAGS} \
     ${FZF_CUSTOM_KEYBINDINGS} \
     "$@"
 }
-source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-git/fzf-git.sh"
 
 # fast-syntax-highlighting
 ##
@@ -311,6 +291,3 @@ source "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting/fast-syntax-highlight
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
-
-# TODO: remove after tests
-# zprof # > zsh.prof
