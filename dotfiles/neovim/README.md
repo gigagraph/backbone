@@ -55,7 +55,7 @@ sudo update-alternatives --set vi "$(which nvim)"
 
 ## Configuration
 
-- [ ] TODO: setup ~/.config/neovim/init.lua
+- [ ] TODO: setup ~/.config/neovim/init.lua (and leave reference to the docs)
 
 ## Make `nvim` default pager
 
@@ -69,7 +69,15 @@ sudo update-alternatives --set vi "$(which nvim)"
 - [github-neovim][github-neovim]
 - [neovim-build-deps][neovim-build-deps]
 - [lua-key-conceps-in-15-minutes][lua-key-conceps-in-15-minutes]
+- [github-neovim-kickstart][github-neovim-kickstart]
+- [youtube-tj-reads-whole-neovim-manual][youtube-tj-reads-whole-neovim-manual]
+- [youtube-tj-neovim-kickstart][youtube-tj-neovim-kickstart]
+- [youtube-tj-advent-of-neovim][youtube-tj-advent-of-neovim]
 
 [github-neovim]: <https://github.com/neovim/neovim>
 [neovim-build-deps]: <https://github.com/neovim/neovim/blob/master/BUILD.md#build-prerequisites>
 [lua-key-conceps-in-15-minutes]: <https://learnxinyminutes.com/docs/lua/>
+[github-neovim-kickstart]: <https://github.com/nvim-lua/kickstart.nvim>
+[youtube-tj-reads-whole-neovim-manual]: <https://youtu.be/rT-fbLFOCy0>
+[youtube-tj-advent-of-neovim]: <https://www.youtube.com/watch?v=TQn2hJeHQbM&list=PLep05UYkc6wTyBe7kPjQFWVXTlhKeQejM>
+[youtube-tj-neovim-kickstart]: <https://youtu.be/m8C0Cq9Uv9o?si=ieM47MFLWca9lt01>
