@@ -228,7 +228,7 @@ FZF_CUSTOM_KEYBINDINGS=(
   "--bind=ctrl-w:toggle-preview-wrap"
 )
 
-# Options to fzf command
+# Options the fzf command
 FZF_COMPLETION_OPTS="${FZF_CUSTOM_FLAGS}"
 
 FZF_FILE_PREVIEW_COMMAND='bat -n --color=always {}'
@@ -251,6 +251,12 @@ FZF_CTRL_T_OPTS="${FZF_COMPLETION_PATH_OPTS}"
 FZF_ALT_C_OPTS="${FZF_COMPLETION_DIR_OPTS}"
 
 source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh"
+
+# For the compatibility reasons, shells may interpret ESC immediately followed by a letter as ALT pressed with the letter.
+# Pressing ESC followed by 'C' will trigger the fzf-integration's ALT-C. Therefore, rebind ALT-C to ALT-Q.
+# https://github.com/junegunn/fzf/issues/1238#issuecomment-381083777
+bindkey -r '^[c'
+bindkey '^[q' fzf-cd-widget
 
 # fzf-tab
 ##
