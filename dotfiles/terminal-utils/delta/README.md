@@ -37,7 +37,6 @@ After the installation, ensure your `.gitconfg` has following to start using `de
 [delta]
     navigate = true  # use n and N to move between diff sections
     dark = true      # or light = true, or omit for auto-detection
-    side-by-side = true
 
 [merge]
     conflictstyle = zdiff3

@@ -103,96 +103,92 @@ For a reference, see the [description of startup and shutdown files for zsh][arc
 
 #### Pure prompt
 
-- TODO: descibe pure prompt
+[Pure prompt][github-pure-prompt] is a promp implemented it zsh. It's features include, displaying:
+- The current working direcotry.
+- Basic information about the changes in git.
+- The status of the zle vi mode.
+- Time it took to execute the repious command.
+
+It is not customizable compared to the alternatives, such as [powerlevel10k][github-p10k] or [startship](../deprecated/starship/README.md), however its main advantage is that it is maintained and fast.
+
+Install it to the custom plugin directory (`$ZSH_CUSTOM_PLUGINS_DIR`) and activate it by adding the following commands to `.zshrc`.
+
+```shell
+if [ ! -e "${ZSH_CUSTOM_PLUGINS_DIR}/pure-prompt" ]; then
+  git clone --branch="v1.23.0" --depth=1 git@github.com:sindresorhus/pure.git "${ZSH_CUSTOM_PLUGINS_DIR}/pure-prompt"
+  zcompile-many "${ZSH_CUSTOM_PLUGINS_DIR}"/pure-prompt/{pure.zsh,async.zsh}
+fi
+fpath+=("${ZSH_CUSTOM_PLUGINS_DIR}/pure-prompt")
+
+autoload -U promptinit; promptinit
+prompt pure
+```
 
 ### Plugins
 
-- [ ] TODO: mention the fast manual method for installing zsh plugins using `zcompile`
-  - [ ] TODO: update installation instructions for plugins to the new method
+This guide sets up the following plugins:
 
 - [`fast-syntax-highlighting`](#fast-syntax-highlighting)
 - [`zsh-autosuggestions`](#zsh-autosuggestions)
-- [`zsh-completions`](https://github.com/zsh-users/zsh-completions/tree/master)
-- [`rust-zsh-completions`](https://github.com/ryutok/rust-zsh-completions)
+- [`zsh-completions`][github-zsh-completions]
+- [`rust-zsh-completions`][github-rust-zsh-completions]
 - [`fzf-tab`](#use-fzf-to-match-completions-via-fzf-tab)
 - [`fzf-git`](#use-fzf-to-search-for-git-objects-via-fzf-git)
 
-<!--
-- [ ] TODO: deprecate the following plugin and antidote and explain that they are slow
-
-The [`antidote`](#antidote-plugin-manager) config in this repo installs the following plugins:
-
-- [`zsh-vi-mode`](#zsh-vi-mode)
-
-Install new plugins with [`antidote`](#antidote-plugin-manager) (see the full list of [options][antidote-options]):
-
-```shell
-antidote install <plugin-url> [options]
-```
-
-`antidote` will add the given plugin to the [`./config/zsh/.zsh_plugins.txt`](./config/zsh/.zsh_plugins.txt) file.
--->
-
 Additionally, see the [Integrations](#integrations) section to setup zsh to work with other tools.
 
-#### `zsh-vi-mode`
+#### Note on plugin installation
 
-[Configuration & default keybindings docs][github-zsh-vi-mode].
+This guide targets zsh setup to have a decent performance. As per [`zsh-bench`][github-zsh-bench] the fastest way to install and activate plugins is to manually download the plugin (if it is not present), compile it using `zcompile` (if it hasn't been compiled previously), and activate it. `zsh-bench` calls this setup [`diy++`](https://github.com/romkatv/zsh-bench?tab=readme-ov-file#do-it-yourself). After the measurements, this guide decided to go with this approach for plugin management. For more details, see the [Benchmarking](#benchmarking) section for more details.
 
-> [!NOTE]
->
-> This guide recommends to use `ZVM_INIT_MODE=sourcing`. You should setup custom keybindings with `zvm_after_init_commands` and `zvm_after_lazy_keybindings_commands` respoctively. Additionally, you should initialize this plugin before [fzf integration](#fzf), [`fzf-tab`](#use-fzf-to-match-completions-via-fzf-tab), and [`zsh-autosuggestions`](#zsh-autosuggestions). The guide recommends to initialize thees plugins in the specified order after the `zsh-vi-mode` directly in `.zshrc` file. Do not use `zvm_after_init_commands` to initialize these plugins.
+In general, the `diy++` plugin instalaltion is as follows.
+
+`.zshrc` defines the following function. The method will use it to compile zsh files:
+
+```shell
+function zcompile-many() {
+  local f
+  for f; do zcompile -R -- "$f".zwc "$f"; done
+}
+```
+
+User clones the plugin to its directory if it does not exist (e.g. `fzf-tab` in this case) and compiles all zsh files in the repository using the `zcompile-many` function:
+
+```shell
+if [ ! -e "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab" ]; then
+  git clone --branch="v1.1.2" --depth=1 git@github.com:Aloxaf/fzf-tab.git "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab"
+  zcompile-many "${ZSH_CUSTOM_PLUGINS_DIR}"/fzf-tab/{fzf-tab.plugin.zsh,fzf-tab.zsh,lib/**/*.zsh}
+fi
+```
+
+Then, based on the purpose of the plugin the user should use the files to make them available to zsh. Generally, this means that they should `source` `.plugin.zsh` file in the correct place. See the [`./config/zsh/.zshrc`](./config/zsh/.zshrc) for more examples.
 
 #### `fast-syntax-highlighting`
 
 > [!NOTE]
 >
-> This guide recommends to install [`fast-syntax-highlighting`][fast-syntax-highlighting] manually to have a control for ordering when `.zshrc` sources it. You should source this plugin at the end of `.zshrc`, after [`fzf-tab`](#use-fzf-to-match-completions-via-fzf-tab) and before [`zsh-autosuggestion`](#zsh-autosuggestions) if you use it.
+> You should source this plugin at the end of `.zshrc`, after [`fzf-tab`](#use-fzf-to-match-completions-via-fzf-tab) and before [`zsh-autosuggestion`](#zsh-autosuggestions) if you use it.
 
 ```shell
-mkdir -p "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-hihlighting"
-git clone git@github.com:zdharma-continuum/fast-syntax-highlighting "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting"
-cd "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting"
-git checkout "${FAST_SYNTAX_HIGHLIGHTING_COMMIT_ID}"
+if [ ! -e "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting" ]; then
+  git clone git@github.com:zdharma-continuum/fast-syntax-highlighting.git "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting"
+  git -C "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting" checkout '<fast-syntax-highlighting-commit-sha>' 
+  zcompile-many "${ZSH_CUSTOM_PLUGINS_DIR}"/fast-syntax-highlighting/{fast-syntax-highlighting.plugin.zsh,fast-highlight,fast-string-highlight,fast-theme,share/**/*.zsh}
+fi
 ```
 
-Then, make sure your `.zshrc` contains the following configuration:
+Then, make sure your `.zshrc` contains the following:
 
 ```shell
-[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+source "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 ```
 
 > [!NOTE]
 >
 > If you use:
-> - [`zsh-vi-mode`](#zsh-vi-mode), source `fast-syntax-highlighting` after it.
+> - [`zsh-vi-mode`][github-zsh-vi-mode], source `fast-syntax-highlighting` after it.
 > - [`fzf-tab`](#use-fzf-to-match-completions-via-fzf-tab), source `fast-syntax-highlighting` after it.
 > - [`zsh-autosuggestion`](#zsh-autosuggestions), source `fast-syntax-highlighting` before it.
-
-#### `zsh-syntax-highlighting`
-
-❌Not recommended. Use [`fast-syntax-highlighting`](#fast-syntax-highlighting) instead.❌
-
-> [!WARNING]
->
-> This guide does not recommend to use `zsh-syntax-highlighting` due to incompatibility with [`zsh-vi-mode`](#zsh-vi-mode). For more details see this issue: https://github.com/zsh-users/zsh-syntax-highlighting/issues/871
-
-#####  `zsh-syntax-highlighting` installation
-
-> [!NOTE]
->
-> If you decide to to install [`zsh-syntax-highlighting`][github-zsh-syntax-highlighting], the guide recommends that you do this manually, because it should be sourced at the end of `.zshrc`.
-
-```shell
-mkdir -p "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting"
-git clone --branch "${ZSH_SYNTAX_HIGHLIGHTING_VERSION}" git@github.com:zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting"
-```
-
-Then, make sure your `.zshrc` contains the following configuration:
-
-```shell
-[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-```
 
 #### `zsh-autosuggestions`
 
@@ -200,17 +196,19 @@ Then, make sure your `.zshrc` contains the following configuration:
 
 > [!NOTE]
 >
-> This guide recommends to install [`zsh-autosuggestions`][zsh-autosuggestions] manually to have a control for ordering when `.zshrc` sources it. You should source this plugin at the end of `.zshrc`.
+> You should source this plugin at the end of `.zshrc`.
 
 ```shell
-mkdir -p "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions"
-git clone --branch "${ZSH_AUTOSUGGESTIONS_VERSION}" git@github.com:zsh-users/zsh-autosuggestions.git "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions"
+if [ ! -e "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions" ]; then
+  git clone --branch="<zsh-autosuggestions-version>" --depth=1 git@github.com:zsh-users/zsh-autosuggestions.git "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions"
+  zcompile-many "${ZSH_CUSTOM_PLUGINS_DIR}"/zsh-autosuggestions/{zsh-autosuggestions.zsh,src/**/*.zsh}
+fi
 ```
 
-Then, make sure your `.zshrc` contains the following configuration:
+Then, make sure your `.zshrc` contains the following:
 
 ```shell
-[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
 ```
 
 > [!NOTE]
@@ -233,16 +231,20 @@ Before proceeding, [ensure that you have `fzf` installed on your system](../term
 fzf "--${SHELL##*/}" > "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh"
 ```
 
-Then, make sure your `.zshrc` contains the following configuration:
+Then, make sure your `.zshrc` contains the following:
 
 ```shell
-[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh" 
+if [[ "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh" -nt "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh.zwc" ]]; then
+  zcompile-many "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh"
+fi
+
+source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh"
 ```
 
 After you set up the integration, you can use the [following keys to use `fzf` to peform common tasks in the interactive shell][fzf-shell-integration] (in the default configuration):
 
 - `CTRL-T` - opens a prompt where the user can search and select files under the current working directory. After the confirmation, the shell integration will **insert the selected files in the current command**.
-- `ALT-C` - opens a prompt where the user can search and select directories under the current working directory. After the confirmation, the shell integration will **change the current working directory to the selected one**.
+- `ALT-Q` (rebound from the original ALT-C) - opens a prompt where the user can search and select directories under the current working directory. After the confirmation, the shell integration will **change the current working directory to the selected one**.
 - `CRTL-R` - opens a prompt where the user can search the command history. After the configmation, the shell integration will insert the selected command in the current prompt.
 
 ##### Use `fzf` to match completions via `fzf-tab`
@@ -251,11 +253,13 @@ After you set up the integration, you can use the [following keys to use `fzf` t
 
 > [!NOTE]
 >
-> This guide recommends to install `fzf-tab` manually, because it must be sourced after the `compinit` but before plugins that wrap widgets (e.g. [`zsh-autosuggestion`](#zsh-autosuggestion)).
+> `fzf-tab` must be sourced after the `compinit` but before plugins that wrap widgets (e.g. [`zsh-autosuggestion`](#zsh-autosuggestion)).
 
 ```shell
-mkdir -p "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab"
-git clone --branch "${ZSH_FZF_TAB_VERSION}" git@github.com:Aloxaf/fzf-tab.git "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab"
+if [ ! -e "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab" ]; then
+  git clone --branch="<fzf-tab-version>" --depth=1 git@github.com:Aloxaf/fzf-tab.git "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab"
+  zcompile-many "${ZSH_CUSTOM_PLUGINS_DIR}"/fzf-tab/{fzf-tab.plugin.zsh,fzf-tab.zsh,lib/**/*.zsh}
+fi
 ```
 
 > [!IMPORTANT]
@@ -265,7 +269,7 @@ git clone --branch "${ZSH_FZF_TAB_VERSION}" git@github.com:Aloxaf/fzf-tab.git "$
 Then, make sure your `.zshrc` contains the following configuration after `compinit`, but before [`zsh-autosuggestions`](#zsh-autosuggestions):
 
 ```shell
-[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh"
+source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh"
 ```
 
 - [ ] TODO?
@@ -278,7 +282,17 @@ Then, make sure your `.zshrc` contains the following configuration after `compin
 
 ###### `fzf-git` installation
 
-This guide recommends to install [fzf-git][#github-fzf-git] with a [plugin manager](antidote-plugin-manager).
+Make sure your `.zshrc` contains the following:
+
+```shell
+if [ ! -e "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-git" ]; then
+  git clone git@github.com:junegunn/fzf-git.sh.git "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-git"
+  git -C "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-git" checkout '<fzf-git-commit-sha>'
+  zcompile-many "${ZSH_CUSTOM_PLUGINS_DIR}"/fzf-git/fzf-git.sh
+fi
+
+source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-git/fzf-git.sh"
+```
 
 #### `ripgrep`
 
@@ -375,14 +389,83 @@ compdef batgrep=rg
 delta --generate-completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_delta"
 ```
 
+#### Deprecated plugins
+
+##### `zsh-vi-mode`
+
+❌Not recommended. Use the standard vi mode in zsh instead.❌
+
+> [!WARNING]
+>
+> This guide does not recommend to use `zsh-vi-mode` due to how it reduces the performance of the shell.
+
+[Configuration & default keybindings docs][github-zsh-vi-mode].
+
+> [!NOTE]
+>
+> This guide recommends to use `ZVM_INIT_MODE=sourcing`. You should setup custom keybindings with `zvm_after_init_commands` and `zvm_after_lazy_keybindings_commands` respoctively. Additionally, you should initialize this plugin before [fzf integration](#fzf), [`fzf-tab`](#use-fzf-to-match-completions-via-fzf-tab), and [`zsh-autosuggestions`](#zsh-autosuggestions). The guide recommends to initialize thees plugins in the specified order after the `zsh-vi-mode` directly in `.zshrc` file. Do not use `zvm_after_init_commands` to initialize these plugins.
+
+##### `zsh-syntax-highlighting`
+
+❌Not recommended. Use [`fast-syntax-highlighting`](#fast-syntax-highlighting) instead.❌
+
+> [!WARNING]
+>
+> This guide does not recommend to use `zsh-syntax-highlighting` due to incompatibility with [`zsh-vi-mode`](#zsh-vi-mode). For more details see this issue: https://github.com/zsh-users/zsh-syntax-highlighting/issues/871
+
+######  `zsh-syntax-highlighting` installation
+
+> [!NOTE]
+>
+> If you decide to to install [`zsh-syntax-highlighting`][github-zsh-syntax-highlighting], the guide recommends that you do this manually, because it should be sourced at the end of `.zshrc`.
+
+```shell
+mkdir -p "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting"
+git clone --branch "${ZSH_SYNTAX_HIGHLIGHTING_VERSION}" git@github.com:zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting"
+```
+
+Then, make sure your `.zshrc` contains the following configuration:
+
+```shell
+[ -f "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+```
+
 ### Benchmarking
 
 This guide recommends using [`zsh-bench`][github-zsh-bench] to benchmark the shell performance. Follow the instructions from the project's README to measure the performance you a zsh setup and to understand how to improve it.
 
-- TODO: zprof
-  - Beginning `zmodload zsh/zprof`
-  - End `zprof`
-  - Optimization with `zcompile` inspired by diy++
+This guide recommends not exceeding the same numbers as mentioned in `zsh-bench`, i.e.:
+
+| latency (ms)          | the maximum value indistinguishable from zero |
+|-----------------------|----------------------------------------------:|
+| **first prompt lag**  |                                            50 |
+| **first command lag** |                                           150 |
+| **command lag**       |                                            10 |
+| **input lag**         |                                            20 |
+
+#### Benchmarking tips
+
+The metrics that `zsh-bench` outputs are insufficeint to understand how to improve the performance. Instead, it could be useful to see how much time each plugin takes when it initializes. zsh has a tool for that - [`zprof`](https://zsh.sourceforge.io/Doc/Release/Zsh-Modules.html#The-zsh_002fzprof-Module).
+
+To use `zprof`, add the following to the start of `.zshrc`:
+
+```shell
+zmodload zsh/zprof
+```
+
+And the following at the end:
+
+```shell
+zprof
+```
+
+When you start a new shell `zprof` will print the amount of time and the percentage it spent in each function while executing `.zshrc`.
+
+Another helpful profiling technique is to disable a plugin and see how `zsh-bench` metrics change.
+
+#### Optimization tips
+
+To optimize zsh startup and usage performance, follow the [`diy++` installation scheme](#note-on-plugin-installation).
 
 ## Useful links
 
@@ -402,11 +485,14 @@ This guide recommends using [`zsh-bench`][github-zsh-bench] to benchmark the she
 - [github-fast-syntax-highlighting][github-fast-syntax-highlighting]
 - [github-zsh-syntax-highlighting][github-zsh-syntax-highlighting]
 - [github-zsh-autosuggestions][github-zsh-autosuggestions]
+- [github-rust-zsh-completions][github-rust-zsh-completions]
+- [github-zsh-completions][github-zsh-completions]
 - [github-zsh-bench][github-zsh-bench]
 - [fzf-shell-integration][fzf-shell-integration]
 - [github-fzf-tab][github-fzf-tab]
 - [github-fzf-git][github-fzf-git]
 - [github-fzf-alt-c-in-vi-mode][github-fzf-alt-c-in-vi-mode]
+- [github-p10k][github-p10k]
 
 [arch-wiki-change-default-shell]: <https://wiki.archlinux.org/title/Command-line_shell#Changing_your_default_shell>
 [arch-wiki-startup-shutdown-files]: <https://wiki.archlinux.org/title/Zsh#Startup/Shutdown_files>
@@ -423,8 +509,11 @@ This guide recommends using [`zsh-bench`][github-zsh-bench] to benchmark the she
 [github-fast-syntax-highlighting]: <https://github.com/zdharma-continuum/fast-syntax-highlighting>
 [github-zsh-syntax-highlighting]: <https://github.com/zsh-users/zsh-syntax-highlighting>
 [github-zsh-autosuggestions]: <https://github.com/zsh-users/zsh-autosuggestions>
+[github-zsh-completions]: <https://github.com/zsh-users/zsh-completions/tree/master>
+[github-rust-zsh-completions]: <https://github.com/ryutok/rust-zsh-completions>
 [github-zsh-bench]: <https://github.com/romkatv/zsh-bench>
 [fzf-shell-integration]: <https://junegunn.github.io/fzf/shell-integration/>
 [github-fzf-tab]: <https://github.com/Aloxaf/fzf-tab>
 [github-fzf-git]: <https://github.com/junegunn/fzf-git.sh>
 [github-fzf-alt-c-in-vi-mode]: <https://github.com/junegunn/fzf/issues/1238>
+[github-p10k]: <https://github.com/romkatv/powerlevel10k>
