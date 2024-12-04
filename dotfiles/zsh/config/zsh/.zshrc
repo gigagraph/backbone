@@ -11,9 +11,23 @@ if [ ! -e "${ZSH_CUSTOM_PLUGINS_DIR}/pure-prompt" ]; then
   git clone --branch="v1.23.0" --depth=1 git@github.com:sindresorhus/pure.git "${ZSH_CUSTOM_PLUGINS_DIR}/pure-prompt"
   zcompile-many "${ZSH_CUSTOM_PLUGINS_DIR}"/pure-prompt/{pure.zsh,async.zsh}
 fi
-
 fpath+=("${ZSH_CUSTOM_PLUGINS_DIR}/pure-prompt")
+
 autoload -U promptinit; promptinit
+
+# seconds
+PURE_CMD_MAX_EXEC_TIME="5"
+PURE_GIT_PULL="0"
+PURE_GIT_UNTRACKED_DIRTY="0"
+# seconds
+PURE_GIT_DELAY_DIRTY_CHECK="1800"
+PURE_PROMPT_SYMBOL="❯"
+PURE_PROMPT_VICMD_SYMBOL="❮"
+PURE_GIT_DOWN_ARROW="⇣"
+PURE_GIT_UP_ARROW="⇡"
+PURE_GIT_STASH_SYMBOL="≡"
+zstyle :prompt:pure:git:stash show yes
+
 prompt pure
 
 # zsh options
