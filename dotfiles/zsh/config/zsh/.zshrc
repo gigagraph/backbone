@@ -54,7 +54,7 @@ prompt pure
 
 # zsh options
 
-setopt beep nomatch
+setopt beep nomatch interactive_comments
 unsetopt autocd extendedglob notify
 
 # Shell options
