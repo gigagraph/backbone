@@ -190,6 +190,12 @@ source "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting/fast-syntax-highlight
 > - [`fzf-tab`](#use-fzf-to-match-completions-via-fzf-tab), source `fast-syntax-highlighting` after it.
 > - [`zsh-autosuggestion`](#zsh-autosuggestions), source `fast-syntax-highlighting` before it.
 
+##### `fast-syntax-highlighting` theming
+
+Users can customize `fast-syntax-highlighting`'s theme. E.g. there is [Catpuccin theme][github-catpuccin-zsh-fsh] for the plugin.
+
+[Users can implement and set custom themes using the `fast-theme` command][fast-syntax-highlighting-theming] when the plugin is activated.
+
 #### `zsh-autosuggestions`
 
 ##### `zsh-autosuggestions` installation
@@ -483,6 +489,8 @@ To optimize zsh startup and usage performance, follow the [`diy++` installation 
 - [github-pure-prompt][github-pure-prompt]
 - [github-zsh-vi-mode][github-zsh-vi-mode]
 - [github-fast-syntax-highlighting][github-fast-syntax-highlighting]
+  - [fast-syntax-highlighting-theming][fast-syntax-highlighting-theming]
+  - [github-catpuccin-zsh-fsh][github-catpuccin-zsh-fsh]
 - [github-zsh-syntax-highlighting][github-zsh-syntax-highlighting]
 - [github-zsh-autosuggestions][github-zsh-autosuggestions]
 - [github-rust-zsh-completions][github-rust-zsh-completions]
@@ -507,6 +515,8 @@ To optimize zsh startup and usage performance, follow the [`diy++` installation 
 [github-pure-prompt]: <https://github.com/sindresorhus/pure>
 [github-zsh-vi-mode]: <https://github.com/jeffreytse/zsh-vi-mode>
 [github-fast-syntax-highlighting]: <https://github.com/zdharma-continuum/fast-syntax-highlighting>
+[fast-syntax-highlighting-theming]: <https://github.com/zdharma-continuum/fast-syntax-highlighting/blob/v1.55/THEME_GUIDE.md>
+[github-catpuccin-zsh-fsh]: <https://github.com/catppuccin/zsh-fsh>
 [github-zsh-syntax-highlighting]: <https://github.com/zsh-users/zsh-syntax-highlighting>
 [github-zsh-autosuggestions]: <https://github.com/zsh-users/zsh-autosuggestions>
 [github-zsh-completions]: <https://github.com/zsh-users/zsh-completions/tree/master>

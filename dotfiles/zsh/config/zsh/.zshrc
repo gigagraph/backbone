@@ -15,12 +15,11 @@ fpath+=("${ZSH_CUSTOM_PLUGINS_DIR}/pure-prompt")
 
 autoload -U promptinit; promptinit
 
-# seconds
-PURE_CMD_MAX_EXEC_TIME="5"
+## Configure the pure prompt
+PURE_CMD_MAX_EXEC_TIME="5" # seconds
 PURE_GIT_PULL="0"
 PURE_GIT_UNTRACKED_DIRTY="0"
-# seconds
-PURE_GIT_DELAY_DIRTY_CHECK="1800"
+PURE_GIT_DELAY_DIRTY_CHECK="1800" # seconds
 PURE_PROMPT_SYMBOL="❯"
 PURE_PROMPT_VICMD_SYMBOL="❮"
 PURE_GIT_DOWN_ARROW="⇣"
@@ -28,6 +27,29 @@ PURE_GIT_UP_ARROW="⇡"
 PURE_GIT_STASH_SYMBOL="≡"
 zstyle :prompt:pure:git:stash show yes
 
+## Set colors for the pure prompt
+### Refer to the following link for the color numbers:
+### https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+###
+### Note: for now this theme is designed for a dark mode (tested with dark Catpuccin temrinal emulator theme).
+zstyle ':prompt:pure:execution_time' color yellow
+zstyle ':prompt:pure:git:arrow' color 51 # strong cyan
+zstyle ':prompt:pure:git:stash' color magenta
+zstyle ':prompt:pure:git:branch' color green
+zstyle ':prompt:pure:git:branch:cached' color red
+zstyle ':prompt:pure:git:action' color '#fab387' # peach
+zstyle ':prompt:pure:git:dirty' color '#f5c2e7' # pink
+zstyle ':prompt:pure:path' color blue
+zstyle ':prompt:pure:prompt:error' color red
+zstyle ':prompt:pure:prompt:success' color '#cba6f7' # mauve
+zstyle ':prompt:pure:prompt:continuation' color white
+zstyle ':prompt:pure:suspended_jobs' color cyan
+zstyle ':prompt:pure:host' color white
+zstyle ':prompt:pure:user' color 69 # lavander blue
+zstyle ':prompt:pure:user:root' color 208 # orange
+zstyle ':prompt:pure:virtualenv' color 240
+
+## Initialize the pure prompt
 prompt pure
 
 # zsh options
