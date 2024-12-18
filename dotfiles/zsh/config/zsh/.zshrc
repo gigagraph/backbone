@@ -114,7 +114,12 @@ setopt SHARE_HISTORY
 
 bindkey -v
 
-# Use prefix in the zle to scroll through the commands
+## Enable to edit the current command in the default text editor
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'vv' edit-command-line
+
+## Use prefix in the zle to scroll through the commands
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
