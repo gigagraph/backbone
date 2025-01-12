@@ -21,7 +21,7 @@ sudo ./install-debian-deps.sh
 ```shell
 git clone git@github.com:python/cpython.git
 cd ./cpython
-git checkout v3.12.7
+git checkout "${PYTHON_VERSION_TAG}"
 env CC="$(which clang)" CFLAGS="-fPIC" CXX="$(which clang++)" CXXFLAGS="-fPIC" LD="lld" \
   ./configure --enable-optimizations --with-lto
 make

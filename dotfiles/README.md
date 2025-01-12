@@ -14,12 +14,13 @@ Configuration and setup instructions for the commonly used customized software.
 
 ## Software
 
+- Usable
+  - [zsh](./zsh/README.md).
+  - [Terminal utils](./terminal-utils/README.md).
 - In progress
   - [Kitty](./kitty/README.md).
   - [`neovim`](./neovim/README.md).
-  - [zsh](./zsh/README.md).
   - [tmux](./tmux/README.md).
-  - [Terminal utils](./terminal-utils/README.md).
 - TODO
   - Hyperland.
   - ollama.

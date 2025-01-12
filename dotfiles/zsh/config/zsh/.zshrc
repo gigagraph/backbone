@@ -63,15 +63,29 @@ unsetopt autocd extendedglob notify
 # When enabled (default), by default, it makes CTRL-S and CTRL-Q pause and resume the input in the terminal. These keybindings may interfere with keybindings from other plugins.
 stty -ixon ixoff start "" stop ""
 
-# Path
+# Paths
+
+local TEX_LIVE_BASE_PATH="/usr/local/texlive/current"
 
 typeset -U path PATH
-path=(
-  ${path}
-  /usr/lib/llvm-18/bin
-  /usr/local/go/bin
+path+=(
+  "/usr/lib/llvm-18/bin"
+  "/usr/local/go/bin"
+  /usr/local/texlive/current/bin/$(uname -m)-*([1])
 )
 export PATH
+
+typeset -U manpath MANPATH
+manpath+=(
+  "${TEX_LIVE_BASE_PATH}/texmf-dist/doc/man"
+)
+export MANPATH
+
+typeset -xTU INFOPATH infopath :
+infopath+=(
+  "${TEX_LIVE_BASE_PATH}/texmf-dist/doc/info"
+)
+export INFOPATH
 
 # Aliases
 
@@ -174,34 +188,6 @@ if [ ! -e "${ZSH_COMPLETIONS_DIR}/zsh-completions" ]; then
 fi
 source "${ZSH_COMPLETIONS_DIR}/zsh-completions/zsh-completions.plugin.zsh"
 
-# # TODO: try with zcompile
-# # Antidote
-# ## https://getantidote.github.io/install
-# 
-# ANTIDOTE_PATH="${HOME}/.antidote"
-# 
-# # Set the root name of the plugins files (.txt and .zsh) antidote will use.
-# zsh_plugins_txt="${ZDOTDIR:-~}/.zsh_plugins.txt"
-# zsh_plugins_zsh="${XDG_STATE_HOME}/.zsh_plugins.zsh"
-# 
-# # Ensure the .zsh_plugins.txt file exists so you can add plugins.
-# [[ -f "${zsh_plugins_txt}" ]] || touch "${zsh_plugins_txt}"
-# 
-# # Lazy-load antidote from its functions directory.
-# fpath+=("${ANTIDOTE_PATH}/functions")
-# autoload -Uz antidote
-# 
-# # Generate a new static file whenever .zsh_plugins.txt is updated.
-# if [[ ! "${zsh_plugins_zsh}" -nt "${zsh_plugins_txt}" ]]; then
-#   antidote bundle <"${zsh_plugins_txt}" >|"${zsh_plugins_zsh}"
-# fi
-# 
-# # Configure antidote
-# zstyle ':antidote:*' zcompile 'yes'
-# 
-# # Source your static plugins file.
-# source "${zsh_plugins_zsh}"
-
 # Configure completions
 
 setopt NOCORRECT
@@ -259,11 +245,11 @@ compdef batgrep=rg
 ##
 ## Docs: https://github.com/junegunn/fzf
 
-FZF_CUSTOM_FLAGS=(
+local FZF_CUSTOM_FLAGS=(
   "--wrap"
 )
 
-FZF_CUSTOM_KEYBINDINGS=(
+local FZF_CUSTOM_KEYBINDINGS=(
   "--bind=ctrl-e:preview-down"
   "--bind=ctrl-y:preview-up"
   "--bind=ctrl-w:toggle-preview-wrap"

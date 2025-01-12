@@ -6,6 +6,8 @@ TOOLCHAIN_VERSION_CMDS=(
   "python3.12 --version"
   "go version"
   "rustc --version && cargo --version"
+  "perl --version"
+  "lualatex --version"
 )
 
 for TOOLCHAIN_VERSION_CMD in "${TOOLCHAIN_VERSION_CMDS[@]}"; do
