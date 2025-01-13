@@ -3,8 +3,8 @@
 # installation profile at installation time.
 selected_scheme scheme-custom
 TEXMFCONFIG $TEXMFSYSCONFIG
-TEXMFHOME $TEXMFLOCAL
-TEXMFVAR $TEXMFSYSVAR
+TEXMFHOME $HOME/.cache/texlive
+TEXMFVAR $HOME/.cache/texlive/texmf-var
 collection-basic 1
 collection-bibtexextra 1
 collection-binextra 1

@@ -55,9 +55,10 @@ to your PATH for current and future sessions.
   - [tex-live-installation-unix][tex-live-installation-unix]
   - [tex-live-docs][tex-live-docs]
   - [manage-tex-live-packages][manage-tex-live-packages]
+- [so-tex-live-tex-mf-cache-issue][so-tex-live-tex-mf-cache-issue]
 
 [tug-tex-live]: <https://www.tug.org/texlive/>
 [tex-live-installation-unix]: <https://www.tug.org/texlive/quickinstall.html>
 [tex-live-docs]: <https://www.tug.org/texlive/>
 [manage-tex-live-packages]: <https://www.tug.org/texlive/pkginstall.html>
-
+[so-tex-live-tex-mf-cache-issue]: <https://tex.stackexchange.com/questions/582779/texlive-2020s-lualatex-fails-to-compile-due-to-no-writeable-cache-path-texli>
