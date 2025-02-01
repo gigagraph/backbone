@@ -17,6 +17,7 @@ Configuration and setup instructions for the commonly used customized software.
 - Usable
   - [zsh](./zsh/README.md).
   - [Terminal utils](./terminal-utils/README.md).
+  - [GUI](./gui/README.md).
 - In progress
   - [Kitty](./kitty/README.md).
   - [`neovim`](./neovim/README.md).
