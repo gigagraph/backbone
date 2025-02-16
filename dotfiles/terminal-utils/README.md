@@ -1,13 +1,15 @@
 # Terminal utils
 
-- [`fzf`](./fzf/README.md).
-- [`ripgrep`](./ripgrep/README.md).
-- [`eza`](./eza/README.md).
-- [`zoxide`](./zoxide/README.md).
-- [`entr`](./entr/README.md).
-- [`git`](./git/README.md).
-- [`delta`](./delta/README.md).
-- [`bat`](./bat/README.md).
+This subdirectory contains instructions and configuration for programs that closely integrate with terminal and shell and directly impact the terminal usage workflow.
+
+- Usable:
+  - [`fzf`](./fzf/README.md).
+  - [`ripgrep`](./ripgrep/README.md).
+  - [`eza`](./eza/README.md).
+  - [`zoxide`](./zoxide/README.md).
+  - [`entr`](./entr/README.md).
+  - [`delta`](./delta/README.md).
+  - [`bat`](./bat/README.md).
 
 ## Other terminal utils
 

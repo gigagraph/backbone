@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 TOOL_VERSION_CMDS=(
-  "git --version"
   "fzf --version"
   "rg --version"
   "eza --version"

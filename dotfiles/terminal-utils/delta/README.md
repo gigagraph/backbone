@@ -44,7 +44,7 @@ After the installation, ensure your `.gitconfg` has following to start using `de
 
 > [!NOTE]
 >
-> This repository comes with `.gitconfig` that uses `delta`. See the corresponding [doc for how to set it up](../git/README.md#configuration).
+> This repository comes with `.gitconfig` that uses `delta`. See the corresponding [doc for how to set it up](../../tools/git/README.md#configuration).
 
 ### Integrate `delta` with other programs
 

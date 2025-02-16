@@ -11,5 +11,6 @@
 
 ## Software
 
-- [Rnote](./rnote/README.md).
+- Usable:
+  - [Rnote](./rnote/README.md).
 
