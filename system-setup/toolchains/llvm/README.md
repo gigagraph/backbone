@@ -7,7 +7,8 @@ Follow the [official instructions for apt to install LLVM][apt-llvm].
 Import the repository GPG key
 
 ```shell
-wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc > /dev/null
+sudo chmod a+r /etc/apt/trusted.gpg.d/apt.llvm.org.asc
 ```
 
 Set the desired major LLVM version with the `LLVM_VERSION` variable and add apt repositories:
