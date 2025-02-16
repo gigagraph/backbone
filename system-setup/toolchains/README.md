@@ -7,6 +7,7 @@
 - [Lua](./lua/README.md).
 - [Perl](./perl/README.md).
 - [TeX Live](./texlive/README.md).
+- [Docker](./docker/README.md)
 
 ## Verify versions of the installed toolchains
 

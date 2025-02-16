@@ -8,6 +8,7 @@ TOOLCHAIN_VERSION_CMDS=(
   "rustc --version && cargo --version"
   "perl --version"
   "lualatex --version"
+  "docker version"
 )
 
 for TOOLCHAIN_VERSION_CMD in "${TOOLCHAIN_VERSION_CMDS[@]}"; do
