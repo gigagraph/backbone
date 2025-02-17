@@ -67,13 +67,28 @@ Start the ollama `systemd` service:
 sudo systemctl start ollama
 ```
 
+## Usage
+
+### CLI
+
+Use `ollama run <model-name>` to run a model supported by `ollama`.
+
+Alternatively, users can customize `ollama` models by creating a [`Modelfile`][ollama-modelfile-syntax]. After a user created a Modelfile, they need to `create` a new model from the file, which they can then `run`:
+
+```shell
+ollama create <customized-model-name> -f <path-to-modelfile>
+ollama run <customized-model-name>
+```
+
 ## Useful links
 
 - [ollama-site][ollama-site].
 - [ollama-manual-install-linux][ollama-manual-install-linux].
 - [ollama-faq-where-models-stored][ollama-faq-where-models-stored].
+- [ollama-modelfile-syntax][ollama-modelfile-syntax].
 
 [ollama-site]: https://ollama.com/
 [ollama-manual-install-linux]: https://github.com/ollama/ollama/blob/main/docs/linux.md
 [ollama-faq-where-models-stored]: https://github.com/ollama/ollama/blob/main/docs/faq.md#where-are-models-stored
+[ollama-modelfile-syntax]: https://github.com/ollama/ollama/blob/main/docs/modelfile.md
 

@@ -37,28 +37,26 @@ By default, TeX Live installer will install the distribution into `/usr/local/te
 sudo ln -s "/usr/local/texlive/${TEX_LIVE_VERSION}" "/usr/local/texlive/current"
 ```
 
-- TODO: additionally add symlinc for the CPU architecture
-- TODO: add manpages path
+After this, make sure to add `/usr/local/texlive/current/bin/$(uname -m)-*([1])` to your `PATH`.
 
-<!--
+TeX Live's manpages to your manpath. E.g. update `/etc/manpath.config` on your system:
 
-Add /usr/local/texlive/2024/texmf-dist/doc/man to MANPATH.
-Add /usr/local/texlive/2024/texmf-dist/doc/info to INFOPATH.
-Most importantly, add /usr/local/texlive/2024/bin/x86_64-linux
-to your PATH for current and future sessions.
-
--->
+```shell
+echo "MANPATH_MAP $(echo "/usr/local/texlive/current/bin/$(uname -m)-"*([1])) /usr/local/texlive/current/texmf-dist/doc/man" > "/etc/manpath.config"
+```
 
 ## Useful links
 
-- [tug-tex-live][tug-tex-live]
-  - [tex-live-installation-unix][tex-live-installation-unix]
-  - [tex-live-docs][tex-live-docs]
-  - [manage-tex-live-packages][manage-tex-live-packages]
-- [so-tex-live-tex-mf-cache-issue][so-tex-live-tex-mf-cache-issue]
+- [tug-tex-live][tug-tex-live].
+  - [tex-live-installation-unix][tex-live-installation-unix].
+  - [tex-live-docs][tex-live-docs].
+  - [manage-tex-live-packages][manage-tex-live-packages].
+- [so-tex-live-tex-mf-cache-issue][so-tex-live-tex-mf-cache-issue].
+- [man-manpath][man-manpath].
 
 [tug-tex-live]: <https://www.tug.org/texlive/>
 [tex-live-installation-unix]: <https://www.tug.org/texlive/quickinstall.html>
 [tex-live-docs]: <https://www.tug.org/texlive/>
 [manage-tex-live-packages]: <https://www.tug.org/texlive/pkginstall.html>
 [so-tex-live-tex-mf-cache-issue]: <https://tex.stackexchange.com/questions/582779/texlive-2020s-lualatex-fails-to-compile-due-to-no-writeable-cache-path-texli>
+[man-manpath]: https://man7.org/linux/man-pages/man5/manpath.5.html

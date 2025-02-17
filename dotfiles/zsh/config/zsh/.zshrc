@@ -71,21 +71,9 @@ typeset -U path PATH
 path+=(
   "/usr/lib/llvm-18/bin"
   "/usr/local/go/bin"
-  /usr/local/texlive/current/bin/$(uname -m)-*([1])
+  "${TEX_LIVE_BASE_PATH}/bin/"$(uname -m)-*([1])
 )
 export PATH
-
-typeset -U manpath MANPATH
-manpath+=(
-  "${TEX_LIVE_BASE_PATH}/texmf-dist/doc/man"
-)
-export MANPATH
-
-typeset -xTU INFOPATH infopath :
-infopath+=(
-  "${TEX_LIVE_BASE_PATH}/texmf-dist/doc/info"
-)
-export INFOPATH
 
 # Aliases
 
