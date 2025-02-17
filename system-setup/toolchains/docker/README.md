@@ -55,12 +55,31 @@ sudo usermod -aG docker "${USER}"
 newgrp docker
 ```
 
+> [!NOTE]
+>
+> You may need to log in your user account again to apply the group changes.
+
+#### [Set `buildx` as a default builder][docker-buildx-set-default]
+
+```shell
+docker buildx install
+```
+
 #### Ensure `systemd` start `docker` daemon and `containerd` services
 
 ```shell
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 ```
+
+If you do not want to keep `docker` to automatically start on system startup, disable the services:
+
+```shell
+sudo systemctl disable docker.service
+sudo systemctl disable containerd.service
+```
+
+In this case, when you want to run docker, you will need to start and stop the services manually.
 
 ## Useful links
 
@@ -73,4 +92,5 @@ sudo systemctl enable containerd.service
 [docker-docs-engine-install]: https://docs.docker.com/engine/install/
 [docker-docs-engine-install-ubuntu]: https://docs.docker.com/engine/install/ubuntu/
 [docker-docs-engine-post-install]: https://docs.docker.com/engine/install/linux-postinstall/
+[docker-buildx-set-default]: https://github.com/docker/buildx?tab=readme-ov-file#set-buildx-as-the-default-builder
 
