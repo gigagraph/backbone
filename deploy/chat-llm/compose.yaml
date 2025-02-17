@@ -4,8 +4,8 @@ services:
   ollama:
     image: "backbone-ollama:latest"
     build:
-      context: "./infra/image"
-      dockerfile: "./jupyter/Containerfile"
+      context: "."
+      dockerfile: "ollama.Containerfile"
       args:
         OLLAMA_IMAGE_TAG: "${OLLAMA_IMAGE_TAG}"
     container_name: "chat-llm-ollama"
