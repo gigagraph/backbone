@@ -31,7 +31,6 @@ echo \
 sudo apt-get update -y
 ```
 
-- [ ] TODO: installation instructions
 Install docker via `apt`:
 
 ```shell
@@ -81,16 +80,51 @@ sudo systemctl disable containerd.service
 
 In this case, when you want to run docker, you will need to start and stop the services manually.
 
+### GPU support
+
+#### Nvidia Container Toolkit
+
+> [!IMPORTANT] Prerequisites
+>
+> Users must have [Nvidia driver](../../graphics.md#nvidia) installed before they install Nvidia Container Toolkit.
+
+Add Nvidia Container Toolkit GPG key and repository to `apt`:
+
+```shell
+curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+  && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+    sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+    sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list > /dev/null
+```
+
+Update `apt` repositories and install the toolkit:
+
+```shell
+sudo apt update -y && \
+  sudo apt install -y nvidia-container-toolkit
+```
+
+Configure `docker` to use Nvidia Container Toolkit and restart the daemon:
+
+```shell
+sudo nvidia-ctk runtime configure --runtime=docker
+sudo systemctl restart docker
+```
+
 ## Useful links
 
 - [docker-docs-engine][docker-docs-engine].
   - [docker-docs-engine-install][docker-docs-engine-install].
     - [docker-docs-engine-install-ubuntu][docker-docs-engine-install-ubuntu].
     - [docker-docs-engine-post-install][docker-docs-engine-post-install].
+- [nvidia-install-container-toolkit][nvidia-install-container-toolkit].
+- [compose-gpu-support][compose-gpu-support]. 
 
 [docker-docs-engine]: https://docs.docker.com/engine/
 [docker-docs-engine-install]: https://docs.docker.com/engine/install/
 [docker-docs-engine-install-ubuntu]: https://docs.docker.com/engine/install/ubuntu/
 [docker-docs-engine-post-install]: https://docs.docker.com/engine/install/linux-postinstall/
 [docker-buildx-set-default]: https://github.com/docker/buildx?tab=readme-ov-file#set-buildx-as-the-default-builder
+[nvidia-install-container-toolkit]: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
+[compose-gpu-support]: https://docs.docker.com/compose/how-tos/gpu-support/
 

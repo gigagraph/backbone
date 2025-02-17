@@ -1,0 +1,98 @@
+name: "chat-llm"
+
+services:
+  ollama:
+    image: "backbone-ollama:latest"
+    build:
+      context: "./infra/image"
+      dockerfile: "./jupyter/Containerfile"
+      args:
+        OLLAMA_IMAGE_TAG: "${OLLAMA_IMAGE_TAG}"
+    container_name: "chat-llm-ollama"
+    user: "root"
+    environment:
+      OLLAMA_HOST: "0.0.0.0:11434"
+    ports:
+      - "${OLLAMA_HOST_PORT}:11434"
+    volumes:
+      - "./ollama-state:/root/ollama"
+      - "./modelfiles/:/root/modelfiles"
+      - "./data/:/root/data"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/version"]
+      interval: 1m
+      timeout: 5s
+      retries: 3
+      start_period: 0s
+      start_interval: 0s
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities:
+                - "compute"
+                - "utility"
+              driver: "nvidia"
+              count: "all"
+  # open-webui:
+  #   depends_on:
+  #     ollama:
+  #       # condition: "service_healthy" # TODO
+  #       restart: false
+  #   image: "" # TODO
+  #   container_name: "chat-llm-open-webui"
+  #   environment: [] # TODO: ollama api endpoint
+  #   ports:
+  #     - "" # TODO
+
+# name: "opencv-projects"
+# 
+# services:
+#   jupyter:
+#     image: "opencv-projects:latest"
+#     build:
+#       context: "./infra/image"
+#       dockerfile: "./jupyter/Containerfile"
+#     container_name: "opencv-projects"
+#     user: "root"
+#     environment:
+#       NB_USER: "opencv"
+#       CHOWN_HOME: "yes"
+#       TERM: "linux"
+#       # When using X Window System, by default the DISPLAY variable is set such
+#       # that X clients (i.e. GUI programs) connect to the local X server via
+#       # unix domain socket, located at /tmp/.X11-unix/Xn, where n is X server
+#       # number
+#       DISPLAY: "${DISPLAY}"
+#     working_dir: "/home/opencv"
+#     ports:
+#       - "8888:8888"
+#     volumes:
+#       - "./infra/image/jupyter/settings/overrides:/opt/conda/share/jupyter/lab/settings"
+#       - "./infra/image/jupyter/settings/config:/usr/local/etc/jupyter"
+#       - "./infra/image/jupyter/scripts:/home/opencv/scripts"
+#       - "./src:/home/opencv/workdir"
+#       # This allows X clients, i.e. programs that display their GUI to X
+#       # server, such as when displaying GUI windows with OpenCV, to connect to
+#       # the X server running on the host. This way the windows will be
+#       # displayed on the machine running the container.
+#       # Make sure you have authorized opencv group via xhost locally:
+#       # $ xhost +si:localgroup:opencv
+#       - "/tmp/.X11-unix:/tmp/.X11-unix"
+#     # Pass your webcam here
+#     # devices:
+#     #   - "/dev/video0"
+#     # https://jupyter-docker-stacks.readthedocs.io/en/latest/using/running.html#example-2
+#     command: >-2
+#       start-notebook.py
+#       --ServerApp.root_dir=/home/opencv/workdir
+#       --IdentityProvider.token='opencv'
+#     deploy:
+#       resources:
+#         reservations:
+#           devices:
+#             - capabilities:
+#                 - "compute"
+#                 - "utility"
+#               driver: "nvidia"
+#               count: "all"
