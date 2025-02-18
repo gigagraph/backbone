@@ -4,4 +4,5 @@ venv/
 # Host-specific directories populated automatically at runtime
 deploy/chat-llm/ollama-state/
 deploy/chat-llm/data/
+deploy/chat-llm/open-webui-state/
 

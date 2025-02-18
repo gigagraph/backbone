@@ -1,6 +1,7 @@
 ARG OLLAMA_IMAGE_TAG
+ARG OLLAMA_IMAGE_NAME="ollama/ollama"
 
-FROM "ollama/ollama:${OLLAMA_IMAGE_TAG}"
+FROM "${OLLAMA_IMAGE_NAME}:${OLLAMA_IMAGE_TAG}"
 
 RUN <<EOF
   apt update -y 

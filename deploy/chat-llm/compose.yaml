@@ -25,6 +25,7 @@ services:
       retries: 3
       start_period: 0s
       start_interval: 0s
+    restart: "unless-stopped"
     deploy:
       resources:
         reservations:
@@ -34,65 +35,165 @@ services:
                 - "utility"
               driver: "nvidia"
               count: "all"
-  # open-webui:
-  #   depends_on:
-  #     ollama:
-  #       # condition: "service_healthy" # TODO
-  #       restart: false
-  #   image: "" # TODO
-  #   container_name: "chat-llm-open-webui"
-  #   environment: [] # TODO: ollama api endpoint
-  #   ports:
-  #     - "" # TODO
+  open-webui:
+    depends_on:
+      ollama:
+        condition: "service_healthy"
+        restart: false
+    image: "${OPEN_WEBUI_IMAGE_NAME:-ghcr.io/open-webui/open-webui}:${OPEN_WEBUI_IMAGE_TAG}"
+    container_name: "chat-llm-open-webui"
+    user: "root"
+    environment:
+      ENABLE_OLLAMA_API: true
+      OLLAMA_BASE_URL: "http://ollama:11434"
+      ENABLE_OPENAI_API: false
+      OPENAI_API_BASE_URL: ""
+      OPENAI_API_KEY: ""
+      ENV: "${OPEN_WEBUI_ENV:-prod}"
+      WEBUI_NAME: "${OPEN_WEBUI_WEBUI_NAME:-Chat LLM}"
+      ENABLE_SIGNUP: "${OPEN_WEBUI_ENABLE_SIGNUP:-false}"
+      ENABLE_LOGIN_FORM: "${OPEN_WEBUI_ENABLE_LOGIN_FORM:-true}"
+      ENABLE_OAUTH_SIGNUP: "${OPEN_WEBUI_ENABLE_OAUTH_SIGNUP:-false}"
+      ENABLE_REALTIME_CHAT_SAVE: false
+      ENABLE_ADMIN_EXPORT: true
+      ENABLE_ADMIN_CHAT_ACCESS: true
+      ENABLE_CHANNELS: false
+      ADMIN_EMAIL: ""
+      SHOW_ADMIN_DETAILS: false
+      BYPASS_MODEL_ACCESS_CONTROL: false
+      HF_HUB_OFFLINE: 0
+      DEFAULT_MODELS: "${OPEN_WEBUI_DEFAULT_MODELS:-}"
+      DEFAULT_USER_ROLE: "${OPEN_WEBUI_DEFAULT_USER_ROLE:-pending}"
+      DEFAULT_LOCALE: "${OPEN_WEBUI_DEFAULT_LOCALE:-en}"
+      JWT_EXPIRES_IN: "${OPEN_WEBUI_JWT_EXPIRES_IN:-7d}"
+      USE_CUDA_DOCKER: true
+      DATA_DIR: "./data" # Relative to the default working directory (/app/backend)
 
-# name: "opencv-projects"
-# 
-# services:
-#   jupyter:
-#     image: "opencv-projects:latest"
-#     build:
-#       context: "./infra/image"
-#       dockerfile: "./jupyter/Containerfile"
-#     container_name: "opencv-projects"
-#     user: "root"
-#     environment:
-#       NB_USER: "opencv"
-#       CHOWN_HOME: "yes"
-#       TERM: "linux"
-#       # When using X Window System, by default the DISPLAY variable is set such
-#       # that X clients (i.e. GUI programs) connect to the local X server via
-#       # unix domain socket, located at /tmp/.X11-unix/Xn, where n is X server
-#       # number
-#       DISPLAY: "${DISPLAY}"
-#     working_dir: "/home/opencv"
-#     ports:
-#       - "8888:8888"
-#     volumes:
-#       - "./infra/image/jupyter/settings/overrides:/opt/conda/share/jupyter/lab/settings"
-#       - "./infra/image/jupyter/settings/config:/usr/local/etc/jupyter"
-#       - "./infra/image/jupyter/scripts:/home/opencv/scripts"
-#       - "./src:/home/opencv/workdir"
-#       # This allows X clients, i.e. programs that display their GUI to X
-#       # server, such as when displaying GUI windows with OpenCV, to connect to
-#       # the X server running on the host. This way the windows will be
-#       # displayed on the machine running the container.
-#       # Make sure you have authorized opencv group via xhost locally:
-#       # $ xhost +si:localgroup:opencv
-#       - "/tmp/.X11-unix:/tmp/.X11-unix"
-#     # Pass your webcam here
-#     # devices:
-#     #   - "/dev/video0"
-#     # https://jupyter-docker-stacks.readthedocs.io/en/latest/using/running.html#example-2
-#     command: >-2
-#       start-notebook.py
-#       --ServerApp.root_dir=/home/opencv/workdir
-#       --IdentityProvider.token='opencv'
-#     deploy:
-#       resources:
-#         reservations:
-#           devices:
-#             - capabilities:
-#                 - "compute"
-#                 - "utility"
-#               driver: "nvidia"
-#               count: "all"
+      # Tasks
+      TASK_MODEL: "phi4"
+      # TITLE_GENERATION_PROMPT_TEMPLATE: "" # Users can customize this to change the prompt to generate titles for chats
+      # TOOLS_FUNCTION_CALLING_PROMPT_TEMPLATE: ""
+
+      ## Autocomplete
+      ENABLE_AUTOCOMPLETE_GENERATION: "${OPEN_WEBUI_ENABLE_AUTOCOMPLETE_GENERATION:-true}"
+      AUTOCOMPLETE_GENERATION_INPUT_MAX_LENGTH: "${OPEN_WEBUI_AUTOCOMPLETE_GENERATION_INPUT_MAX_LENGTH:--1}"
+      # AUTOCOMPLETE_GENERATION_PROMPT_TEMPLATE: ""
+
+      # Evaluation Arena Model
+      ENABLE_EVALUATION_ARENA_MODELS: "${OPEN_WEBUI_ENABLE_EVALUATION_ARENA_MODELS:-true}"
+      ENABLE_MESSAGE_RATING: "${OPEN_WEBUI_ENABLE_MESSAGE_RATING:-true}"
+      ENABLE_COMMUNITY_SHARING: "${OPEN_WEBUI_ENABLE_COMMUNITY_SHARING:-false}"
+
+      # Tag generation
+      ENABLE_TAGS_GENERATION: "${OPEN_WEBUI_ENABLE_TAGS_GENERATION:-true}"
+      # TAGS_GENERATION_PROMPT_TEMPLATE: ""
+
+      # API Key Endpoint Restrictions
+      ENABLE_API_KEY_ENDPOINT_RESTRICTIONS: "${OPEN_WEBUI_ENABLE_API_KEY_ENDPOINT_RESTRICTIONS:true}"
+      # API_KEY_ALLOWED_ENDPOINTS: ""
+
+      # Security
+      ENABLE_FORWARD_USER_INFO_HEADERS: "${OPEN_WEBUI_ENABLE_FORWARD_USER_INFO_HEADERS-:false}"
+      ENABLE_RAG_LOCAL_WEB_FETCH: "${OPEN_WEBUI_ENABLE_RAG_LOCAL_WEB_FETCH:-false}"
+      ENABLE_RAG_WEB_LOADER_SSL_VERIFICATION: "${OPEN_WEBUI_ENABLE_RAG_WEB_LOADER_SSL_VERIFICATION:-true}"
+      WEBUI_SESSION_COOKIE_SAME_SITE: "${OPEN_WEBUI_WEBUI_SESSION_COOKIE_SAME_SITE:-strict}" # Use lax if authentication issues occur
+      WEBUI_SESSION_COOKIE_SECURE: "${OPEN_WEBUI_WEBUI_SESSION_COOKIE_SECURE:-false}"
+      WEBUI_AUTH_COOKIE_SECURE: "${OPEN_WEBUI_WEBUI_AUTH_COOKIE_SECURE:-false}"
+      WEBUI_AUTH: "${OPEN_WEBUI_WEBUI_AUTH:-false}"
+      # WEBUI_SECRET_KEY: "${OPEN_WEBUI_WEBUI_SECRET_KEY}"
+      OFFLINE_MODE: "${OPEN_WEBUI_OFFLINE_MODE:-false}"
+      RESET_CONFIG_ON_START: "${OPEN_WEBUI_RESET_CONFIG_ON_START:-false}"
+      SAFE_MODE: "${OPEN_WEBUI_SAFE_MODE:-false}"
+      CORS_ALLOW_ORIGIN: "${OPEN_WEBUI_CORS_ALLOW_ORIGIN:-*}"
+      RAG_EMBEDDING_MODEL_TRUST_REMOTE_CODE: "${OPEN_WEBUI_RAG_EMBEDDING_MODEL_TRUST_REMOTE_CODE:-false}"
+      RAG_RERANKING_MODEL_TRUST_REMOTE_CODE: "${OPEN_WEBUI_RAG_RERANKING_MODEL_TRUST_REMOTE_CODE:-false}"
+      RAG_EMBEDDING_MODEL_AUTO_UPDATE: "${OPEN_WEBUI_RAG_EMBEDDING_MODEL_AUTO_UPDATE:-false}"
+      RAG_RERANKING_MODEL_AUTO_UPDATE: "${OPEN_WEBUI_RAG_RERANKING_MODEL_AUTO_UPDATE:-false}"
+      WHISPER_MODEL_AUTO_UPDATE: "${OPEN_WEBUI_WHISPER_MODEL_AUTO_UPDATE:-false}"
+
+      # RAG
+      VECTOR_DB: "${OPEN_WEBUI_VECTOR_DB:-chroma}"
+      RAG_EMBEDDING_ENGINE: "ollama"
+      RAG_EMBEDDING_MODEL: "${OPEN_WEBUI_RAG_EMBEDDING_MODEL:-sentence-transformers/all-MiniLM-L6-v2}"
+      ENABLE_RAG_HYBRID_SEARCH: "${OPEN_WEBUI_ENABLE_RAG_HYBRID_SEARCH:-false}"
+      CONTENT_EXTRACTION_ENGINE: ""
+      RAG_TOP_K: "${OPEN_WEBUI_RAG_TOP_K:-3}"
+      RAG_RELEVANCE_THRESHOLD: "${OPEN_WEBUI_RAG_RELEVANCE_THRESHOLD:-0.0}"
+      # RAG_TEMPLATE: ""
+      RAG_TEXT_SPLITTER: "${OPEN_WEBUI_RAG_TEXT_SPLITTER:-character}"
+      PDF_EXTRACT_IMAGES: "${OPEN_WEBUI_PDF_EXTRACT_IMAGES:-true}"
+      ENABLE_RETRIEVAL_QUERY_GENERATION: "${OPEN_WEBUI_ENABLE_RETRIEVAL_QUERY_GENERATION:-true}"
+      # QUERY_GENERATION_PROMPT_TEMPLATE: ""
+
+      # Chroma
+      # # TODO: add chroma service as well for RAG
+      # CHROMA_TENANT: "${OPEN_WEBUI_CHROMA_TENANT}"
+      # CHROMA_DATABASE: "${OPEN_WEBUI_CHROMA_DATABASE}"
+      # CHROMA_HTTP_HOST: "${OPEN_WEBUI_CHROMA_HTTP_HOST}"
+      # CHROMA_HTTP_PORT: "${OPEN_WEBUI_CHROMA_HTTP_PORT}"
+      # CHROMA_HTTP_HEADERS: "${OPEN_WEBUI_CHROMA_HTTP_HEADERS}"
+      # CHROMA_HTTP_SSL: "${OPEN_WEBUI_CHROMA_HTTP_SSL}"
+      # CHROMA_CLIENT_AUTH_PROVIDER: "${OPEN_WEBUI_CHROMA_CLIENT_AUTH_PROVIDER}"
+      # CHROMA_CLIENT_AUTH_CREDENTIALS: "${OPEN_WEBUI_CHROMA_CLIENT_AUTH_CREDENTIALS}"
+
+      # Web search
+      ENABLE_RAG_WEB_SEARCH: false
+
+      # Audio
+
+      ## Speach-to-Text (local)
+      WHISPER_MODEL: "${WHISPER_MODEL:-base}"
+      # WHISPER_MODEL_DIR: "" # Default is "${DATA_DIR}/cache/whisper/models"
+
+      ## Text-to-Speach
+      AUDIO_TTS_API_KEY: ""
+      AUDIO_TTS_ENGINE: ""
+
+      # Image generation
+      ENABLE_IMAGE_GENERATION: false # disable until automatic1111 stable diffusion UI is deployed
+
+      # OAuth
+      ENABLE_OAUTH_SIGNUP: false
+
+      # LDAP
+      ENABLE_LDAP: false
+
+      # Workspace permissions
+      USER_PERMISSIONS_WORKSPACE_MODELS_ACCESS: "${OPEN_WEBUI_USER_PERMISSIONS_WORKSPACE_MODELS_ACCESS:-false}"
+      USER_PERMISSIONS_WORKSPACE_KNOWLEDGE_ACCESS: "${OPEN_WEBUI_USER_PERMISSIONS_WORKSPACE_KNOWLEDGE_ACCESS:-false}"
+      USER_PERMISSIONS_WORKSPACE_PROMPTS_ACCESS: "${OPEN_WEBUI_USER_PERMISSIONS_WORKSPACE_PROMPTS_ACCESS:-false}"
+      USER_PERMISSIONS_WORKSPACE_TOOLS_ACCESS: "${OPEN_WEBUI_USER_PERMISSIONS_WORKSPACE_TOOLS_ACCESS:-false}"
+
+      # User permissions
+      USER_PERMISSIONS_CHAT_FILE_UPLOAD: "${OPEN_WEBUI_USER_PERMISSIONS_CHAT_FILE_UPLOAD:-true}"
+      USER_PERMISSIONS_CHAT_DELETE: "${OPEN_WEBUI_USER_PERMISSIONS_CHAT_DELETE:-true}"
+      USER_PERMISSIONS_CHAT_EDIT: "${OPEN_WEBUI_USER_PERMISSIONS_CHAT_EDIT:-true}"
+      USER_PERMISSIONS_CHAT_TEMPORARY: "${OPEN_WEBUI_USER_PERMISSIONS_CHAT_TEMPORARY:-true}"
+
+      # Database
+      DATABASE_URL: "${OPEN_WEBUI_DATABASE_URL:-sqlite:///${DATA_DIR}/webui.db}"
+      DATABASE_POOL_MAX_OVERFLOW: "${OPEN_WEBUI_DATABASE_POOL_MAX_OVERFLOW:-0}"
+      DATABASE_POOL_TIMEOUT: "${OPEN_WEBUI_DATABASE_POOL_TIMEOUT:-30}"
+      DATABASE_POOL_RECYCLE: "${OPEN_WEBUI_DATABASE_POOL_RECYCLE:-3600}"
+    ports:
+      - "${OPENWEBUI_HOST_PORT}:8080"
+    volumes:
+      - "./open-webui-state:/app/backend/data"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 1m
+      timeout: 5s
+      retries: 3
+      start_period: 0s
+      start_interval: 0s
+    restart: "unless-stopped"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities:
+                - "compute"
+                - "utility"
+              driver: "nvidia"
+              count: "all"
+
