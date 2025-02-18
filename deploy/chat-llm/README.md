@@ -13,12 +13,16 @@ Service to chat with locally deployed LLMs.
 
 ### Deployment instructions
 
+> [!NOTE]
+>
+> The `compose.yaml` deployment assumes users set `OPEN_WEBUI_IMAGE_TAG` to the one that ends with `cuda`.
+
 Run the following command:
 
 ```shell
 env "OLLAMA_IMAGE_TAG=<ollama-image-tag>" \
   "OLLAMA_HOST_PORT=<ollama-port>" \
-  "OPENWEBUI_HOST_PORT=<open-webui-port>" \
+  "OPEN_WEBUI_HOST_PORT=<open-webui-port>" \
   "OPEN_WEBUI_IMAGE_TAG=<open-webui-tag>" \
   docker compose up -d --build
 ```

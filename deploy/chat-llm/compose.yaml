@@ -176,7 +176,7 @@ services:
       DATABASE_POOL_TIMEOUT: "${OPEN_WEBUI_DATABASE_POOL_TIMEOUT:-30}"
       DATABASE_POOL_RECYCLE: "${OPEN_WEBUI_DATABASE_POOL_RECYCLE:-3600}"
     ports:
-      - "${OPENWEBUI_HOST_PORT}:8080"
+      - "${OPEN_WEBUI_HOST_PORT}:8080"
     volumes:
       - "./open-webui-state:/app/backend/data"
     healthcheck:
