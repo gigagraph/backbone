@@ -15,7 +15,7 @@ services:
     ports:
       - "${OLLAMA_HOST_PORT}:11434"
     volumes:
-      - "./ollama-state:/root/ollama"
+      - "./ollama-state:/root/.ollama"
       - "./modelfiles/:/root/modelfiles"
       - "./data/:/root/data"
     healthcheck:
