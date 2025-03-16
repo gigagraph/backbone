@@ -7,6 +7,8 @@ TOOLCHAIN_VERSION_CMDS=(
   "go version"
   "rustc --version && cargo --version"
   "perl --version"
+  "luajit -v"
+  "luarocks --version"
   "lualatex --version"
   "docker version"
 )
