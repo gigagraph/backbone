@@ -71,6 +71,8 @@ typeset -U path PATH
 path+=(
   "/usr/lib/llvm-18/bin"
   "/usr/local/go/bin"
+  # pipx's install location
+  "${HOME}/.local/bin"
   "${TEX_LIVE_BASE_PATH}/bin/"$(uname -m)-*([1])
 )
 export PATH

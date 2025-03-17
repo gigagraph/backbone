@@ -10,6 +10,7 @@ Docs: https://sw.kovidgoyal.net/kitty/.
 > Ensure you have the following language toolhcains:
 > - [C/C++](../system-setup/toolchains/llvm/README.md).
 > - [Python](../system-setup/toolchains/python/README.md).
+>   - With [pipx](../system-setup/toolchains/python/README.md#pipx).
 > - [Go](../system-setup/toolchains/go/README.md).
 >
 > [You can verify the versions of the installed toolcahins with the script](../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
@@ -150,11 +151,46 @@ Use the config from this repository on your system by creating symlinking the us
 #### Keyboard shortcuts
 
 - [ ] TODO: document useful frequent keyboard shortcuts
-  - Document the default keybindings from the [docs overview page][kitty-docs-local]
+  - Document the default keybindings from the [docs overview page][kitty-docs-local].
 
 #### Shell integration
 
-- [ ] [TODO][kitty-shell-integration]
+See the [Shell Integration][kitty-shell-integration] docs page for kitty for a comprehensive description.
+
+By default, kitty should automatically detect the shell that it runs and set up the shell integration. This behavior can be changed in config.
+
+### Programs that integrate with kitty
+
+- TODO: installation instructions.
+
+#### Recommended kitty integrations
+
+[A complete list of supported integrations][kitty-shell-integration] is avaliable in the official docs.
+
+This guide recommends installing the following integrations:
+
+- [`tdf`](#tdf)
+
+#### [`tdf`][github-tdf] installation
+
+```shell
+git clone git@github.com:itsjunetime/tdf.git
+cd tdf
+git checkout "${TDF_VERSION}"
+```
+
+Install system dependencies:
+
+```shell
+sudo apt update -y
+sudo apt install -y libfontconfig1-dev
+```
+
+Build and install from sources:
+
+```shell
+env 'RUSTFLAGS=--cfg tokio_unstable' cargo install --all-features --locked --path .
+```
 
 ## Useful links
 
@@ -181,3 +217,4 @@ Use the config from this repository on your system by creating symlinking the us
 [kitty-hints-local]: <file:///usr/local/share/doc/kitty/html/kittens/hints.html>
 [kitty-hints]: <https://sw.kovidgoyal.net/kitty/kittens/hints/>
 [arch-wiki-kitty]: <https://wiki.archlinux.org/title/Kitty>
+[github-tdf]: <https://github.com/itsjunetime/tdf>
