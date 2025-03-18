@@ -24,8 +24,8 @@ The **top level** of this directory contains subdirectories that correspond to *
 
 - Usable:
   - [zsh](./zsh/README.md).
-- In progress:
   - [Kitty](./kitty/README.md).
+- In progress:
   - [`neovim`](./neovim/README.md).
   - [tmux](./tmux/README.md).
 - TODO:

@@ -138,14 +138,6 @@ Use the config from this repository on your system by creating symlinking the us
   - Set neovim as default pager
     - https://sw.kovidgoyal.net/kitty/conf/#shortcut-kitty.Browse
 
-### Kittens bundle
-
-- [ ] TODO: setup
-  - https://github.com/mikesmithgh/kitty-scrollback.nvim
-  - https://github.com/jktr/matplotlib-backend-kitty
-  - https://github.com/itsjunetime/tdf
-  - https://github.com/trygveaa/kitty-kitten-search
-
 ### Features
 
 #### Keyboard shortcuts
@@ -160,8 +152,6 @@ See the [Shell Integration][kitty-shell-integration] docs page for kitty for a c
 By default, kitty should automatically detect the shell that it runs and set up the shell integration. This behavior can be changed in config.
 
 ### Programs that integrate with kitty
-
-- TODO: installation instructions.
 
 #### Recommended kitty integrations
 
