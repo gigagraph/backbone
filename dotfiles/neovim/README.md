@@ -55,7 +55,31 @@ sudo update-alternatives --set vi "$(which nvim)"
 
 ## Configuration
 
-- [ ] TODO: setup ~/.config/neovim/init.lua (and leave reference to the docs)
+[`neovim` config resides in `${$XDG_CONFIG_HOME}/init.lua` file](https://neovim.io/doc/user/lua-guide.html#lua-guide-config). Find more info by inspecifng help pages in `neovim`:
+
+> [!NOTE] Useful resources for configuring `neovim`
+>
+> - Consult with:
+>   - [`kickstart.nvim`][github-neovim-kickstart] for a comprehensive single-file configuration of `neovim`.
+>   - `neovim`'s reference docs to find more information about configuring `neovim`:
+>     - ```
+>       :help lua-guide
+>       :help init.lua
+>       ```
+>   - Lua Reference manual in `neovim`:
+>     - ```
+>       :help luaref
+>       ```
+>   - Reference for Lua and `neovim` integration:
+>     - ```
+>       :help lua
+>       ```
+
+Use the config from this repository on your system by creating symlinking the user config default directory to the config dir in this repo (the script will prompt you for confirmation before running any configuration commands):
+
+```shell
+./setup-config.sh
+```
 
 ## Make `nvim` default pager
 
