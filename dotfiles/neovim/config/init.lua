@@ -1,11 +1,28 @@
 vim.g.mapleader = "<space>"
-vim.g.maplocalleader = "\\"
+vim.g.maplocalleader = "<space>"
 
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 5
 
+vim.opt.shiftwidth = 2
+-- Have fine-grained control over spaces in normal mode. Prioritize simpler
+-- control over code structure in insert.
+vim.opt.smarttab = true
+
+vim.opt.textwidth = 80
+
 vim.opt.fixendofline = true
+
+vim.opt.list = true
+vim.opt.listchars = {
+  tab = "➡⇨",
+  space = "⸱",
+  trail = "⚬",
+  extends = "⤑",
+  precedes = "⬸",
+  nbsp = "⍽",
+}
 
 vim.opt.langremap = false
 vim.opt.langmap = {
@@ -20,7 +37,7 @@ vim.opt.langmap = {
         "ФA", "ІS", "ВD", "АF", "ПG", --[[ | ]] "РH", "ОJ", "ЛK", "ДL", "Ж:", 'Є\\"',
         "ЯZ", "ЧX", "СC", "МV",       --[[ | ]] "ИB", "ТN", "ЬM", "Б<", "Ю>",
 
-  --
+  -- Cyrillic
   "ё`",
         "йq", "цw", "уe", "кr", "еt", --[[ | ]] "нy", "гu", "шi", "щo",   "зp",   "х[", "ъ]",
         "фa", "ыs", "вd", "аf", "пg", --[[ | ]] "рh", "оj", "лk", "дl",   "ж\\;", "э'",
@@ -30,16 +47,6 @@ vim.opt.langmap = {
         "ЙQ", "ЦW", "УE", "КR", "ЕT", --[[ | ]] "НY", "ГU", "ШI", "ЩO", "ЗP", "Х{",   "Ъ}",
         "ФA", "ЫS", "ВD", "АF", "ПG", --[[ | ]] "РH", "ОJ", "ЛK", "ДL", "Ж:", 'Э\\"',
         "ЯZ", "ЧX", "СC", "МV",       --[[ | ]] "ИB", "ТN", "ЬM", "Б<", "Ю>",
-}
-
-vim.opt.list = true
-vim.opt.listchars = {
-  tab = "➡⇨",
-  space = "⸱",
-  trail = "⚬",
-  extends = "⤑",
-  precedes = "⬸",
-  nbsp = "⍽",
 }
 
 vim.api.nvim_create_autocmd("TextYankPost", {
