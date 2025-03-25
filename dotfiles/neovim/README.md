@@ -81,6 +81,8 @@ Use the config from this repository on your system by creating symlinking the us
 ./setup-config.sh
 ```
 
+- [ ] TODO: specify the convention for plugin management and configuration in this config with lazy.
+
 ## Make `nvim` default pager
 
 - [ ] TODO:
