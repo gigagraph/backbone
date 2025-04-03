@@ -86,10 +86,10 @@ sudo update-alternatives --set cc "$(which clang)"
 for cpp_alternative in 'cpp' 'c++'; do
   sudo update-alternatives --install \
     "$(update-alternatives --query "${cpp_alternative}" | awk '/Link: / { print $2 }')" \
-    "${cpp_alternative}"  \
+    "${cpp_alternative}" \
     "$(which clang++)" \
     1
-  sudo update-alternatives --set "${cpp_alternative}"  "$(which clang++)"
+  sudo update-alternatives --set "${cpp_alternative}" "$(which clang++)"
 done
 ```
 

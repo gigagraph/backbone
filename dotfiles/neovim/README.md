@@ -85,10 +85,61 @@ Use the config from this repository on your system by creating symlinking the us
 
 ## Make `nvim` default pager
 
-- [ ] TODO:
-  - update-alternatives
-  - PAGER, MANPAGER
-  - https://github.com/lucc/nvimpager
+### Install `nvimpager`
+
+Clone the `nvimpager` repo:
+
+```shell
+git clone git@github.com:lucc/nvimpager.git
+cd ./nvimpager
+git checkout "${NVIMPAGER_VERSION}"
+```
+
+Install build dependencies:
+
+1. ```shell
+   sudo apt update -y
+   sudo apt install -y \
+     scdoc
+   ```
+2. Install [`busted`](https://luarocks.org/modules/lunarmodules/busted):
+     - ```shell
+       luarocks install --local busted "${BUSTED_VERSION}"
+       ```
+
+Buidl & install `nvimpager`:
+
+```shell
+sudo make install
+```
+
+Test `nvimpager`:
+
+```shell
+make test BUSTED="$(luarocks show busted --porcelain | grep -e 'command\s+busted' | awk '{ print $3 }')"
+```
+
+> [!NOTE]
+>
+> It may be okay that the tests fail.
+
+Set `PAGER` and `MANPAGER` envs to use `nvimpager` in your rc file:
+
+```shell
+export PAGER="$(which nvimpager)"
+export MANPAGER="$(which nvimpager)"
+```
+
+```shell
+for pager_alternative in 'pager'; do
+  sudo update-alternatives --install \
+    "$(update-alternatives --query "${pager_alternative}" | awk '/Link: / { print $2 }')" \
+    "${pager_alternative}"  \
+    "$(which nvimpager)" \
+    1
+  sudo update-alternatives --set "${pager_alternative}" "$(which nvimpager)"
+done
+```
 
 ## Useful links
 
@@ -107,3 +158,4 @@ Use the config from this repository on your system by creating symlinking the us
 [youtube-tj-reads-whole-neovim-manual]: <https://youtu.be/rT-fbLFOCy0>
 [youtube-tj-advent-of-neovim]: <https://www.youtube.com/watch?v=TQn2hJeHQbM&list=PLep05UYkc6wTyBe7kPjQFWVXTlhKeQejM>
 [youtube-tj-neovim-kickstart]: <https://youtu.be/m8C0Cq9Uv9o?si=ieM47MFLWca9lt01>
+

@@ -7,10 +7,13 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 SCRIPT_DIR="$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)"
 
 NVIM_CONFIG_DIR="${XDG_CONFIG_HOME}/nvim"
+NVIMPAGER_CONFIG_DIR="${XDG_CONFIG_HOME}/nvimpager"
 
 commands_to_run=(
   "rm -rf ${NVIM_CONFIG_DIR}"
+  "rm -rf ${NVIMPAGER_CONFIG_DIR}"
   "ln -s ${SCRIPT_DIR}/config/ ${NVIM_CONFIG_DIR}"
+  "ln -s ${SCRIPT_DIR}/config/ ${NVIMPAGER_CONFIG_DIR}"
 )
 
 echo "The script will replace your neovim config with the config from this repo:"

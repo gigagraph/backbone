@@ -17,7 +17,8 @@ vim.opt.smarttab = true
 -- for indentations.
 vim.opt.expandtab = true
 
-vim.opt.textwidth = 80
+-- TODO: set this per filetype
+vim.opt.textwidth = 0
 
 vim.opt.fixendofline = true
 
@@ -74,15 +75,12 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- nvimpager
+if nvimpager then
+  nvimpager.maps = false
+end
+
 -- Plugin management
-
--- TODO: instead, make this module return a function. This function should take
--- partial lazy spec with config functions and other params (e.g. enabled) as an
--- input for each plugin and setup lazy with the plugins defined in the
--- directory stucture. This way this config file will contain all the necessary
--- configuation and the plugin-specific setup code will reside in the individual
--- lazy plugin spec files.
-
 
 --- Plugins declaration and config
 bpu = require("config.infra.utils")
@@ -93,7 +91,6 @@ local catppuccin_lazy_spec = bpu:declare_lazy_spec(
   {
     -- Config: https://github.com/catppuccin/nvim
     opts = {
-      -- TODO: activate catppuccin when it is loaded
       flavour = "auto",
       background = {
         light = "latte",
@@ -146,6 +143,11 @@ local catppuccin_lazy_spec = bpu:declare_lazy_spec(
           -- style = "",
         },
         which_key = true,
+        -- TODO: does LSP already does this?
+        -- illuminate = {
+        --   enabled = true,
+        --   lsp = true,
+        -- },
       },
     },
     config = function(lazy_plugin, opts)
@@ -175,9 +177,6 @@ lazy_plugin_infra.setup_plugins({
     enabled = true,
   },
 })
--- TODO: remove after setup:
--- -- Clear the require cache
--- package.loaded["config.infra.lazy"] = nil
 
 -- TODO:
 --   - highlight trailing spaces in red

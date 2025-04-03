@@ -81,7 +81,7 @@ export PATH
 
 alias eza="'eza' --icons='always'"
 alias e="'eza' --icons='always'"
-alias ela="'eza' -la --icons='always'"
+alias ela="'eza' -laa --icons='always'"
 alias ls="'eza' --icons='always'"
 alias tree="'eza' --icons='always' --tree"
 
@@ -102,6 +102,8 @@ alias q="'exit'"
 
 export EDITOR="$(which nvim)"
 export VISUAL="${EDITOR}"
+export PAGER="$(which nvimpager)"
+export MANPAGER="$(which nvimpager)"
 
 # Multibyte characters
 
