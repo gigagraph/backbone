@@ -158,4 +158,3 @@ done
 [youtube-tj-reads-whole-neovim-manual]: <https://youtu.be/rT-fbLFOCy0>
 [youtube-tj-advent-of-neovim]: <https://www.youtube.com/watch?v=TQn2hJeHQbM&list=PLep05UYkc6wTyBe7kPjQFWVXTlhKeQejM>
 [youtube-tj-neovim-kickstart]: <https://youtu.be/m8C0Cq9Uv9o?si=ieM47MFLWca9lt01>
-

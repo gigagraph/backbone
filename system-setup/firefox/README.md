@@ -12,25 +12,25 @@ Follow the instructions from [the guide][setup-firefox-developer-edition-on-ubun
 3. Create a group that will own the installation and add the current user to the group:
    ```shell
    FIREFOX_GROUP="firefox"
-   sudo groupadd "$FIREFOX_GROUP"
-   sudo usermod -aG firefox "$USER"
-   newgrp "$FIREFOX_GROUP"
+   sudo groupadd "${FIREFOX_GROUP}"
+   sudo usermod -aG "${FIREFOX_GROUP}" "${USER}"
+   newgrp "${FIREFOX_GROUP}"
    # If the last command does not work install shadow-utils or relogin to the account
 
    # After this, the current user must be have the firefox group
-   groups "$USER"
+   groups "${USER}"
    ```
 3. Change the group ownership of the directory and allow the group to `rwx`:
    ```shell
    FIREFOX_GROUP="firefox"
-   sudo chgrp -R "$FIREFOX_GROUP" /opt/firefox
+   sudo chgrp -R "${FIREFOX_GROUP}" /opt/firefox
    sudo chmod g=rwx -R /opt/firefox
    ```
 4. Create a desktop entry:
    ```shell
    cat << EOF | sed 's/^[[:space:]]*//; s/[[:space:]]*$//' > ~/.local/share/applications/firefox_dev.desktop
    [Desktop Entry]
-   Name=Firefox Developer 
+   Name=Firefox Developer
    GenericName=Firefox Developer Edition
    Exec=/opt/firefox/firefox %u
    Terminal=false
