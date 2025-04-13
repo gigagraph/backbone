@@ -533,6 +533,3 @@ lazy_plugin_infra.setup_plugins({
     enabled = true,
   },
 })
-
--- TODO:
---   - highlight trailing spaces in red
