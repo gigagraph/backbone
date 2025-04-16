@@ -91,7 +91,7 @@ See the corresponding section in the [zsh docs file in this repo](../../zsh/READ
 
 #### `fzf`
 
-You can use `bat` to preview files in [`fzf`](../fzf/README.md). See the [`fzf`'s](../fzf/README.md) doc for details.
+You can use `bat` to preview files in [`fzf`](../fzf/README.md). See the [`fzf`'s](../fzf/README.md#bat) doc for details.
 
 #### `ripgrep`
 

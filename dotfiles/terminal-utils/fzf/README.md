@@ -41,15 +41,18 @@ sudo cp -R ./man/* /usr/local/share/man/
 
 See the corresponding section in the [zsh docs file in this repo](../../zsh/README.md#fzf).
 
-#### Neovim
-
-- [ ] TODO
-
 #### `bat`
 
 You can use [`bat`](../bat/README.md) to preview files in `fzf`. See the following resources for more details:
 - [`bat`'s doc][bat-fzf-integration].
 - [`fzf`'s doc][fzf-preview].
+- [`.zshrc` in this repo](../../zsh/config/zsh/.zshrc).
+
+#### `fd`
+
+You can use `fd` to list files and directories for `fzf`]. See the following resources for more details:
+- [`fd`'s doc][fd-fzf-integration].
+- [`fzf`'s doc][fzf-tips].
 - [`.zshrc` in this repo](../../zsh/config/zsh/.zshrc).
 
 ## Theming
@@ -64,8 +67,12 @@ You can use [`bat`](../bat/README.md) to preview files in `fzf`. See the followi
 - [fzf-docs][fzf-docs]
 - [bat-fzf-integration][bat-fzf-integration]
 - [fzf-preview][fzf-preview]
+- [fd-fzf-integration][fd-fzf-integration]
+- [fzf-tips][fzf-tips]
 
 [github-fzf]: <https://github.com/junegunn/fzf>
 [fzf-docs]: <https://junegunn.github.io/fzf/>
 [bat-fzf-integration]: <https://github.com/sharkdp/bat?tab=readme-ov-file#fzf>
 [fzf-preview]: <https://github.com/sharkdp/bat?tab=readme-ov-file#fzf>
+[fd-fzf-integration]: <https://github.com/sharkdp/fd?tab=readme-ov-file#using-fd-with-fzf>
+[fzf-tips]: <https://github.com/junegunn/fzf?tab=readme-ov-file#respecting-gitignore>

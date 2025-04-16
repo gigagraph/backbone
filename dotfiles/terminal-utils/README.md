@@ -10,12 +10,7 @@ This subdirectory contains instructions and configuration for programs that clos
   - [`entr`](./entr/README.md).
   - [`delta`](./delta/README.md).
   - [`bat`](./bat/README.md).
-
-## Other terminal utils
-
-This guide does not setup the following terminal utils, however, this may change in future:
-
-- [`fd`](https://github.com/sharkdp/fd).
+  - [`fd`](./fd/README.md).
 
 ## Useful links
 

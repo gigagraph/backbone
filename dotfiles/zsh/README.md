@@ -395,6 +395,16 @@ compdef batgrep=rg
 delta --generate-completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_delta"
 ```
 
+#### `fd`
+
+##### `fd` completions
+
+This guide assumes you followed the [instructions from this repo and inslled `fd` from sources](../terminal-utils/fd/README.md#installation). The completion script resides under `contrib/completion`. Copy it to where you install custom completions (`$ZSH_COMPLETIONS_DIR` in this guide):
+
+```shell
+cp ./contrib/completion/_fd "${ZSH_COMPLETIONS_DIR}/_fd"
+```
+
 #### Deprecated plugins
 
 ##### `zsh-vi-mode`

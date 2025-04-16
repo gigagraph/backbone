@@ -157,7 +157,7 @@ fi
 
 if [ ! -e "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting" ]; then
   git clone git@github.com:zdharma-continuum/fast-syntax-highlighting.git "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting"
-  git -C "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting" checkout 'cf318e06a9b7c9f2219d78f41b46fa6e06011fd9' 
+  git -C "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting" checkout 'cf318e06a9b7c9f2219d78f41b46fa6e06011fd9'
   zcompile-many "${ZSH_CUSTOM_PLUGINS_DIR}"/fast-syntax-highlighting/{fast-syntax-highlighting.plugin.zsh,fast-highlight,fast-string-highlight,fast-theme,share/**/*.zsh}
 fi
 
@@ -239,6 +239,7 @@ compdef batgrep=rg
 
 local FZF_CUSTOM_FLAGS=(
   "--wrap"
+  "--ansi"
 )
 
 local FZF_CUSTOM_KEYBINDINGS=(
@@ -248,26 +249,40 @@ local FZF_CUSTOM_KEYBINDINGS=(
 )
 
 # Options the fzf command
-FZF_COMPLETION_OPTS="${FZF_CUSTOM_FLAGS}"
+export FZF_COMPLETION_OPTS="${FZF_CUSTOM_FLAGS}"
 
-FZF_FILE_PREVIEW_COMMAND='bat -n --color=always {}'
-FZF_DIRECTORY_PREVIEW_COMMAND='eza -a --icons=always --color=always --tree --level=3 {}'
+export FZF_DEFAULT_OPTS="${FZF_CUSTOM_FLAGS}"
+export FZF_DEFAULT_COMMAND="$(tr -d '\n' <<EOF
+  fd
+    --exclude='.git'
+    --hidden
+    --color=always
+    --strip-cwd-prefix
+EOF
+)"
+
+local FZF_FILE_PREVIEW_COMMAND='bat -n --color=always {}'
+local FZF_DIRECTORY_PREVIEW_COMMAND='eza -a --icons=always --color=always --tree --level=3 {}'
+
+export FZF_COMPLETION_TRIGGER='**'
 
 # Options for path completion (e.g. vim **<TAB>)
-FZF_COMPLETION_PATH_OPTS="
+export FZF_COMPLETION_PATH_OPTS="
   --preview '${FZF_FILE_PREVIEW_COMMAND} || ${FZF_DIRECTORY_PREVIEW_COMMAND}'
   ${FZF_CUSTOM_KEYBINDINGS}
   ${FZF_CUSTOM_FLAGS}"
 
 # Options for directory completion (e.g. cd **<TAB>)
-FZF_COMPLETION_DIR_OPTS="
+export FZF_COMPLETION_DIR_OPTS="
   --preview '${FZF_DIRECTORY_PREVIEW_COMMAND}'
   ${FZF_CUSTOM_KEYBINDINGS}
   ${FZF_CUSTOM_FLAGS}"
 
-FZF_CTRL_T_OPTS="${FZF_COMPLETION_PATH_OPTS}"
+export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
+export FZF_CTRL_T_OPTS="${FZF_COMPLETION_PATH_OPTS}"
 
-FZF_ALT_C_OPTS="${FZF_COMPLETION_DIR_OPTS}"
+export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type=directory"
+export FZF_ALT_C_OPTS="${FZF_COMPLETION_DIR_OPTS}"
 
 source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh"
 
@@ -309,7 +324,7 @@ source "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting/fast-syntax-highlight
 ##
 ## Should come after fast-syntax-highlighting.
 
-# Experimental for now. This may cause the plugin to not work in certain scenarios.
+# This plugin may cause the plugin to not work in certain scenarios.
 # It requires the config maintainer to call _zsh_autosuggest_bind_widgets manually in either of the following cases:
 # - any of the widget lists change
 # - if you or another plugin wrap any of the autosuggest widgets

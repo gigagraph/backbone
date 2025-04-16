@@ -39,7 +39,7 @@ See the corresponding section in the [zsh docs file in this repo](../../zsh/READ
 
 #### `bat`
 
-- [ ] TODO: [](../bat/README.md)
+See the corresponding section in the [`bat` docs in this repo](../bat/README.md).
 
 ## Useful links
 
