@@ -2,7 +2,7 @@
 
 [Lua is designed to be an embeddable language][a-look-at-the-design-of-lua]. This means, that, ususally, a program embeds and distributes lua runtime/interpreter with it. Therefore, this Lua toolchain guide considers some of the tools that users of such embedded Lua may be interested in setting up.
 
-## [LuaJIT][luagit]
+## [LuaJIT][luajit]
 
 ### LuaJIT installation
 

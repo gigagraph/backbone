@@ -11,6 +11,8 @@ vim.keymap.set("v", "<Space>", "<nop>", { noremap = true, silent = true })
 
 vim.opt.mouse = "nvi"
 
+vim.opt.wrap = true
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 5
@@ -408,6 +410,49 @@ local mini_lazy_spec = bpu:declare_lazy_spec(
         -- },
       })
 
+      ---- mini.surround
+      require("mini.surround").setup({
+        -- Add custom surroundings to be used on top of builtin ones. For more
+        -- information with examples, see `:h MiniSurround.config`.
+        -- custom_surroundings = nil,
+
+        -- Duration (in ms) of highlight when calling `MiniSurround.highlight()`
+        highlight_duration = 500,
+
+        -- Module mappings. Use `""` (empty string) to disable one.
+        mappings = {
+          add = "<leader>sa", -- Add surrounding in Normal and Visual modes
+          delete = "<leader>sd", -- Delete surrounding
+          find = "<leader>sf", -- Find surrounding (to the right)
+          find_left = "<leader>sF", -- Find surrounding (to the left)
+          highlight = "<leader>sh", -- Highlight surrounding
+          replace = "<leader>sr", -- Replace surrounding
+          update_n_lines = "<leader>sn", -- Update `n_lines`
+
+          suffix_last = "l", -- Suffix to search with "prev" method
+          suffix_next = "n", -- Suffix to search with "next" method
+        },
+
+        -- Number of lines within which surrounding is searched
+        n_lines = 20,
+
+        -- Whether to respect selection type:
+        -- - Place surroundings on separate lines in linewise mode.
+        -- - Place surroundings on each line in blockwise mode.
+        respect_selection_type = true,
+
+        -- How to search for surrounding (first inside current line, then inside
+        -- neighborhood). One of "cover", "cover_or_next", "cover_or_prev",
+        -- "cover_or_nearest", "next", "prev", "nearest". For more details,
+        -- see `:h MiniSurround.config`.
+        search_method = "cover",
+
+        -- Whether to disable showing non-error feedback
+        -- This also affects (purely informational) helper messages shown after
+        -- idle time if user input is required.
+        silent = false,
+      })
+
       ---- mini.basics
       require("mini.basics").setup({
         -- Options. Set to `false` to disable.
@@ -513,6 +558,293 @@ local mini_lazy_spec = bpu:declare_lazy_spec(
         -- Control which extensions will be considered during "file" resolution
         use_file_extension = function(ext, file) return true end,
       })
+    end,
+  }
+)
+
+--- nvim-treesitter
+local nvim_treesitter_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.nvim-treesitter",
+  {
+    config = function(lazy_plugin, opts)
+      local configs = require("nvim-treesitter.configs")
+
+      configs.setup({
+        ensure_installed = {
+          -- General
+          "comment",
+
+          -- Development
+          --- Programming languages
+          "c",
+          "rust",
+          "llvm",
+          "lua",
+          "haskell",
+          "perl",
+
+          --- C++
+          "cpp",
+          "doxygen",
+
+          ---- Python
+          "python",
+          "requirements",
+          -- Will possibly be avaialble after 0.9.3
+          -- "jinja",
+          -- "jinja_inline",
+
+          ---- Go
+          "go",
+          "gosum",
+          "gomod",
+          "gotmpl",
+
+          ---- JVM
+          "java",
+          -- Will possibly be avaialble after 0.9.3
+          -- "javadoc",
+          "scala",
+          "kotlin",
+
+          --- System scripting
+          "bash",
+
+          --- Formal
+
+          ---- Model verification
+          "tlaplus",
+
+          ---- Proof
+          -- Will possibly be avaialble after 0.9.3
+          -- "idris",
+
+          --- High-performance computing
+          "cuda",
+
+          --- Hardware definition
+          "verilog",
+          "vhdl",
+
+          --- Web stack
+          "javascript",
+          "typescript",
+          "html",
+          "css",
+          "scss",
+
+          --- Query languages
+          "promql",
+          "sql",
+
+          --- Protobuf
+          "proto",
+
+          --- Markdown
+          "markdown",
+          "markdown_inline",
+
+          --- TeX
+          "latex",
+          "bibtex",
+
+          -- nvim
+          "vim",
+          "vimdoc",
+
+          --- Treesitter
+          "query",
+
+          -- Build systems
+          "cmake",
+          "make",
+          "ninja",
+          "starlark",
+
+          -- DevOps
+          "hcl",
+          "terraform",
+          "cue",
+          "jsonnet",
+          "helm",
+          "dockerfile",
+          "nix",
+
+          --- Configuration formats for tools
+          "editorconfig",
+          "ssh_config",
+
+          -- Policies
+          "rego",
+
+          -- Configuration format
+          "hocon",
+          "ini",
+          "toml",
+          "yaml",
+
+          -- Data
+          "csv",
+          "xml",
+
+          --- JSON
+          "json",
+          "json5",
+          "jsonc",
+
+          -- CLI tools
+          "diff",
+          "jq",
+
+          --- Git
+          -- Will possibly be avaialble after 0.9.3
+          -- "gitconfig",
+          -- "gitrebase",
+          "gitattributes",
+          "gitcommit",
+          "gitignore",
+
+          -- Protocols
+          "http",
+
+          -- System configuration
+          "udev",
+        },
+
+        sync_install = false,
+        auto_install = false,
+
+        highlight = {
+          enable = true,
+          -- Disable highlighting for big files
+          disable = function(lang, bufnr)
+            local max_filesize_bytes = 2 * 1024 * 1024 -- 2 MB
+            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(bufnr))
+            if ok and stats and stats.size > max_filesize_bytes then
+              return true
+            end
+
+            return false
+          end,
+
+          -- Disable native vim highilighitng for the filetypes that have treesitter grammars
+          additional_vim_regex_highlighting = false,
+        },
+
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = "<leader>vv",
+            node_incremental = "<leader>vk",
+            node_decremental = "<leader>vj",
+            scope_incremental = "<leader>vp",
+          },
+        },
+
+        indent = {
+          enable = true
+        },
+      })
+
+      -- Function to check if treesitter parser exists for the current buffer's filetype
+      local function buffer_has_treesitter_parser(bufnr)
+        local bufnr = bufnr or vim.fn.bufnr("%")
+        if vim.fn.bufexists(bufnr) then
+          local buf_ft = vim.bo[bufnr].filetype
+
+          if buf_ft == "" then
+            return false
+          end
+        else
+          return false
+        end
+
+        -- try to get parser for the current filetype
+        local parser_ok, _ = pcall(vim.treesitter.get_parser, bufnr, buf_ft)
+
+        return parser_ok
+      end
+
+      local treesitter_folding_expected_foldmethod = "expr"
+      local treesitter_folding_expected_foldexpr = "v:lua.vim.treesitter.foldexpr()"
+      local bkb_prev_foldmethod_buffer_var = "bkb_prev_foldmethod"
+      local bkb_prev_foldexpr_buffer_var = "bkb_prev_foldexpr"
+
+      -- Function to enable treesitter folding for the current buffer
+      local function toggle_treesitter_folding(bufnr)
+        local bufnr = bufnr or vim.fn.bufnr("%")
+
+        if buffer_has_treesitter_parser(bufnr) then
+          local win_id = vim.fn.bufwinid(bufnr)
+          if win_id ~= -1 then
+            local current_foldmethod = vim.wo[win_id].foldmethod
+            local current_foldexpr = vim.wo[win_id].foldexpr
+
+            local bkb_prev_foldmethod_ok, prev_foldmethod = pcall(
+              vim.api.nvim_buf_get_var,
+              bufnr,
+              bkb_prev_foldmethod_buffer_var
+            )
+            local bkb_prev_foldexpr_ok, prev_foldexpr = pcall(
+              vim.api.nvim_buf_get_var,
+              bufnr,
+              bkb_prev_foldexpr_buffer_var
+            )
+            local bkb_prev_vars_ok = (
+              bkb_prev_foldmethod_ok and
+              bkb_prev_foldexpr_ok
+            )
+
+            local is_treesitter_active = (
+              current_foldmethod == treesitter_folding_expected_foldmethod and
+              current_foldexpr == treesitter_folding_expected_foldexpr
+            )
+
+            if is_treesitter_active and bkb_prev_vars_ok then
+              -- Switch back to the previous folding method
+              vim.wo[win_id].foldmethod = prev_foldmethod
+              vim.wo[win_id].foldexpr = prev_foldexpr
+
+              -- Delete the previous variables from the buffer
+              local _, _ = pcall(vim.api.nvim_buf_del_var, bufnr, bkb_prev_foldmethod_buffer_var)
+              local _, _ = pcall(vim.api.nvim_buf_del_var, bufnr, bkb_prev_foldexpr_buffer_var)
+            else
+              -- Set the current folding variables as a previous value
+              vim.api.nvim_buf_set_var(bufnr, bkb_prev_foldmethod_buffer_var, current_foldmethod)
+              vim.api.nvim_buf_set_var(bufnr, bkb_prev_foldexpr_buffer_var, current_foldexpr)
+
+              -- Enable treesitter folding
+              vim.wo[win_id].foldmethod = treesitter_folding_expected_foldmethod
+              vim.wo[win_id].foldexpr = treesitter_folding_expected_foldexpr
+            end
+          end
+        end
+      end
+
+      -- Command to toggle treesitter folding
+      vim.api.nvim_create_user_command(
+        "BkbToggleTreesitterFolding",
+        function(opts) toggle_treesitter_folding() end,
+        {
+          desc = "Toggle options that enable treesitter folding in the current window if the current buffer has a treesitter parser."
+        }
+      )
+
+      vim.api.nvim_create_autocmd(
+        { "BufEnter", "BufWinEnter", "FileType" },
+        {
+          desc = "Activate treesitter-based folding in windows that host buffers that have treesitter grammars",
+          group = vim.api.nvim_create_augroup("TreesitterFolding", { clear = true }),
+          callback = function()
+            -- Small delay to ensure neovim initialized buffer properly:
+            -- - 'filetype' property is set.
+            -- - The buffer is fully loaded.
+            -- - Treesitter parser is initialized.
+            -- Alternatively, users should run :BkbToggleTreesitterFolding manipulate the treesitter folding
+            vim.defer_fn(function() toggle_treesitter_folding() end, 100)
+          end,
+        }
+      )
     end,
   }
 )

@@ -71,8 +71,10 @@ typeset -U path PATH
 path+=(
   "/usr/lib/llvm-18/bin"
   "/usr/local/go/bin"
+
   # pipx's install location
   "${HOME}/.local/bin"
+
   "${TEX_LIVE_BASE_PATH}/bin/"$(uname -m)-*([1])
 )
 export PATH
@@ -207,10 +209,12 @@ zstyle :compinstall filename "${HOME}/.config/zsh/.zshrc"
 ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${HOST}"
 
 fpath+=("${ZSH_COMPLETIONS_DIR}")
+
+## Enable zsh completions
 autoload -Uz compinit
 compinit -d "${ZSH_COMPDUMP}"
 
-[[ "${ZSH_COMPDUMP}.zwc"  -nt "${ZSH_COMPDUMP}" ]] || zcompile-many "${ZSH_COMPDUMP}"
+[[ "${ZSH_COMPDUMP}.zwc" -nt "${ZSH_COMPDUMP}" ]] || zcompile-many "${ZSH_COMPDUMP}"
 unfunction zcompile-many
 
 # zoxide

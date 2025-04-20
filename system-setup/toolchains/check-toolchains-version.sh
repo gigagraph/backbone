@@ -11,6 +11,8 @@ TOOLCHAIN_VERSION_CMDS=(
   "luarocks --version"
   "lualatex --version"
   "docker version"
+  "nvm --version && node --version && npm --version && pnpm --version"
+  "tree-sitter --version"
 )
 
 for TOOLCHAIN_VERSION_CMD in "${TOOLCHAIN_VERSION_CMDS[@]}"; do

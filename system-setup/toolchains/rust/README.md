@@ -14,7 +14,7 @@ Run the interactive installer. Follow the instructions and setup the latest stab
 
 If you use [zsh](../dotfiles/zsh/README.md) your should install the [rust-zsh-completions][rust-zsh-completions]. See the [docs from this repo](../dotfiles/zsh/README.md#plugins) for more details.
 
-Additinally, [`rustup` can generate completions][generate-rustup-and-cargo-completions] for itself and for `cargo`, however not for `rustc`. Therefore, for now this guide recommends using the plugin.
+Additionally, [`rustup` can generate completions][generate-rustup-and-cargo-completions] for itself and for `cargo`, however not for `rustc`. Therefore, for now this guide recommends using the plugin.
 
 ### Updating
 

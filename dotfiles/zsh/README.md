@@ -405,6 +405,14 @@ This guide assumes you followed the [instructions from this repo and inslled `fd
 cp ./contrib/completion/_fd "${ZSH_COMPLETIONS_DIR}/_fd"
 ```
 
+#### [`tree-sitter`](../../system-setup-toolchains-)
+
+##### `tree-sitter` completions
+
+```shell
+tree-sitter complete --shell="${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_tree-sitter"
+```
+
 #### Deprecated plugins
 
 ##### `zsh-vi-mode`

@@ -8,3 +8,6 @@
 [[ ! -d "${ZSH_CACHE_DIR}" ]] && mkdir -p "${ZSH_CACHE_DIR}"
 [[ ! -d "${ZSH_CUSTOM_PLUGINS_DIR}" ]] && mkdir -p "${ZSH_CUSTOM_PLUGINS_DIR}"
 [[ ! -d "${ZSH_COMPLETIONS_DIR}" ]] && mkdir -p "${ZSH_COMPLETIONS_DIR}"
+
+# nvm
+[ -s "${NVM_DIR}/nvm.sh" ] && source "${NVM_DIR}/nvm.sh"

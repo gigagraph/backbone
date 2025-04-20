@@ -9,6 +9,11 @@ Source: https://github.com/neovim/neovim.
 > Ensure you have the following language toolhcains:
 > - [C/C++](../system-setup/toolchains/llvm/README.md).
 >
+> The following toolchains are optional, but recommended:
+> - [Lua](../system-setup/toolchains/lua/README.md).
+> - [Node](../system-setup/toolchains/node/README.md).
+> - [Tree-sitter](../system-setup/toolchains/tree-sitter/README.md).
+>
 > [You can verify the versions of the installed toolcahins with the script](../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
 
 Clone the [neovim repo][github-neovim] locally:
@@ -33,7 +38,7 @@ export CFLAGS="--start-no-unused-arguments -fuse-ld=lld --end-no-unused-argument
 export CXX="$(which clang++)"
 export CXXFLAGS="--start-no-unused-arguments -fuse-ld=lld --end-no-unused-arguments"
 
-make CMAKE_BUILD_TYPE=Release 
+make CMAKE_BUILD_TYPE=Release
 
 make test
 ```
@@ -75,7 +80,7 @@ sudo update-alternatives --set vi "$(which nvim)"
 >       :help lua
 >       ```
 
-Use the config from this repository on your system by creating symlinking the user config default directory to the config dir in this repo (the script will prompt you for confirmation before running any configuration commands):
+Use the config from this repository on your system by symlinking the user config default directory to the config dir in this repo (the script will prompt you for confirmation before running any configuration commands):
 
 ```shell
 ./setup-config.sh
@@ -146,6 +151,14 @@ Enables to split arguments passed to a function into multiplelines and collapse 
 :help mini.split-join
 ```
 
+##### [`mini.surround`][mini-nvim-surround]
+
+Adds keybindings that enable manipulations with surrounding text of selected text objects.
+
+```
+:help mini.surround
+```
+
 ##### [`mini.basics`][mini-nvim-basics]
 
 Sane default opinions for basic options that the config does not set manually.
@@ -205,6 +218,31 @@ Enables [`mini.nvim`][mini-nvim] to use icons.
 
 ```
 :help mini.icons
+```
+
+#### [`nvim-treesitter`][nvim-treesitter]
+
+> [!NOTE]
+>
+> Ensure you have the following language toolhcains:
+> - [C/C++](../system-setup/toolchains/llvm/README.md) (with libstdc++).
+>
+> The following toolchains are optional, but recommended:
+> - [Node](../system-setup/toolchains/node/README.md).
+> - [Tree-sitter](../system-setup/toolchains/tree-sitter/README.md).
+>
+> [You can verify the versions of the installed toolcahins with the script](../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
+
+The purpose of this plugin is to provide a higher-level interface (compared to the default `nvim`'s `tree-sitter` integration) to operate `tree-sitter` in `nvim`, specifically:
+
+- A simple way to install a parter for common languages.
+- An API to manage the installed parsers.
+- Other features that the plugin provides.
+
+Run the following command to the a list of all languanges that the `nvim-treesitter` can install by default:
+
+```
+:TSInstallInfo
 ```
 
 ## Make `nvim` default pager
@@ -274,6 +312,7 @@ done
 - [youtube-tj-reads-whole-neovim-manual][youtube-tj-reads-whole-neovim-manual]
 - [youtube-tj-neovim-kickstart][youtube-tj-neovim-kickstart]
 - [youtube-tj-advent-of-neovim][youtube-tj-advent-of-neovim]
+- [nvim-tree-sitter][nvim-tree-sitter]
 - Plugins
   - [catppucin-nvim][catppucin-nvim]
   - [mini-nvim][mini-nvim]
@@ -283,19 +322,22 @@ done
     - [mini-nvim-move][mini-nvim-move]
     - [mini-nvim-pairs][mini-nvim-pairs]
     - [mini-nvim-split-join][mini-nvim-split-join]
+    - [mini-nvim-surround][mini-nvim-surround]
     - [mini-nvim-basics][mini-nvim-basics]
     - [mini-nvim-cursorword][mini-nvim-cursorword]
     - [mini-nvim-statusline][mini-nvim-statusline]
     - [mini-nvim-trailspace][mini-nvim-trailspace]
     - [mini-nvim-icons][mini-nvim-icons]
+  - [nvim-treesitter][nvim-treesitter]
 
 [github-neovim]: <https://github.com/neovim/neovim>
 [neovim-build-deps]: <https://github.com/neovim/neovim/blob/master/BUILD.md#build-prerequisites>
 [lua-key-conceps-in-15-minutes]: <https://learnxinyminutes.com/docs/lua/>
 [github-neovim-kickstart]: <https://github.com/nvim-lua/kickstart.nvim>
 [youtube-tj-reads-whole-neovim-manual]: <https://youtu.be/rT-fbLFOCy0>
-[youtube-tj-advent-of-neovim]: <https://www.youtube.com/watch?v=TQn2hJeHQbM&list=PLep05UYkc6wTyBe7kPjQFWVXTlhKeQejM>
 [youtube-tj-neovim-kickstart]: <https://youtu.be/m8C0Cq9Uv9o?si=ieM47MFLWca9lt01>
+[youtube-tj-advent-of-neovim]: <https://www.youtube.com/watch?v=TQn2hJeHQbM&list=PLep05UYkc6wTyBe7kPjQFWVXTlhKeQejM>
+[nvim-tree-sitter]: <https://neovim.io/doc/user/treesitter.html>
 [catppucin-nvim]: <https://github.com/catppuccin/nvim>
 [mini-nvim]: <https://github.com/echasnovski/mini.nvim>
 [mini-nvim-ai]: <https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-ai.md>
@@ -304,8 +346,10 @@ done
 [mini-nvim-move]: <https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-move.md>
 [mini-nvim-pairs]: <https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-pairs.md>
 [mini-nvim-split-join]: <https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-splitjoin.md>
+[mini-nvim-surround]: <https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-surround.md>
 [mini-nvim-basics]: <https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-basics.md>
 [mini-nvim-cursorword]: <https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-cursorword.md>
 [mini-nvim-statusline]: <https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-statusline.md>
 [mini-nvim-trailspace]: <https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-trailspace.md>
 [mini-nvim-icons]: <https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-icons.md>
+[nvim-treesitter]: <https://github.com/nvim-treesitter/nvim-treesitter>
