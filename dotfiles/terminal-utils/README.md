@@ -11,6 +11,7 @@ This subdirectory contains instructions and configuration for programs that clos
   - [`delta`](./delta/README.md).
   - [`bat`](./bat/README.md).
   - [`fd`](./fd/README.md).
+  - [`yq`](./yq/README.md).
 
 ## Useful links
 

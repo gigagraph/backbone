@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
 TOOL_VERSION_CMDS=(
-  "fzf --version"
-  "rg --version"
-  "eza --version"
-  "zoxide --version"
   "bat --version"
   "delta --version"
+  "entr version"
+  "eza --version"
+  "fd --version"
+  "fzf --version"
+  "rg --version"
+  "yq --version"
+  "zoxide --version"
 )
 
 for TOOL_VERSION_CMD in "${TOOL_VERSION_CMDS[@]}"; do

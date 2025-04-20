@@ -89,6 +89,11 @@ sudo chsh -s "$(which zsh)" "${USER}"
 
 ## Configuration
 
+> [!NOTE]
+>
+> Ensure you have the following tools installed because the config depends on their avaialbility:
+> - [`yq`](../../dotfiles/terminal-utils/yq/REAMDE.md).
+
 Setup config from this repo on your system:
 
 ```shell
@@ -328,7 +333,7 @@ cd eza
 git checkout "${EZA_VERSION}"
 ```
 
-Use `eza` to generate completions for zsh:
+Copy the completions from the `eza` repo:
 
 ```shell
 cp "$(pwd)/completions/zsh/_eza" "${ZSH_COMPLETIONS_DIR}/_eza"
@@ -405,13 +410,37 @@ This guide assumes you followed the [instructions from this repo and inslled `fd
 cp ./contrib/completion/_fd "${ZSH_COMPLETIONS_DIR}/_fd"
 ```
 
-#### [`tree-sitter`](../../system-setup-toolchains-)
+#### [`tree-sitter`](../../system-setup/toolchains/tree-sitter/README.md)
 
 ##### `tree-sitter` completions
 
 ```shell
 tree-sitter complete --shell="${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_tree-sitter"
 ```
+
+#### [`fnm`](../../system-setup/toolchains/fnm/README.md)
+
+##### `fnm` completions
+
+Use `fnm` to generate completions for zsh:
+
+```shell
+fnm completions --shell "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_fnm"
+```
+
+After you generated the completions, ensure that the directory with the `_fnm` completions file is on your zsh `fpath`.
+
+#### [`yq`](../../system-setup/toolchains/yq/README.md)
+
+##### `yq` completions
+
+Use `yq` to generate completions for zsh:
+
+```shell
+yq shell-completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_yq"
+```
+
+After you generated the completions, ensure that the directory with the `_yq` completions file is on your zsh `fpath`.
 
 #### Deprecated plugins
 

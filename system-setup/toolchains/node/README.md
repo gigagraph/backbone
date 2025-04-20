@@ -2,89 +2,107 @@
 
 ## Installation
 
-This guide recommends installing `node` through `nvm`.
-
-### Install `nvm`
-
-This guide recommends [installing `nvm` manually][nvm-install-manually]:
-
-```shell
-export NVM_DIR="$HOME/.nvm"
-git clone git@github.com:nvm-sh/nvm.git "${NVM_DIR}"
-cd "${NVM_DIR}"
-git checkout "$(git describe --abbrev=0 --tags --match "v[0-9]*" "$(git rev-list --tags --max-count=1)")"
-source "${NVM_DIR}/nvm.sh"
-```
-
-Add the following to your shell's profile file:
-
-```shell
-export NVM_DIR="${HOME}/.nvm"
-[ -s "${NVM_DIR}/nvm.sh" ] && source "${NVM_DIR}/nvm.sh"
-```
+> [!NOTE]
+>
+> Ensure you have the following language toolhcains:
+> - [Rust](../system-setup/toolchains/rust/README.md).
+>
+> [You can verify the versions of the installed toolcahins with the script](../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
+>
+> Additionally, ensure you have the following tools installed that this setup requires to initialize `fnm`:
+> - [`yq`](../../../dotfiles/terminal-utils/yq/REAMDE.md).
 
 > [!NOTE]
 >
-> This guide recommends to refrain from installing completions for zsh becuase `nvm` has poor native support for zsh completions (there is a high chance that setting up these completions will significantly impact shell startup time). Instead, users should discover subcommands and flags with `--help`.
+> This guide does not recommend using [`nvm`][github-nvm] to manage `node` installation due to the [performance issues with shell startup times][nvm-performance-issue].
 
+This guide recommends installing `node` through `fnm`.
 
-> [!NOTE]
->
-> This guide does not recommend using zsh plugins for nvm to not leak the "toolchain" abstraction into the shell environment. Additionally, it has unpredictable consequences for shell startup times and perofrmance. Instead, it recommends manually checking the current npm version and run `nvm use` when needed.
+### [`fnm`][github-fnm] installation
 
-#### Updating `nvm`
+This guide recommends building and installing `fnm` from sources with `cargo`:
 
 ```shell
-cd "${NVM_DIR}"
-git fetch --tags origin
-git checkout "$(git describe --abbrev=0 --tags --match "v[0-9]*" "$(git rev-list --tags --max-count=1)")"
-source "${NVM_DIR}/nvm.sh"
+git clone git@github.com:Schniz/fnm.git
+cd fnm
+git checkout "${FNM_VERSION}"
 ```
 
-### Install `node` via `nvm`
+Run the following command to build release distribution and install it:
+
+```shell
+cargo install --all-features --locked --path .
+```
+
+Add the following to your shell's rc file. For security purposes, the command will parse the envs that need to be initialized and initialize them manually, instead of evaluating the output of `fnm env` directly (the guide recommends adding this snippet after all plugins initializations to ensure faster prompt initialization):
+
+```shell
+eval \
+  "$(fnm env --version-file-strategy=recursive --json |
+  yq --input-format='json' --output-format props |
+  awk -F ' = ' $'{ printf "%s=\'%s\'\\n", $1, $2 }' |
+  xargs -I '{}' env - {} |
+  sed -e 's/^/export /' -)"
+
+[[ -n "${FNM_MULTISHELL_PATH}" ]] && path+=("${FNM_MULTISHELL_PATH}/bin")
+export PATH
+```
+
+### Install `node` via `fnm`
+
+See the `fnm --help` or the [official docs][fnm-usage] for the list of `fnm` commands.
 
 List LTS versions of `node`:
 
 ```shell
-nvm ls-remote
+fnm ls-remote --lts --sort=asc
 ```
 
 Select the desired version from the output of the previous command (or run the following command to select the latest LTS version):
 
 ```shell
-NODE_VERSION_TO_INSTALL="$(nvm ls-remote --lts --no-colors | tail -n 1 | awk '{ print $1 }')"
+NODE_VERSION_TO_INSTALL="$(fnm ls-remote --lts --sort=asc | tail -n 1 | awk '{ print $1 }')"
 ```
 
 Install `node`:
 
 ```shell
-nvm install "${NODE_VERSION_TO_INSTALL}"
+fnm install "${NODE_VERSION_TO_INSTALL}"
 ```
 
-Optionally, use the following command to install the latest `npm`:
+Alternatively, use the following command to install the latest stable `node`:
 
 ```shell
-nvm install-latest-npm
+fnm install --lts
 ```
+
+List current node version:
+
+```shell
+fnm current
+```
+
+Use a specific node version
+
+```shell
+fnm use "${NODE_VERSION_TO_INSTALL}"
+```
+
+### Integrate `fnm` with other programs
+
+#### zsh
+
+See the corresponding section in the [zsh docs file in this repo](../../zsh/README.md#fnm).
+
+### Install global tools via `fnm`
 
 > [!NOTE]
 >
-> `nvm` sets the `prefix` conf for the `npm` that it manages. This means that [`nvm` users must not set `prefix` config/cli flag or `${NPM_CONFIG_PREFIX}` env][nvm-compatibility-issues]. When users install npm packages gloabally with `npm install -g`, by default, `npm` that `nvm` manages will install them to `${NVM_BIN}` directory (which is ususally a subdirectory under `${NVM_DIR}`).
->
-> This means that every time users change node verisons, they would need to install global npm pacakges again, [unless they add packages to `${NVM_DIR}/default-packages`][nvm-default-global-packages].
+> When `npm install -g` using `npm` that `fnm` manages, `npm` will install packages globally per `node` installation. Therefore, users may need to reinstall global packages when they update `node` via `fnm`.
 
+#### Install `pnpm`
 
-#### Setup `${NVM_DIR}/default-packages`
-
-Use the `nvm-default-packages` from this repository on your system by symlinking `${NVM_DIR}/default-packages` to the config dir in this repo (the script will prompt you for confirmation before running any configuration commands and will print the difference between the current file and config in this repo):
-
-```shell
-./setup-config.sh
-```
-
-### Install `pnpm`
-
-This guide recommends installing `pnpm` globally [as well as making it a global default package](#setup-nvm_dir-default-packages).
+This guide recommends installing `pnpm` globally.
 
 Run the following command to ensure `pnpm` is installed for the current `node` installation:
 
@@ -92,64 +110,30 @@ Run the following command to ensure `pnpm` is installed for the current `node` i
 npm install -g pnpm@latest
 ```
 
-## Usage
-
-List installed verions:
-
-```shell
-nvm list
-```
-
-Add a specific installed `<version>` of `node` to `${PATH}` (ommit `<version>` if the current directory contains `.nvmrc` that specifies `node` version to use):
-
-```shell
-nvm use <version>
-```
-
-Display the currently selected `node` version via `nvm`:
-
-```shell
-nvm current
-```
-
-> [!NOTE]
->
-> The source of truth for the shell is the `node` command itself, so trust the output of `node --version`. Additionally, run `which node` to check what executalbe would the shell run for the `node` command.
-
-Uninstall a specific `<version>` of `node`:
-
-```shell
-nvm uninstall <version>
-```
-
-Always default to the latest available node version on a shell (change `node` to an arbitrary version to make it default):
-
-```shell
-nvm alias default node
-```
-
 ## Useful links
 
 - [nodejs-website][nodejs-website].
 - [nodejs-github][nodejs-github].
-- [github-nvm][github-nvm].
-  - [nvm-install-manually][nvm-install-manually].
-  - [nvm-compatibility-issues][nvm-compatibility-issues].
-  - [nvm-default-global-packages][nvm-default-global-packages].
+- [github-fnm][github-fnm].
+  - [fnm-installation][fnm-installation].
+  - [fnm-usage][fnm-usage].
 - [npm-docs][npm-docs].
   - [npm-docs-npmrc][npm-docs-npmrc].
   - [npm-docs-config][npm-docs-config].
   - [npm-docs-folders][npm-docs-folders].
 - [pnpm-install][pnpm-install].
+- [github-nvm][github-nvm].
+  - [nvm-performance-issues][nvm-performance-issues].
 
 [nodejs-website]: <https://nodejs.org>
 [github-nodejs]: <https://github.com/nodejs/node>
-[github-nvm]: <https://github.com/nvm-sh/nvm>
-[nvm-install-manually]: <https://github.com/nvm-sh/nvm?tab=readme-ov-file#manual-install>
-[nvm-compatibility-issues]: <https://github.com/nvm-sh/nvm?tab=readme-ov-file#compatibility-issues>
-[nvm-default-global-packages]: <https://github.com/nvm-sh/nvm?tab=readme-ov-file#default-global-packages-from-file-while-installing>
+[github-fnm]: <https://github.com/Schniz/fnm>
+[fnm-installation]: <https://github.com/Schniz/fnm>
+[fnm-usage]: <https://github.com/Schniz/fnm/blob/master/docs/commands.md>
 [npm-docs]: <https://docs.npmjs.com/>
 [npm-docs-npmrc]: <https://docs.npmjs.com/cli/v11/configuring-npm/npmrc>
 [npm-docs-config]: <https://docs.npmjs.com/cli/v11/using-npm/config>
 [npm-docs-folders]: <https://docs.npmjs.com/cli/v11/configuring-npm/folders>
 [pnpm-install]: <https://pnpm.io/installation>
+[github-nvm]: <https://github.com/nvm-sh/nvm>
+[nvm-performance-issues]: <https://github.com/nvm-sh/nvm/issues/730#issuecomment-226949107>

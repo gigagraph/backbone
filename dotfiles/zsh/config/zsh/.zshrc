@@ -69,12 +69,16 @@ local TEX_LIVE_BASE_PATH="/usr/local/texlive/current"
 
 typeset -U path PATH
 path+=(
+  # LLVM binaries
   "/usr/lib/llvm-18/bin"
+
+  # Go binaries + program builds
   "/usr/local/go/bin"
 
   # pipx's install location
   "${HOME}/.local/bin"
 
+  # TeX Live
   "${TEX_LIVE_BASE_PATH}/bin/"$(uname -m)-*([1])
 )
 export PATH
@@ -335,3 +339,28 @@ source "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting/fast-syntax-highlight
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+# Update path after plugins initializations
+
+## Setup tools that toolchains fetch
+
+### go
+__goroot="$(go env GOROOT)"
+__gobin="$(go env GOBIN)"
+__gopath="$(go env GOBIN)"
+[[ -d "${__goroot}" ]] && path+=("${__goroot}")
+[[ -d "${__gobin}" ]] && path+=("${__gobin}")
+[[ -d "${__gopath}/bin" ]] && path+=("${__gopath}/bin")
+[[ -d "${HOME}/go/bin" ]] && path+=("${HOME}/go/bin")
+export PATH
+
+### fnm
+eval \
+  "$(fnm env --version-file-strategy=recursive --json |
+  yq --input-format='json' --output-format props |
+  awk -F ' = ' $'{ printf "%s=\'%s\'\\n", $1, $2 }' |
+  xargs -I '{}' env - {} |
+  sed -e 's/^/export /' -)"
+
+[[ -n "${FNM_MULTISHELL_PATH}" ]] && path+=("${FNM_MULTISHELL_PATH}/bin")
+export PATH

@@ -24,11 +24,11 @@ cd tree-sitter
 git checkout "${TREE_SITTER_VERSION}"
 ```
 
-Install the WASM library (specify a fresh stable version of `node` when running `nvm`):
+Install the WASM library (specify a fresh stable version of `node` when running `fnm`):
 
 ```shell
 cd lib/binding_web
-nvm use default
+fnm use default
 pnpm install
 pnpm run build
 ```

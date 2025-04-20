@@ -6,7 +6,7 @@
 
 1. Remove the previous installation (depending), e.g.:
   - ```shell
-    rm -rf /usr/local/go && 
+    rm -rf /usr/local/go &&
     ```
 2. Download the desired version of go (`${GO_VERSION}`), e.g. from the [official mirror][download-go].
 3. Unpack the downloaded archive to a directory on the filesystem, where you want to be able to access it from. E.g. you can install it for a specific user by unpacking go to `${HOME}/.local/bin/go`, or you can install it system-wide at `/usr/local/go` Go calls this directory `${GOROOT}`.
@@ -16,10 +16,18 @@
    # Remove the /go part from the end of GOROOT, because the archive has this directory. Depending on the installation location, you may need to prepend the command with `sudo`
    tar -C "${GOROOT%/*}" -xzf "go${GO_VERSION}.${OS}-${ARCH}.tar.gz"
    ```
-4. Add `${GOROOT}` to your `${PATH}`, e.g.:
+4. Add `${GOROOT}`, `${GOBIN}`, `${GOPATH}/bin`, and `${HOME}/go/bin` to your `${PATH}`, e.g.:
   - In bash:
     ```shell
-    echo 'export PATH="${PATH}:${GOROOT}"' >> "${HOME}/.bashrc"
+    cat << EOF >> "${HOME}/.bashrc"
+    __goroot="$(go env GOROOT)"
+    __gobin="$(go env GOBIN)"
+    __gopath="$(go env GOBIN)"
+    [[ -d "${__goroot}" ]] && path+=("${__goroot}")
+    [[ -d "${__gobin}" ]] && path+=("${__gobin}")
+    [[ -d "${__gopath}/bin" ]] && path+=("${__gopath}/bin")
+    [[ -d "${HOME}/go/bin" ]] && path+=("${HOME}/go/bin")
+    EOF
     ```
 5. Open a new terminal session and test the installation. The following command should print go version:
    ```shell

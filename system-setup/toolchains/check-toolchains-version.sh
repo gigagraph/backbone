@@ -11,7 +11,7 @@ TOOLCHAIN_VERSION_CMDS=(
   "luarocks --version"
   "lualatex --version"
   "docker version"
-  "nvm --version && node --version && npm --version && pnpm --version"
+  "fnm --version && node --version && npm --version && pnpm --version"
   "tree-sitter --version"
 )
 
