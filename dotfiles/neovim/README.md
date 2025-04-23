@@ -241,9 +241,15 @@ The purpose of this plugin is to provide a higher-level interface (compared to t
 
 Run the following command to the a list of all languanges that the `nvim-treesitter` can install by default:
 
-```
+```vim
 :TSInstallInfo
 ```
+
+#### [`nvim-treesitter-context`][nvim-treesitter-context]
+
+Ensure [`nvim-treesitter`][nvim-treesitter] is installed.
+
+This plugin uses tree-sitter to display the definition of the scope in which cursor resides. This way users can see the context where they edit the text without having to scroll.
 
 ## Make `nvim` default pager
 
@@ -329,6 +335,7 @@ done
     - [mini-nvim-trailspace][mini-nvim-trailspace]
     - [mini-nvim-icons][mini-nvim-icons]
   - [nvim-treesitter][nvim-treesitter]
+  - [nvim-treesitter-context][nvim-treesitter-context]
 
 [github-neovim]: <https://github.com/neovim/neovim>
 [neovim-build-deps]: <https://github.com/neovim/neovim/blob/master/BUILD.md#build-prerequisites>
@@ -353,3 +360,4 @@ done
 [mini-nvim-trailspace]: <https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-trailspace.md>
 [mini-nvim-icons]: <https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-icons.md>
 [nvim-treesitter]: <https://github.com/nvim-treesitter/nvim-treesitter>
+[nvim-treesitter-context]: <https://github.com/nvim-treesitter/nvim-treesitter-context>

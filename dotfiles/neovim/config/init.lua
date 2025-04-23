@@ -767,8 +767,10 @@ local nvim_treesitter_spec = bpu:declare_lazy_spec(
 
       local treesitter_folding_expected_foldmethod = "expr"
       local treesitter_folding_expected_foldexpr = "v:lua.vim.treesitter.foldexpr()"
+      local treesitter_folding_expected_foldlevel = 99
       local bkb_prev_foldmethod_buffer_var = "bkb_prev_foldmethod"
       local bkb_prev_foldexpr_buffer_var = "bkb_prev_foldexpr"
+      local bkb_prev_foldlevel_buffer_var = "bkb_prev_foldlevel"
 
       -- Function to enable treesitter folding for the current buffer
       local function toggle_treesitter_folding(bufnr)
@@ -790,9 +792,15 @@ local nvim_treesitter_spec = bpu:declare_lazy_spec(
               bufnr,
               bkb_prev_foldexpr_buffer_var
             )
+            local bkb_prev_foldlevel_ok, prev_foldlevel = pcall(
+              vim.api.nvim_buf_get_var,
+              bufnr,
+              bkb_prev_foldlevel_buffer_var
+            )
             local bkb_prev_vars_ok = (
               bkb_prev_foldmethod_ok and
-              bkb_prev_foldexpr_ok
+              bkb_prev_foldexpr_ok and
+              bkb_prev_foldlevel_ok
             )
 
             local is_treesitter_active = (
@@ -804,18 +812,23 @@ local nvim_treesitter_spec = bpu:declare_lazy_spec(
               -- Switch back to the previous folding method
               vim.wo[win_id].foldmethod = prev_foldmethod
               vim.wo[win_id].foldexpr = prev_foldexpr
+              vim.wo[win_id].foldlevel = prev_foldlevel
 
               -- Delete the previous variables from the buffer
               local _, _ = pcall(vim.api.nvim_buf_del_var, bufnr, bkb_prev_foldmethod_buffer_var)
               local _, _ = pcall(vim.api.nvim_buf_del_var, bufnr, bkb_prev_foldexpr_buffer_var)
+              local _, _ = pcall(vim.api.nvim_buf_del_var, bufnr, bkb_prev_foldlevel_buffer_var)
             else
               -- Set the current folding variables as a previous value
               vim.api.nvim_buf_set_var(bufnr, bkb_prev_foldmethod_buffer_var, current_foldmethod)
               vim.api.nvim_buf_set_var(bufnr, bkb_prev_foldexpr_buffer_var, current_foldexpr)
+              vim.api.nvim_buf_set_var(bufnr, bkb_prev_foldlevel_buffer_var, current_foldlevel)
+
 
               -- Enable treesitter folding
               vim.wo[win_id].foldmethod = treesitter_folding_expected_foldmethod
               vim.wo[win_id].foldexpr = treesitter_folding_expected_foldexpr
+              vim.wo[win_id].foldlevel = treesitter_folding_expected_foldlevel
             end
           end
         end
@@ -846,6 +859,29 @@ local nvim_treesitter_spec = bpu:declare_lazy_spec(
         }
       )
     end,
+  }
+)
+
+--- nvim-treesitter-context
+local nvim_treesitter_context_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.nvim-treesitter-context",
+  {
+    opts = {
+      -- https://github.com/nvim-treesitter/nvim-treesitter-context?tab=readme-ov-file#configuration
+      enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+      multiwindow = true, -- Enable multiwindow support.
+      max_lines = 5, -- How many lines the window should span. Values <= 0 mean no limit.
+      min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+      line_numbers = true,
+      multiline_threshold = 20, -- Maximum number of lines to show for a single context
+      trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: "inner", "outer"
+      mode = "cursor", -- Line used to calculate context. Choices: "cursor", "topline"
+      -- Separator between context and content. Should be a single character string, like "-".
+      -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+      separator = nil,
+      zindex = 20, -- The Z-index of the context window
+      on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
+    }
   }
 )
 
