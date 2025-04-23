@@ -233,9 +233,16 @@ Enables [`mini.nvim`][mini-nvim] to use icons.
 >
 > [You can verify the versions of the installed toolcahins with the script](../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
 
+`nvim` already depends on [`tree-sitter`](../system-setup/toolchains/tree-sitter/README.md) library that enables it to use tree-sitter API, i.e. load parsers, use them to build parse trees incrementally, run queries agains the trees, etc.
+
+```vim
+:InspectTree " To inspect the current buffer tree
+:EditQuery " To start a scratch buffer for a tree-sitter query that nvim will apply to the corresponding buffer
+```
+
 The purpose of this plugin is to provide a higher-level interface (compared to the default `nvim`'s `tree-sitter` integration) to operate `tree-sitter` in `nvim`, specifically:
 
-- A simple way to install a parter for common languages.
+- A simple way to install parsers for common languages.
 - An API to manage the installed parsers.
 - Other features that the plugin provides.
 
