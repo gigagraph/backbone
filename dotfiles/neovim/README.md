@@ -258,6 +258,12 @@ Ensure [`nvim-treesitter`][nvim-treesitter] is installed.
 
 This plugin uses tree-sitter to display the definition of the scope in which cursor resides. This way users can see the context where they edit the text without having to scroll.
 
+#### [`nvim-treesitter-textobjects`][nvim-treesitter-textobjects]
+
+Ensure [`nvim-treesitter`][nvim-treesitter] is installed.
+
+This plugin uses tree-sitter to define and manipulate `nvim` textobjects that tree-sitter captures for available languages.
+
 ## Make `nvim` default pager
 
 ### Install `nvimpager`
@@ -343,6 +349,7 @@ done
     - [mini-nvim-icons][mini-nvim-icons]
   - [nvim-treesitter][nvim-treesitter]
   - [nvim-treesitter-context][nvim-treesitter-context]
+  - [nvim-treesitter-textobjects][nvim-treesitter-textobjects]
 
 [github-neovim]: <https://github.com/neovim/neovim>
 [neovim-build-deps]: <https://github.com/neovim/neovim/blob/master/BUILD.md#build-prerequisites>
@@ -368,3 +375,4 @@ done
 [mini-nvim-icons]: <https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-icons.md>
 [nvim-treesitter]: <https://github.com/nvim-treesitter/nvim-treesitter>
 [nvim-treesitter-context]: <https://github.com/nvim-treesitter/nvim-treesitter-context>
+[nvim-treesitter-textobjects]: <https://github.com/nvim-treesitter/nvim-treesitter-textobjects>

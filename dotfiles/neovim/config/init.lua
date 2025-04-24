@@ -562,6 +562,23 @@ local mini_lazy_spec = bpu:declare_lazy_spec(
   }
 )
 
+
+--- nvim-treesitter-context
+local nvim_treesitter_context_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.nvim-treesitter-context",
+  {
+    -- Configured later as a part of nvim-treesitter
+  }
+)
+
+--- nvim-treesitter-textobjects
+local nvim_treesitter_textobjects_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.nvim-treesitter-textobjects",
+  {
+    -- Configured later as a part of nvim-treesitter
+  }
+)
+
 --- nvim-treesitter
 local nvim_treesitter_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.nvim-treesitter",
@@ -744,6 +761,84 @@ local nvim_treesitter_spec = bpu:declare_lazy_spec(
         indent = {
           enable = true
         },
+
+        context = {
+          -- https://github.com/nvim-treesitter/nvim-treesitter-context?tab=readme-ov-file#configuration
+          enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+          multiwindow = true, -- Enable multiwindow support.
+          max_lines = 5, -- How many lines the window should span. Values <= 0 mean no limit.
+          min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+          line_numbers = true,
+          multiline_threshold = 20, -- Maximum number of lines to show for a single context
+          trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: "inner", "outer"
+          mode = "cursor", -- Line used to calculate context. Choices: "cursor", "topline"
+          -- Separator between context and content. Should be a single character string, like "-".
+          -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+          separator = nil,
+          zindex = 20, -- The Z-index of the context window
+          on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
+        },
+
+        textobjects = {
+          -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+          select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+              ["af"] = "@function.outer",
+              ["if"] = "@function.inner",
+              ["ac"] = "@comment.outer",
+              ["ic"] = "@comment.inner",
+              ["ab"] = "@block.outer",
+              ["ib"] = "@block.inner",
+              ["as"] = {
+                query = "@local.scope",
+                query_group = "locals",
+                desc = "Select language scope",
+              },
+            },
+            selection_modes = {},
+            include_surrounding_whitespace = false, -- Note: can also be a fucntion to have different behaviors for queries and selection modes
+          },
+          swap = {
+            enable = true,
+            swap_next = {
+              ["<leader><leader>n"] = "@block.outer",
+            },
+            swap_previous = {
+              ["<leader><leader>p"] = "@block.outer",
+              ["<leader><leader>N"] = "@block.outer",
+            },
+          },
+          move = {
+            enable = true,
+            set_jumps = true,
+            goto_next_start = {
+              ["]m"] = "@function.inner",
+              ["]]"] = "@block.outer",
+            },
+            goto_next_end = {
+              ["]M"] = "@function.inner",
+              ["]}"] = "@block.outer",
+            },
+            goto_previous_start = {
+              ["[m"] = "@function.inner",
+              ["[["] = "@block.outer",
+            },
+            goto_previous_end = {
+              ["[M"] = "@function.inner",
+              ["[{"] = "@block.outer",
+            },
+          },
+          lsp_interop = {
+            -- Disabled until LSP is integrated with the config.
+            enable = false,
+            floating_preview_opts = {
+              border = "shadow",
+            },
+            peek_definition_code = {}
+          },
+        },
       })
 
       -- Function to check if treesitter parser exists for the current buffer's filetype
@@ -836,7 +931,7 @@ local nvim_treesitter_spec = bpu:declare_lazy_spec(
 
       -- Command to toggle treesitter folding
       vim.api.nvim_create_user_command(
-        "BkbToggleTreesitterFolding",
+        "BkbTSToggleFolding",
         function(opts) toggle_treesitter_folding() end,
         {
           desc = "Toggle options that enable treesitter folding in the current window if the current buffer has a treesitter parser."
@@ -853,38 +948,11 @@ local nvim_treesitter_spec = bpu:declare_lazy_spec(
             -- - 'filetype' property is set.
             -- - The buffer is fully loaded.
             -- - Treesitter parser is initialized.
-            -- Alternatively, users should run :BkbToggleTreesitterFolding manipulate the treesitter folding
+            -- Alternatively, users should run :BkbTSToggleFolding manipulate the treesitter folding
             vim.defer_fn(function() toggle_treesitter_folding() end, 100)
           end,
         }
       )
-    end,
-  }
-)
-
---- nvim-treesitter-context
-local nvim_treesitter_context_spec = bpu:declare_lazy_spec(
-  "config.infra.plugins.nvim-treesitter-context",
-  {
-    config = function()
-      local nvim_treesitter_context = require("treesitter-context")
-
-      nvim_treesitter_context.setup({
-        -- https://github.com/nvim-treesitter/nvim-treesitter-context?tab=readme-ov-file#configuration
-        enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-        multiwindow = true, -- Enable multiwindow support.
-        max_lines = 5, -- How many lines the window should span. Values <= 0 mean no limit.
-        min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
-        line_numbers = true,
-        multiline_threshold = 20, -- Maximum number of lines to show for a single context
-        trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: "inner", "outer"
-        mode = "cursor", -- Line used to calculate context. Choices: "cursor", "topline"
-        -- Separator between context and content. Should be a single character string, like "-".
-        -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
-        separator = nil,
-        zindex = 20, -- The Z-index of the context window
-        on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
-      })
 
       -- Keymappings
       vim.keymap.set(
@@ -893,7 +961,7 @@ local nvim_treesitter_context_spec = bpu:declare_lazy_spec(
         function() nvim_treesitter_context.go_to_context(vim.v.count1) end,
         { silent = true }
       )
-    end
+    end,
   }
 )
 
