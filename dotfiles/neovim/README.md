@@ -264,6 +264,17 @@ Ensure [`nvim-treesitter`][nvim-treesitter] is installed.
 
 This plugin uses tree-sitter to define and manipulate `nvim` textobjects that tree-sitter captures for available languages.
 
+#### [`nvim-treesitter-refactor`][nvim-treesitter-refactor]
+
+Ensure [`nvim-treesitter`][nvim-treesitter] is installed.
+
+This plugin uses tree-sitter to:
+
+- Highlight definition of the current symbol under the cursor.
+- Highlight the current scope in wihch the cursor resides.
+
+Additionally, it can perform symbol renaming and go to definition, but because it operates at the tree-sitter level, this functionality is not as robust as language-semantics-aware tooling, so this configuration does not recommend using these features of the plugin. Instead, users should rely on LSP for these features.
+
 ## Make `nvim` default pager
 
 ### Install `nvimpager`

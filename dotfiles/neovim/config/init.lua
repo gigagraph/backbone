@@ -562,7 +562,6 @@ local mini_lazy_spec = bpu:declare_lazy_spec(
   }
 )
 
-
 --- nvim-treesitter-context
 local nvim_treesitter_context_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.nvim-treesitter-context",
@@ -574,6 +573,14 @@ local nvim_treesitter_context_spec = bpu:declare_lazy_spec(
 --- nvim-treesitter-textobjects
 local nvim_treesitter_textobjects_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.nvim-treesitter-textobjects",
+  {
+    -- Configured later as a part of nvim-treesitter
+  }
+)
+
+--- nvim-treesitter-refactor
+local nvim_treesitter_refactor_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.nvim-treesitter-refactor",
   {
     -- Configured later as a part of nvim-treesitter
   }
@@ -839,6 +846,35 @@ local nvim_treesitter_spec = bpu:declare_lazy_spec(
             peek_definition_code = {}
           },
         },
+
+        refactor = {
+          -- https://github.com/nvim-treesitter/nvim-treesitter-refactor
+          highlight_definitions = {
+            enable = true,
+            clear_on_cursor_move = true, -- Set to false if you have an `updatetime` of ~100.
+          },
+          highlight_current_scope = {
+            enable = true,
+          },
+          smart_rename = {
+            enable = false,
+            -- Assign keymaps to false to disable them, e.g. `smart_rename = false`. Otherwise assign to a keymapping.
+            keymaps = {
+              smart_rename = false,
+            },
+          },
+          navigation = {
+            enable = false,
+            -- Assign keymaps to false to disable them, e.g. `goto_definition = false`.
+            keymaps = {
+              goto_definition_lsp_fallback = false,
+              list_definitions = false,
+              list_definitions_toc = false,
+              goto_next_usage = false,
+              goto_previous_usage = false,
+            },
+          },
+        },
       })
 
       -- Function to check if treesitter parser exists for the current buffer's filetype
@@ -934,7 +970,7 @@ local nvim_treesitter_spec = bpu:declare_lazy_spec(
         "BkbTSToggleFolding",
         function(opts) toggle_treesitter_folding() end,
         {
-          desc = "Toggle options that enable treesitter folding in the current window if the current buffer has a treesitter parser."
+          desc = "Toggle options that enable treesitter folding in the current window if the current buffer has a treesitter parser. Note: use `zx` to reset folds."
         }
       )
 
