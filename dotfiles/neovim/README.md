@@ -275,6 +275,33 @@ This plugin uses tree-sitter to:
 
 Additionally, it can perform symbol renaming and go to definition, but because it operates at the tree-sitter level, this functionality is not as robust as language-semantics-aware tooling, so this configuration does not recommend using these features of the plugin. Instead, users should rely on LSP for these features.
 
+#### [`nvim-lspconfig`][nvim-lspconfig]
+
+> [!NOTE]
+>
+> Neovim has LSP client built in. However, it is the responsibility of LSP users to install the specific servers. See the [dedicated page](./lsp/README.md) for details about LSP and to find out how to install a specific LSP server that this setup supports.
+
+Use `:help lsp` to find basic information about LSP integration in `neovim`.
+
+[`nvim-lspconfig`][nvim-lspconfig] facilitates configuration of popular LSP servers.
+
+#### [`plenary.nvim`][plenary-nvim]
+
+This setup uses `plenary.nvim` as a "standard" library for nvim's Lua. It also relies on `plenary`'s [`test_harness`][plenary-test-harness] for [unit testing](#unit-testing) this setup.
+
+### Testing
+
+#### Unit testing
+
+This setup uses [`plenary.nvim`][plenary-nvim] to write and run unit tests. Tests reside in `test/` directory relative to the file under test and have the same name of the file as the file being tested prefixed with `_spec` before the `.lua` extension. Tests that test interactions between modules reside under the `test/` directory as well and also end with `_spec` after the extension, but the name prefix can be any string allowed by common filesystems.
+
+`plenary` offers similar interface to Lua's [`busted` testing library][lua-busted].
+
+<!-- TODO: how to run tests -->
+<!-- TODO: where to put them -->
+
+This setup uses ``
+
 ## Make `nvim` default pager
 
 ### Install `nvimpager`
@@ -361,6 +388,10 @@ done
   - [nvim-treesitter][nvim-treesitter]
   - [nvim-treesitter-context][nvim-treesitter-context]
   - [nvim-treesitter-textobjects][nvim-treesitter-textobjects]
+  - [nvim-lspconfig][nvim-lspconfig]
+  - [plenary-nvim][plenary-nvim]
+    - [plenary-test-harness][plenary-test-harness]
+- [lua-busted][lua-busted]
 
 [github-neovim]: <https://github.com/neovim/neovim>
 [neovim-build-deps]: <https://github.com/neovim/neovim/blob/master/BUILD.md#build-prerequisites>
@@ -387,3 +418,7 @@ done
 [nvim-treesitter]: <https://github.com/nvim-treesitter/nvim-treesitter>
 [nvim-treesitter-context]: <https://github.com/nvim-treesitter/nvim-treesitter-context>
 [nvim-treesitter-textobjects]: <https://github.com/nvim-treesitter/nvim-treesitter-textobjects>
+[nvim-lspconfig]: <https://github.com/neovim/nvim-lspconfig>
+[plenary-nvim]: <https://github.com/nvim-lua/plenary.nvim>
+[plenary-test-harness]: <https://github.com/nvim-lua/plenary.nvim?tab=readme-ov-file#plenarytest_harness>
+[lua-busted]: <https://lunarmodules.github.io/busted/>

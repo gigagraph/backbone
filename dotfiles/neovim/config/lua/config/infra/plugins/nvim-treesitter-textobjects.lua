@@ -1,7 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter-textobjects",
   name = "nvim-treesitter-textobjects",
-  version = "205e3369bc83d8cb83f7409c36120e24611f8c5c",
+  version = "ed373482db797bbf71bdff37a15c7555a84dce47",
   pin = false,
   lazy = false,
   dependencies = {

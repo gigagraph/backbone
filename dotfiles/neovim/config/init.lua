@@ -76,7 +76,7 @@ vim.opt.langmap = {
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking text",
   group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
-  callback = function()
+  callback = function(ev)
     vim.highlight.on_yank { timeout = 50 }
   end,
 })
@@ -85,7 +85,7 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "Configure help pages",
   group = vim.api.nvim_create_augroup("help-file-type", { clear = true }),
   pattern = "help",
-  callback = function()
+  callback = function(ev)
     vim.opt_local.number = true
     vim.opt_local.relativenumber = true
   end,
@@ -178,7 +178,13 @@ local catppuccin_lazy_spec = bpu:declare_lazy_spec(
   }
 )
 
---- mini
+---- plenary
+local plenary_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.plenary",
+  {}
+)
+
+---- mini
 local mini_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.mini",
   {
@@ -562,32 +568,32 @@ local mini_lazy_spec = bpu:declare_lazy_spec(
   }
 )
 
---- nvim-treesitter-context
-local nvim_treesitter_context_spec = bpu:declare_lazy_spec(
+---- nvim-treesitter-context
+local nvim_treesitter_context_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.nvim-treesitter-context",
   {
     -- Configured later as a part of nvim-treesitter
   }
 )
 
---- nvim-treesitter-textobjects
-local nvim_treesitter_textobjects_spec = bpu:declare_lazy_spec(
+---- nvim-treesitter-textobjects
+local nvim_treesitter_textobjects_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.nvim-treesitter-textobjects",
   {
     -- Configured later as a part of nvim-treesitter
   }
 )
 
---- nvim-treesitter-refactor
-local nvim_treesitter_refactor_spec = bpu:declare_lazy_spec(
+---- nvim-treesitter-refactor
+local nvim_treesitter_refactor_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.nvim-treesitter-refactor",
   {
     -- Configured later as a part of nvim-treesitter
   }
 )
 
---- nvim-treesitter
-local nvim_treesitter_spec = bpu:declare_lazy_spec(
+---- nvim-treesitter
+local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.nvim-treesitter",
   {
     config = function(lazy_plugin, opts)
@@ -610,6 +616,11 @@ local nvim_treesitter_spec = bpu:declare_lazy_spec(
           --- C++
           "cpp",
           "doxygen",
+
+          --- Zig
+          "zig",
+          "ziggy",
+          "ziggy_schema",
 
           ---- Python
           "python",
@@ -955,7 +966,6 @@ local nvim_treesitter_spec = bpu:declare_lazy_spec(
               vim.api.nvim_buf_set_var(bufnr, bkb_prev_foldexpr_buffer_var, current_foldexpr)
               vim.api.nvim_buf_set_var(bufnr, bkb_prev_foldlevel_buffer_var, current_foldlevel)
 
-
               -- Enable treesitter folding
               vim.wo[win_id].foldmethod = treesitter_folding_expected_foldmethod
               vim.wo[win_id].foldexpr = treesitter_folding_expected_foldexpr
@@ -975,17 +985,20 @@ local nvim_treesitter_spec = bpu:declare_lazy_spec(
       )
 
       vim.api.nvim_create_autocmd(
-        { "BufEnter", "BufWinEnter", "FileType" },
+        {
+          "BufWinEnter",
+          "FileType"
+        },
         {
           desc = "Activate treesitter-based folding in windows that host buffers that have treesitter grammars",
           group = vim.api.nvim_create_augroup("TreesitterFolding", { clear = true }),
-          callback = function()
+          callback = function(ev)
             -- Small delay to ensure neovim initialized buffer properly:
             -- - 'filetype' property is set.
             -- - The buffer is fully loaded.
             -- - Treesitter parser is initialized.
             -- Alternatively, users should run :BkbTSToggleFolding manipulate the treesitter folding
-            vim.defer_fn(function() toggle_treesitter_folding() end, 100)
+            vim.defer_fn(function() toggle_treesitter_folding(ev.buf) end, 100)
           end,
         }
       )
@@ -994,14 +1007,28 @@ local nvim_treesitter_spec = bpu:declare_lazy_spec(
       vim.keymap.set(
         "n",
         "<leader><leader>gc",
-        function() nvim_treesitter_context.go_to_context(vim.v.count1) end,
+        function() require("treesitter-context").go_to_context(vim.v.count1) end,
         { silent = true }
       )
     end,
   }
 )
 
---- telescope
+---- nvim-lspconfig
+    -- TODO: configure keybidning to force reload all LSPs + force reload LSPs related to the current buffer
+    -- :lua vim.lsp.stop_client(vim.lsp.get_clients())
+    -- :edit
+
+local nvim_lspconfig_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.nvim-lspconfig",
+  {
+    config = function(lazy_plugin, opts)
+      -- TODO: configure
+    end
+  }
+)
+
+---- telescope
 -- local telescope_spec = bpu:declare_lazy_spec(
 --   -- TODO
 --   "config.infra.plugins.telescope",

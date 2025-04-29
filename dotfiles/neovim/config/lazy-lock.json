@@ -2,8 +2,10 @@
   "catppuccin": { "branch": "main", "commit": "c9e205fe035d622b3c2d66ee42edf368c0c31fd5" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "mini.nvim": { "branch": "main", "commit": "0420076298c4457f200c2de468f65d080597a347" },
+  "nvim-lspconfig": { "branch": "master", "commit": "fa2662510d30b06168b6e2e6915518decde6bbac" },
   "nvim-treesitter": { "branch": "master", "commit": "cfc6f2c117aaaa82f19bcce44deec2c194d900ab" },
   "nvim-treesitter-context": { "branch": "master", "commit": "6daca3ad780f045550b820f262002f35175a6c04" },
   "nvim-treesitter-refactor": { "branch": "master", "commit": "d8b74fa87afc6a1e97b18da23e762efb032dc270" },
-  "nvim-treesitter-textobjects": { "branch": "master", "commit": "205e3369bc83d8cb83f7409c36120e24611f8c5c" }
+  "nvim-treesitter-textobjects": { "branch": "master", "commit": "ed373482db797bbf71bdff37a15c7555a84dce47" },
+  "plenary.nvim": { "branch": "master", "commit": "50012918b2fc8357b87cff2a7f7f0446e47da174" }
 }
