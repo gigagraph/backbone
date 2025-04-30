@@ -297,10 +297,16 @@ This setup uses [`plenary.nvim`][plenary-nvim] to write and run unit tests. Test
 
 `plenary` offers similar interface to Lua's [`busted` testing library][lua-busted].
 
-<!-- TODO: how to run tests -->
-<!-- TODO: where to put them -->
+##### Running unit tests from `neovim`
 
-This setup uses ``
+```vim
+:Lazy load plenary.nvim
+:PlenaryBustedFile %
+```
+
+##### Running unit tests via shell
+
+<!-- TODO: how to run tests from CLI -->
 
 ## Make `nvim` default pager
 

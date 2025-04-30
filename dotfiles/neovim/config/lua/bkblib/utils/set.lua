@@ -10,8 +10,25 @@ function SetM:is_set()
   return getmetatable(self) == _set_mt.__metatable
 end
 
+function SetM:size()
+  -- TODO: performance improvement - store this in the data structure itself
+  local size = 0
+  for _, _ in self:pairs() do
+    size = size + 1
+  end
+  return size
+end
+
 function SetM:contains(value)
   return self(value)
+end
+
+function SetM:pairs()
+  return pairs(self._data)
+end
+
+function SetM:ipairs()
+  return ipairs(self._data)
 end
 
 -- This function mutates the state of the current set. If it returns an error and the arument is a table, the state may be corrupted.
@@ -32,6 +49,8 @@ local function _concat_sets_in_place(set, other)
         )
       end
     end
+  elseif type(other) == "nil" then
+    -- skip
   else
     error("Can only concat either a table number -> Any or another Set.")
   end
@@ -54,28 +73,74 @@ function _set_mt.__add(left, right)
 end
 
 function _set_mt.__sub(left, right)
-  -- TODO
-  -- right can be either another set or an element
+  local copy = SetM.mk(left)
+
+  if SetM.is_set(right) then
+    for k, _ in pairs(right._data) do
+      copy._data[k] = nil
+    end
+  elseif type(right) == "table" then
+    for k, e in pairs(right) do
+      if type(k) == "number" then
+        copy._data[e] = nil
+      else
+        error(
+          [[When concatenating a table, the table must be of type number -> Any.
+          However, there is an entry with key "]]
+          .. k .. [[" of type "]] .. type(k) .. [["]]
+        )
+      end
+    end
+  else
+    if right then
+      copy._data[right] = nil
+    end
+  end
+
+  return copy
 end
 
 function _set_mt.__mul(left, right)
-  -- TODO
-  -- right can only be a set
+  if type(right) == "table" then
+    right = SetM.mk(right)
+  end
+
+  if SetM.is_set(right) then
+    local smaller_set = nil
+    local larger_set = nil
+
+    if left:size() <= right:size() then
+      smaller_set, larger_set = left, right
+    else
+      smaller_set, larger_set = right, left
+    end
+
+    local result = {}
+
+    for e, _ in smaller_set:pairs() do
+      if larger_set(e) then
+        table.insert(result, e)
+      end
+    end
+
+    return SetM.mk(result)
+  elseif type(right) == "nil" then
+    return SetM.mk()
+  else
+    error("Can only intersect either a table number -> Any or another Set.")
+  end
 end
 
 function _set_mt.__concat(left, right)
   local copy = SetM.mk(left)
-  return copy._concat_sets_in_place(right)
-end
-
-function _set_mt:__len()
-  return #(self._data)
+  _concat_sets_in_place(copy, right)
+  return copy
 end
 
 function _set_mt.__lt(left, right)
   for e, _ in pairs(left._data) do
     -- If there exists and element in the left that does not exist in the right, then left is not a subset of right
-    if right[e] ~= true then
+    if not right(e) then
       return false
     end
   end
@@ -87,11 +152,15 @@ function _set_mt.__le(left, right)
 end
 
 function _set_mt.__eq(left, right)
-  if #(left._data) ~= #(right._data) then
-    return false
+  if SetM.is_set(right) then
+    if left:size() ~= right:size() then
+      return false
+    else
+      -- Since the lengths are the same, if left is a subset of the right, then left is the same set as right
+      return left < right
+    end
   else
-    -- Since the lengths are the same, if left is a subset of the right, then left is the same set as right
-    return left < right
+    return error("Set can only be compared to another set")
   end
 end
 

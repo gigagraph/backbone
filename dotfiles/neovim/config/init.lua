@@ -980,7 +980,9 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
         "BkbTSToggleFolding",
         function(opts) toggle_treesitter_folding() end,
         {
-          desc = "Toggle options that enable treesitter folding in the current window if the current buffer has a treesitter parser. Note: use `zx` to reset folds."
+          desc = [[Toggle options that enable treesitter folding in the current window if the current buffer has a treesitter parser.
+
+          Note: use `zx` followed by reloading the buffer contents (`:e`) to reset folds.]]
         }
       )
 
