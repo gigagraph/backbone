@@ -891,14 +891,14 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
       -- Function to check if treesitter parser exists for the current buffer's filetype
       local function buffer_has_treesitter_parser(bufnr)
         local bufnr = bufnr or vim.fn.bufnr("%")
-        if vim.fn.bufexists(bufnr) then
+        if vim.fn.bufexists(bufnr) == 0 then
+          return false
+        else
           local buf_ft = vim.bo[bufnr].filetype
 
           if buf_ft == "" then
             return false
           end
-        else
-          return false
         end
 
         -- try to get parser for the current filetype
@@ -914,8 +914,7 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
       local bkb_prev_foldexpr_buffer_var = "bkb_prev_foldexpr"
       local bkb_prev_foldlevel_buffer_var = "bkb_prev_foldlevel"
 
-      -- Function to enable treesitter folding for the current buffer
-      local function toggle_treesitter_folding(bufnr)
+      local function try_enable_treesitter_folding(bufnr)
         local bufnr = bufnr or vim.fn.bufnr("%")
 
         if buffer_has_treesitter_parser(bufnr) then
@@ -923,6 +922,7 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
           if win_id ~= -1 then
             local current_foldmethod = vim.wo[win_id].foldmethod
             local current_foldexpr = vim.wo[win_id].foldexpr
+            local current_foldlevel = vim.wo[win_id].foldlevel
 
             local bkb_prev_foldmethod_ok, prev_foldmethod = pcall(
               vim.api.nvim_buf_get_var,
@@ -945,47 +945,126 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
               bkb_prev_foldlevel_ok
             )
 
-            local is_treesitter_active = (
-              current_foldmethod == treesitter_folding_expected_foldmethod and
-              current_foldexpr == treesitter_folding_expected_foldexpr
-            )
-
-            if is_treesitter_active and bkb_prev_vars_ok then
-              -- Switch back to the previous folding method
-              vim.wo[win_id].foldmethod = prev_foldmethod
-              vim.wo[win_id].foldexpr = prev_foldexpr
-              vim.wo[win_id].foldlevel = prev_foldlevel
-
-              -- Delete the previous variables from the buffer
-              local _, _ = pcall(vim.api.nvim_buf_del_var, bufnr, bkb_prev_foldmethod_buffer_var)
-              local _, _ = pcall(vim.api.nvim_buf_del_var, bufnr, bkb_prev_foldexpr_buffer_var)
-              local _, _ = pcall(vim.api.nvim_buf_del_var, bufnr, bkb_prev_foldlevel_buffer_var)
-            else
-              -- Set the current folding variables as a previous value
+            if not bkb_prev_vars_ok then
               vim.api.nvim_buf_set_var(bufnr, bkb_prev_foldmethod_buffer_var, current_foldmethod)
               vim.api.nvim_buf_set_var(bufnr, bkb_prev_foldexpr_buffer_var, current_foldexpr)
               vim.api.nvim_buf_set_var(bufnr, bkb_prev_foldlevel_buffer_var, current_foldlevel)
-
-              -- Enable treesitter folding
-              vim.wo[win_id].foldmethod = treesitter_folding_expected_foldmethod
-              vim.wo[win_id].foldexpr = treesitter_folding_expected_foldexpr
-              vim.wo[win_id].foldlevel = treesitter_folding_expected_foldlevel
             end
+
+            -- Enable treesitter folding
+            vim.wo[win_id].foldmethod = treesitter_folding_expected_foldmethod
+            vim.wo[win_id].foldexpr = treesitter_folding_expected_foldexpr
+            vim.wo[win_id].foldlevel = treesitter_folding_expected_foldlevel
           end
+        end
+      end
+
+      local function try_disable_treesitter_folding(bufnr)
+        local bufnr = bufnr or vim.fn.bufnr("%")
+
+        local win_id = vim.fn.bufwinid(bufnr)
+        if win_id ~= -1 then
+          local bkb_prev_foldmethod_ok, prev_foldmethod = pcall(
+            vim.api.nvim_buf_get_var,
+            bufnr,
+            bkb_prev_foldmethod_buffer_var
+          )
+          local bkb_prev_foldexpr_ok, prev_foldexpr = pcall(
+            vim.api.nvim_buf_get_var,
+            bufnr,
+            bkb_prev_foldexpr_buffer_var
+          )
+          local bkb_prev_foldlevel_ok, prev_foldlevel = pcall(
+            vim.api.nvim_buf_get_var,
+            bufnr,
+            bkb_prev_foldlevel_buffer_var
+          )
+          local bkb_prev_vars_ok = (
+          bkb_prev_foldmethod_ok and
+          bkb_prev_foldexpr_ok and
+          bkb_prev_foldlevel_ok
+        )
+
+          if bkb_prev_vars_ok then
+            -- Revert the folding configuration back
+            vim.wo[win_id].foldmethod = prev_foldmethod
+            vim.wo[win_id].foldexpr = prev_foldexpr
+            vim.wo[win_id].foldlevel = prev_foldlevel
+
+            -- Delete the previous variables from the buffer
+            local _, _ = pcall(vim.api.nvim_buf_del_var, bufnr, bkb_prev_foldmethod_buffer_var)
+            local _, _ = pcall(vim.api.nvim_buf_del_var, bufnr, bkb_prev_foldexpr_buffer_var)
+            local _, _ = pcall(vim.api.nvim_buf_del_var, bufnr, bkb_prev_foldlevel_buffer_var)
+          end
+        end
+      end
+
+      local function is_treesitter_folding_enabled(bufnr)
+        local bufnr = bufnr or vim.fn.bufnr("%")
+
+        local bkb_prev_foldmethod_ok, _ = pcall(
+          vim.api.nvim_buf_get_var,
+          bufnr,
+          bkb_prev_foldmethod_buffer_var
+        )
+        local bkb_prev_foldexpr_ok, _ = pcall(
+          vim.api.nvim_buf_get_var,
+          bufnr,
+          bkb_prev_foldexpr_buffer_var
+        )
+        local bkb_prev_foldlevel_ok, _ = pcall(
+          vim.api.nvim_buf_get_var,
+          bufnr,
+          bkb_prev_foldlevel_buffer_var
+        )
+        return (
+          bkb_prev_foldmethod_ok and
+          bkb_prev_foldexpr_ok and
+          bkb_prev_foldlevel_ok
+        )
+      end
+
+      -- Function to toggle treesitter folding for the current buffer
+      local function try_toggle_treesitter_folding(bufnr)
+        local bufnr = bufnr or vim.fn.bufnr("%")
+
+        if is_treesitter_folding_enabled(bufnr) then
+          try_disable_treesitter_folding(bufnr)
+        else
+          try_enable_treesitter_folding(bufnr)
         end
       end
 
       -- Command to toggle treesitter folding
       vim.api.nvim_create_user_command(
         "BkbTSToggleFolding",
-        function(opts) toggle_treesitter_folding() end,
+        function(opts) try_toggle_treesitter_folding() end,
         {
-          desc = [[Toggle options that enable treesitter folding in the current window if the current buffer has a treesitter parser.
+          desc = [[Try to toggle options that enable treesitter folding in the current window if the current buffer has a treesitter parser.
+
+          Note: use `zx` followed by reloading the buffer contents (`:e`) to reset folds.]]
+        }
+      )
+      vim.api.nvim_create_user_command(
+        "BkbTSEnableFolding",
+        function(opts) try_enable_treesitter_folding() end,
+        {
+          desc = [[Try to set option to enable treesitter folding in the current window if the current buffer has a treesitter parser. If successfuly, the function will save the current folding options to the buffer vars so that they can be restored when user wants to disable treesitter folding.
+
+          Note: use `zx` followed by reloading the buffer contents (`:e`) to reset folds.]]
+        }
+      )
+      vim.api.nvim_create_user_command(
+        "BkbTSDisableFolding",
+        function(opts) try_disable_treesitter_folding() end,
+        {
+          desc = [[Try to revert the folding options to their previous values before enabling treesitter folding in the current window if the current buffer has a treesitter parser.
 
           Note: use `zx` followed by reloading the buffer contents (`:e`) to reset folds.]]
         }
       )
 
+      -- Try enableing treesitter folding automatically
       vim.api.nvim_create_autocmd(
         {
           "BufWinEnter",
@@ -1000,7 +1079,7 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
             -- - The buffer is fully loaded.
             -- - Treesitter parser is initialized.
             -- Alternatively, users should run :BkbTSToggleFolding manipulate the treesitter folding
-            vim.defer_fn(function() toggle_treesitter_folding(ev.buf) end, 100)
+            vim.defer_fn(function() try_enable_treesitter_folding(ev.buf) end, 100)
           end,
         }
       )
