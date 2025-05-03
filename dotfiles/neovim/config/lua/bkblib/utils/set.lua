@@ -33,6 +33,10 @@ end
 
 -- This function mutates the state of the current set. If it returns an error and the arument is a table, the state may be corrupted.
 local function _concat_sets_in_place(set, other)
+  -- TODO: check the order of both parameters?
+  -- local set = _
+  -- local maybe_not_set = _
+
   if SetM.is_set(other) then
     for k, _ in pairs(other._data) do
       set._data[k] = true
@@ -52,11 +56,13 @@ local function _concat_sets_in_place(set, other)
   elseif type(other) == "nil" then
     -- skip
   else
-    error("Can only concat either a table number -> Any or another Set.")
+    error("Can only concat either a table number -> Any, another Set, or nil.")
   end
 end
 
 function _set_mt.__add(left, right)
+  -- TODO: both left and right might not be a set, but 1 of them definitely is
+
   local copy = SetM.mk(left)
 
   concat_success, result = pcall(_concat_sets_in_place, copy, right)
@@ -138,29 +144,32 @@ function _set_mt.__concat(left, right)
 end
 
 function _set_mt.__lt(left, right)
-  for e, _ in pairs(left._data) do
-    -- If there exists and element in the left that does not exist in the right, then left is not a subset of right
-    if not right(e) then
-      return false
-    end
+  if SetM.is_set(left) and SetM.is_set(right) then
+    return not (left:size() == right:size()) and left <= right
+  else
+    error("The proper subset operator can only be applied to Set-s")
   end
 end
 
 function _set_mt.__le(left, right)
-  -- < is the same as <= for sets because if a set is a proper subset of another, then it is definitely a subset of another set
-  return left < right
+  if SetM.is_set(left) and SetM.is_set(right) then
+    for e, _ in pairs(left._data) do
+      -- If there exists and element in the left that does not exist in the right, then left is not a subset of right
+      if not right(e) then
+        return false
+      end
+    end
+    return true
+  else
+    error("A Set can only be compared to another Set")
+  end
 end
 
 function _set_mt.__eq(left, right)
-  if SetM.is_set(right) then
-    if left:size() ~= right:size() then
-      return false
-    else
-      -- Since the lengths are the same, if left is a subset of the right, then left is the same set as right
-      return left < right
-    end
+  if SetM.is_set(left) and SetM.is_set(right) then
+    return (left:size() == right:size()) and left <= right
   else
-    return error("Set can only be compared to another set")
+    error("A Set can only be compared to another Set")
   end
 end
 
@@ -179,7 +188,10 @@ function _set_mt:__call(e)
 end
 
 local function mk_empty_set()
-  local set = { _data = {} }
+  local set = {
+    _data = {},
+    -- _size = 0, -- TODO: implement size
+  }
   setmetatable(set, _set_mt)
   return set
 end
@@ -193,5 +205,7 @@ function SetM.mk(es)
   _concat_sets_in_place(set, es)
   return set
 end
+
+-- TODO: fix typechecking for both left and right
 
 return SetM
