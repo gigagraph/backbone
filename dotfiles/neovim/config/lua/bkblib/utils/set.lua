@@ -33,10 +33,6 @@ end
 
 -- This function mutates the state of the current set. If it returns an error and the arument is a table, the state may be corrupted.
 local function _concat_sets_in_place(set, other)
-  -- TODO: check the order of both parameters?
-  -- local set = _
-  -- local maybe_not_set = _
-
   if SetM.is_set(other) then
     for k, _ in pairs(other._data) do
       set._data[k] = true
@@ -49,7 +45,7 @@ local function _concat_sets_in_place(set, other)
         error(
           [[When concatenating a table, the table must be of type number -> Any.
           However, there is an entry with key "]]
-          .. k .. [[" of type "]] .. type(k) .. [["]]
+          .. k .. '" of type "' .. type(k) .. '"'
         )
       end
     end
@@ -61,15 +57,24 @@ local function _concat_sets_in_place(set, other)
 end
 
 function _set_mt.__add(left, right)
-  -- TODO: both left and right might not be a set, but 1 of them definitely is
+  local set = nil
+  local maybe_set = nil
 
-  local copy = SetM.mk(left)
+  if SetM.is_set(left) then
+    set = left
+    maybe_set = right
+  else
+    set = right
+    maybe_set = left
+  end
 
-  concat_success, result = pcall(_concat_sets_in_place, copy, right)
+  local copy = SetM.mk(set)
+
+  concat_success, result = pcall(_concat_sets_in_place, copy, maybe_set)
 
   if not concat_success then
-    if type(right) ~= "table" then
-      copy._data[right] = true
+    if type(maybe_set) ~= "table" then
+      copy._data[maybe_set] = true
     else
       error(result)
     end
@@ -79,46 +84,61 @@ function _set_mt.__add(left, right)
 end
 
 function _set_mt.__sub(left, right)
-  local copy = SetM.mk(left)
+  if SetM.is_set(left) then
+    local copy = SetM.mk(left)
 
-  if SetM.is_set(right) then
-    for k, _ in pairs(right._data) do
-      copy._data[k] = nil
-    end
-  elseif type(right) == "table" then
-    for k, e in pairs(right) do
-      if type(k) == "number" then
-        copy._data[e] = nil
-      else
-        error(
-          [[When concatenating a table, the table must be of type number -> Any.
+    if SetM.is_set(right) then
+      for k, _ in pairs(right._data) do
+        copy._data[k] = nil
+      end
+    elseif type(right) == "table" then
+      for k, e in pairs(right) do
+        if type(k) == "number" then
+          copy._data[e] = nil
+        else
+          error(
+            [[When concatenating a table, the table must be of type number -> Any.
           However, there is an entry with key "]]
-          .. k .. [[" of type "]] .. type(k) .. [["]]
-        )
+            .. k .. [[" of type "]] .. type(k) .. [["]]
+          )
+        end
+      end
+    else
+      if right then
+        copy._data[right] = nil
       end
     end
-  else
-    if right then
-      copy._data[right] = nil
-    end
-  end
 
-  return copy
+    return copy
+  else
+    error("When subtracting with a Set, the Set must be on the left side of the operation")
+  end
 end
 
 function _set_mt.__mul(left, right)
-  if type(right) == "table" then
-    right = SetM.mk(right)
+  local set = nil
+  local other = nil
+
+  if SetM.is_set(left) then
+    set = left
+    other = right
+  else
+    set = right
+    other = left
   end
 
-  if SetM.is_set(right) then
+  if type(other) == "table" then
+    other = SetM.mk(other)
+  end
+
+  if SetM.is_set(other) then
     local smaller_set = nil
     local larger_set = nil
 
-    if left:size() <= right:size() then
-      smaller_set, larger_set = left, right
+    if set:size() <= other:size() then
+      smaller_set, larger_set = set, other
     else
-      smaller_set, larger_set = right, left
+      smaller_set, larger_set = other, set
     end
 
     local result = {}
@@ -130,7 +150,7 @@ function _set_mt.__mul(left, right)
     end
 
     return SetM.mk(result)
-  elseif type(right) == "nil" then
+  elseif type(other) == "nil" then
     return SetM.mk()
   else
     error("Can only intersect either a table number -> Any or another Set.")
@@ -138,8 +158,19 @@ function _set_mt.__mul(left, right)
 end
 
 function _set_mt.__concat(left, right)
-  local copy = SetM.mk(left)
-  _concat_sets_in_place(copy, right)
+  local set = nil
+  local maybe_set = nil
+
+  if SetM.is_set(left) then
+    set = left
+    maybe_set = right
+  else
+    set = right
+    maybe_set = left
+  end
+
+  local copy = SetM.mk(set)
+  _concat_sets_in_place(copy, maybe_set)
   return copy
 end
 
@@ -205,7 +236,5 @@ function SetM.mk(es)
   _concat_sets_in_place(set, es)
   return set
 end
-
--- TODO: fix typechecking for both left and right
 
 return SetM

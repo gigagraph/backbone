@@ -33,13 +33,13 @@ describe("Set", function()
     end)
     describe("fails when passing", function()
       it("a number", function()
-        assert.has_error(function() Set.mk(10) end)
+        assert.has_error(function() local _ = Set.mk(10) end)
       end)
       it("a string", function()
-        assert.has_error(function() Set.mk("test") end)
+        assert.has_error(function() local _ = Set.mk("test") end)
       end)
       it("true", function()
-        assert.has_error(function() Set.mk(true) end)
+        assert.has_error(function() local _ = Set.mk(true) end)
       end)
     end)
     it("should create a copy of a set if set is passed", function()
@@ -146,11 +146,13 @@ describe("Set", function()
 
           local actual1 = (set + true) + false
           local actual2 = (false + set) + true
+          local actual3 = true + (false + set)
 
           local expected = Set.mk({ "hello", "world", true, false })
 
           assert.are.same(expected, actual1)
           assert.are.same(expected, actual2)
+          assert.are.same(expected, actual3)
 
           assert.are.same(Set.mk({ "hello", "world", true }), set)
         end)
@@ -168,32 +170,34 @@ describe("Set", function()
       end)
     end)
     describe("-", function()
-      it("creates a new set that is the same as the original wihtout the subtracted element", function()
-        local set = Set.mk({ "test", "string1", 1, 2 })
+      describe("creates a new set that is the same as the original wihtout", function()
+        it("the subtracted element", function()
+          local set = Set.mk({ "test", "string1", 1, 2 })
 
-        local subtraction_result = (set - "test") - 2
+          local subtraction_result = (set - "test") - 2
 
-        assert.are.same(Set.mk({"string1", 1}), subtraction_result)
+          assert.are.same(Set.mk({"string1", 1}), subtraction_result)
 
-        assert.are.same(Set.mk({ "test", "string1", 1, 2 }), set)
-      end)
-      it("creates a new set that is the same as the original wihtout the subtracted elements of the table", function()
-        local set = Set.mk({ "test", "string1", 1, 2 })
+          assert.are.same(Set.mk({ "test", "string1", 1, 2 }), set)
+        end)
+        it("the subtracted elements of the table", function()
+          local set = Set.mk({ "test", "string1", 1, 2 })
 
-        local subtraction_result = set - { "test", 2 }
+          local subtraction_result = set - { "test", 2 }
 
-        assert.are.same(Set.mk({"string1", 1}), subtraction_result)
+          assert.are.same(Set.mk({"string1", 1}), subtraction_result)
 
-        assert.are.same(Set.mk({ "test", "string1", 1, 2 }), set)
-      end)
-      it("creates a new set that is the same as the original wihtout the subtracted elements of another set", function()
-        local set = Set.mk({ "test", "string1", 1, 2 })
+          assert.are.same(Set.mk({ "test", "string1", 1, 2 }), set)
+        end)
+        it("the subtracted elements of another set", function()
+          local set = Set.mk({ "test", "string1", 1, 2 })
 
-        local subtraction_result = set - Set.mk({ "test", 2 })
+          local subtraction_result = set - Set.mk({ "test", 2 })
 
-        assert.are.same(Set.mk({"string1", 1}), subtraction_result)
+          assert.are.same(Set.mk({"string1", 1}), subtraction_result)
 
-        assert.are.same(Set.mk({ "test", "string1", 1, 2 }), set)
+          assert.are.same(Set.mk({ "test", "string1", 1, 2 }), set)
+        end)
       end)
       it("creates a new set that is the same as the original when subtracting nil", function()
         local set = Set.mk({ "test", "string1", 1, 2 })
@@ -204,6 +208,34 @@ describe("Set", function()
 
         assert.are.same(Set.mk({ "test", "string1", 1, 2 }), set)
       end)
+      describe("fails if set appears on the right and left is", function()
+        it("a number", function()
+          local set = Set.mk({ "test", "string1", 1, 2 })
+
+          assert.has_error(function() local _ = 2 - set end)
+        end)
+        it("a string", function()
+          local set = Set.mk({ "test", "string1", 1, 2 })
+
+          assert.has_error(function() local _ = "test" - set end)
+        end)
+        it("a boolean", function()
+          local set = Set.mk({ "test", "string1", 1, 2, true, false })
+
+          assert.has_error(function() local _ = true - set end)
+          assert.has_error(function() local _ = false - set end)
+        end)
+        it("a table", function()
+          local set = Set.mk({ "test", "string1", 1, 2 })
+
+          assert.has_error(function() local _ = { "test", 1 } - set end)
+        end)
+        it("nil", function()
+          local set = Set.mk({ "test", "string1", 1, 2 })
+
+          assert.has_error(function() local _ = nil - set end)
+        end)
+      end)
     end)
     describe("*", function()
       describe("should produce a new set containing elements that appear in both arguments at the same time when intersecting with", function()
@@ -212,9 +244,11 @@ describe("Set", function()
             local left = Set.mk({ "test", "string1", 1, 2 })
             local right = Set.mk({ "string1", 2 })
 
-            local intersection_result = left * right
+            local intersection_result1 = left * right
+            local intersection_result2 = right * left
 
-            assert.are.same(Set.mk({ "string1", 2 }), intersection_result)
+            assert.are.same(Set.mk({ "string1", 2 }), intersection_result1)
+            assert.are.same(Set.mk({ "string1", 2 }), intersection_result2)
 
             assert.are.same(Set.mk({ "test", "string1", 1, 2 }), left)
             assert.are.same(Set.mk({ "string1", 2 }), right)
@@ -223,9 +257,11 @@ describe("Set", function()
             local left = Set.mk({ "test", "string1", 1, 2 })
             local right = Set.mk({ "string2", 3 })
 
-            local intersection_result = left * right
+            local intersection_result1 = left * right
+            local intersection_result2 = right * left
 
-            assert.are.same(Set.mk(), intersection_result)
+            assert.are.same(Set.mk(), intersection_result1)
+            assert.are.same(Set.mk(), intersection_result2)
 
             assert.are.same(Set.mk({ "test", "string1", 1, 2 }), left)
             assert.are.same(Set.mk({ "string2", 3 }), right)
@@ -236,9 +272,11 @@ describe("Set", function()
             local left = Set.mk({ "test", "string1", 1, 2 })
             local right = { "string1", 2 }
 
-            local intersection_result = left * right
+            local intersection_result1 = left * right
+            local intersection_result2 = right * left
 
-            assert.are.same(Set.mk({ "string1", 2 }), intersection_result)
+            assert.are.same(Set.mk({ "string1", 2 }), intersection_result1)
+            assert.are.same(Set.mk({ "string1", 2 }), intersection_result2)
 
             assert.are.same(Set.mk({ "test", "string1", 1, 2 }), left)
             assert.are.same({ "string1", 2 }, right)
@@ -247,9 +285,11 @@ describe("Set", function()
             local left = Set.mk({ "test", "string1", 1, 2 })
             local right = { "string2", 3 }
 
-            local intersection_result = left * right
+            local intersection_result1 = left * right
+            local intersection_result2 = right * left
 
-            assert.are.same(Set.mk(), intersection_result)
+            assert.are.same(Set.mk(), intersection_result1)
+            assert.are.same(Set.mk(), intersection_result2)
 
             assert.are.same(Set.mk({ "test", "string1", 1, 2 }), left)
             assert.are.same({ "string2", 3 }, right)
@@ -257,13 +297,15 @@ describe("Set", function()
         end)
       end)
       describe("should return the empty set when intersecting it with nil", function()
-        local left = Set.mk({ "test", "string1", 1, 2 })
+        local set = Set.mk({ "test", "string1", 1, 2 })
 
-        local intersection_result = left * nil
+        local intersection_result1 = set * nil
+        local intersection_result2 = nil * set
 
-        assert.are.same(Set.mk(), intersection_result)
+        assert.are.same(Set.mk(), intersection_result1)
+        assert.are.same(Set.mk(), intersection_result2)
 
-        assert.are.same(Set.mk({ "test", "string1", 1, 2 }), left)
+        assert.are.same(Set.mk({ "test", "string1", 1, 2 }), set)
       end)
       describe("fails when trying to intersecct with", function()
         it("a number", function()
@@ -271,11 +313,19 @@ describe("Set", function()
             local set = Set.mk({ "test", "string1", 1, 2 })
             local _ = set * 2
           end)
+          assert.has_error(function()
+            local set = Set.mk({ "test", "string1", 1, 2 })
+            local _ =  2 * set
+          end)
         end)
         it("a string", function()
           assert.has_error(function()
             local set = Set.mk({ "test", "string1", 1, 2 })
             local _ = set * "test"
+          end)
+          assert.has_error(function()
+            local set = Set.mk({ "test", "string1", 1, 2 })
+            local _ = "test" * set
           end)
         end)
         it("a boolean", function()
@@ -283,42 +333,52 @@ describe("Set", function()
             local set = Set.mk({ "test", "string1", 1, 2, true })
             local _ = set * true
           end)
+          assert.has_error(function()
+            local set = Set.mk({ "test", "string1", 1, 2, true })
+            local _ = true * set
+          end)
         end)
       end)
     end)
     describe("..", function()
       describe("creates a new set contating elements from the original set and", function()
         it("another set", function()
-          local left = Set.mk({ "hello", "world" })
-          local right = Set.mk({ "world", "test" })
+          local set1 = Set.mk({ "hello", "world" })
+          local set2 = Set.mk({ "world", "test" })
 
-          local actual = left .. right
+          local actual1 = set1 .. set2
+          local actual2 = set2 .. set1
           local expected = Set.mk({ "hello", "world", "test" })
 
-          assert.are.same(expected, actual)
+          assert.are.same(expected, actual1)
+          assert.are.same(expected, actual2)
 
-          assert.are.same(Set.mk({ "hello", "world" }), left)
-          assert.are.same(Set.mk({ "world", "test" }), right)
+          assert.are.same(Set.mk({ "hello", "world" }), set1)
+          assert.are.same(Set.mk({ "world", "test" }), set2)
         end)
         it("a table of indexed elements", function()
-          local left = Set.mk({ "hello", "world" })
-          local right = { "world", "test" }
+          local set1 = Set.mk({ "hello", "world" })
+          local set2 = { "world", "test" }
 
-          local actual = left .. right
+          local actual1 = set1 .. set2
+          local actual2 = set2 .. set1
           local expected = Set.mk({ "hello", "world", "test" })
 
-          assert.are.same(expected, actual)
+          assert.are.same(expected, actual1)
+          assert.are.same(expected, actual2)
 
-          assert.are.same(Set.mk({ "hello", "world" }), left)
-          assert.are.same({ "world", "test" }, right)
+          assert.are.same(Set.mk({ "hello", "world" }), set1)
+          assert.are.same({ "world", "test" }, set2)
         end)
       end)
       it("creates a copy of the original set when concatenatng with nil", function()
         local set = Set.mk({ "hello", "world" })
 
-        local concatenation_result = set + nil
+        local concatenation_result1 = set + nil
+        local concatenation_result2 = nil + set
 
-        assert.are.same(Set.mk({ "hello", "world" }), concatenation_result)
+        assert.are.same(Set.mk({ "hello", "world" }), concatenation_result1)
+        assert.are.same(Set.mk({ "hello", "world" }), concatenation_result2)
         assert.are.same(Set.mk({ "hello", "world" }), set)
       end)
       describe("fails when concatenating with", function()
@@ -326,10 +386,13 @@ describe("Set", function()
           assert.has_error(function()
             local _ = Set.mk({ "hello", "world" }) .. 1
           end)
+          assert.has_error(function()
+            local _ = 1 .. Set.mk({ "hello", "world" })
+          end)
         end)
         it("a string", function()
           assert.has_error(function()
-            local _ = Set.mk({ "hello", "world" }) .. "test"
+            local _ = "test" .. Set.mk({ "hello", "world" })
           end)
         end)
         it("a boolean", function()
@@ -337,7 +400,13 @@ describe("Set", function()
             local _ = Set.mk({ "hello", "world" }) .. true
           end)
           assert.has_error(function()
+            local _ = true .. Set.mk({ "hello", "world" })
+          end)
+          assert.has_error(function()
             local _ = Set.mk({ "hello", "world" }) .. false
+          end)
+          assert.has_error(function()
+            local _ = false .. Set.mk({ "hello", "world" })
           end)
         end)
       end)
