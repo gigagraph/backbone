@@ -13,7 +13,7 @@ This guide recommends building and installing `entr` from sources.
 
 Clone the repo and checkout the latest stable version:
 
-```shell
+```bash
 git clone git@github.com:eradman/entr.git
 cd entr
 git checkout "${ENTR_VERSION}"
@@ -21,7 +21,7 @@ git checkout "${ENTR_VERSION}"
 
 Build and test `entr`:
 
-```shell
+```bash
 make test \
   CC="$(which clang)" \
   CFLAGS="--start-no-unused-arguments -fuse-ld=lld --end-no-unused-arguments" \
@@ -32,7 +32,7 @@ make test \
 
 Install `entr`:
 
-```shell
+```bash
 sudo make install
 ```
 

@@ -6,7 +6,7 @@
 
 Ensure the following packages are present on a Ubuntu to be able to use Wayland:
 
-```shell
+```bash
 sudo apt update -y
 sudo apt install -y \
   libwayland-bin \
@@ -24,25 +24,25 @@ sudo apt install -y \
 
 The [original guide][enable-wayland-on-ubuntu].
 
-```shell
+```bash
 sudo vi /etc/gdm3/custom.conf
 ```
 
 Set `WaylandEnable` to `true`:
 
-```shell
+```bash
 WaylandEnable=true
 ```
 
 Restart the `gdm3` `systemd` service:
 
-```shell
+```bash
 sudo systemctl restart gdm3
 ```
 
 After the restart test the setup:
 
-```shell
+```bash
 echo "${XDG_SESSION_TYPE}"
 ```
 
@@ -50,7 +50,7 @@ echo "${XDG_SESSION_TYPE}"
 
 Some programs may integrate with Wayland clipboard. E.g. [`neovim`](../dotfiles/neovim/README.md) can discover and paste to the clipboard of the environment it is running in. If it is running in wayland, it can operate the Wayland's clipboard. To enable programs to use Wayland clipboard install the following package:
 
-```shell
+```bash
 sudo apt update -y
 sudo apt install -y wl-clipboard
 ```

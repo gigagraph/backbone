@@ -13,7 +13,7 @@ Ensure you install [`fzf`](../fzf/README.md) before proceeding.
 
 This guide recommends installing `zoxide` with `cargo`:
 
-```shell
+```bash
 cargo install zoxide --all-features --locked
 ```
 

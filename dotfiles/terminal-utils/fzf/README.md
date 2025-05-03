@@ -11,7 +11,7 @@
 
 Clone the repo and checkout the latest stable version:
 
-```shell
+```bash
 git clone git@github.com:junegunn/fzf.git
 cd fzf
 git checkout "${FZF_VERSION}"
@@ -19,19 +19,19 @@ git checkout "${FZF_VERSION}"
 
 Build the project:
 
-```shell
+```bash
 make
 ```
 
 Install the built binary on your system:
 
-```shell
+```bash
 sudo install -C -D ./target/fzf-* /usr/local/bin/fzf
 ```
 
 Install the manpages:
 
-```shell
+```bash
 sudo cp -R ./man/* /usr/local/share/man/
 ```
 

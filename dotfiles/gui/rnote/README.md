@@ -15,7 +15,7 @@ This guide recommends [building Rnote from sources using Meson][rnote-linux-buil
 
 Install the dependencies:
 
-```shell
+```bash
 sudo apt update -y
 sudo apt install -y \
   build-essential \
@@ -35,7 +35,7 @@ sudo apt install -y \
 
 Clone the repo:
 
-```shell
+```bash
 git clone git@github.com:flxzt/rnote.git
 cd rnote
 git checkout "${RNOTE_VERSION}"
@@ -43,13 +43,13 @@ git checkout "${RNOTE_VERSION}"
 
 Initialize the build directory:
 
-```shell
+```bash
 meson setup --prefix=/usr _mesonbuild
 ```
 
 Configure the build options:
 
-```shell
+```bash
 meson configure \
   -Dprofile=default \
   -Dcli=true \
@@ -58,19 +58,19 @@ meson configure \
 
 Compile the project:
 
-```shell
+```bash
 meson compile -C _mesonbuild
 ```
 
 Test the build:
 
-```shell
+```bash
 meson test -v -C _mesonbuild
 ```
 
 Install the build:
 
-```shell
+```bash
 meson install -C _mesonbuild
 ```
 

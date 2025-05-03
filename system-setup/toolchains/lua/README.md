@@ -14,7 +14,7 @@ Based on the [official installation instructions][luajit-installation].
 
 Clone LuaJIT repo:
 
-```shell
+```bash
 git clone git@github.com:LuaJIT/LuaJIT.git
 cd ./LuaJIT
 git checkout "${LUAJIT_VERSION}"
@@ -22,20 +22,20 @@ git checkout "${LUAJIT_VERSION}"
 
 Install build dependencies:
 
-```shell
+```bash
 sudo apt update -y
 sudo apt install -y build-essential
 ```
 
 Build LuaJIT:
 
-```shell
+```bash
 env CC="$(which clang)" make
 ```
 
 Install LuaJIT build:
 
-```shell
+```bash
 sudo make install
 ```
 
@@ -51,7 +51,7 @@ Based on the [official installation instructions][luarocks-install-unix].
 
 Clone `luarocks` repo:
 
-```shell
+```bash
 git clone git@github.com:luarocks/luarocks.git
 cd ./luarocks
 git clone "${LUAROCKS_VERSION}"
@@ -59,7 +59,7 @@ git clone "${LUAROCKS_VERSION}"
 
 Install build dependencies:
 
-```shell
+```bash
 sudo apt update -y
 sudo apt install -y \
   build-essential \
@@ -69,20 +69,20 @@ sudo apt install -y \
 
 Configure the build:
 
-```shell
+```bash
 env CC="$(which clang)" \
   ./configure
 ```
 
 Build `luarocks`:
 
-```shell
+```bash
 make
 ```
 
 Install `luarocks` build:
 
-```shell
+```bash
 sudo make install
 ```
 

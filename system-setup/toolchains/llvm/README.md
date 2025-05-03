@@ -6,14 +6,14 @@ Follow the [official instructions for apt to install LLVM][apt-llvm].
 
 Import the repository GPG key
 
-```shell
+```bash
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc > /dev/null
 sudo chmod a+r /etc/apt/trusted.gpg.d/apt.llvm.org.asc
 ```
 
 Set the desired major LLVM version with the `LLVM_VERSION` variable and add apt repositories:
 
-```shell
+```bash
 UBUNTU_CODENAME="$(lsb_release -sc 2>/dev/null)"
 LLVM_VERSION="18"
 
@@ -27,14 +27,14 @@ Install all LLVM tools.
 
 Option 1. Set the version in the `./install-llvm-all.sh` and run it:
 
-```shell
+```bash
 vi ./intall-llvm-all.sh
 ./install-llvm-all.sh
 ```
 
 Or install individual components:
 
-```shell
+```bash
 # LLVM
 sudo apt install libllvm-${LLVM_VERSION}-ocaml-dev libllvm${LLVM_VERSION} llvm-${LLVM_VERSION} llvm-${LLVM_VERSION}-dev llvm-${LLVM_VERSION}-doc llvm-${LLVM_VERSION}-examples llvm-${LLVM_VERSION}-runtime
 # Clang and co
@@ -69,13 +69,13 @@ sudo apt install libclang-rt-${LLVM_VERSION}-dev-wasm32 libclang-rt-${LLVM_VERSI
 
 Add clang toolchain to `PATH` in `${HOME}/.bashrc`:
 
-```shell
+```bash
 echo 'export PATH="${PATH}:/usr/lib/llvm-'"${LLVM_VERSION}"'/bin"' >> "${HOME}/.bashrc"
 ```
 
 ### Set as default `cc`, `cpp`, and `c++` with `update-alternatives`
 
-```shell
+```bash
 sudo update-alternatives --install \
   "$(update-alternatives --query cc | awk '/Link: / { print $2 }')" \
   cc \

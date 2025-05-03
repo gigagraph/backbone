@@ -11,13 +11,13 @@
 
 Install the dependencies:
 
-```shell
+```bash
 ./install-dependencies.sh
 ```
 
 Clone the repo and checkout the latest stable version:
 
-```shell
+```bash
 git clone git@github.com:tmux/tmux.git
 cd ./tmux
 git checkout "${TMUX_VERSION}"
@@ -25,7 +25,7 @@ git checkout "${TMUX_VERSION}"
 
 Make the build use `clang`:
 
-```shell
+```bash
 export CC="$(which clang)"
 export CFLAGS="--start-no-unused-arguments -fuse-ld=lld --end-no-unused-arguments"
 export CXX="$(which clang++)"
@@ -34,14 +34,14 @@ export CXXFLAGS="--start-no-unused-arguments -fuse-ld=lld --end-no-unused-argume
 
 Prepare the build:
 
-```shell
+```bash
 sh autogen.sh
 ./configure
 ```
 
 Build and install:
 
-```shell
+```bash
 make
 sudo make install
 ```

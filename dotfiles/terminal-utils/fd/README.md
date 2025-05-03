@@ -11,7 +11,7 @@
 
 Install the dependencies:
 
-```shell
+```bash
 sudo apt update -y
 sudo apt install -y \
   make
@@ -21,7 +21,7 @@ sudo apt install -y \
 
 This guide recommends building and installing `fd` from sources with `cargo`:
 
-```shell
+```bash
 git clone git@github.com:sharkdp/fd.git
 cd fd
 git checkout "${FD_VERSION}"
@@ -29,13 +29,13 @@ git checkout "${FD_VERSION}"
 
 Run the following command to build release distribution and install it:
 
-```shell
+```bash
 cargo install --all-features --locked --path .
 ```
 
 After the build is finished, install the manpage:
 
-```shell
+```bash
 sudo cp ./doc/fd.1 /usr/local/share/man/man1
 ```
 

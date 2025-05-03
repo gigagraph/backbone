@@ -8,7 +8,7 @@
 
 Clone the perl repo:
 
-```shell
+```bash
 git clone git@github.com:Perl/perl5.git perl
 cd ./perl
 git checkout "${PERL_EVEN_VERSION_TAG}"
@@ -16,7 +16,7 @@ git checkout "${PERL_EVEN_VERSION_TAG}"
 
 Configure the build:
 
-```shell
+```bash
 ./Configure \
   -Dcc="$(which clang)" \
   -Doptimize="-O2 -pipe -fstack-protector -fno-strict-aliasing" \
@@ -29,7 +29,7 @@ Configure the build:
 
 Run the build, test it, and install:
 
-```shell
+```bash
 make
 make test
 sudo make install

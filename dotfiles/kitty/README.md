@@ -21,7 +21,7 @@ Docs: https://sw.kovidgoyal.net/kitty/.
 
 Checkout kitty's sources of the desired version (`${KITTY_VERSION}`):
 
-```shell
+```bash
 git clone https://github.com/kovidgoyal/kitty.git
 cd ./kitty
 git checkout "${KITTY_VERSION}"
@@ -31,7 +31,7 @@ Install the [necessary system dependencies][kitty-deps].
 
 E.g. for a Debian-based system run:
 
-```shell
+```bash
 ./install-dependencies.sh
 ```
 
@@ -41,7 +41,7 @@ Ensure that you have [Wayland](../system-setup/wayland/README.md) and the corres
 
 Create a hardlink to the symbols Nerd Font file for the build:
 
-```shell
+```bash
 mkdir -p fonts/
 ln patched-fonts/NerdFontsSymbolsOnly/SymbolsNerdFontMono-Regular.ttf fonts/SymbolsNerdFontMono-Regular.ttf
 ```
@@ -53,7 +53,7 @@ ln patched-fonts/NerdFontsSymbolsOnly/SymbolsNerdFontMono-Regular.ttf fonts/Symb
 
 Build kitty:
 
-```shell
+```bash
 export CC="$(which clang)"
 export CXX="$(which clang++)"
 export LD="$(which ld.lld)"
@@ -67,7 +67,7 @@ export LD="$(which ld.lld)"
 
 Install the python dependnecies required for the build into a venv and keep the venv activated when running the build:
 
-```shell
+```bash
 python3 -m venv ./venv
 . ./venv/bin/activate
 pip install -r ./docs/requirements.txt
@@ -75,7 +75,7 @@ pip install -r ./docs/requirements.txt
 
 Kitty's build system uses system linker by default to build some C/C++ targets and there is no way to configure it to use a different linker. If some dependencies were previously built with LLVM's `lld` linker (e.g. python), there may be problems linking them with a the default system `ld` linker. Therefore for the duration of the build, we should change system linker to point to LLVM `lld` and then change it back.
 
-```shell
+```bash
 sudo mv /usr/bin/ld /usr/bin/ld.back
 sudo ln -s "$(which ld.lld)" /usr/bin/ld
 
@@ -106,7 +106,7 @@ Delete all the backups:
 
 The `linux-package` target will "stage" all the kitty-related files in the `linux-package` directory. Copy all the files
 
-```shell
+```bash
 sudo cp -r ./linux-package/* /usr/local/
 ```
 
@@ -116,7 +116,7 @@ sudo cp -r ./linux-package/* /usr/local/
 
 If your system uses `update-alternatives` to manage programs alternatives, you can do the following to make kitty the default termianal emulator:
 
-```shell
+```bash
 sudo update-alternatives --install \
   "$(update-alternatives --query x-terminal-emulator | awk '/Link: / { print $2 }')" \
   x-terminal-emulator \
@@ -129,7 +129,7 @@ sudo update-alternatives --set x-terminal-emulator "$(which kitty)"
 
 Use the config from this repository on your system by creating symlinking the user config default directory to the config dir in this repo (the script will prompt you for confirmation before running any configuration commands):
 
-```shell
+```bash
 ./setup-config.sh
 ```
 
@@ -163,7 +163,7 @@ This guide recommends installing the following integrations:
 
 #### [`tdf`][github-tdf] installation
 
-```shell
+```bash
 git clone git@github.com:itsjunetime/tdf.git
 cd tdf
 git checkout "${TDF_VERSION}"
@@ -171,14 +171,14 @@ git checkout "${TDF_VERSION}"
 
 Install system dependencies:
 
-```shell
+```bash
 sudo apt update -y
 sudo apt install -y libfontconfig1-dev
 ```
 
 Build and install from sources:
 
-```shell
+```bash
 env 'RUSTFLAGS=--cfg tokio_unstable' cargo install --all-features --locked --path .
 ```
 

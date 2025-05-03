@@ -4,7 +4,7 @@
 
 Install drivers for graphics hardware acceleration:
 
-```shell
+```bash
 sudo apt update -y
 sudo apt install -y \
   mesa-common-dev \
@@ -31,7 +31,7 @@ sudo apt install -y \
 
 Follow [Debian official instructions to install proprietary Nvidia drivers][debian-nvidia-drivers]:
 
-```shell
+```bash
 sudo apt update -y && \
   sudo apt install -y nvidia-detect
 nvidia-detect 
@@ -46,7 +46,7 @@ deb-src http://deb.debian.org/debian/ <debian-release-name> main contrib non-fre
 
 If the machine enables secure boot, [enroll machine owner key (MOK) to sign DKMS modules][enroll-machine-owner-key-to-sign-dkms-modules]:
 
-```shell
+```bash
 sudo mokutil --import /var/lib/dkms/mok.pub 
 sudo mokutil --list-new
 sudo systemctl reboot
@@ -54,7 +54,7 @@ sudo systemctl reboot
 
 Install the drivers:
 
-```shell
+```bash
 sudo apt upgrade -y
 sudo apt install -y \
   linux-headers-amd64 \
@@ -64,7 +64,7 @@ sudo apt install -y \
 
 Reboot the system to load the drivers:
 
-```shell
+```bash
 sudo systemctl reboot
 ```
 

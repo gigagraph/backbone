@@ -6,11 +6,11 @@ Follow the instructions from [the guide][setup-firefox-developer-edition-on-ubun
 
 1. [Download Firefox Developer Edition][firefox-developer-edition].
 2. Unpack the downloaded archive to the `/opt` directory:
-   ```shell
+   ```bash
    sudo tar xjf firefox*.tar.bz2 -C /opt
    ```
 3. Create a group that will own the installation and add the current user to the group:
-   ```shell
+   ```bash
    FIREFOX_GROUP="firefox"
    sudo groupadd "${FIREFOX_GROUP}"
    sudo usermod -aG "${FIREFOX_GROUP}" "${USER}"
@@ -21,13 +21,13 @@ Follow the instructions from [the guide][setup-firefox-developer-edition-on-ubun
    groups "${USER}"
    ```
 3. Change the group ownership of the directory and allow the group to `rwx`:
-   ```shell
+   ```bash
    FIREFOX_GROUP="firefox"
    sudo chgrp -R "${FIREFOX_GROUP}" /opt/firefox
    sudo chmod g=rwx -R /opt/firefox
    ```
 4. Create a desktop entry:
-   ```shell
+   ```bash
    cat << EOF | sed 's/^[[:space:]]*//; s/[[:space:]]*$//' > ~/.local/share/applications/firefox_dev.desktop
    [Desktop Entry]
    Name=Firefox Developer
@@ -42,7 +42,7 @@ Follow the instructions from [the guide][setup-firefox-developer-edition-on-ubun
    EOF
    ```
 5. Give the desktop entry file execute permissions:
-   ```shell
+   ```bash
    chmod +x ~/.local/share/applications/firefox_dev.desktop
    ```
 
@@ -99,7 +99,7 @@ This section describes how to set up default Firefox fonts to [Nerd Fonts patche
 
 Add the following to the `chrome/userChrome.css` under the `Profile Directory` [as described in "Disable tab bar" section](#disable-tab-bar):
 
-```shell
+```bash
 /* Set Firefox UI font */
 * {
     font-family: "Iosevka Aile";

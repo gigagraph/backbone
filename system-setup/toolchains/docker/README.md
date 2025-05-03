@@ -8,7 +8,7 @@ This installation guide focuses on installing only `docker` engine. The guide is
 
 Install the dependencies:
 
-```shell
+```bash
 sudo apt-get update -y
 sudo apt-get install ca-certificates curl
 ```
@@ -23,7 +23,7 @@ sudo chmod a+r /etc/apt/keyrings/docker.asc
 
 Add docker's repository to `apt`:
 
-```shell
+```bash
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
@@ -33,7 +33,7 @@ sudo apt-get update -y
 
 Install docker via `apt`:
 
-```shell
+```bash
 sudo apt install -y \
   docker-ce \
   docker-ce-cli \
@@ -48,7 +48,7 @@ Perform [post-installation steps][docker-docs-engine-post-install].
 
 #### Add linux user to `docker` group
 
-```shell
+```bash
 sudo groupadd docker
 sudo usermod -aG docker "${USER}"
 newgrp docker
@@ -60,20 +60,20 @@ newgrp docker
 
 #### [Set `buildx` as a default builder][docker-buildx-set-default]
 
-```shell
+```bash
 docker buildx install
 ```
 
 #### Ensure `systemd` start `docker` daemon and `containerd` services
 
-```shell
+```bash
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 ```
 
 If you do not want to keep `docker` to automatically start on system startup, disable the services:
 
-```shell
+```bash
 sudo systemctl disable docker.service
 sudo systemctl disable containerd.service
 ```
@@ -90,7 +90,7 @@ In this case, when you want to run docker, you will need to start and stop the s
 
 Add Nvidia Container Toolkit GPG key and repository to `apt`:
 
-```shell
+```bash
 curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
   && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
     sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
@@ -99,14 +99,14 @@ curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dear
 
 Update `apt` repositories and install the toolkit:
 
-```shell
+```bash
 sudo apt update -y && \
   sudo apt install -y nvidia-container-toolkit
 ```
 
 Configure `docker` to use Nvidia Container Toolkit and restart the daemon:
 
-```shell
+```bash
 sudo nvidia-ctk runtime configure --runtime=docker
 sudo systemctl restart docker
 ```

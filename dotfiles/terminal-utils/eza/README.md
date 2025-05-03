@@ -11,7 +11,7 @@
 
 This guide recommends installing `eza` with `cargo`:
 
-```shell
+```bash
 cargo install eza --all-features --locked
 ```
 

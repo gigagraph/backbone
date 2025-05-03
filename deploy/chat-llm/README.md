@@ -19,7 +19,7 @@ Service to chat with locally deployed LLMs.
 
 Run the following command:
 
-```shell
+```bash
 env "OLLAMA_IMAGE_TAG=<ollama-image-tag>" \
   "OLLAMA_HOST_PORT=<ollama-port>" \
   "OPEN_WEBUI_HOST_PORT=<open-webui-port>" \

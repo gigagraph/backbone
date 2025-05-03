@@ -12,7 +12,7 @@
 
 [Install `ykman` CLI](https://github.com/Yubico/yubikey-manager?tab=readme-ov-file#linux):
 
-```shell
+```bash
 sudo apt-add-repository ppa:yubico/stable
 sudo apt update
 sudo apt install yubikey-manager -y
@@ -22,7 +22,7 @@ sudo apt install yubikey-manager -y
 
 ###### Bash
 
-```shell
+```bash
 source <(_YKMAN_COMPLETE=bash_source ykman | sudo tee /etc/bash_completion.d/ykman)
 ```
 
@@ -30,14 +30,14 @@ source <(_YKMAN_COMPLETE=bash_source ykman | sudo tee /etc/bash_completion.d/ykm
 
 Assuming you store your zsh completions in `${ZSH_COMPLETIONS_DIR}` and it is in your `${fpath}`, the following command will enable zsh completions:
 
-```shell
+```bash
 source <(_YKMAN_COMPLETE=zsh_source ykman | tee "${ZSH_COMPLETIONS_DIR}/_ykman")
 ```
 - [ ] TODO
 
 #### [`yubico-pam`][yubico-pam-github]
 
-```shell
+```bash
 sudo add-apt-repository ppa:yubico/stable
 sudo apt-get update
 sudo apt-get install libpam-yubico -y
@@ -51,7 +51,7 @@ sudo apt-get install libpam-yubico -y
 
 Clone the git repo and switch to the latest stable version:
 
-```shell
+```bash
 git clone git@github.com:Yubico/yubico-piv-tool.git
 cd ./yubico-piv-tool
 git checkout yubico-piv-tool-2.6.1
@@ -65,14 +65,14 @@ cmake libtool libssl-dev pkg-config check libpcsclite-dev gengetopt help2man zli
 
 E.g. for Ubuntu:
 
-```shell
+```bash
 sudo apt update -y && sudo apt install -y \
   cmake libtool libssl-dev pkg-config check libpcsclite-dev gengetopt help2man zlib1g zlib1g-dev
 ```
 
 Build:
 
-```shell
+```bash
 mkdir ./build; cd ./build
 CC="$(which clang)" CXX="$(which clang++)" cmake ..
 make
@@ -84,7 +84,7 @@ sudo ldconfig
 
 By default, a new Yubikey comes with OTP slot 1 programmed. The default configuration will make Yubikey output a token when a user touches the button. This may be inconvenient when touched accidently. To remove this configuration run the following command:
 
-```shell
+```bash
 ykman otp delete 1
 ```
 
@@ -96,7 +96,7 @@ This configuration will enable offline challenge-response authentication based o
 
 Program the 2nd slot of the Yubikey:
 
-```shell
+```bash
 ykman otp chalresp --totp --touch --generate 2
 ```
 
@@ -104,14 +104,14 @@ This command will generate a key for the challenge-response OTP authentication i
 
 Generate the initial challange and response:
 
-```shell
+```bash
 mkdir ~/.yubico
 ykpamcfg -2 -v
 ```
 
 Move the generated challenge-response file to the system configuration directory:
 
-```shell
+```bash
 sudo mkdir /etc/yubico-auth
 sudo chown root:root /etc/yubico-auth/
 sudo chmod 700 /etc/yubico-auth/
@@ -122,13 +122,13 @@ sudo chmod 600 "/etc/yubico-auth/${USER}-12345678"
 
 Before updating PAM configuration, start a separate superuser-enabled shell so that you can fix PAM config in case of lockout:
 
-```shell
+```bash
 sudo -s
 ```
 
 Go back to the main shell and edit the PAM configuration :
 
-```shell
+```bash
 # On Ubuntu edit the `/etc/pam.d/common-auth` file
 sudo vi /etc/pam.d/common-auth
 ```
@@ -141,7 +141,7 @@ auth    sufficient      pam_yubico.so mode=challenge-response chalresp_path=/etc
 
 Apply the changes to PAM:
 
-```shell
+```bash
 sudo pam-auth-update
 ```
 
@@ -153,7 +153,7 @@ sudo pam-auth-update
 
 Generate the key:
 
-```shell
+```bash
 yubico-piv-tool -a generate -s 9a -o ssh-public.pem
 ```
 
@@ -167,13 +167,13 @@ Create a self-signed certificate for the key:
 > - Change PUK as well,  with `ykman piv access change-puk`.
 > - Generate a new management `ykman piv access change-management-key --generate --protect`. `ykman` will store the generated key on the Yubikey and protect it with PIN.
 
-```shell
+```bash
 yubico-piv-tool -a verify-pin -a selfsign-certificate -s 9a -S "/CN=SSH key/" -i ssh-public.pem -o ssh-cert.pem
 ```
 
 Import the created certfificate to Yubikey:
 
-```shell
+```bash
 yubico-piv-tool -a verify-pin -a import-certificate -s 9a --touch-policy always -i ssh-cert.pem
 ```
 
@@ -184,19 +184,19 @@ Find out where ykcs11 has been installed:
 
 Export the public keys from Yubikey and add them to the target system. The keys order corresponds to the slots on Yubikey.
 
-```shell
+```bash
 ssh-keygen -D /usr/local/lib/libykcs11.so -e
 ```
 
 Now you can access the hosts with added public SSH keys:
 
-```shell
+```bash
 ssh -I /usr/local/lib/libykcs11.so user@host
 ```
 
 Add the keys to the agent:
 
-```shell
+```bash
 ssh-add -s /usr/local/lib/libykcs11.so
 
 # Check that agent added the keys
@@ -213,7 +213,7 @@ Install the `pam_ssh_agent_auth` PAM module:
 
 - FreeBSD:
    - It must be built from sources.
-   - ```shell
+   - ```bash
      git clone --recurse-submodules git@github.com:jbeverly/pam_ssh_agent_auth.git
      cd pam_ssh_agent_auth
      ./configure --without-openssl-header-check
@@ -222,7 +222,7 @@ Install the `pam_ssh_agent_auth` PAM module:
      sudo ln -s /usr/local/libexec/pam_ssh_agent_auth.so /usr/lib/pam_ssh_agent_auth.so
      ```
 - Debian
-   - ```shell
+   - ```bash
      sudo apt install -y libpam-ssh-agent-auth
      ```
 
@@ -238,12 +238,12 @@ Install the `pam_ssh_agent_auth` PAM module:
      ```
      Defaults    env_keep += "SSH_AUTH_SOCK"
      ```
-   - ```shell
+   - ```bash
      sudo visudo -f /usr/local/etc/sudoers.d/pam_ssh_agent_auth
      sudo chmod 0440 /usr/local/etc/sudoers.d/pam_ssh_agent_auth
      ```
    - Add the public key to the `authorized_keys` file. If an associated private key is present in ssh agent on the server, the PAM authentication will succeed.
-     ```shell
+     ```bash
      sudo vi /etc/security/authorized_keys
      sudo chmod u=rw,g=r,o= /etc/security/authorized_keys
      ```
@@ -251,15 +251,15 @@ Install the `pam_ssh_agent_auth` PAM module:
      ```
      auth	sufficient	pam_ssh_agent_auth.so file=/etc/security/authorized_keys
      ```
-   - ```shell
+   - ```bash
      sudo vi /etc/pam.d/common-auth
      sudo vi /usr/local/etc/pam.d/common-auth
      ```
    - Add the following line to the PAM file for the specific services. The line will include the previous auth configuration in each file that imports it:
-     ```shell
+     ```bash
      auth     include        common-auth
      ```
-   - ```shell
+   - ```bash
      sudo vi /usr/local/etc/pam.d/sudo
      sudo vi /etc/pam.d/ftp
      sudo vi /etc/pam.d/imap
@@ -277,12 +277,12 @@ Install the `pam_ssh_agent_auth` PAM module:
      ```
      Defaults    env_keep += "SSH_AUTH_SOCK"
      ```
-   - ```shell
+   - ```bash
      sudo visudo -f /etc/sudoers.d/pam_ssh_agent_auth
      sudo chmod 0440 /etc/sudoers.d/pam_ssh_agent_auth
      ```
    - Add the public key to the `authorized_keys` file. If an associated private key is present in ssh agent on the server, the PAM authentication will succeed.
-     ```shell
+     ```bash
      sudo vi /etc/security/authorized_keys
      sudo chmod u=rw,g=r,o= /etc/security/authorized_keys
      ```
@@ -290,7 +290,7 @@ Install the `pam_ssh_agent_auth` PAM module:
      ```
      auth	sufficient	pam_ssh_agent_auth.so file=/etc/security/authorized_keys
      ```
-   - ```shell
+   - ```bash
      sudo vi /etc/pam.d/common-auth
      ```
 
@@ -342,7 +342,7 @@ Users can configure authentication with fingerprint sensor in Gnome out of the b
 
 After you set up the authentication and root access for your main user account, you can [disable login for the `root` user][arch-wiki-security-restricting-root]:
 
-```shell
+```bash
 sudo passwd --lock root
 ```
 

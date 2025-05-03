@@ -6,7 +6,7 @@ This guide recommnds following the [Git Book][git-book] and [install git with yo
 
 ### `apt` based systems
 
-```shell
+```bash
 sudo apt install git
 ```
 
@@ -16,7 +16,7 @@ sudo apt install git
 
 Use the config from this repository on your system by creating symlinking the user config default directory to the config dir in this repo (the script will prompt you for confirmation before running any configuration commands):
 
-```shell
+```bash
 ./setup-config.sh
 ```
 

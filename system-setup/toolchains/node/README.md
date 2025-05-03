@@ -22,7 +22,7 @@ This guide recommends installing `node` through `fnm`.
 
 This guide recommends building and installing `fnm` from sources with `cargo`:
 
-```shell
+```bash
 git clone git@github.com:Schniz/fnm.git
 cd fnm
 git checkout "${FNM_VERSION}"
@@ -30,13 +30,13 @@ git checkout "${FNM_VERSION}"
 
 Run the following command to build release distribution and install it:
 
-```shell
+```bash
 cargo install --all-features --locked --path .
 ```
 
 Add the following to your shell's rc file. For security purposes, the command will parse the envs that need to be initialized and initialize them manually, instead of evaluating the output of `fnm env` directly (the guide recommends adding this snippet after all plugins initializations to ensure faster prompt initialization):
 
-```shell
+```bash
 eval \
   "$(fnm env --version-file-strategy=recursive --json |
   yq --input-format='json' --output-format props |
@@ -54,37 +54,37 @@ See the `fnm --help` or the [official docs][fnm-usage] for the list of `fnm` com
 
 List LTS versions of `node`:
 
-```shell
+```bash
 fnm ls-remote --lts --sort=asc
 ```
 
 Select the desired version from the output of the previous command (or run the following command to select the latest LTS version):
 
-```shell
+```bash
 NODE_VERSION_TO_INSTALL="$(fnm ls-remote --lts --sort=asc | tail -n 1 | awk '{ print $1 }')"
 ```
 
 Install `node`:
 
-```shell
+```bash
 fnm install "${NODE_VERSION_TO_INSTALL}"
 ```
 
 Alternatively, use the following command to install the latest stable `node`:
 
-```shell
+```bash
 fnm install --lts
 ```
 
 List current node version:
 
-```shell
+```bash
 fnm current
 ```
 
 Use a specific node version
 
-```shell
+```bash
 fnm use "${NODE_VERSION_TO_INSTALL}"
 ```
 
@@ -106,7 +106,7 @@ This guide recommends installing `pnpm` globally.
 
 Run the following command to ensure `pnpm` is installed for the current `node` installation:
 
-```shell
+```bash
 npm install -g pnpm@latest
 ```
 

@@ -10,7 +10,7 @@
 
 Alternatively, you can clone the sources:
 
-```shell
+```bash
 git clone git://git.code.sf.net/p/zsh/code zsh
 cd ./zsh
 git checkout "${ZSH_VERSION}"
@@ -18,7 +18,7 @@ git checkout "${ZSH_VERSION}"
 
 Install the build dependencies:
 
-```shell
+```bash
 sudo apt update -y
 sudo apt install -y \
   yodl \
@@ -29,20 +29,20 @@ sudo apt install -y \
 > [!NOTE]
 > If you checked the repo from git run `./Util/preconfig`. Otherwise, skip it.
 >
-> ```shell
+> ```bash
 > ./Util/preconfig
 > ```
 
 Configure the build:
 
-```shell
+```bash
 mkdir ./build
 ../configure --enable-cflags="-O2"
 ```
 
 Build and test:
 
-```shell
+```bash
 make
 make check
 ```
@@ -53,7 +53,7 @@ make check
 
 After the build and tests successful completion, intsall zsh:
 
-```shell
+```bash
 sudo make install
 sudo make install.info
 ```
@@ -64,7 +64,7 @@ sudo make install.info
 >
 > [`/etc/profile` file should be sourced by all POSIX sh-compatible shells upon login][arch-wiki-startup-shutdown-files].
 
-```shell
+```bash
 sudo mkdir -p /etc/zsh
 sudo echo ". /etc/profile" | sudo tee -a /etc/zsh/zprofile
 ```
@@ -73,7 +73,7 @@ sudo echo ". /etc/profile" | sudo tee -a /etc/zsh/zprofile
 
 Ensure `zsh` is present in `/etc/shells`:
 
-```shell
+```bash
 ZSH_PATH="$(which zsh)"; [[ -z "$(cat /etc/shells | grep "${ZSH_PATH}")" ]] && (echo "${ZSH_PATH}" | sudo tee -a /etc/shells) || echo "${ZSH_PATH} is already present in /etc/shells"
 ```
 
@@ -83,7 +83,7 @@ Set zsh as [default login shell][arch-wiki-change-default-shell]:
 >
 > As per default PAM configuration, ensure that the shell you run this command from is listed in `/etc/shells`.
 
-```shell
+```bash
 sudo chsh -s "$(which zsh)" "${USER}"
 ```
 
@@ -96,7 +96,7 @@ sudo chsh -s "$(which zsh)" "${USER}"
 
 Setup config from this repo on your system:
 
-```shell
+```bash
 ./setup-config.sh
 ```
 
@@ -118,7 +118,7 @@ It is not customizable compared to the alternatives, such as [powerlevel10k][git
 
 Install it to the custom plugin directory (`$ZSH_CUSTOM_PLUGINS_DIR`) and activate it by adding the following commands to `.zshrc`.
 
-```shell
+```bash
 if [ ! -e "${ZSH_CUSTOM_PLUGINS_DIR}/pure-prompt" ]; then
   git clone --branch="v1.23.0" --depth=1 git@github.com:sindresorhus/pure.git "${ZSH_CUSTOM_PLUGINS_DIR}/pure-prompt"
   zcompile-many "${ZSH_CUSTOM_PLUGINS_DIR}"/pure-prompt/{pure.zsh,async.zsh}
@@ -150,7 +150,7 @@ In general, the `diy++` plugin instalaltion is as follows.
 
 `.zshrc` defines the following function. The method will use it to compile zsh files:
 
-```shell
+```bash
 function zcompile-many() {
   local f
   for f; do zcompile -R -- "$f".zwc "$f"; done
@@ -159,7 +159,7 @@ function zcompile-many() {
 
 User clones the plugin to its directory if it does not exist (e.g. `fzf-tab` in this case) and compiles all zsh files in the repository using the `zcompile-many` function:
 
-```shell
+```bash
 if [ ! -e "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab" ]; then
   git clone --branch="v1.1.2" --depth=1 git@github.com:Aloxaf/fzf-tab.git "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab"
   zcompile-many "${ZSH_CUSTOM_PLUGINS_DIR}"/fzf-tab/{fzf-tab.plugin.zsh,fzf-tab.zsh,lib/**/*.zsh}
@@ -174,7 +174,7 @@ Then, based on the purpose of the plugin the user should use the files to make t
 >
 > You should source this plugin at the end of `.zshrc`, after [`fzf-tab`](#use-fzf-to-match-completions-via-fzf-tab) and before [`zsh-autosuggestion`](#zsh-autosuggestions) if you use it.
 
-```shell
+```bash
 if [ ! -e "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting" ]; then
   git clone git@github.com:zdharma-continuum/fast-syntax-highlighting.git "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting"
   git -C "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting" checkout '<fast-syntax-highlighting-commit-sha>' 
@@ -184,7 +184,7 @@ fi
 
 Then, make sure your `.zshrc` contains the following:
 
-```shell
+```bash
 source "${ZSH_CUSTOM_PLUGINS_DIR}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 ```
 
@@ -209,7 +209,7 @@ Users can customize `fast-syntax-highlighting`'s theme. E.g. there is [Catpuccin
 >
 > You should source this plugin at the end of `.zshrc`.
 
-```shell
+```bash
 if [ ! -e "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions" ]; then
   git clone --branch="<zsh-autosuggestions-version>" --depth=1 git@github.com:zsh-users/zsh-autosuggestions.git "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions"
   zcompile-many "${ZSH_CUSTOM_PLUGINS_DIR}"/zsh-autosuggestions/{zsh-autosuggestions.zsh,src/**/*.zsh}
@@ -218,7 +218,7 @@ fi
 
 Then, make sure your `.zshrc` contains the following:
 
-```shell
+```bash
 source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
 ```
 
@@ -238,13 +238,13 @@ Before proceeding, [ensure that you have `fzf` installed on your system](../term
 >
 > For security reasons, this guide recommends to statically save the integration script to a file that you will load from your `.zshrc`. This also means that it is best to use `fzf` to update this script every time you update `fzf`.
 
-```shell
+```bash
 fzf "--${SHELL##*/}" > "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh"
 ```
 
 Then, make sure your `.zshrc` contains the following:
 
-```shell
+```bash
 if [[ "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh" -nt "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh.zwc" ]]; then
   zcompile-many "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-integration.zsh"
 fi
@@ -266,7 +266,7 @@ After you set up the integration, you can use the [following keys to use `fzf` t
 >
 > `fzf-tab` must be sourced after the `compinit` but before plugins that wrap widgets (e.g. [`zsh-autosuggestion`](#zsh-autosuggestion)).
 
-```shell
+```bash
 if [ ! -e "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab" ]; then
   git clone --branch="<fzf-tab-version>" --depth=1 git@github.com:Aloxaf/fzf-tab.git "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab"
   zcompile-many "${ZSH_CUSTOM_PLUGINS_DIR}"/fzf-tab/{fzf-tab.plugin.zsh,fzf-tab.zsh,lib/**/*.zsh}
@@ -279,12 +279,12 @@ fi
 
 Then, make sure your `.zshrc` contains the following configuration after `compinit`, but before [`zsh-autosuggestions`](#zsh-autosuggestions):
 
-```shell
+```bash
 source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh"
 ```
 
 - [ ] TODO?
-    - ```shell
+    - ```bash
       zstyle ':completion:*' menu no
       zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color "${realpath}"'
       ```
@@ -295,7 +295,7 @@ source "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-tab/fzf-tab.plugin.zsh"
 
 Make sure your `.zshrc` contains the following:
 
-```shell
+```bash
 if [ ! -e "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-git" ]; then
   git clone git@github.com:junegunn/fzf-git.sh.git "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-git"
   git -C "${ZSH_CUSTOM_PLUGINS_DIR}/fzf-git" checkout '<fzf-git-commit-sha>'
@@ -313,7 +313,7 @@ Before proceeding, [ensure that you have `ripgrep` installed on your system](../
 
 Use `ripgrep` to generate completions for zsh:
 
-```shell
+```bash
 rg --generate "complete-${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_rg"
 ```
 
@@ -327,7 +327,7 @@ Before proceeding, [ensure that you have `eza` installed on your system](../term
 
 Clone the eza repo locally:
 
-```shell
+```bash
 git clone git@github.com:eza-community/eza.git
 cd eza
 git checkout "${EZA_VERSION}"
@@ -335,7 +335,7 @@ git checkout "${EZA_VERSION}"
 
 Copy the completions from the `eza` repo:
 
-```shell
+```bash
 cp "$(pwd)/completions/zsh/_eza" "${ZSH_COMPLETIONS_DIR}/_eza"
 sed 's/__eza/_eza/g' --in-place "${ZSH_COMPLETIONS_DIR}/_eza"
 ```
@@ -352,13 +352,13 @@ Before proceeding, [ensure that you have `zoxide` installed on your system](../t
 
 If you want to configure `zoxide`, set the environment variables before running the following command. If you want to reconfigure `zoxide` - set the envs and rerun the commands.
 
-```shell
+```bash
 zoxide init "${SHELL##*/}" > "${ZSH_CUSTOM_PLUGINS_DIR}/zoxide-integration.zsh"
 ```
 
 Then, make sure your `.zshrc` contains the following configuration **after the `compinit`**:
 
-```shell
+```bash
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/zoxide-integration.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/zoxide-integration.zsh"
 ```
 
@@ -372,7 +372,7 @@ Then, make sure your `.zshrc` contains the following configuration **after the `
 
 This guide assumes you followed the [instructions from this repo and inslled `bat` from sources](../terminal-utils/bat/README.md#installation). After the build, the target directory should now have the completions script. Copy it to where you install custom completions (`$ZSH_COMPLETIONS_DIR` in this guide):
 
-```shell
+```bash
 cp ./target/release/build/bat-*/**/completions/bat."${SHELL##*/}" "${ZSH_COMPLETIONS_DIR}/_bat"
 ```
 
@@ -380,7 +380,7 @@ cp ./target/release/build/bat-*/**/completions/bat."${SHELL##*/}" "${ZSH_COMPLET
 
 Unfortunately, [`bat-extras`](../terminal-utils/bat/README.nd#install-bat-extras) does not come with the completions. The best effort that the user can do to enable the completions is to configure zsh to use completions for the commands that `bat-extras` wrap. Add the following after `compinit`:
 
-```shell
+```bash
 compdef batdiff=diff
 compdef batwatch=watch
 compdef batgrep=rg
@@ -396,7 +396,7 @@ compdef batgrep=rg
 
 [Use `delta` to generate completions for zsh](https://dandavison.github.io/delta/tips-and-tricks/shell-completion.html):
 
-```shell
+```bash
 delta --generate-completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_delta"
 ```
 
@@ -406,7 +406,7 @@ delta --generate-completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_delta"
 
 This guide assumes you followed the [instructions from this repo and inslled `fd` from sources](../terminal-utils/fd/README.md#installation). The completion script resides under `contrib/completion`. Copy it to where you install custom completions (`$ZSH_COMPLETIONS_DIR` in this guide):
 
-```shell
+```bash
 cp ./contrib/completion/_fd "${ZSH_COMPLETIONS_DIR}/_fd"
 ```
 
@@ -414,7 +414,7 @@ cp ./contrib/completion/_fd "${ZSH_COMPLETIONS_DIR}/_fd"
 
 ##### `tree-sitter` completions
 
-```shell
+```bash
 tree-sitter complete --shell="${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_tree-sitter"
 ```
 
@@ -424,7 +424,7 @@ tree-sitter complete --shell="${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_tree-sitt
 
 Use `fnm` to generate completions for zsh:
 
-```shell
+```bash
 fnm completions --shell "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_fnm"
 ```
 
@@ -436,7 +436,7 @@ After you generated the completions, ensure that the directory with the `_fnm` c
 
 Use `yq` to generate completions for zsh:
 
-```shell
+```bash
 yq shell-completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_yq"
 ```
 
@@ -472,14 +472,14 @@ After you generated the completions, ensure that the directory with the `_yq` co
 >
 > If you decide to to install [`zsh-syntax-highlighting`][github-zsh-syntax-highlighting], the guide recommends that you do this manually, because it should be sourced at the end of `.zshrc`.
 
-```shell
+```bash
 mkdir -p "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting"
 git clone --branch "${ZSH_SYNTAX_HIGHLIGHTING_VERSION}" git@github.com:zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting"
 ```
 
 Then, make sure your `.zshrc` contains the following configuration:
 
-```shell
+```bash
 [ -f "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 ```
 
@@ -502,13 +502,13 @@ The metrics that `zsh-bench` outputs are insufficeint to understand how to impro
 
 To use `zprof`, add the following to the start of `.zshrc`:
 
-```shell
+```bash
 zmodload zsh/zprof
 ```
 
 And the following at the end:
 
-```shell
+```bash
 zprof
 ```
 

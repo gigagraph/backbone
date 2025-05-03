@@ -11,7 +11,7 @@
 
 Install the dependencies:
 
-```shell
+```bash
 sudo apt update -y
 sudo apt install -y \
   libpcre2-dev \
@@ -21,13 +21,13 @@ sudo apt install -y \
 
 This guide recommends installing `ripgrep` with `cargo`:
 
-```shell
+```bash
 cargo install ripgrep --all-features --locked
 ```
 
 After you installed `ripgrep`, install the manpage:
 
-```shell
+```bash
 rg --generate=man | sudo dd of=/usr/local/share/man/man1/rg.1
 ```
 

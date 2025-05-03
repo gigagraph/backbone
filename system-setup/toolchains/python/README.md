@@ -12,13 +12,13 @@ This section describes how to install the latest stable version of [Cpython][pyt
 
 Ensure you have [dependencies that the build requires][cpython-build-dependencies], e.g. on Debian-based systems run the script from this repo:
 
-```shell
+```bash
 sudo ./install-debian-deps.sh
 ```
 
 ### Build instructions
 
-```shell
+```bash
 git clone git@github.com:python/cpython.git
 cd ./cpython
 git checkout "${PYTHON_VERSION_TAG}"
@@ -63,7 +63,7 @@ Based on the [official installation instructions][pipx-docs-installation]:
 
 Install the package:
 
-```shell
+```bash
 # Ubuntu-based systems
 sudo apt update -y
 sudo apt install -y pipx
@@ -76,7 +76,7 @@ Ensure [`pipx`'s target installation location][pipx-docs-installation-dirs] in o
 
 Ensure that `pipx` is initialized:
 
-```shell
+```bash
 pipx ensurepath
 ```
 
@@ -88,7 +88,7 @@ pipx ensurepath
 
 Print completion installation instructions:
 
-```shell
+```bash
 pipx completions
 ```
 

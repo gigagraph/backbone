@@ -10,7 +10,7 @@ Generate 2 keys:
 
 Taken from the [official GitLab instructions][gitlab-generate-ssh-keys].
 
-```shell
+```bash
 ssh-keygen -t ed25519 -C "<comment>"
 ```
 
@@ -22,7 +22,7 @@ See the corresponding section in the [Authentication doc](./authentication.md#co
 
 Use [`ssh-copy-id`][linux-handbook-ssh-copy-id] to copy the **public** key to a server. This will enable the client with the private key to authenticate with the SSH server.
 
-```shell
+```bash
 ssh-copy-id -i ~/.ssh/path/to/key.pub user@server-address
 ```
 
@@ -34,19 +34,19 @@ Alternatively, just insert the contents of the public key file as a new line in 
 
 ### Port forwarding
 
-```shell
+```bash
 ssh -L [bind_address:]port:host:hostport [user@]remote_ssh_server
 ```
 
 ### SOKS proxy
 
-```shell
+```bash
 ssh -D [bind_address:]port [user@]remote_ssh_server
 ```
 
 ### Reverse proxy
 
-```shell
+```bash
 # Single port
 ssh -R [bind_address:]port:host:hostport [user@]remote_ssh_server
 
@@ -58,13 +58,13 @@ ssh -R [bind_address:]port [user@]remote_ssh_server
 
 [Use the `-A` option][arch-wiki-forward-ssh-agent]:
 
-```shell
+```bash
 ssh -A user@server-address
 ```
 
 ## SSH through jump hosts
 
-```shell
+```bash
 ssh -A -p 22 -J jump-user1@jump-server1:port1,jump-user2@jump-server2:port2 user@target-server-address-from-the-jump2-machine
 ```
 

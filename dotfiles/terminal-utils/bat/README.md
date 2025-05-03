@@ -13,7 +13,7 @@ Ensure you install [`fzf`](../fzf/README.md) before proceeding.
 
 This guide recommends building and installing `bat` from sources with `cargo`:
 
-```shell
+```bash
 git clone git@github.com:sharkdp/bat.git
 cd bat
 git checkout "${BAT_VERSION}"
@@ -21,13 +21,13 @@ git checkout "${BAT_VERSION}"
 
 Run the following command to build release distribution and install it:
 
-```shell
+```bash
 cargo install --all-features --locked --path .
 ```
 
 After the build is finished, install the manpage:
 
-```shell
+```bash
 sudo cp ./target/release/build/bat-*/**/manual/bat.1 /usr/local/share/man/man1
 ```
 
@@ -37,14 +37,14 @@ This guide recommends installing [`bat-extras`][github-bat-extras] from sources.
 
 Ensure you have the dependenices installed:
 
-```shell
+```bash
 sudo apt update -y
 sudo apt install -y gawk
 ```
 
 Clone the repo:
 
-```shell
+```bash
 git clone git@github.com:eth-p/bat-extras.git
 cd bat-extras
 git checkout "${BAT_EXTRAS_VERSION}"
@@ -52,14 +52,14 @@ git checkout "${BAT_EXTRAS_VERSION}"
 
 Build the scripts and test them:
 
-```shell
+```bash
 ./build.sh
 ./test.sh
 ```
 
 Install the preffered scripts. This guide installs only [`batgrep`][batgrep], [`batwatch`][batwatch], and [`batdiff`][batdiff]:
 
-```shell
+```bash
 BAT_EXTRAS_TO_INSTALL=(
   "batgrep"
   "batwatch"
@@ -72,7 +72,7 @@ done
 
 Install the mangapages:
 
-```shell
+```bash
 BAT_EXTRAS_TO_INSTALL=(
   "batgrep"
   "batwatch"

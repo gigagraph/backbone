@@ -6,7 +6,7 @@ Download `rustup-init` for your system from [the official website](https://forge
 
 Run the interactive installer. Follow the instructions and setup the latest stable version of `rustc`, `cargo`, and `rustup` on your machine:
 
-```shell
+```bash
 ./rustup-init
 ```
 
@@ -18,7 +18,7 @@ Additionally, [`rustup` can generate completions][generate-rustup-and-cargo-comp
 
 ### Updating
 
-```shell
+```bash
 rustup update
 ```
 

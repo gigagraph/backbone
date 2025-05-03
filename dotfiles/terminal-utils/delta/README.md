@@ -11,7 +11,7 @@
 
 This guide recommends building and installing `delta` from sources with `cargo`:
 
-```shell
+```bash
 git clone git@github.com:dandavison/delta.git
 cd delta
 git checkout "${DELTA_VERSION}"
@@ -19,7 +19,7 @@ git checkout "${DELTA_VERSION}"
 
 Run the following command to build release distribution and install it:
 
-```shell
+```bash
 cargo install --all-features --locked --path .
 ```
 

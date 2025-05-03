@@ -18,7 +18,7 @@ This guide recommends building and installing `tree-sitter` from sources with `c
 
 Clone the repo and checkout the latest stable version:
 
-```shell
+```bash
 git clone git@github.com:tree-sitter/tree-sitter.git
 cd tree-sitter
 git checkout "${TREE_SITTER_VERSION}"
@@ -26,7 +26,7 @@ git checkout "${TREE_SITTER_VERSION}"
 
 Install the WASM library (specify a fresh stable version of `node` when running `fnm`):
 
-```shell
+```bash
 cd lib/binding_web
 fnm use default
 pnpm install
@@ -35,13 +35,13 @@ pnpm run build
 
 Go back to the `tree-sitter` repo root:
 
-```shell
+```bash
 cd ../..
 ```
 
 Run the following command to build release distribution and install it:
 
-```shell
+```bash
 cargo install --all-features --locked --path cli
 ```
 

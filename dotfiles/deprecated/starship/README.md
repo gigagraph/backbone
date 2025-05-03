@@ -19,7 +19,7 @@
 
 This guide recommends installing `starship` with `cargo`:
 
-```shell
+```bash
 cargo install starship --locked
 ```
 
@@ -29,7 +29,7 @@ cargo install starship --locked
 
 Assuming you store your zsh completions in `${ZSH_COMPLETIONS_DIR}` and it is in your `${fpath}`, the following command will enable zsh completions:
 
-```shell
+```bash
 source <(starship completions zsh | tee "${ZSH_COMPLETIONS_DIR}/_starship")
 ```
 

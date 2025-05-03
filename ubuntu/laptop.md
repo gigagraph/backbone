@@ -30,14 +30,14 @@ Partition the disk, e.g. with `fdisk`. Create the following raw volumes:
 
 Encrypt the partitions with the following commands:
 
-```shell
+```bash
 cryptsetup luksFormat --type=luks1 --cipher aes --key-size 256 /dev/nvme0n1p2
 cryptsetup luksFormat --cipher aes --key-size 256 /dev/nvme0n1p3
 ```
 
 Unlock the encrypted LUKS partitions:
 
-```shell
+```bash
 cryptsetup open /dev/nvme0n1p2 luks-boot
 cryptsetup open /dev/nvme0n1p3 luks-main
 
@@ -53,7 +53,7 @@ ls /dev/mapper/
 
 Format EFI partition (`nvme0n1p1`) with the filesystem:
 
-```shell
+```bash
 mkfs.vfat -F 16 -n EFI-SP /dev/nvme0n1p1
 ```
 
@@ -63,19 +63,19 @@ You will format the rest of the partitions in the installer UI.
 
 Create an [LVM][arch-wiki-lvm] physical volume from the `luks-main` opened LUKS partition:
 
-```shell
+```bash
 pvcreate /dev/mapper/luks-main
 ```
 
 Create the `main` volume group on the physical volume:
 
-```shell
+```bash
 vgcreate main /dev/mapper/luks-main
 ```
 
 Create the logical volumes for the mount points:
 
-```shell
+```bash
 # Mount point /
 lvcreate -L 60G -n root main
 # Mount point /opt
@@ -101,7 +101,7 @@ In the partitioning section select manual partitioning. Select the `nvme0n1` as 
 
 Enable encrypted GRUB before the installer reaches the **Install Bootloader** stage:
 
-```shell
+```bash
 while [ ! -d /target/etc/default/grub.d ]; do sleep 1; done; echo "GRUB_ENABLE_CRYPTODISK=y" > /target/etc/default/grub.d/local.cfg
 ```
 
@@ -109,7 +109,7 @@ If you do not manage to do this, see the [**Ensure GRUB configuration supports L
 
 #### Make GRUB ask for a password to decrypt the volumes on boot
 
-```shell
+```bash
 mount /dev/main/root /target
 for n in proc sys dev etc/resolv.conf; do mount --rbind /$n /target/$n; done
 chroot /target
@@ -144,7 +144,7 @@ update-initramfs -u -k all
 
 If you did not manage to write `GRUB_ENABLE_CRYPTODISK=y` to `/target/etc/default/grub.d/local.cfg` before the installer set up GRUB, you can configure it manually. The config parameter must be written to the file before running this command:
 
-```shell
+```bash
 dpkg-reconfigure grub-efi-amd64-signed
 ```
 
@@ -160,7 +160,7 @@ If everything is done correctly, the system should boot. Otherwise, you can use 
 
 Follow the [official Ubuntu guide to upgrade the system to the next release][how-to-upgrade-ubuntu-release]:
 
-```shell
+```bash
 sudo apt update -y && sudo apt upgrade -y --allow-downgrades
 sudo do-release-upgrade
 ```
@@ -177,7 +177,7 @@ UpgradeTool: http://archive.ubuntu.com/ubuntu/dists/mantic-updates/main/dist-upg
 
 Download, unpack the downloaded upgrader, and run it:
 
-```shell
+```bash
 wget http://archive.ubuntu.com/ubuntu/dists/mantic-updates/main/dist-upgrader-all/current/mantic.tar.gz
 mkdir ./mantic-upgrader
 tar -xaf mantic.tar.gz -C ./mantic-upgrader
@@ -199,7 +199,7 @@ Before proceeding, setup [SSH keys](../system-setup/ssh.md), install the [fonts]
 
 Check if the system has snap installed and list the installed packages:
 
-```shell
+```bash
 # Check the snap version
 snap --version
 
@@ -223,13 +223,13 @@ snap list
 
 Remove the snap packages. They must be removed in a topological order. Unfortunately, snap does not provide a way to return the installed packages in a topological order, so this guide provides generate the commands to remove the packages. You should run these commands manully and figure out the proper order:
 
-```shell
+```bash
 snap list | tail -n +2 | awk '{ print $1 }' | sort -r | xargs -I {} -n 1 echo "sudo snap remove --purge {}"
 ```
 
 #### Remove `snapd` daemon
 
-```shell
+```bash
 sudo systemctl stop snapd
 sudo systemctl disable snapd
 sudo systemctl mask snapd
@@ -240,7 +240,7 @@ rm -rf "${HOME}/snap/"
 
 #### Configure `apt` to not install snaps
 
-```shell
+```bash
 sudo cat <<EOF | sudo tee /etc/apt/preferences.d/nosnap.pref
 Package: snapd
 Pin: release a=*
@@ -250,7 +250,7 @@ EOF
 
 Check that `apt` will not install snaps without an explicit reconfiguration. `chromium-browser` package is a package that `apt` will try to install with snap. The following command should fail:
 
-```shell
+```bash
 sudo apt install chromium-browser
 
 # Reading package lists... Done
@@ -271,7 +271,7 @@ sudo apt install chromium-browser
 
 Find the directories that have the names `snap` or `snapd` and remove them manually (unless they are in system locations, e.g. like ``):
 
-```shell
+```bash
 sudo find / -name "snap"
 sudo find / -name "snapd"
 ```

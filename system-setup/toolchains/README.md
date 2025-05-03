@@ -13,6 +13,6 @@
 
 ## Verify versions of the installed toolchains
 
-```shell
+```bash
 ./check-toolchains-version.sh
 ```

@@ -11,7 +11,7 @@
 
 This guide recommends installing `yq` using [`go install`](https://go.dev/ref/mod#go-install).
 
-```shell
+```bash
 go install "github.com/mikefarah/yq/v4@${YQ_VERSION}"
 ```
 

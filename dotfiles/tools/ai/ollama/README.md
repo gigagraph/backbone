@@ -10,7 +10,7 @@ This guide recommends install `ollama` as per [official manual installation inst
 >
 > If you are upgrading from a prior version, you should remove the old libraries with `sudo rm -rf /usr/lib/ollama` first.
 
-```shell
+```bash
 curl -L "https://github.com/ollama/ollama/releases/download/${OLLAMA_VERSION}/ollama-linux-amd64.tgz" -o ollama-linux-amd64.tgz
 sudo tar -C /usr -xzf ollama-linux-amd64.tgz
 ```
@@ -21,7 +21,7 @@ Add the [`systemd` service](#add-systemd-service).
 
 Create `ollama` user and group and add the current user to the group:
 
-```shell
+```bash
 sudo mkdir /home/ollama
 sudo chown -R ollama:ollama /home/ollama
 sudo chmod -R 'u=rwx,g=rwx,o=' /home/ollama
@@ -57,13 +57,13 @@ WantedBy=default.target
 
 Reload `systemd` manager configuration after adding the service for the first time:
 
-```shell
+```bash
 sudo systemctl daemon-reload
 ```
 
 Start the ollama `systemd` service:
 
-```shell
+```bash
 sudo systemctl start ollama
 ```
 
@@ -75,7 +75,7 @@ Use `ollama run <model-name>` to run a model supported by `ollama`.
 
 Alternatively, users can customize `ollama` models by creating a [`Modelfile`][ollama-modelfile-syntax]. After a user created a Modelfile, they need to `create` a new model from the file, which they can then `run`:
 
-```shell
+```bash
 ollama create <customized-model-name> -f <path-to-modelfile>
 ollama run <customized-model-name>
 ```

@@ -10,20 +10,20 @@ This guide is based on the [official instructions][tex-live-installation-unix].
 
 Download the TeX Live distribution:
 
-```shell
+```bash
 curl -L -o install-tl-unx.tar.gz https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 ```
 
 Unpack the archive:
 
-```shell
+```bash
 tar xf ./install-tl-unx.tar.gz
 cd ./install-tl-*
 ```
 
 Install the distribution interactively, using the settings defined in this repo:
 
-```shell
+```bash
 sudo perl install-tl --init-from-profile "${WORKSPACE_SETUP_DIR}/system-setup/toolchains/texlive/texlive.profile"
 ```
 
@@ -33,7 +33,7 @@ sudo perl install-tl --init-from-profile "${WORKSPACE_SETUP_DIR}/system-setup/to
 
 By default, TeX Live installer will install the distribution into `/usr/local/texlive/${TEX_LIVE_VERSION}`. Users most porbably will need to add the paths under this directory to their environment variables (e.g. they will want to update `PATH` in their `.zshrc`). To not update the variable every time a new distribution version is installed, this guide recommends creating a symlink `/usr/local/texlive/current` that points to the currently selected version of TeX Live and use this path to update their envs.
 
-```shell
+```bash
 sudo ln -s "/usr/local/texlive/${TEX_LIVE_VERSION}" "/usr/local/texlive/current"
 ```
 
@@ -41,7 +41,7 @@ After this, make sure to add `/usr/local/texlive/current/bin/$(uname -m)-*([1])`
 
 TeX Live's manpages to your manpath. E.g. update `/etc/manpath.config` on your system:
 
-```shell
+```bash
 echo "MANPATH_MAP $(echo "/usr/local/texlive/current/bin/$(uname -m)-"*([1])) /usr/local/texlive/current/texmf-dist/doc/man" > "/etc/manpath.config"
 ```
 

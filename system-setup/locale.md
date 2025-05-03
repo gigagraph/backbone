@@ -10,7 +10,7 @@ sudo vi /etc/locale.gen
 
 Generate locale files:
 
-```shell
+```bash
 sudo locale-gen
 ```
 
@@ -26,7 +26,7 @@ LC_TIME=uk_UA.UTF-8
 
 `set-locale` with `localetl`:
 
-```shell
+```bash
 sudo localectl set-locale LANG=en_US.UTF-8
 sudo localectl set-locale LC_MEASUREMENT=metric
 sudo localectl set-locale LC_TIME=uk_UA.UTF-8
