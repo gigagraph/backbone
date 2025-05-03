@@ -11,12 +11,7 @@ function SetM:is_set()
 end
 
 function SetM:size()
-  -- TODO: performance improvement - store this in the data structure itself
-  local size = 0
-  for _, _ in self:pairs() do
-    size = size + 1
-  end
-  return size
+  return self._size
 end
 
 function SetM:contains(value)
@@ -35,11 +30,19 @@ end
 local function _concat_sets_in_place(set, other)
   if SetM.is_set(other) then
     for k, _ in pairs(other._data) do
+      if not set._data[k] then
+        set._size = set._size + 1
+      end
+
       set._data[k] = true
     end
   elseif type(other) == "table" then
     for k, e in pairs(other) do
       if type(k) == "number" then
+        if not set._data[e] then
+          set._size = set._size + 1
+        end
+
         set._data[e] = true
       else
         error(
@@ -74,6 +77,10 @@ function _set_mt.__add(left, right)
 
   if not concat_success then
     if type(maybe_set) ~= "table" then
+      if not copy._data[maybe_set] then
+        copy._size = copy._size + 1
+      end
+
       copy._data[maybe_set] = true
     else
       error(result)
@@ -89,11 +96,19 @@ function _set_mt.__sub(left, right)
 
     if SetM.is_set(right) then
       for k, _ in pairs(right._data) do
+        if copy._data[k] then
+          copy._size = copy._size - 1
+        end
+
         copy._data[k] = nil
       end
     elseif type(right) == "table" then
       for k, e in pairs(right) do
         if type(k) == "number" then
+          if copy._data[e] then
+            copy._size = copy._size - 1
+          end
+
           copy._data[e] = nil
         else
           error(
@@ -105,6 +120,10 @@ function _set_mt.__sub(left, right)
       end
     else
       if right then
+        if copy._data[right] then
+          copy._size = copy._size - 1
+        end
+
         copy._data[right] = nil
       end
     end
@@ -142,14 +161,18 @@ function _set_mt.__mul(left, right)
     end
 
     local result = {}
+    local result_size = 0
 
     for e, _ in smaller_set:pairs() do
       if larger_set(e) then
+        result_size = result_size + 1
         table.insert(result, e)
       end
     end
 
-    return SetM.mk(result)
+    result_set = SetM.mk(result)
+    result_set._size = result_size
+    return result_set
   elseif type(other) == "nil" then
     return SetM.mk()
   else
@@ -221,7 +244,7 @@ end
 local function mk_empty_set()
   local set = {
     _data = {},
-    -- _size = 0, -- TODO: implement size
+    _size = 0,
   }
   setmetatable(set, _set_mt)
   return set
