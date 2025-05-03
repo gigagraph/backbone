@@ -3,8 +3,6 @@ local M = {}
 -- Download lazy.nvim if it has not been downloaded yet
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not(vim.uv or vim.loop).fs_stat(lazypath) then
-  -- Note: using the SSH url to download lazy.nvim. Therefore git command will
-  -- most probably requrie authentication via ssh agent.
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
   local out = vim.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
   local out = ""

@@ -18,7 +18,7 @@ Source: https://github.com/neovim/neovim.
 
 Clone the [neovim repo][github-neovim] locally:
 
-```shell
+```bash
 git clone git@github.com:neovim/neovim.git
 cd ./neovim
 git checkout "${NEOVIM_VERSION}"
@@ -26,13 +26,13 @@ git checkout "${NEOVIM_VERSION}"
 
 Install build dependencies:
 
-```shell
+```bash
 ./install-dependencies.sh
 ```
 
 Build neovim from sources and test the build:
 
-```shell
+```bash
 export CC="$(which clang)"
 export CFLAGS="--start-no-unused-arguments -fuse-ld=lld --end-no-unused-arguments"
 export CXX="$(which clang++)"
@@ -45,13 +45,13 @@ make test
 
 Install the build locally:
 
-```shell
+```bash
 sudo make install
 ```
 
 Set `nvim` as default alternative for editor
 
-```shell
+```bash
 sudo update-alternatives --install /usr/bin/editor editor "$(which nvim)" 1
 sudo update-alternatives --set editor "$(which nvim)"
 sudo update-alternatives --install /usr/bin/vi vi "$(which nvim)" 1
@@ -82,7 +82,7 @@ sudo update-alternatives --set vi "$(which nvim)"
 
 Use the config from this repository on your system by symlinking the user config default directory to the config dir in this repo (the script will prompt you for confirmation before running any configuration commands):
 
-```shell
+```bash
 ./setup-config.sh
 ```
 
@@ -304,9 +304,33 @@ This setup uses [`plenary.nvim`][plenary-nvim] to write and run unit tests. Test
 :PlenaryBustedFile %
 ```
 
-##### Running unit tests via shell
+##### Running unit tests in a shell
 
-<!-- TODO: how to run tests from CLI -->
+Assuming your current working directory is the same as the directory where this file resides, run the following command:
+
+```bash
+nvim --headless -u './tests/minimal_init.lua' -c 'lua test_bkb_all()'
+```
+
+The script has a shebang line, so users can also simply execute the lua file directly to run all tests (`neovim` must be on the `$PATH`):
+
+```bash
+./tests/minimal_init.lua
+```
+
+###### Interact with testing environment
+
+Additionally, users can initialize `neovim` in the testing environment interactively:
+
+```bash
+nvim -u './tests/minimal_init.lua'
+```
+
+Users can then run the following command to run all tests:
+
+```vim
+:lua test_bkb_all()
+```
 
 ## Make `nvim` default pager
 
@@ -314,7 +338,7 @@ This setup uses [`plenary.nvim`][plenary-nvim] to write and run unit tests. Test
 
 Clone the `nvimpager` repo:
 
-```shell
+```bash
 git clone git@github.com:lucc/nvimpager.git
 cd ./nvimpager
 git checkout "${NVIMPAGER_VERSION}"
@@ -322,25 +346,25 @@ git checkout "${NVIMPAGER_VERSION}"
 
 Install build dependencies:
 
-1. ```shell
+1. ```bash
    sudo apt update -y
    sudo apt install -y \
      scdoc
    ```
 2. Install [`busted`](https://luarocks.org/modules/lunarmodules/busted):
-     - ```shell
+     - ```bash
        luarocks install --local busted "${BUSTED_VERSION}"
        ```
 
 Buidl & install `nvimpager`:
 
-```shell
+```bash
 sudo make install
 ```
 
 Test `nvimpager`:
 
-```shell
+```bash
 make test BUSTED="$(luarocks show busted --porcelain | grep -e 'command\s+busted' | awk '{ print $3 }')"
 ```
 
@@ -350,12 +374,12 @@ make test BUSTED="$(luarocks show busted --porcelain | grep -e 'command\s+busted
 
 Set `PAGER` and `MANPAGER` envs to use `nvimpager` in your rc file:
 
-```shell
+```bash
 export PAGER="$(which nvimpager)"
 export MANPAGER="$(which nvimpager)"
 ```
 
-```shell
+```bash
 for pager_alternative in 'pager'; do
   sudo update-alternatives --install \
     "$(update-alternatives --query "${pager_alternative}" | awk '/Link: / { print $2 }')" \
