@@ -92,9 +92,19 @@ This setup uses plugins listed in this seciton. Each section describes how the p
 
 - [ ] TODO: specify the convention for plugin management and configuration in this config with lazy.
 
+#### [`gruvbox`][gruvbox-nvim]
+
+`gruvbox` is the default colorscheme in this setup in `neovim`.
+
+Switch betwee dark and light by setting:
+
+```lua
+vim.o.background = "dark" -- or "light"
+```
+
 #### [`catppuccin/nvim`][catppucin-nvim]
 
-This setup uses `catppuccin/nvim` as a default colorscheme for `neovim`.
+This setup provides `catppuccin/nvim` colorscheme as an option for users.
 
 #### [`mini.nvim`][mini-nvim]
 
@@ -402,6 +412,7 @@ done
 - [nvim-tree-sitter][nvim-tree-sitter]
 - Plugins
   - [catppucin-nvim][catppucin-nvim]
+  - [gruvbox-nvim][gruvbox-nvim]
   - [mini-nvim][mini-nvim]
     - [mini-nvim-ai][mini-nvim-ai]
     - [mini-nvim-align][mini-nvim-align]
@@ -432,6 +443,7 @@ done
 [youtube-tj-advent-of-neovim]: <https://www.youtube.com/watch?v=TQn2hJeHQbM&list=PLep05UYkc6wTyBe7kPjQFWVXTlhKeQejM>
 [nvim-tree-sitter]: <https://neovim.io/doc/user/treesitter.html>
 [catppucin-nvim]: <https://github.com/catppuccin/nvim>
+[gruvbox-nvim]: <https://github.com/ellisonleao/gruvbox.nvim>
 [mini-nvim]: <https://github.com/echasnovski/mini.nvim>
 [mini-nvim-ai]: <https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-ai.md>
 [mini-nvim-align]: <https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-align.md>

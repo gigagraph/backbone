@@ -101,6 +101,44 @@ end
 --- Plugins declaration and config
 bpu = require("config.infra.utils")
 
+---- gruvbox
+local gruvbox_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.gruvbox",
+  {
+    opts = {
+      terminal_colors = true, -- add neovim terminal colors
+      undercurl = true,
+      underline = true,
+      bold = true,
+      italic = {
+        strings = true,
+        emphasis = true,
+        comments = true,
+        operators = false,
+        folds = true,
+      },
+      strikethrough = true,
+      invert_selection = false,
+      invert_signs = false,
+      invert_tabline = false,
+      inverse = true, -- invert background for search, diffs, statuslines and errors
+      contrast = "", -- can be "hard", "soft" or empty string
+      palette_overrides = {},
+      overrides = {},
+      dim_inactive = false,
+      transparent_mode = false,
+    },
+    config = function(lazy_plugin, opts)
+      -- Call the original plugin's setup code
+      local gruvbox = require(lazy_plugin.name)
+      gruvbox.setup(opts)
+
+      -- Activate the colorscheme
+      vim.cmd.colorscheme("gruvbox")
+    end,
+  }
+)
+
 ---- Catppuccin
 local catppuccin_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.catppuccin",
@@ -171,9 +209,6 @@ local catppuccin_lazy_spec = bpu:declare_lazy_spec(
       local catppuccin = require(lazy_plugin.name)
       local catppuccin_final_opts = vim.tbl_deep_extend("force", catppuccin.default_options, opts)
       catppuccin.setup(catppuccin_final_opts)
-
-      -- Activate the colorscheme
-      vim.cmd.colorscheme("catppuccin")
     end,
   }
 )
@@ -1096,7 +1131,7 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
 )
 
 ---- nvim-lspconfig
-    -- TODO: configure keybidning to force reload all LSPs + force reload LSPs related to the current buffer
+    -- TODO: configurer keybidning to force reload all LSPs + force reload LSPs related to the current buffer
     -- :lua vim.lsp.stop_client(vim.lsp.get_clients())
     -- :edit
 
@@ -1104,7 +1139,8 @@ local nvim_lspconfig_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.nvim-lspconfig",
   {
     config = function(lazy_plugin, opts)
-      -- TODO: configure
+      -- TODO: configurer
+      -- TODO: configurer LSPs servers in a separate directory
     end
   }
 )
@@ -1123,6 +1159,7 @@ local nvim_lspconfig_lazy_spec = bpu:declare_lazy_spec(
 
 --- Initialize lazy.nvim plugin manager
 local lazy_plugin_infra = require("config.infra.lazy")
+lazy_plugin_infra.init()
 lazy_plugin_infra.setup_plugins({
   -- All options: https://lazy.folke.io/configuration
   spec = bpu.final_lazy_spec,
