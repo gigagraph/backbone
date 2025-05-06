@@ -849,16 +849,29 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
               },
             },
             selection_modes = {},
-            include_surrounding_whitespace = false, -- Note: can also be a fucntion to have different behaviors for queries and selection modes
+            include_surrounding_whitespace = false, -- Note: can also be a function to have different behaviors for queries and selection modes
           },
           swap = {
             enable = true,
             swap_next = {
-              ["<leader><leader>n"] = "@block.outer",
+              ["<leader><leader>abn"] = "@block.outer",
+              ["<leader><leader>abP"] = "@block.outer",
+              ["<leader><leader>ibn"] = "@block.inner",
+              ["<leader><leader>ibP"] = "@block.inner",
+              ["<leader><leader>afn"] = "@function.outer",
+              ["<leader><leader>afP"] = "@function.outer",
+              ["<leader><leader>ifn"] = "@function.inner",
+              ["<leader><leader>ifP"] = "@function.inner",
             },
             swap_previous = {
-              ["<leader><leader>p"] = "@block.outer",
-              ["<leader><leader>N"] = "@block.outer",
+              ["<leader><leader>abp"] = "@block.outer",
+              ["<leader><leader>abN"] = "@block.outer",
+              ["<leader><leader>ibp"] = "@block.inner",
+              ["<leader><leader>ibN"] = "@block.inner",
+              ["<leader><leader>afp"] = "@function.outer",
+              ["<leader><leader>afN"] = "@function.outer",
+              ["<leader><leader>ifp"] = "@function.inner",
+              ["<leader><leader>ifN"] = "@function.inner",
             },
           },
           move = {
