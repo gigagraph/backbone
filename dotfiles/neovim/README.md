@@ -429,6 +429,7 @@ done
   - [plenary-nvim][plenary-nvim]
     - [plenary-test-harness][plenary-test-harness]
 - [lua-busted][lua-busted]
+- [youtube-neovimconf-2024-ai][youtube-neovimconf-2024-ai]
 
 [github-neovim]: <https://github.com/neovim/neovim>
 [neovim-build-deps]: <https://github.com/neovim/neovim/blob/master/BUILD.md#build-prerequisites>
@@ -460,3 +461,4 @@ done
 [plenary-nvim]: <https://github.com/nvim-lua/plenary.nvim>
 [plenary-test-harness]: <https://github.com/nvim-lua/plenary.nvim?tab=readme-ov-file#plenarytest_harness>
 [lua-busted]: <https://lunarmodules.github.io/busted/>
+[youtube-neovimconf-2024-ai]: <https://www.youtube.com/watch?v=GKQ9rJ12hjc&list=PLhlaLyAlbLlq9xWf2xm_9p422GgqvATXk&index=11>

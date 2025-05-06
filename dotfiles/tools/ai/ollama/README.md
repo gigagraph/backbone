@@ -91,4 +91,3 @@ ollama run <customized-model-name>
 [ollama-manual-install-linux]: https://github.com/ollama/ollama/blob/main/docs/linux.md
 [ollama-faq-where-models-stored]: https://github.com/ollama/ollama/blob/main/docs/faq.md#where-are-models-stored
 [ollama-modelfile-syntax]: https://github.com/ollama/ollama/blob/main/docs/modelfile.md
-

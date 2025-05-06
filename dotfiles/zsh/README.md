@@ -430,7 +430,7 @@ fnm completions --shell "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_fnm"
 
 After you generated the completions, ensure that the directory with the `_fnm` completions file is on your zsh `fpath`.
 
-#### [`yq`](../../system-setup/toolchains/yq/README.md)
+#### `yq`
 
 ##### `yq` completions
 
@@ -441,6 +441,18 @@ yq shell-completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_yq"
 ```
 
 After you generated the completions, ensure that the directory with the `_yq` completions file is on your zsh `fpath`.
+
+#### `jj`
+
+##### `jj` completions
+
+Use `jj` to generate completions for zsh:
+
+```bash
+COMPLETE="${SHELL##*/}" jj > "${ZSH_COMPLETIONS_DIR}/_jj"
+```
+
+After you generated the completions, ensure that the directory with the `_jj` completions file is on your zsh `fpath`.
 
 #### Deprecated plugins
 
