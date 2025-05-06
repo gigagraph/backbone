@@ -92,19 +92,15 @@ This setup uses plugins listed in this seciton. Each section describes how the p
 
 - [ ] TODO: specify the convention for plugin management and configuration in this config with lazy.
 
-#### [`gruvbox`][gruvbox-nvim]
+#### [`catppuccin/nvim`][catppucin-nvim]
 
-`gruvbox` is the default colorscheme in this setup in `neovim`.
+This config builds a custom colorscheme based on [`catppuccin/nvim`][catppucin-nvim] colorscheme that shifts Cattpuccin Mocha more to the red part of the visible spectrum to reduce eye strain. This works well when continuosuly looking at text for long periods of time.
 
 Switch betwee dark and light by setting:
 
-```lua
-vim.o.background = "dark" -- or "light"
+```vim
+:set background=dark " or light
 ```
-
-#### [`catppuccin/nvim`][catppucin-nvim]
-
-This setup provides `catppuccin/nvim` colorscheme as an option for users.
 
 #### [`mini.nvim`][mini-nvim]
 

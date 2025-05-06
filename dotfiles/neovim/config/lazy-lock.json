@@ -1,6 +1,5 @@
 {
   "catppuccin": { "branch": "main", "commit": "c9e205fe035d622b3c2d66ee42edf368c0c31fd5" },
-  "gruvbox": { "branch": "main", "commit": "61b0b3be2f0cfd521667403a0367298144d6c165" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "mini.nvim": { "branch": "main", "commit": "0420076298c4457f200c2de468f65d080597a347" },
   "nvim-lspconfig": { "branch": "master", "commit": "fa2662510d30b06168b6e2e6915518decde6bbac" },

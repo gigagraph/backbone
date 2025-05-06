@@ -101,44 +101,6 @@ end
 --- Plugins declaration and config
 bpu = require("config.infra.utils")
 
----- gruvbox
-local gruvbox_lazy_spec = bpu:declare_lazy_spec(
-  "config.infra.plugins.gruvbox",
-  {
-    opts = {
-      terminal_colors = true, -- add neovim terminal colors
-      undercurl = true,
-      underline = true,
-      bold = true,
-      italic = {
-        strings = true,
-        emphasis = true,
-        comments = true,
-        operators = false,
-        folds = true,
-      },
-      strikethrough = true,
-      invert_selection = false,
-      invert_signs = false,
-      invert_tabline = false,
-      inverse = true, -- invert background for search, diffs, statuslines and errors
-      contrast = "", -- can be "hard", "soft" or empty string
-      palette_overrides = {},
-      overrides = {},
-      dim_inactive = false,
-      transparent_mode = false,
-    },
-    config = function(lazy_plugin, opts)
-      -- Call the original plugin's setup code
-      local gruvbox = require(lazy_plugin.name)
-      gruvbox.setup(opts)
-
-      -- Activate the colorscheme
-      vim.cmd.colorscheme("gruvbox")
-    end,
-  }
-)
-
 ---- Catppuccin
 local catppuccin_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.catppuccin",
@@ -203,12 +165,48 @@ local catppuccin_lazy_spec = bpu:declare_lazy_spec(
         --   lsp = true,
         -- },
       },
+      -- Color customizations
+      color_overrides = {
+        mocha = {
+          -- Custom colorscheme based on catppuccin, but shifted more to the red rather than blue.
+          -- It needs a custom name too - Catppuccin Cocoa.
+          crust = "#191513",
+          mantle = "#201b18",
+          base = "#26201c",
+          surface0 = "#443831",
+          surface1 = "#5a4c45",
+          surface2 = "#705f58",
+          overlay0 = "#766660",
+          overlay1 = "#91827e",
+          overlay2 = "#b2a39f",
+          subtext0 = "#c7aea7",
+          subtext1 = "#e0c8c2",
+          text = "#dad8d8",
+          rosewater = "#ead7da",
+          flamingo = "#edc4cb",
+          pink = "#efb3d1",
+          mauve = "#d985e0",
+          red = "#db7072",
+          maroon = "#e59d99",
+          peach = "#f1ad83",
+          yellow = "#ead28a",
+          green = "#74b96e",
+          teal = "#89cdc0",
+          sky = "#7cc6de",
+          sapphire = "#67b2e4",
+          blue = "#668dcc",
+          lavender = "#9c9dc9",
+        },
+      },
     },
     config = function(lazy_plugin, opts)
       -- Call the original plugin's setup code
       local catppuccin = require(lazy_plugin.name)
       local catppuccin_final_opts = vim.tbl_deep_extend("force", catppuccin.default_options, opts)
       catppuccin.setup(catppuccin_final_opts)
+
+      -- Activate the colorscheme
+      vim.cmd.colorscheme("catppuccin")
     end,
   }
 )
