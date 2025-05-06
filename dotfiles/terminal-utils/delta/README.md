@@ -46,6 +46,27 @@ After the installation, ensure your `.gitconfg` has following to start using `de
 >
 > This repository comes with `.gitconfig` that uses `delta`. See the corresponding [doc for how to set it up](../../tools/git/README.md#configuration).
 
+### Configure `jj`
+
+After the installation, ensure your [`jj`'s config has following to start using `delta` to show diffs][jj-delta-integration]:
+
+```toml
+[ui]
+pager = "delta"
+paginate = "auto"
+conflict-marker-style = "snapshot"
+
+[merge-tools.delta]
+diff-args = ["--color-only", "--line-numbers"]
+
+[ui.diff]
+format = "git"
+```
+
+> [!NOTE]
+>
+> This repository comes with `jj`'s `config.toml` that uses `delta`. See the corresponding [doc for how to set it up](../../tools/jj/README.md#configuration).
+
 ### Integrate `delta` with other programs
 
 #### zsh
@@ -56,6 +77,8 @@ See the corresponding section in the [zsh docs file in this repo](../../zsh/READ
 
 - [github-delta][github-delta]
 - [delta-docs][delta-docs]
+- [jj-delta-integration][jj-delta-integration]
 
 [github-delta]: <https://github.com/dandavison/delta>
 [delta-docs]: <https://dandavison.github.io/delta/introduction.html>
+[jj-delta-integration]: <https://jj-vcs.github.io/jj/latest/config/#processing-contents-to-be-paged>

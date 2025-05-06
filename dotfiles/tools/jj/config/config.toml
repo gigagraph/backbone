@@ -1,0 +1,10 @@
+[ui]
+pager = "delta"
+paginate = "auto"
+conflict-marker-style = "snapshot"
+
+[merge-tools.delta]
+diff-args = ["--color-only", "--line-numbers"]
+
+[ui.diff]
+format = "git"

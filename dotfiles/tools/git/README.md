@@ -12,6 +12,13 @@ sudo apt install git
 
 ## Configuration
 
+> [!NOTE]
+>
+> Ensure you have the following terminal utils to use this config:
+> - [`delta`](../terminal-utils/delta/README.md).
+>
+> You can verify the versions of the installed toolcahins with the followin script located relative to the repo root: `./dotfiles/terminal-utils/check-versions.sh`.
+
 [User's git configuration should reside in `${XDG_CONFIG_HOME}/git/config`](https://git-scm.com/docs/git-config#Documentation/git-config.txt---global).
 
 Use the config from this repository on your system by creating symlinking the user config default directory to the config dir in this repo (the script will prompt you for confirmation before running any configuration commands):
