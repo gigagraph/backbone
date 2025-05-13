@@ -3,7 +3,8 @@
 This setup recommends using the following LSP servers for CSS:
 
 - `cssls` (a part of [vscode-langservers-extracted, covered in the Web README.md](./README.md#vscode-langservers-extracted-installation)).
-- [`css_variables`][css-variables] for support for CSS variables.
+- [`css_variables`][css-variables] to support CSS variables.
+- [`somesass_ls`][some-sass-lsp] to support SCSS and SASS.
 
 ## Installation
 
@@ -22,16 +23,28 @@ This guide recommends installing [`css-variables-language-server` from `npm` reg
 npm install -g css-variables-language-server
 ```
 
+### `somesass_ls` instalaltion
+
+This guide recommends installing [`somesass_ls` from `npm` registry][some-sass-lsp-npm] using the following command:
+
+```bash
+npm install -g some-sass-language-server
+```
+
 ## Useful links
 
 - [css-variables][css-variables]
   - [css-variables-language-server-npm][css-variables-language-server-npm]
-- [stylelint][stylelint]
 - [some-sass-lsp][some-sass-lsp]
+  - [some-sass-lsp-github][some-sass-lsp-github]
+  - [some-sass-lsp-npm][some-sass-lsp-npm]
+- [stylelint][stylelint]
 - [tailwindcss-lsp][tailwindcss-lsp]
 
 [css-variables]: https://github.com/vunguyentuan/vscode-css-variables/tree/master/packages/css-variables-language-server
 [css-variables-language-server-npm]: https://www.npmjs.com/package/css-variables-language-server
+[some-sass-lsp]: https://wkillerud.github.io/some-sass/index.html
+[some-sass-lsp-github]: https://github.com/wkillerud/some-sass/tree/main/packages/language-server
+[some-sass-lsp-npm]: https://www.npmjs.com/package/some-sass-language-server
 [stylelint]: https://stylelint.io/
-[some-sass-lsp]: https://github.com/wkillerud/some-sass/tree/main/packages/language-server
 [tailwindcss-lsp]: https://github.com/tailwindlabs/tailwindcss-intellisense

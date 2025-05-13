@@ -32,6 +32,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "jsonls",
   "cssls",
   "css_variables",
+  "somesass_ls",
 })
 
 local function configure_supported_lsp_servers()
@@ -1204,6 +1205,247 @@ local function configure_supported_lsp_servers()
   --- https://github.com/vunguyentuan/vscode-css-variables/blob/master/packages/vscode-css-variables/package.json#L38
   vim.lsp.config("css_variables", {
     settings = {},
+  })
+
+  -- somesass_ls
+  --- https://wkillerud.github.io/some-sass/language-server/settings.html
+  vim.lsp.config("somesass_ls", {
+    settings = {
+      somesass = {
+        suggestAllFromOpenDocument = true,
+        scss = {
+          workspace = {
+            logLevel = "info",
+          },
+          codeAction = {
+            enabled = true,
+          },
+          colors = {
+            enabled = true,
+            includeFromCurrentDocument = true,
+          },
+          completion = {
+            enabled = true,
+            includeFromCurrentDocument = true,
+            suggestFromUseOnly = false,
+            mixinStyle = "all",
+            triggerPropertyValueCompletion = true,
+            completePropertyWithSemicolon = true,
+          },
+          definition = {
+            enabled = true,
+          },
+          diagnostics = {
+            enabled = true,
+            deprecation = {
+              enabled = true,
+            },
+            lint = {
+              enabled = true,
+              compatibleVendorPrefixes = true,
+              vendorPrefix = true,
+              duplicateProperties = true,
+              emptyRules = true,
+              importStatement = true,
+              boxModel = true,
+              universalSelector = true,
+              zeroUnits = true,
+              fontFaceProperties = true,
+              hexColorLength = true,
+              argumentsInColorFunction = true,
+              unknownProperties = true,
+              ieHack = true,
+              unknownVendorSpecificProperties = true,
+              propertyIgnoredDueToDisplay = true,
+              important = true,
+              float = true,
+              idSelector = true,
+            },
+          },
+          documentSymbol = {
+            enabled = true,
+          },
+          foldingRanges = {
+            enabled = true,
+          },
+          highlights = {
+            enabled = true,
+          },
+          hover = {
+            enabled = true,
+            documentation = true,
+          },
+          links = {
+            enabled = true,
+          },
+          references = {
+            enabled = true,
+          },
+          rename = {
+            enabled = true,
+          },
+          selectionRanges = {
+            enabled = true,
+          },
+          signatureHelp = {
+            enabled = true,
+          },
+          workspaceSymbol = {
+            enabled = true,
+          },
+        },
+        sass = {
+          codeAction = {
+            enabled = true,
+          },
+          colors = {
+            enabled = true,
+          },
+          completion = {
+            enabled = true,
+            suggestFromUseOnly = true,
+            mixinStyle = "all",
+            triggerPropertyValueCompletion = true,
+          },
+          definition = {
+            enabled = true,
+          },
+          diagnostics = {
+            enabled = true,
+            deprecation = {
+              enabled = true,
+            },
+            lint = {
+              enabled = true,
+              compatibleVendorPrefixes = true,
+              vendorPrefix = true,
+              duplicateProperties = true,
+              emptyRules = true,
+              importStatement = true,
+              boxModel = true,
+              universalSelector = true,
+              zeroUnits = true,
+              fontFaceProperties = true,
+              hexColorLength = true,
+              argumentsInColorFunction = true,
+              unknownProperties = true,
+              ieHack = true,
+              unknownVendorSpecificProperties = true,
+              propertyIgnoredDueToDisplay = true,
+              important = true,
+              float = true,
+              idSelector = true,
+            },
+          },
+          foldingRanges = {
+            enabled = true,
+          },
+          highlights = {
+            enabled = true,
+          },
+          hover = {
+            enabled = true,
+            documentation = true,
+            references = true,
+          },
+          links = {
+            enabled = true,
+          },
+          references = {
+            enabled = true,
+          },
+          rename = {
+            enabled = true,
+          },
+          selectionRanges = {
+            enabled = true,
+          },
+          signatureHelp = {
+            enabled = true,
+          },
+          workspaceSymbol = {
+            enabled = true,
+          },
+        },
+        css = {
+          codeAction = {
+            enabled = true,
+          },
+          colors = {
+            enabled = true,
+          },
+          completion = {
+            enabled = true,
+            triggerPropertyValueCompletion = true,
+            completePropertyWithSemicolon = true,
+          },
+          definition = {
+            enabled = true,
+          },
+          diagnostics = {
+            enabled = true,
+            deprecation = {
+              enabled = true,
+            },
+            lint = {
+              enabled = true,
+              compatibleVendorPrefixes = true,
+              vendorPrefix = true,
+              duplicateProperties = true,
+              emptyRules = true,
+              importStatement = true,
+              boxModel = true,
+              universalSelector = true,
+              zeroUnits = true,
+              fontFaceProperties = true,
+              hexColorLength = true,
+              argumentsInColorFunction = true,
+              unknownProperties = true,
+              ieHack = true,
+              unknownVendorSpecificProperties = true,
+              propertyIgnoredDueToDisplay = true,
+              important = true,
+              float = true,
+              idSelector = true,
+            },
+          },
+          foldingRanges = {
+            enabled = true,
+          },
+          highlights = {
+            enabled = true,
+          },
+          hover = {
+            enabled = true,
+            documentation = true,
+            references = true,
+          },
+          links = {
+            enabled = true,
+          },
+          references = {
+            enabled = true,
+          },
+          rename = {
+            enabled = true,
+          },
+          selectionRanges = {
+            enabled = true,
+          },
+          signatureHelp = {
+            enabled = true,
+          },
+          workspaceSymbol = {
+            enabled = true,
+          },
+        },
+      },
+      ["some-sass"] = {
+        trace = {
+          server = "off"
+        },
+      },
+    },
   })
 end
 

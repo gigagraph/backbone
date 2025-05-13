@@ -24,6 +24,9 @@
     "package": "pnpm"
   },
   {
+    "package": "some-sass-language-server"
+  },
+  {
     "package": "vscode-langservers-extracted"
   },
   {
