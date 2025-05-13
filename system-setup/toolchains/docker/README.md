@@ -9,10 +9,13 @@ This installation guide focuses on installing only `docker` engine. The guide is
 Install the dependencies:
 
 ```bash
+sudo apt update -y
+sudo apt install -y ca-certificates curl
 ```
 
 Add docker gpg signature to the `apt`'s keyring:
 
+```bash
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
@@ -108,6 +111,18 @@ sudo nvidia-ctk runtime configure --runtime=docker
 sudo systemctl restart docker
 ```
 
+### Completions
+
+For more details refer to the [offical docs for `docker` completions][docker-completions].
+
+#### `zsh` completions
+
+Assuming that `ZSH_COMPLETIONS_DIR` env points to a path on your system that is present in `fpath`, run the following script:
+
+```bash
+docker completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_docker"
+```
+
 ## Useful links
 
 - [docker-docs-engine][docker-docs-engine].
@@ -115,7 +130,8 @@ sudo systemctl restart docker
     - [docker-docs-engine-install-ubuntu][docker-docs-engine-install-ubuntu].
     - [docker-docs-engine-post-install][docker-docs-engine-post-install].
 - [nvidia-install-container-toolkit][nvidia-install-container-toolkit].
-- [compose-gpu-support][compose-gpu-support]. 
+- [compose-gpu-support][compose-gpu-support].
+- [docker-completions][docker-completions].
 
 [docker-docs-engine]: https://docs.docker.com/engine/
 [docker-docs-engine-install]: https://docs.docker.com/engine/install/
@@ -124,4 +140,4 @@ sudo systemctl restart docker
 [docker-buildx-set-default]: https://github.com/docker/buildx?tab=readme-ov-file#set-buildx-as-the-default-builder
 [nvidia-install-container-toolkit]: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
 [compose-gpu-support]: https://docs.docker.com/compose/how-tos/gpu-support/
-
+[docker-completions]: https://docs.docker.com/engine/cli/completion/
