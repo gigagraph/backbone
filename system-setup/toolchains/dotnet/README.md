@@ -2,7 +2,7 @@
 
 ## Installation
 
-This guide considers .NET installation through .NET backports Ubuntu feed. If users want to use a different installation method, they should refer to the [official installation docs][install-dotnet-ubuntu] and the [decision guide][dotnet-ubuntu-installation-decision-guide].
+This guide considers .NET installation through .NET backports Ubuntu feed. If users want to use a different installation method, they should refer to the [official installation docs][dotnet-install-ubuntu] and the [decision guide][dotnet-ubuntu-installation-decision-guide].
 
 Add Ubuntu .NET backports repository:
 
@@ -67,7 +67,7 @@ EOF
 ## Useful links
 
 - [dotnet-download][dotnet-download]
-- [install-dotnet-ubuntu][install-dotnet-ubuntu]
+- [dotnet-install-ubuntu][dotnet-install-ubuntu]
 - [dotnet-ubuntu-installation-decision-guide][dotnet-ubuntu-installation-decision-guide]
 - [dotnet-cli-overview][dotnet-cli-overview]
 - [dotnet-completions][dotnet-completions]

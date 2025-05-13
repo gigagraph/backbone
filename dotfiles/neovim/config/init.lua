@@ -32,6 +32,8 @@ vim.opt.textwidth = 0
 
 vim.opt.fixendofline = true
 
+-- TODO: enable spell opt and set locales/spelllang
+
 -- Basic keybindings
 vim.keymap.set(
   { "n", "v" },

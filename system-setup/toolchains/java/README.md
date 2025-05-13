@@ -8,7 +8,7 @@ This guide recommends installing and using [Adoptium Temurin OpenJDK builds][ado
 
 ## Temurin installation
 
-This guide recommends [installing Temurin OpenJDK build][adoptium-temurin-installation] using your system's package manager and [switching versions using your system/environment's default method for JDK management][switch-between-java-versions].
+This guide recommends [installing Temurin OpenJDK build][adoptium-temurin-installation] using your system's package manager and [switching versions using your system/environment's default method for JDK management](#switch-between-java-versions).
 
 The following instruction are based on the [official Temurin installation instrucitons for Linux distributions][adoptium-temurin-installation-linux].
 

@@ -15,7 +15,7 @@ sudo apt install git
 > [!NOTE]
 >
 > Ensure you have the following terminal utils to use this config:
-> - [`delta`](../terminal-utils/delta/README.md).
+> - [`delta`](../../terminal-utils/delta/README.md).
 >
 > You can verify the versions of the installed toolcahins with the followin script located relative to the repo root: `./dotfiles/terminal-utils/check-versions.sh`.
 

@@ -5,7 +5,7 @@
 > [!NOTE]
 >
 > Ensure you have the following language toolhcains:
-> - [C/C++](../../system-setup/toolchains/llvm/README.md).
+> - [C/C++](../../../system-setup/toolchains/llvm/README.md).
 >
 > [You can verify the versions of the installed toolcahins with the script](../../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
 

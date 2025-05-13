@@ -9,7 +9,7 @@
 > [!NOTE]
 >
 > Ensure you have the following language toolhcains:
-> - [Rust](../system-setup/toolchains/rust/README.md).
+> - [Rust](../../../system-setup/toolchains/rust/README.md).
 >
 > [You can verify the versions of the installed toolcahins with the script](../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
 

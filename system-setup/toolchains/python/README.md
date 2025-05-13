@@ -102,9 +102,9 @@ pipx completions
 >
 > You may need a [Rust](../rust/README.md) to install `uv`.
 
-Users can [install `uv` using a variety of methods][uv-installation]. This guide recommends installing it either from PyPI via [`pipx`][#pipx] or using [`cargo`](../rust/README.md).
+Users can [install `uv` using a variety of methods][uv-installation]. This guide recommends installing it either from PyPI via [`pipx`](#pipx) or using [`cargo`](../rust/README.md).
 
-This guide will use [`pipx`][#pipx] to manage the `uv` installation.
+This guide will use [`pipx`](#pipx) to manage the `uv` installation.
 
 Install `uv` with `pipx`:
 
@@ -122,7 +122,7 @@ See the corresponding section in the [zsh docs file in this repo](../../../dotfi
 
 #### Updating `uv`
 
-Depending on your [installation method][#uv-installation], you will need to use the corresponding method to update `uv`.
+Depending on your [installation method](#uv-installation), you will need to use the corresponding method to update `uv`.
 
 Since this guide uses `pipx` to manage `uv`, run the following command to upgrade `uv`:
 

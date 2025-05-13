@@ -48,7 +48,6 @@ This guide recommend installing Android Studio by downloading it the build from 
    chmod +x ~/.local/share/applications/android_studio.desktop
    ```
 
-
 ### Building from source (does not work)
 
 > [!NOTE]
@@ -86,7 +85,7 @@ repo version
 
 #### Install Android Studio from sources
 
-Create the directory to checkout Android Studio branch (`${ANDROID_STUDIO_DIRECTORY}`) and checkout Android Studio sources using [`repo`][#install-repo]:
+Create the directory to checkout Android Studio branch (`${ANDROID_STUDIO_DIRECTORY}`) and checkout Android Studio sources using [`repo`](#install-repo):
 
 ```bash
 # Create the directory

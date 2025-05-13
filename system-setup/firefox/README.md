@@ -82,7 +82,7 @@ Follow the istructions from the Firefox support [forum][firefox-support-disable-
 
 ## Set up fonts default fonts
 
-This section describes how to set up default Firefox fonts to [Nerd Fonts patched Iosevka, Iosevka Aile, and Iosevka Etoile](./fonts.md). You can use any other font instead.
+This section describes how to set up default Firefox fonts to [Nerd Fonts patched Iosevka, Iosevka Aile, and Iosevka Etoile](../fonts.md). You can use any other font instead.
 
 [More info on Firefox fonts configuration][arch-wiki-firefox-font].
 

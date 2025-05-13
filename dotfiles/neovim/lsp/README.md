@@ -7,6 +7,7 @@ Supported LSP servers:
 - [Rust](./rust.md).
 - [Go](./go.md).
 - [Python](./python.md).
+- [Markdown](./markdown.md).
 
 ## Useful links
 

@@ -48,7 +48,7 @@ echo "${XDG_SESSION_TYPE}"
 
 #### Enable other programs to use Wayland clipboard
 
-Some programs may integrate with Wayland clipboard. E.g. [`neovim`](../dotfiles/neovim/README.md) can discover and paste to the clipboard of the environment it is running in. If it is running in wayland, it can operate the Wayland's clipboard. To enable programs to use Wayland clipboard install the following package:
+Some programs may integrate with Wayland clipboard. E.g. [`neovim`](../../dotfiles/neovim/README.md) can discover and paste to the clipboard of the environment it is running in. If it is running in wayland, it can operate the Wayland's clipboard. To enable programs to use Wayland clipboard install the following package:
 
 ```bash
 sudo apt update -y

@@ -10,11 +10,11 @@
 > [You can verify the versions of the installed toolcahins with the script](../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
 >
 > Additionally, ensure you have the following tools installed that this setup requires to initialize `fnm`:
-> - [`yq`](../../../dotfiles/terminal-utils/yq/REAMDE.md).
+> - [`yq`](../../../dotfiles/terminal-utils/yq/README.md).
 
 > [!NOTE]
 >
-> This guide does not recommend using [`nvm`][github-nvm] to manage `node` installation due to the [performance issues with shell startup times][nvm-performance-issue].
+> This guide does not recommend using [`nvm`][github-nvm] to manage `node` installation due to the [performance issues with shell startup times][nvm-performance-issues].
 
 This guide recommends installing `node` through `fnm`.
 
@@ -113,7 +113,7 @@ npm install -g pnpm@latest
 ## Useful links
 
 - [nodejs-website][nodejs-website].
-- [nodejs-github][nodejs-github].
+- [github-nodejs][github-nodejs].
 - [github-fnm][github-fnm].
   - [fnm-installation][fnm-installation].
   - [fnm-usage][fnm-usage].

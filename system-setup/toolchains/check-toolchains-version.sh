@@ -10,6 +10,7 @@ TOOLCHAIN_VERSION_CMDS=(
   "rustc --version && cargo --version"
   "fnm --version && node --version && npm --version && pnpm --version"
   "java --version && javac --version"
+  "dotnet --version"
   "perl --version"
   "luajit -v"
   "luarocks --version"

@@ -9,6 +9,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "gopls",
   "basedpyright",
   "ruff",
+  "marksman",
 })
 
 local function configure_supported_lsp_servers()
@@ -141,7 +142,7 @@ local function configure_supported_lsp_servers()
   })
 
   -- rust-analyzer
-  -- https://rust-analyzer.github.io/book/configuration.html
+  --- https://rust-analyzer.github.io/book/configuration.html
   vim.lsp.config("rust_analyzer", {
     settings = {
       ['rust-analyzer'] = {
@@ -436,7 +437,7 @@ local function configure_supported_lsp_servers()
   })
 
   -- gopls
-  -- Settings are taken from https://github.com/golang/tools/blob/master/gopls/doc/settings.md
+  --- Settings are taken from https://github.com/golang/tools/blob/master/gopls/doc/settings.md
   vim.lsp.config("gopls", {
     settings = {
       gopls = {
@@ -470,7 +471,7 @@ local function configure_supported_lsp_servers()
   })
 
   -- basedpyright
-  -- https://docs.basedpyright.com/dev/configuration/language-server-settings/
+  --- https://docs.basedpyright.com/dev/configuration/language-server-settings/
   vim.lsp.config("basedpyright", {
     settings = {
       basedpyright = {
@@ -494,7 +495,7 @@ local function configure_supported_lsp_servers()
   })
 
   -- ruff
-  -- https://docs.astral.sh/ruff/editors/settings/
+  --- https://docs.astral.sh/ruff/editors/settings/
   vim.lsp.config("ruff", {
     on_init = function(client, _)
       client.server_capabilities.hoverProvider = false
@@ -534,6 +535,37 @@ local function configure_supported_lsp_servers()
       },
       format = {
         preview = false,
+      },
+    },
+  })
+
+  -- marksman
+  --- https://github.com/artempyanykh/marksman/blob/main/docs/configuration.md
+  vim.lsp.config("marksman", {
+    settings = {
+      core = {
+        markdown = {
+          glfm_heading_ids = {
+            enable = true,
+          },
+        },
+        text_sync = "full",
+        title_from_heading = false,
+        paranoid = false,
+      },
+      code_action = {
+        toc = {
+          enable = true,
+        },
+        create_missing_file = {
+          enable = true,
+        },
+      },
+      completion = {
+        candidates = 50,
+        wiki = {
+          style = "title-slug",
+        },
       },
     },
   })

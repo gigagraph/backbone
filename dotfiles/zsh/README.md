@@ -92,7 +92,7 @@ sudo chsh -s "$(which zsh)" "${USER}"
 > [!NOTE]
 >
 > Ensure you have the following tools installed because the config depends on their avaialbility:
-> - [`yq`](../../dotfiles/terminal-utils/yq/REAMDE.md).
+> - [`yq`](../terminal-utils/yq/README.md).
 
 Setup config from this repo on your system:
 
@@ -418,7 +418,7 @@ cp ./contrib/completion/_fd "${ZSH_COMPLETIONS_DIR}/_fd"
 tree-sitter complete --shell="${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_tree-sitter"
 ```
 
-#### [`fnm`](../../system-setup/toolchains/fnm/README.md)
+#### [`fnm`](../../system-setup/toolchains/node/README.md)
 
 ##### `fnm` completions
 

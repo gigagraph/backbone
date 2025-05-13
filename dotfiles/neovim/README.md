@@ -7,12 +7,12 @@ Source: https://github.com/neovim/neovim.
 > [!NOTE]
 >
 > Ensure you have the following language toolhcains:
-> - [C/C++](../system-setup/toolchains/llvm/README.md).
+> - [C/C++](../../system-setup/toolchains/llvm/README.md).
 >
 > The following toolchains are optional, but recommended:
-> - [Lua](../system-setup/toolchains/lua/README.md).
-> - [Node](../system-setup/toolchains/node/README.md).
-> - [Tree-sitter](../system-setup/toolchains/tree-sitter/README.md).
+> - [Lua](../../system-setup/toolchains/lua/README.md).
+> - [Node](../../system-setup/toolchains/node/README.md).
+> - [Tree-sitter](../../system-setup/toolchains/tree-sitter/README.md).
 >
 > [You can verify the versions of the installed toolcahins with the script](../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
 
@@ -231,15 +231,15 @@ Enables [`mini.nvim`][mini-nvim] to use icons.
 > [!NOTE]
 >
 > Ensure you have the following language toolhcains:
-> - [C/C++](../system-setup/toolchains/llvm/README.md) (with libstdc++).
+> - [C/C++](../../system-setup/toolchains/llvm/README.md) (with libstdc++).
 >
 > The following toolchains are optional, but recommended:
-> - [Node](../system-setup/toolchains/node/README.md).
-> - [Tree-sitter](../system-setup/toolchains/tree-sitter/README.md).
+> - [Node](../../system-setup/toolchains/node/README.md).
+> - [Tree-sitter](../../system-setup/toolchains/tree-sitter/README.md).
 >
 > [You can verify the versions of the installed toolcahins with the script](../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
 
-`nvim` already depends on [`tree-sitter`](../system-setup/toolchains/tree-sitter/README.md) library that enables it to use tree-sitter API, i.e. load parsers, use them to build parse trees incrementally, run queries agains the trees, etc.
+`nvim` already depends on [`tree-sitter`](../../system-setup/toolchains/tree-sitter/README.md) library that enables it to use tree-sitter API, i.e. load parsers, use them to build parse trees incrementally, run queries agains the trees, etc.
 
 ```vim
 :InspectTree " To inspect the current buffer tree
@@ -427,6 +427,7 @@ done
   - [nvim-treesitter][nvim-treesitter]
   - [nvim-treesitter-context][nvim-treesitter-context]
   - [nvim-treesitter-textobjects][nvim-treesitter-textobjects]
+  - [nvim-treesitter-refactor][nvim-treesitter-refactor]
   - [nvim-lspconfig][nvim-lspconfig]
   - [plenary-nvim][plenary-nvim]
     - [plenary-test-harness][plenary-test-harness]
@@ -460,6 +461,7 @@ done
 [nvim-treesitter]: <https://github.com/nvim-treesitter/nvim-treesitter>
 [nvim-treesitter-context]: <https://github.com/nvim-treesitter/nvim-treesitter-context>
 [nvim-treesitter-textobjects]: <https://github.com/nvim-treesitter/nvim-treesitter-textobjects>
+[nvim-treesitter-refactor]: https://github.com/nvim-treesitter/nvim-treesitter-refactor
 [nvim-lspconfig]: <https://github.com/neovim/nvim-lspconfig>
 [plenary-nvim]: <https://github.com/nvim-lua/plenary.nvim>
 [plenary-test-harness]: <https://github.com/nvim-lua/plenary.nvim?tab=readme-ov-file#plenarytest_harness>

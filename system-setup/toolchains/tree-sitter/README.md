@@ -5,12 +5,12 @@
 > [!NOTE]
 >
 > Ensure you have the following language toolhcains:
-> - [Rust](../system-setup/toolchains/rust/README.md).
-> - [C/C++](../system-setup/toolchains/llvm/README.md).
-> - [Node](../system-setup/toolchains/node/README.md).
+> - [Rust](../rust/README.md).
+> - [C/C++](../llvm/README.md).
+> - [Node](../node/README.md).
 >
 > Optionally, but recommended:
-> - [Docker](../system-setup/toolchains/docker/README.md) or `emscripten` to build WASM library to run `tree-sitter playground` locally.
+> - [Docker](../docker/README.md) or `emscripten` to build WASM library to run `tree-sitter playground` locally.
 >
 > [You can verify the versions of the installed toolcahins with the script](../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
 

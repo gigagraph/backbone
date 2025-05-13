@@ -8,10 +8,10 @@ Docs: https://sw.kovidgoyal.net/kitty/.
 > [!NOTE]
 >
 > Ensure you have the following language toolhcains:
-> - [C/C++](../system-setup/toolchains/llvm/README.md).
-> - [Python](../system-setup/toolchains/python/README.md).
->   - With [pipx](../system-setup/toolchains/python/README.md#pipx).
-> - [Go](../system-setup/toolchains/go/README.md).
+> - [C/C++](../../system-setup/toolchains/llvm/README.md).
+> - [Python](../../system-setup/toolchains/python/README.md).
+>   - With [pipx](../../system-setup/toolchains/python/README.md#pipx).
+> - [Go](../../system-setup/toolchains/go/README.md).
 >
 > [You can verify the versions of the installed toolcahins with the script](../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
 
@@ -37,7 +37,7 @@ E.g. for a Debian-based system run:
 
 Ensure you have the [graphics libraries](../../system-setup/graphics.md) set up for your system (specifcially, you will need OpenGL implementation for your graphics hardware vendor).
 
-Ensure that you have [Wayland](../system-setup/wayland/README.md) and the corresponding headers (i.e. the dev package) to build kitty with Wayland support.
+Ensure that you have [Wayland](../../system-setup/wayland/README.md) and the corresponding headers (i.e. the dev package) to build kitty with Wayland support.
 
 Create a hardlink to the symbols Nerd Font file for the build:
 
