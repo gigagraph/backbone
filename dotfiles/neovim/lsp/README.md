@@ -11,6 +11,7 @@ Supported LSP servers:
 - [SQL](./sql.md).
 - [Bash](./bash.md).
 - [Latex](./latex.md).
+- [Docker](./docker.md).
 
 Planned to be supported in future:
 - Zig/Ziggy/Ziggy Schema.

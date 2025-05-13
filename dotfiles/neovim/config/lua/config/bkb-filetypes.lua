@@ -20,6 +20,10 @@ function M.add_bkb_filetypes()
       -- Set the yaml.docker-compose filetype for compose files (https://github.com/compose-spec/compose-spec) so that the default lsp-config (https://github.com/neovim/nvim-lspconfig) will run the compose LSP (https://www.npmjs.com/package/@microsoft/compose-language-service)
       ["compose%..*%.ya?ml"] = { "yaml.docker-compose", { priority = 0 } },
       ["compose.ya?ml"] = { "yaml.docker-compose", { priority = 0 } },
+
+      -- Recongnize files that end in .?Containerfile as dockerfile
+      [".*%.?Containerfile"] = { "dockerfile", { priority = 0 } },
+      ["Containerfile"] = { "dockerfile", { priority = 0 } },
     }
   })
 end

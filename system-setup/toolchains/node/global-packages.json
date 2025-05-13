@@ -9,6 +9,9 @@
     "package": "corepack"
   },
   {
+    "package": "dockerfile-language-server-nodejs"
+  },
+  {
     "package": "npm"
   },
   {

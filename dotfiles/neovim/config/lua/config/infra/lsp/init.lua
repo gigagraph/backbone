@@ -14,6 +14,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "bashls",
   "texlab",
   "docker_compose_language_service",
+  "dockerls",
 })
 
 local function configure_supported_lsp_servers()
@@ -668,6 +669,30 @@ local function configure_supported_lsp_servers()
   vim.lsp.config("docker_compose_language_service", {
     settings = {
       -- This LSP does not take settings
+    },
+  })
+
+  -- dockerls
+  --- https://github.com/rcjsuen/dockerfile-language-server#language-server-settings
+  vim.lsp.config("dockerls", {
+    settings = {
+      docker = {
+        languageserver = {
+          diagnostics = {
+            deprecatedMaintainer = "warning",
+            directiveCasing = "warning",
+            emptyContinuationLine = "warning",
+            instructionCasing = "warning",
+            instructionCmdMultiple = "warning",
+            instructionEntrypointMultiple = "warning",
+            instructionHealthcheckMultiple = "warning",
+            instructionJSONInSingleQuotes = "warning",
+          },
+          formatter = {
+            ignoreMultilineInstructions = true,
+          },
+        },
+      },
     },
   })
 end
