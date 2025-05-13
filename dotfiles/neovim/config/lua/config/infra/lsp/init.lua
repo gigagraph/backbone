@@ -20,6 +20,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "jdtls",
   "buf_ls",
   "yamlls",
+  "helm_ls",
 })
 
 local function configure_supported_lsp_servers()
@@ -1000,6 +1001,41 @@ local function configure_supported_lsp_servers()
         },
       },
     },
+  })
+
+  -- helm_ls
+  --- https://github.com/mrjosh/helm-ls/tree/master#configuration-options
+  vim.lsp.config("helm_ls", {
+    settings = {
+      ["helm-ls"] = {
+        logLevel = "info",
+        valuesFiles = {
+          mainValuesFile = "values.yaml",
+          lintOverlayValuesFile = "values.lint.yaml",
+          additionalValuesFilesGlobPattern = "values*.yaml"
+        },
+        helmLint = {
+          enabled = true,
+          ignoredMessages = {},
+        },
+        yamlls = {
+          enabled = true,
+          enabledForFilesGlob = "*.{yaml,yml}",
+          diagnosticsLimit = 50,
+          showDiagnosticsDirectly = false,
+          path = "yaml-language-server",
+          initTimeoutSeconds = 3,
+          config = {
+            schemas = {
+              kubernetes = "templates/**",
+            },
+            completion = true,
+            hover = true,
+            -- any other config from https://github.com/redhat-developer/yaml-language-server#language-server-settings
+          }
+        }
+      },
+    }
   })
 end
 

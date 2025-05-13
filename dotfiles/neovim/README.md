@@ -285,6 +285,15 @@ Additionally, it can perform symbol renaming and go to definition, but because i
 
 This setup uses `nvim-jdtls` to enable better integration with `jdtls` LSP server. Find more info about Java LSP servers and their usage specifics in `neovim` in [`./lsp/java.md`](./lsp/java.md). Additionally, users can view `nvim-jdtls` plugin help with: `:help jdtls`.
 
+#### [`helm-ls.nvim`](./lsp/helm.md#installation)
+
+This setup uses `helm-ls.nvim` for enhanced filetype detection and `helm-ls` LSP server integration experience. Users can view `helm-ls.nvim`'s docs with `:help helm-ls-docs.txt`.
+
+This plugin requires installed:
+
+- `helm` treesitter grammar.
+- [`helm-ls` LSP server](./lsp/helm.md).
+
 #### [`nvim-notify`][nvim-notify]
 
 This setup uses `nvim-notify` to display notifications from `vim.notify` asyncronously and store their history for later inspection. The setup also configures `vim.lsp.handlers` that handle messages from LSP servers to [print the received messages via `nvim-notify`][nvim-notify-usage-recipes].

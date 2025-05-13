@@ -15,12 +15,12 @@ Supported LSP servers:
 - [Java](./java.md).
 - [Protobuf](./protobuf.md).
 - [Yaml](./yaml.md).
+- [Helm](./helm.md).
 
 <!-- TODO: tomorrow - setup LSP -->
 <!-- TODO -->
 - [ ] TODO: languages to support:
   - Definitely:
-    - Helm (`helm_ls`).
     - Bazel (`bazelrc_lsp`, `starpls`).
     - Cue (`cue`).
     - Nix (`nixd`).

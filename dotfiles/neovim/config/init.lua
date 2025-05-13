@@ -1291,6 +1291,28 @@ local nvim_jdtld_lazy_spec = bpu:declare_lazy_spec(
   }
 )
 
+---- helm-ls.nvim
+local helm_ls_nvim_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.helm-ls-nvim",
+  {
+    lazy = true,
+    ft = "helm",
+    opts = {
+      -- https://github.com/qvalentin/helm-ls.nvim#configuration
+      conceal_templates = {
+        -- enable the replacement of templates with virtual text of their current values
+        enabled = false, -- this might change to false in the future
+      },
+      indent_hints = {
+        -- enable hints for indent and nindent functions
+        enabled = true,
+        -- show the hints only for the line the cursor is on
+        only_for_current_line = false,
+      },
+    },
+  }
+)
+
 ---- telescope
 -- local telescope_spec = bpu:declare_lazy_spec(
 --   -- TODO
