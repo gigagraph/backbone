@@ -32,6 +32,39 @@ vim.opt.textwidth = 0
 
 vim.opt.fixendofline = true
 
+-- Quickfix
+--- Open quickfix
+vim.keymap.set(
+  "n",
+  "<leader>co",
+  vim.cmd.copen,
+  { silent = true }
+)
+
+--- Close quickfix
+vim.keymap.set(
+  "n",
+  "<leader>cc",
+  vim.cmd.cclose,
+  { silent = true }
+)
+
+--- Go to the next item in the quickfix list
+vim.keymap.set(
+  {"n", "v", "i", "c", "t"},
+  "<C-M-S-j>",
+  vim.cmd.cnext,
+  { silent = true }
+)
+
+--- Go to the previous item in the quickfix list
+vim.keymap.set(
+  {"n", "v", "i", "c", "t"},
+  "<C-M-S-k>",
+  vim.cmd.cprevious,
+  { silent = true }
+)
+
 -- Diagnostic
 vim.diagnostic.config({
   underline = true,
@@ -42,6 +75,14 @@ vim.diagnostic.config({
   update_in_insert = true,
   severity_sort = true,
 })
+
+-- Populate the quickfix list with diagnostics
+vim.keymap.set(
+  "n",
+  "<leader>cd",
+  vim.diagnostic.setqflist,
+  { silent = true }
+)
 
 -- Manually control search results
 vim.opt.incsearch = true
