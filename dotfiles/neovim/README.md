@@ -92,6 +92,29 @@ This setup uses plugins listed in this seciton. Each section describes how the p
 
 - [ ] TODO: specify the convention for plugin management and configuration in this config with lazy.
 
+#### Custom plugins
+
+[`lazy.nvim`][lazy-nvim] users may find it hard to install some plugins, e.g. those that reside in a subdirectory of another repostiory ([`quick-lint/quick-lint-js/issues/1195`](https://github.com/quick-lint/quick-lint-js/issues/1195), [`folke/lazy.nvim/issues/1319`](https://github.com/folke/lazy.nvim/issues/1319), [`folke/lazy.nvim/issues/183`](https://github.com/folke/lazy.nvim/issues/183), [`folke/lazy.nvim/issues/756`](https://github.com/folke/lazy.nvim/issues/756)).
+
+In these cases users should install such a plugin semi-manually.
+
+Users should create a directory under `neovim`'s `data` dir where they will install the custom plugin (this setup calls such directory `bkb-plugins`).
+
+```bash
+echo "$(nvim --headless -c 'lua vim.print(vim.fn.stdpath("data"))' +qa 2>&1 | sed -E 's/(^"|"$)//g')/bkb-plugins"
+```
+
+Then users should clone their plugins under this directory and add the plugin diectories to `neovim`'s `runtimepath`. E.g. with `lazy.nvim`, users can specify the path to the plugin in the plugin spec with the `dir` property, for example:
+
+```lua
+{
+  dir = vim.fn.stdpath("data") .. "/bkb-plugins/quick-lint-js/plugin/vim/quick-lint-js.vim",
+  name = "quick-lint-js",
+  pin = false,
+  lazy = false,
+}
+```
+
 #### [`catppuccin/nvim`][catppucin-nvim]
 
 This config builds a custom colorscheme based on [`catppuccin/nvim`][catppucin-nvim] colorscheme that shifts Cattpuccin Mocha more to the red part of the visible spectrum to reduce eye strain. This works well when continuosuly looking at text for long periods of time.
@@ -461,6 +484,8 @@ done
   - [youtube-tj-quickfix][youtube-tj-quickfix]
 - [youtube-neovimconf-2024-ai][youtube-neovimconf-2024-ai]
 - [nvim-tree-sitter][nvim-tree-sitter]
+- [lazy-nvim-github][lazy-nvim-github]
+- [lazy-nvim][lazy-nvim]
 - Plugins
   - [catppucin-nvim][catppucin-nvim]
   - [gruvbox-nvim][gruvbox-nvim]
@@ -507,6 +532,8 @@ done
 [youtube-tj-quickfix]: https://www.youtube.com/watch?v=wOdL2T4hANk
 [youtube-neovimconf-2024-ai]: <https://www.youtube.com/watch?v=GKQ9rJ12hjc&list=PLhlaLyAlbLlq9xWf2xm_9p422GgqvATXk&index=11>
 [nvim-tree-sitter]: <https://neovim.io/doc/user/treesitter.html>
+[lazy-nvim-github]: <https://github.com/folke/lazy.nvim>
+[lazy-nvim]: <https://lazy.folke.io/>
 [catppucin-nvim]: <https://github.com/catppuccin/nvim>
 [gruvbox-nvim]: <https://github.com/ellisonleao/gruvbox.nvim>
 [mini-nvim]: <https://github.com/echasnovski/mini.nvim>

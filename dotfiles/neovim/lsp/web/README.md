@@ -3,7 +3,7 @@
 This guide refers to the following languages under the general term "Web stack":
 
 - [HTML][html] (support implemented by [vscode-langservers-extracted](vscode-langservers-extracted-installation)).
-- [CSS/SCSS/SASS](./css/README.md).
+- [CSS/SCSS/SASS](./css.md).
 - [JavaScript](./javascript.md).
 - [TypeScript](./typescript.md).
 

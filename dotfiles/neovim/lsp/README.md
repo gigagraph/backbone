@@ -34,9 +34,9 @@ Supported LSP servers:
         - [x] SCSS/SASS: [`somesass_ls`](https://github.com/wkillerud/some-sass/tree/main/packages/language-server).
         - [x] [`stylelint_lsp`](https://stylelint.io/).
         - [x] Tailwind: `tailwindcss` (https://github.com/tailwindlabs/tailwindcss-intellisense).
-      - [ ] JS:
-        - [ ] `eslint`.
-        - [ ] `quick-lint-js`.
+      - [x] JS:
+        - [x] `eslint`.
+        - [x] `quick-lint-js`.
       - [ ] TS: `ts_ls` (typescript-language-server - https://github.com/typescript-language-server/typescript-language-server).
 
 Planned to be supported in future:

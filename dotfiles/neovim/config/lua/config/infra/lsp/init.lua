@@ -36,6 +36,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "stylelint_lsp",
   "tailwindcss",
   "eslint",
+  "quick_lint_js",
   -- TODO: rest
 })
 
@@ -1535,6 +1536,13 @@ local function configure_supported_lsp_servers()
       workingDirectory = {
         mode = "location",
       },
+    },
+  })
+
+  -- quick_lint_js
+  vim.lsp.config("quick_lint_js", {
+    settings = {
+      -- This LSP does not take settings
     },
   })
 

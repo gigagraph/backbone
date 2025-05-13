@@ -27,6 +27,9 @@
     "package": "pnpm"
   },
   {
+    "package": "quick-lint-js"
+  },
+  {
     "package": "some-sass-language-server"
   },
   {

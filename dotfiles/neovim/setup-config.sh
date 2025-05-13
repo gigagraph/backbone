@@ -2,12 +2,18 @@
 
 # https://specifications.freedesktop.org/basedir-spec/latest/
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
+XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
 
 # https://stackoverflow.com/questions/59895/how-do-i-get-the-directory-where-a-bash-script-is-located-from-within-the-script
 SCRIPT_DIR="$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)"
 
 NVIM_CONFIG_DIR="${XDG_CONFIG_HOME}/nvim"
+NVIM_DATA_DIR="${XDG_DATA_HOME}/nvim"
+NVIM_CUSTOM_PLUGINS_DIR="${NVIM_DATA_DIR}/bkb-plugins"
+
 NVIMPAGER_CONFIG_DIR="${XDG_CONFIG_HOME}/nvimpager"
+NVIMPAGER_DATA_DIR="${XDG_DATA_HOME}/nvimpager"
+NVIMPAGER_CUSTOM_PLUGINS_DIR="${NVIMPAGER_DATA_DIR}/bkb-plugins"
 
 MARKSMAN_CONFIG_DIR="${XDG_CONFIG_HOME}/marksman"
 
@@ -20,6 +26,8 @@ commands_to_run=(
   "rm -rf ${NVIMPAGER_CONFIG_DIR}"
   "ln -s ${SCRIPT_DIR}/config/ ${NVIM_CONFIG_DIR}"
   "ln -s ${SCRIPT_DIR}/config/ ${NVIMPAGER_CONFIG_DIR}"
+  "echo 'Linking custoim plugins dir from neovim for nvim pager (${NVIM_CUSTOM_PLUGINS_DIR} -> ${NVIMPAGER_CUSTOM_PLUGINS_DIR})'"
+  "ln -s ${NVIM_CUSTOM_PLUGINS_DIR} ${NVIMPAGER_CUSTOM_PLUGINS_DIR}"
 
   # Marksman
   "echo 'Linking config for marksman ${MARKSMAN_CONFIG_DIR}'"
