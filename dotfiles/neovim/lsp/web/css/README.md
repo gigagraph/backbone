@@ -2,7 +2,7 @@
 
 This setup recommends using the following LSP servers for CSS:
 
-- `cssls` (a part of [vscode-langservers-extracted, covered in the Web README.md](./README.md#vscode-langservers-extracted-installation)).
+- `cssls` (a part of [vscode-langservers-extracted, covered in the Web README.md](../README.md#vscode-langservers-extracted-installation)).
 - [`css_variables`][css-variables] to support CSS variables.
 - [`somesass_ls`][some-sass-lsp] to support SCSS and SASS.
 - [`stylelint-lsp`][stylelint].

@@ -35,6 +35,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "somesass_ls",
   "stylelint_lsp",
   "tailwindcss",
+  "eslint",
   -- TODO: rest
 })
 
@@ -1498,6 +1499,43 @@ local function configure_supported_lsp_servers()
         validate = true,
       }
     }
+  })
+
+  -- eslint
+  --- :help lspconfig-all
+  --- https://github.com/microsoft/vscode-eslint/blob/8c254c99e1dde9979cfd92ee207af50b770c9318/%24shared/settings.ts#L166-L188
+  vim.lsp.config("eslint", {
+    settings = {
+      validate = "on",
+      useESLintClass = false,
+      experimental = {
+        useFlatConfig = false,
+      },
+      codeAction = {
+        disableRuleComment = {
+          enable = true,
+          location = "separateLine",
+        },
+        showDocumentation = {
+          enable = true,
+        }
+      },
+      codeActionOnSave = {
+        mode = "all",
+      },
+      format = true,
+      quiet = false,
+      onIgnoredFiles = "off",
+      rulesCustomizations = {},
+      run = "onType",
+      problems = {
+        shortenToSingleLine = false,
+      },
+      -- nodePath = "",
+      workingDirectory = {
+        mode = "location",
+      },
+    },
   })
 
   -- TODO: rest

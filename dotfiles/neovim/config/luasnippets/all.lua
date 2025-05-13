@@ -3,7 +3,7 @@
 -- https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md
 
 return {
-  s("testsnippet", {
-    i(1), t"text", i(2), t"text again", i(3)
-  })
+  -- s("testsnippet", {
+  --   i(1), t"text", i(2), t"text again", i(3)
+  -- })
 }
