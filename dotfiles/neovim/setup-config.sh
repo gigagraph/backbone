@@ -22,12 +22,12 @@ commands_to_run=(
   "ln -s ${SCRIPT_DIR}/config/ ${NVIMPAGER_CONFIG_DIR}"
 
   # Marksman
-  "echo 'Linking config for marksman ${MARKSMAN_CONFIG_DIR}"
+  "echo 'Linking config for marksman ${MARKSMAN_CONFIG_DIR}'"
   "rm -rf ${MARKSMAN_CONFIG_DIR}"
   "ln -s ${SCRIPT_DIR}/lsp/markdown/marksman/config ${MARKSMAN_CONFIG_DIR}"
 
   # Fourmolu
-  "echo 'Linking config for fourmolu ${FOURMOLU_CONFIG_PATH}"
+  "echo 'Linking config for fourmolu ${FOURMOLU_CONFIG_PATH}'"
   "rm -rf ${FOURMOLU_CONFIG_PATH}"
   "ln -s ${SCRIPT_DIR}/lsp/haskell/fourmolu/config/fourmolu.yaml ${FOURMOLU_CONFIG_PATH}"
 )

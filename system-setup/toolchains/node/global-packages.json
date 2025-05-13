@@ -27,6 +27,9 @@
     "package": "some-sass-language-server"
   },
   {
+    "package": "stylelint-lsp"
+  },
+  {
     "package": "vscode-langservers-extracted"
   },
   {

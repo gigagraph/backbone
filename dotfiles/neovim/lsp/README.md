@@ -32,7 +32,7 @@ Supported LSP servers:
         - [x] `cssls`.
         - [x] [`css_variables`](https://github.com/vunguyentuan/vscode-css-variables/tree/master/packages/css-variables-language-server)
         - [x] SCSS/SASS: [`somesass_ls`](https://github.com/wkillerud/some-sass/tree/main/packages/language-server).
-        - [ ] [`stylelint_lsp`](https://stylelint.io/).
+        - [x] [`stylelint_lsp`](https://stylelint.io/).
         - [ ] Tailwind: `tailwindcss` (https://github.com/tailwindlabs/tailwindcss-intellisense).
       - JS:
         - [ ] `eslint`.

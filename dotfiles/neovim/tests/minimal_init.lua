@@ -26,6 +26,7 @@ local plenary_lazy_spec = bpu:declare_lazy_spec(
   {}
 )
 
+---@diagnostic disable-next-line: unused-local Because the module initializes lazy for tests
 local lazy_bootstrap = require("bootstrap_lazy")
 local lazy_for_tests = require("lazy")
 local lazy_plugin_infra = require("config.infra.lazy")

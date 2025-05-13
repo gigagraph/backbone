@@ -33,6 +33,8 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "cssls",
   "css_variables",
   "somesass_ls",
+  "stylelint_lsp",
+  -- TODO: rest
 })
 
 local function configure_supported_lsp_servers()
@@ -1447,6 +1449,25 @@ local function configure_supported_lsp_servers()
       },
     },
   })
+
+  -- stylelint_lsp
+  --- https://github.com/bmatcuk/stylelint-lsp#settings
+  vim.lsp.config("stylelint_lsp", {
+    settings = {
+      stylelintplus = {
+        enable = true,
+        autoFixOnFormat = false,
+        autoFixOnSave = false,
+        validateOnSave = true,
+        validateOnType = true,
+        -- Try discovering the cofnig file automatically based on the opened file
+        config = nil,
+        configFile = nil,
+      },
+    },
+  })
+
+  -- TODO: rest
 end
 
 ---@param deps { notify: table? }? The function will use notify to display LSP messages that a server may send, if the notify dependency is provided.
