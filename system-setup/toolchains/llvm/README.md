@@ -4,7 +4,7 @@
 
 Follow the [official instructions for apt to install LLVM][apt-llvm].
 
-Import the repository GPG key
+Import the repository GPG key:
 
 ```bash
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc > /dev/null

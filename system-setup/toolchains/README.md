@@ -5,6 +5,7 @@
 - [Go](./go/README.md).
 - [Rust](./rust/README.md).
 - [Node](./node/README.md).
+- [Java](./java/README.md).
 - [Lua](./lua/README.md).
 - [Perl](./perl/README.md).
 - [TeX Live](./texlive/README.md).
