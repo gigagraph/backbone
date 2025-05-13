@@ -4,6 +4,7 @@ Supported LSP servers:
 
 - [Lua](./lua.md).
 - [C and C++ (+ CUDA)](./c-cpp.md).
+- [Rust](./rust.md).
 
 ## Useful links
 

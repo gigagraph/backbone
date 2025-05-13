@@ -5,6 +5,7 @@ local Set = require("bkblib.utils.set")
 M.SUPPORTED_LSP_SERVERS = Set.mk({
   "lua_ls",
   "clangd",
+  "rust_analyzer",
 })
 
 local function configure_supported_lsp_servers()
@@ -97,7 +98,7 @@ local function configure_supported_lsp_servers()
   })
 
   -- clangd
-  -- The clangd configuration comes from `:help lspconfig-all` clangd section
+  --- The clangd configuration comes from `:help lspconfig-all` clangd section
   vim.lsp.config("clangd", {
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
     root_markers = {
@@ -110,6 +111,313 @@ local function configure_supported_lsp_servers()
       ".git",
     },
     settings = {},
+  })
+
+  -- rust-analyzer
+  local original_rust_analyzer_on_attach = nil
+  if vim.lsp.config["rust_analyzer"] and vim.lsp.config["rust_analyzer"].on_attach then
+    original_rust_analyzer_on_attach = vim.lsp.config["rust_analyzer"].on_attach
+  end
+  vim.lsp.config("rust_analyzer", {
+    on_attach = function(client, bufnr)
+      -- Call the original on_attach that default config defines
+      if original_rust_analyzer_on_attach then
+        original_rust_analyzer_on_attach(client, bufnr)
+      end
+
+      -- Run custom on_attach logic
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end,
+    settings = {
+      ['rust-analyzer'] = {
+        assist = {
+          expressionFillDefault = "TODO",
+          termSearch = {
+            borrowcheck = true,
+          },
+        },
+        cachePriming = {
+          enable = true,
+        },
+        cargo = {
+          allTargets = true,
+          autoreload = true,
+          buildScripts = {
+            enable = true,
+            rebuildOnSave = true,
+            useRustcWrapper = true,
+          },
+          noDefaultFeatures = false,
+          noDeps = false,
+        },
+        cfg = {
+          setTest = true,
+        },
+        checkOnSave = true,
+        check = {
+          workspace = true,
+        },
+        completion = {
+          addSemicolonToUnit = true,
+          autoAwait = {
+            enable = true,
+          },
+          autoIter = {
+            enable = true,
+          },
+          autoimport = {
+            enable = true,
+          },
+          autoself = {
+            enable = true,
+          },
+          fullFunctionSignatures = {
+            enable = true,
+          },
+          hideDeprecated = false,
+          postfix = {
+            enable = true,
+          },
+          privateEditable = {
+            enable = false,
+          },
+          termSearch = {
+            enable = false,
+          },
+        },
+        diagnostics = {
+          enable = true,
+          experimental = {
+            enable = false,
+          },
+          styleLints = {
+            enable = true,
+          },
+        },
+        highlightRelated = {
+          breakPoints = {
+            enable = true,
+          },
+          closureCaptures = {
+            enable = true,
+          },
+          exitPoints = {
+            enable = true,
+          },
+          references = {
+            enable = true,
+          },
+          yieldPoints = {
+            enable = true,
+          },
+        },
+        hover = {
+          actions = {
+            debug = {
+              enable = true,
+            },
+            enable = true,
+            gotoTypeDef = {
+              enable = true,
+            },
+            implementations = {
+              enable = true,
+            },
+            references = {
+              enable = true,
+            },
+            run = {
+              enable = true,
+            },
+            updateTest = {
+              enable = true,
+            },
+          },
+          documentation = {
+            enable = true,
+            keywords = {
+              enable = true,
+            },
+          },
+          dropGlue = {
+            enable = true,
+          },
+          links = {
+            enable = true,
+          },
+          memoryLayout = {
+            enable = true,
+            niches = false,
+          },
+        },
+        imports = {
+          granularity = {
+            enforce = false,
+          },
+          group = {
+            enable = true,
+          },
+          merge = {
+            glob = true,
+          },
+          preferNoStd = false,
+          preferPrelude = false,
+          prefixExternPrelude = false,
+        },
+        inlayHints = {
+          bindingModeHints = {
+            enable = false,
+          },
+          chainingHints = {
+            enable = true,
+          },
+          closingBraceHints = {
+            enable = true,
+          },
+          closureCaptureHints = {
+            enable = false,
+          },
+          expressionAdjustmentHints = {
+            hideOutsideUnsafe = false,
+          },
+          genericParameterHints = {
+            const = {
+              enable = true,
+            },
+            lifetime = {
+              enable = false,
+            },
+            type = {
+              enable = false,
+            },
+          },
+          implicitDrops = {
+            enable = false,
+          },
+          implicitSizedBoundHints = {
+            enable = false,
+          },
+          lifetimeElisionHints = {
+            enable = "never",
+            useParameterNames = false,
+          },
+          parameterHints = {
+            enable = true,
+          },
+          rangeExclusiveHints = {
+            enable = false,
+          },
+          renderColons = true,
+          typeHints = {
+            enable = true,
+            hideClosureInitialization = false,
+            hideClosureParameter = false,
+            hideNamedConstructor = false,
+          },
+        },
+        interpret = {
+          tests = false,
+        },
+
+        joinLines = {
+          joinAssignments = true,
+          joinElseIf = true,
+          removeTrailingComma = true,
+          unwrapTrivialBlock = true,
+        },
+        lens = {
+          enable = true,
+          debug = {
+            enable = true,
+          },
+          implementations = {
+            enable = true,
+          },
+          location = "above_name",
+          references = {
+            adt = {
+              enable = false,
+            },
+            enumVariant = {
+              enable = false,
+            },
+            method = {
+              enable = false,
+            },
+            trait = {
+              enable = false ,
+            },
+          },
+          run = {
+            enable = true,
+          },
+          updateTest = {
+            enable = true,
+          },
+        },
+        notifications = {
+          cargoTomlNotFound = true,
+        },
+        procMacro = {
+          enable = true,
+          attributes = {
+            enable = true,
+          },
+        },
+        references = {
+          excludeImports = false,
+          excludeTests = false,
+        },
+        rustfmt = {
+          rangeFormatting = {
+            enable = false,
+          },
+        },
+        semanticHighlighting = {
+          doc = {
+            comment = {
+              inject = {
+                enable = true,
+              },
+            },
+          },
+          nonStandardTokens = true,
+          operator = {
+            enable = true,
+            specialization = {
+              enable = false,
+            },
+          },
+          punctuation = {
+            enable = false,
+            separate = {
+              macro = {
+                bang = false
+                ,  },
+            },
+            specialization = {
+              enable = false,
+            },
+          },
+          strings = {
+            enable = true,
+          },
+        },
+        signatureInfo = {
+          detail = "full",
+          documentation = {
+            enable = true,
+          },
+        },
+      },
+      workspace = {
+        symbol = {
+          search = {
+            scope = "workspace",
+          },
+        },
+      },
+    },
   })
 end
 
