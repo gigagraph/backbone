@@ -19,6 +19,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   -- "java_language_server",
   "jdtls",
   "buf_ls",
+  "yamlls",
 })
 
 local function configure_supported_lsp_servers()
@@ -962,6 +963,42 @@ local function configure_supported_lsp_servers()
   vim.lsp.config("buf_ls", {
     settings = {
       -- This LSP does not take settings
+    },
+  })
+
+  -- yamlls
+  --- https://github.com/redhat-developer/yaml-language-server#language-server-settings
+  vim.lsp.config("yamlls", {
+    settings = {
+      yaml = {
+        yamlVersion = "1.2",
+        format = {
+          enable = true,
+          singleQuote = false,
+          bracketSpacing = false,
+          proseWrap = "Preserve",
+          printWidth = 120,
+        },
+        validate = true,
+        completion = true,
+        schemas = {},
+        schemaStore = {
+          enable = false,
+        },
+        editor = {
+          formatOnType = true,
+        },
+        disableDefaultProperties = false,
+        suggest = {
+          parentSkeletonSelectedFirst = false,
+        },
+        keyOrdering  = false,
+      },
+      redhat = {
+        telemetry = {
+          enabled = false,
+        },
+      },
     },
   })
 end

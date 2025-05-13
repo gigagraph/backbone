@@ -16,5 +16,8 @@
   },
   {
     "package": "pnpm"
+  },
+  {
+    "package": "yaml-language-server"
   }
 ]

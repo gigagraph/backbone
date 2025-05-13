@@ -14,12 +14,12 @@ Supported LSP servers:
 - [Docker](./docker.md).
 - [Java](./java.md).
 - [Protobuf](./protobuf.md).
+- [Yaml](./yaml.md).
 
 <!-- TODO: tomorrow - setup LSP -->
 <!-- TODO -->
 - [ ] TODO: languages to support:
   - Definitely:
-    - Yaml (`yamlls`).
     - Helm (`helm_ls`).
     - Bazel (`bazelrc_lsp`, `starpls`).
     - Cue (`cue`).
