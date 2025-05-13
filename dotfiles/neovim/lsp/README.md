@@ -18,13 +18,12 @@ Supported LSP servers:
 - [Helm](./helm.md).
 - [Bazel](./bazel.md).
 - [Cue](./cue.md).
+- [Haskell](./haskell/README.md).
 
 <!-- TODO: tomorrow - setup LSP -->
 <!-- TODO -->
 - [ ] TODO: languages to support:
   - Definitely:
-    - Nix (`nixd`).
-    - Haskell (`hls`).
     - Javascript/Typescript (+ the rest of the web stack - HTLM, CSS, SCSS, SASS).
       - Emmet LSP ([emmet-language-server](https://github.com/olrtg/emmet-language-server)).
       - eslint.

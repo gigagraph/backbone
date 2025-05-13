@@ -294,6 +294,12 @@ This plugin requires installed:
 - `helm` treesitter grammar.
 - [`helm-ls` LSP server](./lsp/helm.md).
 
+#### [`haskell-tools.nvim`](./lsp/haskell/README.md#instalaltion)
+
+This setup uses `haskell-tools.nvim` for enhanced `hls` LSP server integration experience. Users can view `haskell-tools.nvim`'s docs with `:help haskell-tools.config`.
+
+This plugin requires installed [`hls` LSP server](./lsp/haskell/README.md).
+
 #### [`nvim-notify`][nvim-notify]
 
 This setup uses `nvim-notify` to display notifications from `vim.notify` asyncronously and store their history for later inspection. The setup also configures `vim.lsp.handlers` that handle messages from LSP servers to [print the received messages via `nvim-notify`][nvim-notify-usage-recipes].

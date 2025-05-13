@@ -39,6 +39,7 @@ rustup component add rust-analyzer
   - [rust-analyzer-book-bin-install][rust-analyzer-book-bin-install]
   - [rust-analyzer-setup-editors][rust-analyzer-setup-editors]
   - [rust-analyzer-configure][rust-analyzer-configure]
+- [rustacenvim][rustacenvim]
 
 [github-rust-analyzer]: https://github.com/rust-lang/rust-analyzer
 [rust-analyzer-book]: https://rust-analyzer.github.io/book/
@@ -46,3 +47,4 @@ rustup component add rust-analyzer
 [rust-analyzer-book-bin-install]: https://rust-analyzer.github.io/book/rust_analyzer_binary.html#rustup
 [rust-analyzer-setup-editors]: https://rust-analyzer.github.io/book/other_editors.html
 [rust-analyzer-configure]: https://rust-analyzer.github.io/book/configuration.html
+[rustacenvim]: https://github.com/mrcjkb/rustaceanvim

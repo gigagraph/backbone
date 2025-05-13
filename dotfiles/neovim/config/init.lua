@@ -1313,6 +1313,46 @@ local helm_ls_nvim_lazy_spec = bpu:declare_lazy_spec(
   }
 )
 
+---- haskell-tools.nvim
+vim.g.haskell_tools = {
+  ---@type haskell-tools.tools.Opts
+  tools = {},
+  ---@type haskell-tools.lsp.ClientOpts
+  ---You can also configure these via `:h vim.lsp.config`,
+  --- with the "haskell-tools" key.
+  hls = {
+    ---@param client number The LSP client ID.
+    ---@param bufnr number The buffer number
+    ---@param ht HaskellTools = require('haskell-tools')
+    -- on_attach = function(client, bufnr, ht)
+    -- end,
+    settings = {
+      haskell = {
+        formattingProvider = "fourmolu",
+        cabalFormattingProvider = "cabal-fmt",
+        maxCompletions = 40,
+        checkProject = true,
+        checkParents = "CheckOnSave",
+        sessionLoading = "singleComponent",
+        plugin = {
+          fourmolu = {
+            config = {
+              external = false,
+            },
+          },
+        },
+      },
+    },
+  },
+  ---@type haskell-tools.dap.Opts
+  dap = {},
+}
+
+local haskell_tools_nvim_nvim_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.haskell-tools-nvim",
+  {}
+)
+
 ---- telescope
 -- local telescope_spec = bpu:declare_lazy_spec(
 --   -- TODO

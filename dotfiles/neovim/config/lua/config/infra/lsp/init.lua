@@ -24,6 +24,8 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "bazelrc_lsp",
   "starpls",
   "cue",
+  -- haskell-tools.nvim plugin will enable hls LSP when needed
+  -- "hls",
 })
 
 local function configure_supported_lsp_servers()
@@ -1061,6 +1063,10 @@ local function configure_supported_lsp_servers()
       -- This LSP does not take settings
     },
   })
+
+  -- hls
+  -- Note: since this setup uses haskell-tools.nvim that configures hls, the hls settings reside where this config initializes the plugin.
+  -- vim.lsp.config("hls", {})
 end
 
 ---@param deps { notify: table? }? The function will use notify to display LSP messages that a server may send, if the notify dependency is provided.
