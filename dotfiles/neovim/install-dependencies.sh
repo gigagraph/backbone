@@ -7,4 +7,5 @@ sudo apt install -y \
   cmake \
   unzip \
   curl \
-  build-essential
+  build-essential \
+  git

@@ -27,6 +27,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   -- haskell-tools.nvim plugin will enable hls LSP when needed
   -- "hls",
   "nixd",
+  "emmet_language_server",
 })
 
 local function configure_supported_lsp_servers()
@@ -1070,7 +1071,7 @@ local function configure_supported_lsp_servers()
   -- vim.lsp.config("hls", {})
 
   -- nixd
-  -- https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md
+  --- https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md
   vim.lsp.config("nixd", {
     cmd = {
       "nixd",
@@ -1087,6 +1088,83 @@ local function configure_supported_lsp_servers()
          },
       },
    },
+  })
+
+  -- emmet-language-server
+  --- https://github.com/olrtg/emmet-language-server#neovim
+  vim.lsp.config("emmet_language_server", {
+    init_opetions = {
+      preferences = {
+        -- https://docs.emmet.io/customization/preferences/
+        bem = {
+          elementSeparator = "__",
+          modifierSeparator = "_",
+          shortElementPrefix = "-",
+        },
+        caniuse = {
+          enabled = true,
+          era = "e-2",
+          vendors = "all",
+        },
+        css = {
+          alignVendor = false,
+          autoInsertVendorPrefixes = false,
+          closeBraceIndentation = "",
+          color = {
+            case = "keep",
+            short = false,
+          },
+          floatUnit = "em",
+          fuzzySearch = true,
+          fuzzySearchMinScore = 0.3,
+          gradient = {
+            defaultProperty = "background-image",
+            fallback = false,
+            oldWebkit = false,
+          },
+          intUnit = "px",
+          propertyEnd = ";",
+          syntaxes = {
+                "css",
+                "less",
+                "sass",
+                "scss",
+                "stylus",
+                "styl",
+          },
+          valueSeparator = ": ",
+        },
+        less = {
+          autoInsertVendorPrefixes = false,
+        },
+        sass = {
+          autoInsertVendorPrefixes = false,
+        },
+        scss = {
+          autoInsertVendorPrefixes = false,
+        },
+        slim = {
+          attributesWrapper = "none",
+        },
+        stylus = {
+          autoInsertVendorPrefixes = false,
+          valueSeparator = " ",
+        },
+        lorem = {
+          defaultLang = "en",
+        },
+        omitCommonPart = false,
+        profile = {
+          allowCompactBoolean = true,
+        },
+      },
+      showAbbreviationSuggestions = true,
+      showExpandedAbbreviation = "always",
+      showSuggestionsAsSnippets = true,
+      syntaxProfiles = {
+        -- https://docs.emmet.io/customization/syntax-profiles/
+      },
+    },
   })
 end
 
@@ -1195,6 +1273,15 @@ local function override_custom_lsp_handlers(deps)
   end
 end
 
+---@param deps { blink_cmp: table? }? The function will use blink.cmp to add additional LSP capabilities that blink.cmp provides
+local function override_lsp_capabilities(deps)
+  if deps and deps.blink_cmp then
+    vim.lsp.config("*", {
+      capabilities = deps.blink_cmp.get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    })
+  end
+end
+
 local function register_custom_on_attach()
   vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("bkb-lsp-attach", { clear = true }),
@@ -1220,10 +1307,11 @@ local function enable_suppored_lsp_servers()
   end
 end
 
----@param deps { notify: table? }? Dependnecies the module may use to initialize LSP
+---@param deps { notify: table?, blink_cmp: table? }? Dependnecies the module may use to initialize LSP
 function M.bkb_setup_suppotred_lsp_servers(deps)
   deps = deps or {}
   override_custom_lsp_handlers(deps)
+  override_lsp_capabilities(deps)
   configure_supported_lsp_servers()
   register_custom_on_attach()
   enable_suppored_lsp_servers()

@@ -1,4 +1,4 @@
--- Pure nvim config
+-- Vanilla nvim config
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -32,7 +32,9 @@ vim.opt.textwidth = 0
 
 vim.opt.fixendofline = true
 
--- TODO: enable spell opt and set locales/spelllang
+vim.opt.termguicolors = true
+
+-- TODO: enable spell opt and set locales/spelllang: https://neovim.io/doc/user/spell.html
 
 -- Basic keybindings
 vim.keymap.set(
@@ -1257,6 +1259,307 @@ local nvim_notify_lazy_spec = bpu:declare_lazy_spec(
   }
 )
 
+---- LuaSnip
+local luasnip_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.luasnip",
+  {
+    opts = {
+      -- https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md
+      update_events = { "TextChanged", "TextChangedI" },
+      enable_autosnippets = true,
+      ext_opts = {},
+    },
+    config = function(lazy_plugin, opts)
+      local ls = require(lazy_plugin.name)
+      local ls_loaders = require("luasnip.loaders")
+      local ls_lua_loader = require("luasnip.loaders.from_lua")
+      ls.setup(opts)
+
+      -- Load snippets
+      ls_lua_loader.lazy_load({
+        paths = nil, -- Makes LuaSnip load snippets from ${RUNTIMEPATH}/luasnippets directory
+        autocmd = false,
+        libuv = true,
+      })
+
+      -- Set keybindings
+      -- Expand snippet
+      vim.keymap.set(
+        { "i" },
+        "<C-K>",
+        function()
+          if ls.expand_or_jumpable() then
+            ls.expand_or_jump()
+          end
+        end,
+        { silent = true }
+      )
+      -- Jump fowrard in snippet
+      vim.keymap.set(
+        { "i", "s" },
+        "<C-J>",
+        function() ls.jump(1) end,
+        { silent = true }
+      )
+      -- Jump backward in snippet
+      vim.keymap.set(
+        { "i", "s" },
+        "<C-H>",
+        function() ls.jump(-1) end,
+        { silent = true }
+      )
+      -- Change the active snippet choice
+      vim.keymap.set(
+        { "i", "s" },
+        "<C-x>",
+        function()
+          if ls.choice_active() then ls.change_choice(1) end
+        end,
+        { silent = true }
+      )
+
+      -- Select snippets to edit
+      vim.keymap.set(
+        "n",
+        "<leader><leader>se",
+        function()
+          ls_loaders.edit_snippet_files({
+            edit = function(selected_snippet_path)
+              vim.cmd("tabedit " .. selected_snippet_path)
+            end
+          })
+        end,
+        { silent = true }
+      )
+    end
+  }
+)
+
+---- colorful-menu.nvim
+local blinkcmp_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.colorful-menu",
+  {
+    opts = {
+      -- Not setting any options by default
+      -- https://github.com/xzbdmw/colorful-menu.nvim#installation
+    }
+  }
+)
+
+---- blink.cmp
+local blinkcmp_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.blink-cmp",
+  {
+    dependencies = {
+      "luasnip",
+      "colorful-menu",
+    },
+    opts = {
+      -- https://cmp.saghen.dev/configuration/reference
+      appearance = {
+        nerd_font_variant = "mono",
+      },
+      sources = {
+        default = {
+          "lsp",
+          "snippets",
+          "buffer",
+          "path",
+        },
+        providers = {
+          snippets = {
+            -- For `snippets.preset == 'luasnip'`
+            opts = {
+              use_show_condition = true,
+              show_autosnippets = true,
+              prefer_doc_trig = false,
+            },
+          },
+        },
+      },
+      completion = {
+        keyword = {
+          range = "prefix",
+        },
+        trigger = {
+          prefetch_on_insert = true,
+          show_in_snippet = true,
+          show_on_backspace = true,
+          show_on_backspace_in_keyword = true,
+          show_on_backspace_after_accept = true,
+          show_on_backspace_after_insert_enter = true,
+          show_on_keyword = true,
+          show_on_trigger_character = true,
+          show_on_accept_on_trigger_character = true,
+          show_on_insert_on_trigger_character = true,
+          show_on_insert = false,
+          show_on_blocked_trigger_characters = { " ", "\n", "\t", },
+          show_on_x_blocked_trigger_characters = {
+            "'", '"', "(", "{", "[",
+          },
+        },
+        list = {
+          max_items = 200,
+          selection = {
+            preselect = true,
+            auto_insert = false,
+          },
+          cycle = {
+            from_bottom = true,
+            from_top = true,
+          },
+        },
+        accept = {
+          dot_repeat = false,
+          create_undo_point = true,
+          resolve_timeout_ms = 100,
+          auto_brackets = {
+            enabled = true,
+            default_brackets = { "(", ")" },
+            override_brackets_for_filetypes = {},
+            kind_resolution = {
+              enabled = true,
+              blocked_filetypes = { "typescriptreact", "javascriptreact", "vue" },
+            },
+            semantic_token_resolution = {
+              enabled = true,
+              blocked_filetypes = { "java" },
+              timeout_ms = 400,
+            }
+          },
+        },
+        menu = {
+          enable = true,
+          auto_show = true,
+          min_width = 15,
+          max_height = 10,
+          scrollbar = true,
+          draw = {
+            -- Taken from https://github.com/xzbdmw/colorful-menu.nvim?
+            -- We don't need label_description now because label and label_description are already combined together in label by colorful-menu.nvim.
+            columns = { { "kind_icon" }, { "label", "label_description", gap = 1 } },
+            components = {
+              label = {
+                width = { fill = true, max = 60 },
+                text = function(ctx)
+                  local highlights_info = require("colorful-menu").blink_highlights(ctx)
+                  if highlights_info ~= nil then
+                    -- Or you want to add more item to label
+                    return highlights_info.label
+                  else
+                    return ctx.label
+                  end
+                end,
+                highlight = function(ctx)
+                  local highlights = {}
+                  local highlights_info = require("colorful-menu").blink_highlights(ctx)
+                  if highlights_info ~= nil then
+                    highlights = highlights_info.highlights
+                  end
+                  for _, idx in ipairs(ctx.label_matched_indices) do
+                    table.insert(highlights, { idx, idx + 1, group = "BlinkCmpLabelMatch" })
+                  end
+                  -- Do something else
+                  return highlights
+                end,
+              },
+              label_description = {
+                width = { max = 30 },
+                text = function(ctx) return ctx.label_description end,
+                highlight = 'BlinkCmpLabelDescription',
+              },
+              source_name = {
+                width = { max = 30 },
+                text = function(ctx) return ctx.source_name end,
+                highlight = 'BlinkCmpSource',
+              },
+              source_id = {
+                width = { max = 30 },
+                text = function(ctx) return ctx.source_id end,
+                highlight = 'BlinkCmpSource',
+              },
+            },
+          },
+        },
+        documentation = {
+          auto_show = false,
+          auto_show_delay_ms = 500,
+        },
+        ghost_text = {
+          enabled = true,
+          show_with_selection = true,
+          show_without_selection = false,
+          show_with_menu = true,
+          show_without_menu = false,
+        },
+      },
+      signature = {
+        enabled = true,
+        trigger = {
+          enabled = true,
+          show_on_keyword = false,
+          show_on_trigger_character = true,
+          show_on_insert = false,
+          show_on_insert_on_trigger_character = true,
+        },
+        window = {
+          min_width = 1,
+          max_width = 100,
+          max_height = 10,
+          direction_priority = { 'n', 's' },
+          treesitter_highlighting = true,
+          show_documentation = true,
+        },
+      },
+      snippets = {
+        preset = "luasnip",
+      },
+      fuzzy = {
+        implementation = "prefer_rust_with_warning",
+        use_frecency = true,
+        use_proximity = true,
+        use_insafe_no_lock = false,
+        sorts = {
+          "exact",
+          "score",
+          "sort_text",
+        },
+        prebuilt_binaries = {
+          download = true,
+          ignore_version_mismatch = false,
+          force_version = nil,
+          force_system_triple = nil,
+          proxy = {
+            from_env = true,
+            url = nil,
+          },
+        },
+      },
+      keymap = {
+        preset = "none",
+
+        ["<C-space>"] = { "show" },
+
+        ["<C-Y>"] = { "select_and_accept" },
+
+        ["<Up>"] = { "select_prev", "fallback" },
+        ["<Down>"] = { "select_next", "fallback" },
+        ["<C-P>"] = { "select_prev", "fallback_to_mappings" },
+        ["<C-N>"] = { "select_next", "fallback_to_mappings" },
+
+        ["<Tab>"] = { "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "snippet_backward", "fallback" },
+
+        ["<C-B>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-F>"] = { "scroll_documentation_down", "fallback" },
+
+        ["<C-1>"] = { "hide_documentation", "show_documentation" },
+        ["<C-2>"] = { "hide_signature", "show_signature" },
+      },
+    },
+  }
+)
+
 ---- nvim-lspconfig
 vim.keymap.set(
   "n",
@@ -1268,18 +1571,28 @@ vim.keymap.set(
   { silent = true }
 )
 
--- TODO: shortcut to toggle inlay_hint
+vim.keymap.set(
+  "n",
+  "<leader><leader>lh",
+  function()
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+  end,
+  { silent = true }
+)
 
 local nvim_lspconfig_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.nvim-lspconfig",
   {
     dependencies = {
       "nvim-notify", -- Because the setup uses nvim-notify to display LSP server to client messages
+      "luasnip", -- So that nvim LSP client can parse LSP server snippets
+      "blink.cmp", -- Some LSP completions require a completion and snippet engine to complete and expand snippets
     },
     config = function(lazy_plugin, opts)
       local notify = require("notify")
+      local blink_cmp = require("blink.cmp")
       local bkb_lsp_config = require("config.infra.lsp")
-      bkb_lsp_config.bkb_setup_suppotred_lsp_servers({ notify = notify })
+      bkb_lsp_config.bkb_setup_suppotred_lsp_servers({ notify = notify, blink_cmp = blink_cmp })
     end
   }
 )
@@ -1353,6 +1666,21 @@ vim.g.haskell_tools = {
 local haskell_tools_nvim_nvim_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.haskell-tools-nvim",
   {}
+)
+
+---- nvim-emmet
+local nvim_emmet_nvim_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.nvim-emmet",
+  {
+    config = function(lazy_plugin, opts)
+      local nvim_emmet = require(lazy_plugin.name)
+      vim.keymap.set(
+        { "n", "v" },
+        '<leader>xe',
+        nvim_emmet.wrap_with_abbreviation
+      )
+    end,
+  }
 )
 
 ---- telescope

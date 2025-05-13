@@ -3,6 +3,9 @@
     "package": "@microsoft/compose-language-service"
   },
   {
+    "package": "@olrtg/emmet-language-server"
+  },
+  {
     "package": "bash-language-server"
   },
   {

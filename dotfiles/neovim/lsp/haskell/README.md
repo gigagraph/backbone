@@ -19,7 +19,7 @@ ghcup install hls
 
 > [!NOTE]
 >
-> This setup's [`setup-config.sh`](../../setup-config.sh) replaces global configuration for `fourmolu` with the [`fourmolu.yaml` from this repository](./fourmolu/config/fourmolu.yaml).
+> This setup's [`setup-config.sh`](../../setup-config.sh) replaces global configuration for `fourmolu` with the [`fourmolu.yaml` from this repository](./fourmolu/config/fourmolu.yaml). `hls` bundles `fourmolu`, so users do not need to install it separately.
 
 > [!NOTE]
 >

@@ -300,11 +300,38 @@ This setup uses `haskell-tools.nvim` for enhanced `hls` LSP server integration e
 
 This plugin requires installed [`hls` LSP server](./lsp/haskell/README.md).
 
+#### [`nvim-emmet`](./lsp/web/README.md#emmet-language-server-installation)
+
+This setup uses `nvim-emmet` for enhanced `emmet-language-server` LSP server integration experience. Specifically, the plugin enables users to wrap text into the expansions of emmet abbreviations.
+
 #### [`nvim-notify`][nvim-notify]
 
 This setup uses `nvim-notify` to display notifications from `vim.notify` asyncronously and store their history for later inspection. The setup also configures `vim.lsp.handlers` that handle messages from LSP servers to [print the received messages via `nvim-notify`][nvim-notify-usage-recipes].
 
 It is planned that later the setup will use `nvim-notify` with `nvim-dap` and `nvim-telescope`.
+
+#### [`LuaSnip`][luasnip]
+
+This setup uses [`LuaSnip`][luasnip] to enable snippet support in `neovim`. Additionally, it helps [`blink.cmp`](#blink-cmp) completion engine to parse LSP completions.
+
+`LuaSnip` has an optional dependency on [`jsregexp`][jsregexp], which this guide recommends to install. Is sets `build = "make install_jsregexp"` when it defines the plugin. This may be a not reliable way to install `jsregexp`. For [temporary alternative installation methods see `LuaSnip`'s recommendations](https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md#transformations).
+
+#### [`blink.cmp`][github-blink-cmp]
+
+> [!NOTE]
+>
+> Ensure you have the following language toolhcains:
+> - [Rust](../../system-setup/toolchains/rust/README.md).
+
+This setup uses `blink.cmp` to configure completions and to enable expansion of LSP snippets. Use `:help blink-cmp` to find `blink-cmp`'s docs.
+
+> [!NOTE]
+>
+> This setup points `blink.cmp` to a release version and installs Rust implementation of fuzzy matcher by downloading the prebuilt binaries.
+
+#### [`colorful-menu.nvim`][colorful-menu-nvim]
+
+This setup uses `colorful-menu.nvim` to highlight completion items from [`blink.cmp`](#blink-cmp) with treesitter.
 
 #### [`nvim-lspconfig`][nvim-lspconfig]
 
@@ -460,6 +487,14 @@ done
 - [lua-busted][lua-busted]
 - [nvim-notify][nvim-notify]
 - [nvim-notify-usage-recipes][nvim-notify-usage-recipes]
+- [luasnip][luasnip]
+  - [luasnip-doc][luasnip-doc]
+  - [jsregexp][jsregexp]
+  - [youtube-tj-luasnip-basics][youtube-tj-luasnip-basics]
+  - [youtube-tj-luasnip-advanced][youtube-tj-luasnip-advanced]
+- [github-blink-cmp][github-blink-cmp]
+  - [blink-cmp][blink-cmp]
+- [colorful-menu-nvim][colorful-menu-nvim]
 
 [github-neovim]: <https://github.com/neovim/neovim>
 [neovim-build-deps]: <https://github.com/neovim/neovim/blob/master/BUILD.md#build-prerequisites>
@@ -497,3 +532,11 @@ done
 [lua-busted]: <https://lunarmodules.github.io/busted/>
 [nvim-notify]: <https://github.com/rcarriga/nvim-notify>
 [nvim-notify-usage-recipes]: <https://github.com/rcarriga/nvim-notify/wiki/Usage-Recipes>
+[luasnip]: <https://github.com/L3MON4D3/LuaSnip>
+[luasnip-doc]: <https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md>
+[jsregexp]: <https://github.com/kmarius/jsregexp>
+[youtube-tj-luasnip-basics]: <https://www.youtube.com/watch?v=Dn800rlPIho>
+[youtube-tj-luasnip-advanced]: https://www.youtube.com/watch?v=KtQZRAkgLqo
+[github-blink-cmp]: <https://github.com/Saghen/blink.cmp?tab=readme-ov-file>
+[blink-cmp]: <https://cmp.saghen.dev>
+[colorful-menu-nvim]: <https://github.com/xzbdmw/colorful-menu.nvim>
