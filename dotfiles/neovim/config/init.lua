@@ -233,6 +233,7 @@ local catppuccin_lazy_spec = bpu:declare_lazy_spec(
             background = true,
           },
         },
+        notify = true,
         semantic_tokens = true,
         nvim_surround = true,
         treesitter_context = true,
@@ -1222,6 +1223,38 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
   }
 )
 
+---- nvim-notify
+local nvim_notify_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.nvim-notify",
+  {
+    opts = {
+      level = "INFO",
+      timeout = 3000,
+      icons = {
+        DEBUG = "",
+        ERROR = "",
+        INFO = "",
+        TRACE = "✎",
+        WARN = "",
+      },
+      time_formats = {
+        notification = "%T",
+        notification_history = "%FT%T"
+      },
+      render = "default",
+      stages = "fade",
+      fps = 10,
+      top_down = false,
+    },
+    config = function(lazy_plugin, opts)
+      local notify = require("notify")
+      vim.notify = notify
+
+      notify.setup(opts)
+    end,
+  }
+)
+
 ---- nvim-lspconfig
 vim.keymap.set(
   "n",
@@ -1238,9 +1271,13 @@ vim.keymap.set(
 local nvim_lspconfig_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.nvim-lspconfig",
   {
+    dependencies = {
+      "nvim-notify", -- Because the setup uses nvim-notify to display LSP server to client messages
+    },
     config = function(lazy_plugin, opts)
+      local notify = require("notify")
       local bkb_lsp_config = require("config.infra.lsp")
-      bkb_lsp_config.bkb_setup_suppotred_lsp_servers()
+      bkb_lsp_config.bkb_setup_suppotred_lsp_servers({ notify = notify })
     end
   }
 )

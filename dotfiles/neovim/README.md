@@ -281,6 +281,16 @@ This plugin uses tree-sitter to:
 
 Additionally, it can perform symbol renaming and go to definition, but because it operates at the tree-sitter level, this functionality is not as robust as language-semantics-aware tooling, so this configuration does not recommend using these features of the plugin. Instead, users should rely on LSP for these features.
 
+#### [`nvim-jdtls`](./lsp/java.md#jdtls-installation)
+
+This setup uses `nvim-jdtls` to enable better integration with `jdtls` LSP server. Find more info about Java LSP servers and their usage specifics in `neovim` in [`./lsp/java.md`](./lsp/java.md). Additionally, users can view `nvim-jdtls` plugin help with: `:help jdtls`.
+
+#### [`nvim-notify`][nvim-notify]
+
+This setup uses `nvim-notify` to display notifications from `vim.notify` asyncronously and store their history for later inspection. The setup also configures `vim.lsp.handlers` that handle messages from LSP servers to [print the received messages via `nvim-notify`][nvim-notify-usage-recipes].
+
+It is planned that later the setup will use `nvim-notify` with `nvim-dap` and `nvim-telescope`.
+
 #### [`nvim-lspconfig`][nvim-lspconfig]
 
 > [!NOTE]
@@ -401,6 +411,7 @@ done
 - [github-neovim][github-neovim]
 - [neovim-build-deps][neovim-build-deps]
 - [lua-key-conceps-in-15-minutes][lua-key-conceps-in-15-minutes]
+- [lua-annotations][lua-annotations]
 - [github-neovim-kickstart][github-neovim-kickstart]
 - [youtube-tj-reads-whole-neovim-manual][youtube-tj-reads-whole-neovim-manual]
 - [youtube-tj-neovim-kickstart][youtube-tj-neovim-kickstart]
@@ -432,10 +443,13 @@ done
   - [plenary-nvim][plenary-nvim]
     - [plenary-test-harness][plenary-test-harness]
 - [lua-busted][lua-busted]
+- [nvim-notify][nvim-notify]
+- [nvim-notify-usage-recipes][nvim-notify-usage-recipes]
 
 [github-neovim]: <https://github.com/neovim/neovim>
 [neovim-build-deps]: <https://github.com/neovim/neovim/blob/master/BUILD.md#build-prerequisites>
 [lua-key-conceps-in-15-minutes]: <https://learnxinyminutes.com/docs/lua/>
+[lua-annotations]: <https://luals.github.io/wiki/annotations/>
 [github-neovim-kickstart]: <https://github.com/nvim-lua/kickstart.nvim>
 [youtube-tj-reads-whole-neovim-manual]: <https://youtu.be/rT-fbLFOCy0>
 [youtube-tj-neovim-kickstart]: <https://youtu.be/m8C0Cq9Uv9o?si=ieM47MFLWca9lt01>
@@ -466,3 +480,5 @@ done
 [plenary-nvim]: <https://github.com/nvim-lua/plenary.nvim>
 [plenary-test-harness]: <https://github.com/nvim-lua/plenary.nvim?tab=readme-ov-file#plenarytest_harness>
 [lua-busted]: <https://lunarmodules.github.io/busted/>
+[nvim-notify]: <https://github.com/rcarriga/nvim-notify>
+[nvim-notify-usage-recipes]: <https://github.com/rcarriga/nvim-notify/wiki/Usage-Recipes>
