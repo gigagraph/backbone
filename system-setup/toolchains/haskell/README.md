@@ -2,7 +2,7 @@
 
 ## Installation
 
-Download `bootstrap-haskell` for your system from [the official website](https://get-ghcup.haskell.org).
+Download `bootstrap-haskell` for your system from [the official website](https://get-ghcup.haskell.org):
 
 ```bash
 BOOTSTRAP_HASKELL_TARGET_PATH="./bootstrap-haskell"

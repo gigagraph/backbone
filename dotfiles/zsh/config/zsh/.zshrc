@@ -99,7 +99,11 @@ alias grep="'rg'"
 
 alias cd="'z'"
 
-alias cat="'bat' --paging='never' --color='always'"
+## Note: explicitly setting --color to auto becuase other shell programs may depend on the output of cat to be
+## unformatted. With auto, bat should not print formatted text if TTY is not attached, e.g. when piping output to
+## another program or when run in a subshell. However, it will still print formatted output in an interactive shell
+## session.
+alias cat="'bat' --paging='never' --color='auto'"
 
 alias c="'clear'"
 
@@ -360,7 +364,7 @@ source "${ZSH_CUSTOM_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # Update path after plugins initializations
 
-## Setup tools that toolchains fetch
+## Setup tools that toolchains fetch + lazy load toolchains
 
 ### go
 __goroot="$(go env GOROOT)"
@@ -382,3 +386,20 @@ eval \
 
 [[ -n "${FNM_MULTISHELL_PATH}" ]] && path+=("${FNM_MULTISHELL_PATH}/bin")
 export PATH
+
+### sdkman
+#### Lazy-load sdkman.
+#### Note: to get access to tools that sdkman manages, a shell session must execute `sdk` once to initialize sdkman.
+export SDKMAN_DIR="${SDKMAN_DIR:-${HOME}/.sdkman}"
+function sdk() {
+  local SDKMAN_INIT_SCRIPT_PATH="${SDKMAN_DIR}/bin/sdkman-init.sh"
+
+  if [[ -s "${SDKMAN_INIT_SCRIPT_PATH}" ]]; then
+    unset -f sdk
+    source "${SDKMAN_INIT_SCRIPT_PATH}"
+    sdk "$@"
+  else
+    echo "Error: could not initialize sdkman, because sdkman init script does not exist at the existed path: '${SDKMAN_INIT_SCRIPT_PATH}'."
+    exit 1
+  fi
+}
