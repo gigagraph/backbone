@@ -28,6 +28,8 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   -- "hls",
   "nixd",
   "emmet_language_server",
+  "html",
+  "jsonls",
 })
 
 local function configure_supported_lsp_servers()
@@ -1093,7 +1095,7 @@ local function configure_supported_lsp_servers()
   -- emmet-language-server
   --- https://github.com/olrtg/emmet-language-server#neovim
   vim.lsp.config("emmet_language_server", {
-    init_opetions = {
+    init_options = {
       preferences = {
         -- https://docs.emmet.io/customization/preferences/
         bem = {
@@ -1164,6 +1166,27 @@ local function configure_supported_lsp_servers()
       syntaxProfiles = {
         -- https://docs.emmet.io/customization/syntax-profiles/
       },
+    },
+  })
+
+  -- htlm
+  --- :help lspconfig-all
+  vim.lsp.config("html", {
+    init_options = {
+      configurationSection = { "html", "css", "javascript" },
+      embeddedLanguages = {
+        css = true,
+        javascript = true,
+      },
+      provideFormatter = true,
+    },
+  })
+
+  -- jsonls
+  --- :help lspconfig-all
+  vim.lsp.config("jsonls", {
+    init_options = {
+      provideFormatter = true,
     },
   })
 end

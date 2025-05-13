@@ -25,7 +25,8 @@ Supported LSP servers:
   - Definitely:
     - [ ] [Web (html + css/scss/sass + js + ts + emmet)](./web/README.md).
     - [ ] Web.
-      - [ ] HTML: `html`.
+      - [x] HTML: `html`.
+      - [ ] JSON: `jsonls`.
       - JS:
         - [ ] `eslint`.
         - [ ] `quick-lint-js`.

@@ -11,7 +11,7 @@ This setup recommends using [`yaml-language-server`][yaml-language-server] as an
 >
 > [You can verify the versions of the installed toolcahins with the script](../../../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
 
-Users can install [`yaml-language-server` from `npm` registry][npm-yaml-language-server] using the following command:
+This guide recommends installing [`yaml-language-server` from `npm` registry][npm-yaml-language-server] using the following command:
 
 ```bash
 npm install -g yaml-language-server@latest

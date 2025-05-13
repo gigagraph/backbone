@@ -21,6 +21,9 @@
     "package": "pnpm"
   },
   {
+    "package": "vscode-langservers-extracted"
+  },
+  {
     "package": "yaml-language-server"
   }
 ]
