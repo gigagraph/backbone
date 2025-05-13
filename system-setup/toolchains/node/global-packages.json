@@ -12,6 +12,9 @@
     "package": "corepack"
   },
   {
+    "package": "css-variables-language-server"
+  },
+  {
     "package": "dockerfile-language-server-nodejs"
   },
   {

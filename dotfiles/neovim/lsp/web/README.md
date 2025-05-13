@@ -1,13 +1,13 @@
 # Web
 
-This guide refers to the following languages under the general "Web stack" term:
+This guide refers to the following languages under the general term "Web stack":
 
 - [HTML][html] (support implemented by [vscode-langservers-extracted](vscode-langservers-extracted-installation)).
 - [CSS/SCSS/SASS](./css.md).
 - [JavaScript](./javascript.md).
 - [TypeScript](./typescript.md).
 
-Some LSP installations implement functionality for multiple languages. This pages covers such LSPs. For LSPs that apply only to a specific language from the stack, refer to the corresponding page for the language.
+Some LSP installations implement functionality for multiple languages or "sublanguages". This pages covers such LSPs. For LSPs that apply only to a specific language from the stack, refer to the corresponding page for the language.
 
 ## Installation
 

@@ -30,6 +30,8 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "emmet_language_server",
   "html",
   "jsonls",
+  "cssls",
+  "css_variables",
 })
 
 local function configure_supported_lsp_servers()
@@ -1188,6 +1190,20 @@ local function configure_supported_lsp_servers()
     init_options = {
       provideFormatter = true,
     },
+  })
+
+  -- cssls
+  --- :help lspconfig-all
+  vim.lsp.config("cssls", {
+    init_options = {
+      provideFormatter = true,
+    },
+  })
+
+  -- css_variables
+  --- https://github.com/vunguyentuan/vscode-css-variables/blob/master/packages/vscode-css-variables/package.json#L38
+  vim.lsp.config("css_variables", {
+    settings = {},
   })
 end
 
