@@ -16,12 +16,12 @@ Supported LSP servers:
 - [Protobuf](./protobuf.md).
 - [Yaml](./yaml.md).
 - [Helm](./helm.md).
+- [Bazel](./bazel.md).
 
 <!-- TODO: tomorrow - setup LSP -->
 <!-- TODO -->
 - [ ] TODO: languages to support:
   - Definitely:
-    - Bazel (`bazelrc_lsp`, `starpls`).
     - Cue (`cue`).
     - Nix (`nixd`).
     - Haskell (`hls`).

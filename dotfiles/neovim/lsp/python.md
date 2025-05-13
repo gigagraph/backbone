@@ -1,6 +1,7 @@
 # Python
 
 This setup recommends using the following LSP servers for Python:
+
 - [`basedpyright`][basedpyright].
 - [`ruff`][ruff-lsp].
 

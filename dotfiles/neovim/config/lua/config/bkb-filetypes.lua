@@ -24,6 +24,9 @@ function M.add_bkb_filetypes()
       -- Recongnize files that end in .?Containerfile as dockerfile
       [".*%.?Containerfile"] = { "dockerfile", { priority = 0 } },
       ["Containerfile"] = { "dockerfile", { priority = 0 } },
+
+      -- .bazelrc
+      [".*.bazelrc"] = "bazelrc",
     }
   })
 end

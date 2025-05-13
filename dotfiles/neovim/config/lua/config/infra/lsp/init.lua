@@ -21,6 +21,8 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "buf_ls",
   "yamlls",
   "helm_ls",
+  "bazelrc_lsp",
+  "starpls",
 })
 
 local function configure_supported_lsp_servers()
@@ -1036,6 +1038,20 @@ local function configure_supported_lsp_servers()
         }
       },
     }
+  })
+
+  -- bazelrc_lsp
+  vim.lsp.config("bazelrc_lsp", {
+    settings = {
+      -- This LSP does not take settings
+    },
+  })
+
+  -- starpls
+  vim.lsp.config("starpls", {
+    settings = {
+      -- This LSP does not take settings
+    },
   })
 end
 
