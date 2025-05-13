@@ -18,7 +18,7 @@ Users should ensure they are using the toolchain you plan to use for development
 
 ```bash
 rustup toolchain list
-rustup rustup override set <toolchain>
+rustup override set <toolchain>
 ```
 
 When users selected the toolchain, they can install `rust-analyzer` using `rustup`:

@@ -10,6 +10,7 @@ Supported LSP servers:
 - [Markdown](./markdown/README.md).
 - [SQL](./sql.md).
 - [Bash](./bash.md).
+- [Latex][./latex.md].
 
 Planned to be supported in future:
 - Zig/Ziggy/Ziggy Schema.

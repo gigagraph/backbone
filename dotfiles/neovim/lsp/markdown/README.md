@@ -7,7 +7,7 @@ This guide recommends using [`marksman`][marksman] as an implementaion of LSP se
 > [!NOTE]
 >
 > Ensure you have the following language toolhcains:
-> - [.NET](../../../system-setup/toolchains/dotnet/README.md).
+> - [.NET](../../../../system-setup/toolchains/dotnet/README.md).
 >
 > [You can verify the versions of the installed toolcahins with the script](../../../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
 

@@ -12,6 +12,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "marksman",
   "sqls",
   "bashls",
+  "texlab",
 })
 
 local function configure_supported_lsp_servers()
@@ -595,6 +596,68 @@ local function configure_supported_lsp_servers()
           funcNextLine = false,
           simplifyCode = false,
           spaceRedirects = true,
+        },
+      },
+    },
+  })
+
+  -- texlab
+  --- https://github.com/latex-lsp/texlab/wiki/Configuration
+  vim.lsp.config("texlab", {
+    settings = {
+      texlab = {
+        build = {
+          args = {
+            "-pdf",
+            "-interaction=nonstopmode",
+            "-synctex=1",
+            "-auxdir=./latex-build",
+            "-outdir=./latex-build",
+            "%f"
+          },
+          executable = "latexmk",
+          forwardSearchAfter = false,
+          onSave = false,
+          useFileList = false,
+          -- Note, users must set the -auxdir=./latex-build in texlab.build.args
+          auxFirectory = "./latex-build",
+          -- Note, users must set the -outdir=./latex-build in texlab.build.args
+          logDirectory = "./latex-build",
+          -- Note, users must set the -outdir=./latex-build in texlab.build.args
+          pdfDirectory = "./latex-build",
+        },
+        chktex = {
+          onOpenAndSave = true,
+          onEdit = true,
+          additionalArgs = {
+            "--warnon",
+            "--erroron",
+            "--msgon",
+          },
+        },
+        diagnosticsDelay = 300,
+        formatterLineLength = 120,
+        bibtexFormatter = "texlab",
+        latexFormatter = "texlab",
+        completion = {
+          matcher = "fuzzy-ignore-case",
+        },
+        inlayHints = {
+          labelDefinitions = true,
+          labelReferences = true,
+          maxLength = nil,
+        },
+        experimental = {
+          followPackageLinks = false,
+          mathEnvironments = {},
+          enumEnvironments = {},
+          verbatimEnvironments = {},
+          citationCommands = {},
+          labelDefinitionCommands = {},
+          labelReferenceCommands = {},
+          labelReferenceRangeCommands = {},
+          labelDefinitionPrefixes = {},
+          labelReferencePrefixes = {},
         },
       },
     },
