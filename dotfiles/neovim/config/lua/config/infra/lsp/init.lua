@@ -18,6 +18,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   -- Enable jdtls by default and disable java_language_server. FileType event for java will enable keybindings to switch LSPs.
   -- "java_language_server",
   "jdtls",
+  "buf_ls",
 })
 
 local function configure_supported_lsp_servers()
@@ -956,6 +957,13 @@ local function configure_supported_lsp_servers()
       end,
     }
   )
+
+  -- buf_ls
+  vim.lsp.config("buf_ls", {
+    settings = {
+      -- This LSP does not take settings
+    },
+  })
 end
 
 ---@param deps { notify: table? }? The function will use notify to display LSP messages that a server may send, if the notify dependency is provided.

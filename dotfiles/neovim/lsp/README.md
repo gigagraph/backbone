@@ -13,12 +13,12 @@ Supported LSP servers:
 - [Latex](./latex.md).
 - [Docker](./docker.md).
 - [Java](./java.md).
+- [Protobuf](./protobuf.md).
 
 <!-- TODO: tomorrow - setup LSP -->
 <!-- TODO -->
 - [ ] TODO: languages to support:
   - Definitely:
-    - Protobuf (`buf_ls`).
     - Yaml (`yamlls`).
     - Helm (`helm_ls`).
     - Bazel (`bazelrc_lsp`, `starpls`).
