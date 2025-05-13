@@ -1210,9 +1210,15 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
 )
 
 ---- nvim-lspconfig
-    -- TODO: configurer keybidning to force reload all LSPs + force reload LSPs related to the current buffer
-    -- :lua vim.lsp.stop_client(vim.lsp.get_clients())
-    -- :edit
+vim.keymap.set(
+  "n",
+  "<leader><leader>lr",
+  function()
+    vim.lsp.stop_client(vim.lsp.get_clients({ bufnr = 0 }))
+    vim.cmd.edit()
+  end,
+  { silent = true }
+)
 
 local nvim_lspconfig_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.nvim-lspconfig",
