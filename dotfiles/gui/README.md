@@ -13,4 +13,5 @@
 
 - Usable:
   - [Rnote](./rnote/README.md).
+  - [meld](./meld/README.md).
 
