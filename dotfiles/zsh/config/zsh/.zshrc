@@ -194,6 +194,14 @@ if [ ! -e "${ZSH_COMPLETIONS_DIR}/zsh-completions" ]; then
 fi
 source "${ZSH_COMPLETIONS_DIR}/zsh-completions/zsh-completions.plugin.zsh"
 
+if [ ! -e "${ZSH_COMPLETIONS_DIR}/nix-zsh-completions" ]; then
+  git clone --branch="0.5.1" --depth=1 git@github.com:nix-community/nix-zsh-completions.git "${ZSH_COMPLETIONS_DIR}/nix-zsh-completions"
+  zcompile-many "${ZSH_COMPLETIONS_DIR}"/nix-zsh-completions/{nix-zsh-completions.plugin.zsh,_*}
+
+fi
+source "${ZSH_COMPLETIONS_DIR}/nix-zsh-completions/nix-zsh-completions.plugin.zsh"
+fpath+=("${ZSH_COMPLETIONS_DIR}/nix-zsh-completions")
+
 # Configure completions
 
 setopt NOCORRECT
@@ -403,3 +411,7 @@ function sdk() {
     exit 1
   fi
 }
+
+### nix
+export NIX_REMOTE='daemon'
+prompt_nix_shell_setup

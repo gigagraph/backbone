@@ -20,6 +20,7 @@ TOOLCHAIN_VERSION_CMDS=(
   "tree-sitter --version"
   "bazelisk version"
   "cue version"
+  "nix --version"
 )
 
 for TOOLCHAIN_VERSION_CMD in "${TOOLCHAIN_VERSION_CMDS[@]}"; do

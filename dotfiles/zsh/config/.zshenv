@@ -12,8 +12,5 @@ ZSH_COMPLETIONS_DIR="${ZSH_CUSTOM_PLUGINS_DIR}/completions"
 
 ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
-# nvm
-export NVM_DIR="${HOME}/.nvm"
-
 # Rust
 . "${HOME}/.cargo/env"

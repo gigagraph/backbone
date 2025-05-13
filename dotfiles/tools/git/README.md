@@ -21,7 +21,7 @@ sudo apt install git
 
 [User's git configuration should reside in `${XDG_CONFIG_HOME}/git/config`](https://git-scm.com/docs/git-config#Documentation/git-config.txt---global).
 
-Use the config from this repository on your system by creating symlinking the user config default directory to the config dir in this repo (the script will prompt you for confirmation before running any configuration commands):
+Use the config from this repository on your system by symlinking the user config default directory to the config dir in this repo (the script will prompt you for confirmation before running any configuration commands):
 
 ```bash
 ./setup-config.sh
