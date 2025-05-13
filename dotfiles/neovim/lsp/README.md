@@ -19,6 +19,7 @@ Supported LSP servers:
 - [Bazel](./bazel.md).
 - [Cue](./cue.md).
 - [Haskell](./haskell/README.md).
+- [Nix](./nix.md).
 
 <!-- TODO: tomorrow - setup LSP -->
 <!-- TODO -->

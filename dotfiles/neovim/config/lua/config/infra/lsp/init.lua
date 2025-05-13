@@ -26,6 +26,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "cue",
   -- haskell-tools.nvim plugin will enable hls LSP when needed
   -- "hls",
+  "nixd",
 })
 
 local function configure_supported_lsp_servers()
@@ -1067,6 +1068,26 @@ local function configure_supported_lsp_servers()
   -- hls
   -- Note: since this setup uses haskell-tools.nvim that configures hls, the hls settings reside where this config initializes the plugin.
   -- vim.lsp.config("hls", {})
+
+  -- nixd
+  -- https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md
+  vim.lsp.config("nixd", {
+    cmd = {
+      "nixd",
+      "--inlay-hints=true",
+      "--semantic-tokens=true",
+    },
+    settings = {
+      nixd = {
+        nixpkgs = {
+          expr = "import <nixpkgs> { }",
+        },
+         formatting = {
+            command = { "nixfmt" },
+         },
+      },
+   },
+  })
 end
 
 ---@param deps { notify: table? }? The function will use notify to display LSP messages that a server may send, if the notify dependency is provided.
@@ -1183,6 +1204,11 @@ local function register_custom_on_attach()
       -- Enable inlay hints if LSP server supports them
       if client.server_capabilities.inlayHintProvider then
         vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+      end
+
+      -- Explicitly set formatexpr if LSP server supports fomatting. Sometimes nvim does not automatically set it even when the LSP server supports it.
+      if client.server_capabilities.documentFormattingProvider then
+        vim.opt_local.formatexpr = "v:lua.vim.lsp.formatexpr()"
       end
     end
   })

@@ -1245,6 +1245,8 @@ local nvim_notify_lazy_spec = bpu:declare_lazy_spec(
       stages = "fade",
       fps = 10,
       top_down = false,
+      max_width = 50,
+      minimum_width = 50,
     },
     config = function(lazy_plugin, opts)
       local notify = require("notify")
