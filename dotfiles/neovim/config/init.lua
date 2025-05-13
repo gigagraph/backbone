@@ -1183,5 +1183,6 @@ lazy_plugin_infra.setup_plugins({
   checker = {
     -- Enable autoupdate for plugins
     enabled = true,
+    notify = false,
   },
 })
