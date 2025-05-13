@@ -9,6 +9,16 @@ Supported LSP servers:
 - [Python](./python.md).
 - [Markdown](./markdown/README.md).
 - [SQL](./sql.md).
+- [Bash](./bash.md).
+
+Planned to be supported in future:
+- Zig/Ziggy/Ziggy Schema.
+- Verilog.
+- VHDL.
+- AWK.
+- Scala (`metals`).
+- Kotlin (`kotlin_language_server`).
+- Gradle (`gradle_ls`).
 
 ## Useful links
 

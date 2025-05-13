@@ -11,6 +11,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "ruff",
   "marksman",
   "sqls",
+  "bashls",
 })
 
 local function configure_supported_lsp_servers()
@@ -576,6 +577,27 @@ local function configure_supported_lsp_servers()
   --- https://github.com/sqls-server/sqls
   vim.lsp.config("sqls", {
     settings = {},
+  })
+
+  -- bashls
+  --- https://github.com/bash-lsp/bash-language-server/blob/main/server/src/config.ts
+  vim.lsp.config("bashls", {
+    settings = {
+      bashIde = {
+        backgroundAnalysisMaxFiles = 500,
+        enableSourceErrorDiagnostics = true,
+        explainshellEndpoint = "",
+        includeAllWorkspaceSymbols = false,
+        shfmt = {
+          languageDialect = "auto",
+          binaryNextLine = false,
+          caseIndent = true,
+          funcNextLine = false,
+          simplifyCode = false,
+          spaceRedirects = true,
+        },
+      },
+    },
   })
 end
 
