@@ -971,8 +971,7 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
             },
           },
           lsp_interop = {
-            -- Disabled until LSP is integrated with the config.
-            enable = false,
+            enable = true,
             floating_preview_opts = {
               border = "shadow",
             },
@@ -1194,7 +1193,7 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
         },
         {
           desc = "Activate treesitter-based folding in windows that host buffers that have treesitter grammars",
-          group = vim.api.nvim_create_augroup("TreesitterFolding", { clear = true }),
+          group = vim.api.nvim_create_augroup("treesitter-folding", { clear = true }),
           callback = function(ev)
             -- Small delay to ensure neovim initialized buffer properly:
             -- - 'filetype' property is set.
@@ -1227,6 +1226,8 @@ vim.keymap.set(
   end,
   { silent = true }
 )
+
+-- TODO: shortcut to toggle inlay_hint
 
 local nvim_lspconfig_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.nvim-lspconfig",

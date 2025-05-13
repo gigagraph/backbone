@@ -4,8 +4,8 @@
   "mini.nvim": { "branch": "main", "commit": "0420076298c4457f200c2de468f65d080597a347" },
   "nvim-lspconfig": { "branch": "master", "commit": "fa2662510d30b06168b6e2e6915518decde6bbac" },
   "nvim-treesitter": { "branch": "master", "commit": "cfc6f2c117aaaa82f19bcce44deec2c194d900ab" },
-  "nvim-treesitter-context": { "branch": "master", "commit": "5c48b8ba1b0b7b25feb6e34e7eb293ea893aedc4" },
+  "nvim-treesitter-context": { "branch": "master", "commit": "464a443b5a6657f39772b20baa95d02ffe97b268" },
   "nvim-treesitter-refactor": { "branch": "master", "commit": "d8b74fa87afc6a1e97b18da23e762efb032dc270" },
-  "nvim-treesitter-textobjects": { "branch": "master", "commit": "0e3be38005e9673d044e994b1e4b123adb040179" },
+  "nvim-treesitter-textobjects": { "branch": "master", "commit": "0f051e9813a36481f48ca1f833897210dbcfffde" },
   "plenary.nvim": { "branch": "master", "commit": "50012918b2fc8357b87cff2a7f7f0446e47da174" }
 }

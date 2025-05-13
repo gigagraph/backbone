@@ -454,6 +454,19 @@ COMPLETE="${SHELL##*/}" jj > "${ZSH_COMPLETIONS_DIR}/_jj"
 
 After you generated the completions, ensure that the directory with the `_jj` completions file is on your zsh `fpath`.
 
+#### `uv`
+
+##### `uv` completions
+
+Use `uv` and `uvx` to generate completions for zsh:
+
+```bash
+uv generate-shell-completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_uv"
+uvx --generate-shell-completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_uvx"
+```
+
+After you generated the completions, ensure that the directory with the `_uv` and `_uvx` completions files is on your zsh `fpath`.
+
 #### Deprecated plugins
 
 ##### `zsh-vi-mode`

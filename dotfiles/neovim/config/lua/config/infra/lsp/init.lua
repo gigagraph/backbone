@@ -7,6 +7,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "clangd",
   "rust_analyzer",
   "gopls",
+  "basedpyright",
 })
 
 local function configure_supported_lsp_servers()
@@ -93,9 +94,32 @@ local function configure_supported_lsp_servers()
             remove_call_expression_list_finish_comma = false,
             end_statement_with_semicolon = "same_line",
           },
-        }
-      }
-    }
+        },
+        completion = {
+          enable = true,
+        },
+        diagnostics = {
+          enable = true,
+        },
+        codeLens = {
+          enable = true,
+        },
+        hint = {
+          enable = true,
+          paramName = "All",
+          paramType = true,
+        },
+        hover = {
+          enable = true,
+        },
+        semantic = {
+          enable = true,
+        },
+        telemetry = {
+          enable = false,
+        },
+      },
+    },
   })
 
   -- clangd
@@ -115,20 +139,7 @@ local function configure_supported_lsp_servers()
   })
 
   -- rust-analyzer
-  local original_rust_analyzer_on_attach = nil
-  if vim.lsp.config["rust_analyzer"] and vim.lsp.config["rust_analyzer"].on_attach then
-    original_rust_analyzer_on_attach = vim.lsp.config["rust_analyzer"].on_attach
-  end
   vim.lsp.config("rust_analyzer", {
-    on_attach = function(client, bufnr)
-      -- Call the original on_attach that default config defines
-      if original_rust_analyzer_on_attach then
-        original_rust_analyzer_on_attach(client, bufnr)
-      end
-
-      -- Run custom on_attach logic
-      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-    end,
     settings = {
       ['rust-analyzer'] = {
         assist = {
@@ -454,6 +465,43 @@ local function configure_supported_lsp_servers()
       },
     },
   })
+
+  -- basedpyright
+  vim.lsp.config("basedpyright", {
+    settings = {
+      basedpyright = {
+        disableOrganizeImports = true, -- use ruff to organize imports
+        analysis = {
+          autoImportCompletions = true,
+          autoSearchPaths = true,
+          diagnosticMode = "openFilesOnly",
+          useLibraryCodeForTypes = true,
+          useTypingExtensions = true,
+          fileEnumerationTimeout = 10,
+          inlayHints = {
+            variableTypes = true,
+            callArgumentNames = true,
+            functionReturnTypes = true,
+            genericTypes = true,
+          },
+        },
+      },
+    },
+  })
+end
+
+local function register_custom_on_attach()
+  vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("bkb-lsp-attach", { clear = true }),
+    callback = function(args)
+      local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+
+      -- Enable inlay hints if LSP server supports them
+      if client.server_capabilities.inlayHintProvider then
+        vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+      end
+    end
+  })
 end
 
 local function enable_suppored_lsp_servers()
@@ -464,6 +512,7 @@ end
 
 function M.bkb_setup_suppotred_lsp_servers()
   configure_supported_lsp_servers()
+  register_custom_on_attach()
   enable_suppored_lsp_servers()
 end
 
