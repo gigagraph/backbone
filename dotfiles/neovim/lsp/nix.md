@@ -17,7 +17,7 @@ This guide recommends installing `nixd` as a flake:
 nix profile add github:nixos/nixpkgs#nixd
 ```
 
-This setup also recommends using `nixd` together with `nixfmt` code formatter. Therefore, users should also install `nixfmt` as a flake as well:
+This setup also recommends using `nixd` together with [`nixfmt` code formatter][nixfmt]. Therefore, users should also install `nixfmt` as a flake as well:
 
 ```bash
 nix profile add github:nixos/nixpkgs#nixfmt
@@ -26,5 +26,7 @@ nix profile add github:nixos/nixpkgs#nixfmt
 ## Useful links
 
 - [nixd][nixd]
+- [nixfmt][nixfmt]
 
 [nixd]: https://github.com/nix-community/nixd
+[nixfmt]: https://github.com/NixOS/nixfmt
