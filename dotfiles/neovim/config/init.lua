@@ -1245,6 +1245,15 @@ local nvim_lspconfig_lazy_spec = bpu:declare_lazy_spec(
   }
 )
 
+---- nvim-jdtls
+local nvim_jdtld_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.nvim-jdtls",
+  {
+    lazy = true,
+    ft = { "java", "java.*" },
+  }
+)
+
 ---- telescope
 -- local telescope_spec = bpu:declare_lazy_spec(
 --   -- TODO

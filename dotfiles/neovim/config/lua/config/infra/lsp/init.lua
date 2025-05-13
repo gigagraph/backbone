@@ -15,6 +15,9 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "texlab",
   "docker_compose_language_service",
   "dockerls",
+  -- Enable jdtls by default and disable java_language_server. FileType event for java will enable keybindings to switch LSPs.
+  -- "java_language_server",
+  "jdtls",
 })
 
 local function configure_supported_lsp_servers()
@@ -695,6 +698,112 @@ local function configure_supported_lsp_servers()
       },
     },
   })
+
+  -- Java
+  vim.api.nvim_create_autocmd(
+    { "FileType" },
+    {
+      desc = "Activate Java LSP(s) and setup keybindings to controls them.",
+      pattern = { "java", "java.*" },
+      group = vim.api.nvim_create_augroup("bkb-java-lsp", { clear = true }),
+      once = true,
+      callback = function(_)
+        local path = require("plenary.path")
+
+        local cwd_last_component = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+        local jdtls_data_path = vim.fn.resolve(
+          tostring(
+            path.new(vim.fn.stdpath("cache"))
+              :joinpath("bkb/lsp_cache/jdtls")
+              :joinpath(cwd_last_component)
+          )
+        )
+
+        -- jdtls
+        --- https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
+        jdtls_cmd = {
+          "jdtls",
+          "-data", jdtls_data_path
+        }
+        vim.lsp.config("jdtls", {
+          cmd = jdtls_cmd,
+          settings = {
+            -- TODO
+          },
+        })
+
+        -- java_language_server
+        vim.lsp.config("java_language_server", {
+          cmd = { "java-language-server" },
+          settings = {
+            -- This LSP does not take settings
+          },
+        })
+
+        -- Enable and start LSP
+        -- By default, enable jdtls and ensure that java-language-server is disabled
+        vim.lsp.enable("java-language-server", false)
+        local jdtls = require("jdtls")
+        jdtls.start_or_attach({ cmd = jdtls_cmd })
+
+        -- Add keymappings
+        vim.keymap.set(
+          "n",
+          "<leader><leader>ljj1",
+          function()
+            vim.lsp.stop_client(vim.lsp.get_clients({ bufnr = 0 }))
+            -- Ensure to first disable then enable. Order matters.
+            vim.lsp.enable("java_language_server", false)
+            jdtls.start_or_attach({ cmd = jdtls_cmd })
+            vim.cmd.edit()
+          end,
+          {
+            silent = true,
+            desc = "Switch to jdtls LSP for a java project."
+          }
+        )
+        vim.keymap.set(
+          "n",
+          "<leader><leader>ljj2",
+          function()
+            vim.lsp.stop_client(vim.lsp.get_clients({ bufnr = 0 }))
+            -- Ensure to first disable then enable. Order matters.
+            vim.lsp.enable("jdtls", false)
+            vim.lsp.enable("java_language_server", true)
+            vim.cmd.edit()
+          end,
+          {
+            silent = true,
+            desc = "Switch to java_language_server LSP for a java project."
+          }
+        )
+        vim.keymap.set(
+          "n",
+          "<leader><leader>ljjc",
+          function()
+            vim.ui.input({
+              prompt = "Remove the jdtls data directory (" .. jdtls_data_path .. ")? (`y` to confirm): ",
+            },
+              function(input)
+                if input == "y" then
+                  vim.lsp.stop_client(vim.lsp.get_clients({ bufnr = 0 }))
+                  vim.system(
+                    { "rm", "-rf", jdtls_data_path },
+                    { text = true }
+                  ):wait()
+                  vim.cmd.edit()
+                end
+              end
+            )
+          end,
+          {
+            silent = true,
+            desc = "Clean up jdtls data dir for the project."
+          }
+        )
+      end,
+    }
+  )
 end
 
 local function register_custom_on_attach()

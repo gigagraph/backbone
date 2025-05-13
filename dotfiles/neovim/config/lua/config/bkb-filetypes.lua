@@ -2,7 +2,7 @@ local M = {}
 
 ---@return nil
 function M.add_bkb_filetypes()
-    -- Note on coumpound/composite filetypes:
+    -- Note on compound/composite filetypes:
     -- Some (n)vim configs, docs, and plugins might refer to a concept known as coumpound or composite filetype.
     -- Such filetypes have dot in their name. This concept is not documented formally, but rather, it is a
     -- convention in (n)vim community.
