@@ -19,6 +19,7 @@ TOOLCHAIN_VERSION_CMDS=(
   "docker version"
   "tree-sitter --version"
   "bazelisk version"
+  "cue version"
 )
 
 for TOOLCHAIN_VERSION_CMD in "${TOOLCHAIN_VERSION_CMDS[@]}"; do

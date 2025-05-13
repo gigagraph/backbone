@@ -14,6 +14,7 @@
 - [Docker](./docker/README.md).
 - [Tree-sitter](./tree-sitter/README.md).
 - [Bazel](./bazel/README.md).
+- [Cue](./cue/README.md).
 
 ## Verify versions of the installed toolchains
 

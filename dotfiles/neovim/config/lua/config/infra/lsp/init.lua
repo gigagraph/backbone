@@ -23,6 +23,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "helm_ls",
   "bazelrc_lsp",
   "starpls",
+  "cue",
 })
 
 local function configure_supported_lsp_servers()
@@ -1049,6 +1050,13 @@ local function configure_supported_lsp_servers()
 
   -- starpls
   vim.lsp.config("starpls", {
+    settings = {
+      -- This LSP does not take settings
+    },
+  })
+
+  -- cue
+  vim.lsp.config("cue", {
     settings = {
       -- This LSP does not take settings
     },

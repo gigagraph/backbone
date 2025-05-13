@@ -17,12 +17,12 @@ Supported LSP servers:
 - [Yaml](./yaml.md).
 - [Helm](./helm.md).
 - [Bazel](./bazel.md).
+- [Cue](./cue.md).
 
 <!-- TODO: tomorrow - setup LSP -->
 <!-- TODO -->
 - [ ] TODO: languages to support:
   - Definitely:
-    - Cue (`cue`).
     - Nix (`nixd`).
     - Haskell (`hls`).
     - Javascript/Typescript (+ the rest of the web stack - HTLM, CSS, SCSS, SASS).
