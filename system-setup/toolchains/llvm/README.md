@@ -15,7 +15,7 @@ Set the desired major LLVM version with the `LLVM_VERSION` variable and add apt 
 
 ```bash
 UBUNTU_CODENAME="$(lsb_release -sc 2>/dev/null)"
-LLVM_VERSION="18"
+LLVM_VERSION="19"
 
 sudo tee "/etc/apt/sources.list.d/llvm-toolchain-${LLVM_VERSION}-${UBUNTU_CODENAME}.list" <<EOF
 deb http://apt.llvm.org/${UBUNTU_CODENAME}/ llvm-toolchain-${UBUNTU_CODENAME}-${LLVM_VERSION} main
@@ -93,6 +93,15 @@ for cpp_alternative in 'cpp' 'c++'; do
 done
 ```
 
+## `clagd-indexer` and `clangd-index-server`
+
+For big projects, engineers may need to set up a [process that periodically indexes their project and exposes the index as a server to `clangd` users][clangd-remote-index]. In this case, `clangd` users will [need to connect to the index server to use it instead of building the indexes on their machines][clangd-using-remote-index].
+
+The following guides provide more details on how to install `clagd-indexer` and `clangd-index-server`:
+
+- [clangd-index-tools-installation][clangd-index-tools-installation].
+- [github-llvm-clangd-index-remote][github-llvm-clangd-index-remote].
+
 ## Building from source
 
 Follow the [official instructions for apt to build LLVM from source][apt-llvm].
@@ -101,6 +110,14 @@ Follow the [official instructions for apt to build LLVM from source][apt-llvm].
 
 - [apt-llvm][apt-llvm]
 - [apt-llvm-build-instructions][apt-llvm-build-instructions]
+- [clangd-using-remote-index][clangd-using-remote-index]
+- [clangd-remote-index][clangd-remote-index]
+- [clangd-index-tools-installation][clangd-index-tools-installation]
+- [github-llvm-clangd-index-remote][github-llvm-clangd-index-remote]
 
-[apt-llvm]: <https://apt.llvm.org/>
-[apt-llvm-build-instructions]: <https://apt.llvm.org/building-pkgs.php>
+[apt-llvm]: https://apt.llvm.org/
+[apt-llvm-build-instructions]: https://apt.llvm.org/building-pkgs.php
+[clangd-using-remote-index]: https://clangd.llvm.org/guides/remote-index
+[clangd-remote-index]: https://clangd.llvm.org/design/remote-index
+[clangd-index-tools-installation]: https://hackmd.io/@CTebJdsER6SJEnjnIrelSA/rk6F_nAJp
+[github-llvm-clangd-index-remote]: https://github.com/llvm/llvm-project/tree/main/clang-tools-extra/clangd/index/remote

@@ -4,11 +4,12 @@ local Set = require("bkblib.utils.set")
 
 M.SUPPORTED_LSP_SERVERS = Set.mk({
   "lua_ls",
+  "clangd",
 })
 
 local function configure_supported_lsp_servers()
   -- LuaLS
-  --- The lua_ls configuratio comes from `:help lspconfig-all` lua_ls section
+  --- The lua_ls configuration comes from `:help lspconfig-all` lua_ls section
   vim.lsp.config("lua_ls", {
     on_init = function(client)
       if client.workspace_folders then
@@ -93,6 +94,22 @@ local function configure_supported_lsp_servers()
         }
       }
     }
+  })
+
+  -- clangd
+  -- The clangd configuration comes from `:help lspconfig-all` clangd section
+  vim.lsp.config("clangd", {
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+    root_markers = {
+      ".clangd",
+      ".clang-tidy",
+      ".clang-format",
+      "compile_commands.json",
+      "compile_flags.txt",
+      "configure.ac", -- AutoTools
+      ".git",
+    },
+    settings = {},
   })
 end
 

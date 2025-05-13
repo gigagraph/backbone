@@ -70,7 +70,7 @@ local TEX_LIVE_BASE_PATH="/usr/local/texlive/current"
 typeset -U path PATH
 path+=(
   # LLVM binaries
-  "/usr/lib/llvm-18/bin"
+  "/usr/lib/llvm-19/bin"
 
   # Go binaries + program builds
   "/usr/local/go/bin"

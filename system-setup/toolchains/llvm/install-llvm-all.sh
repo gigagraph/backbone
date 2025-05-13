@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-LLVM_VERSION=18
+LLVM_VERSION=19
 
 sudo apt install -y \
   libllvm-${LLVM_VERSION}-ocaml-dev \
@@ -38,4 +38,4 @@ sudo apt install -y \
   libc++-${LLVM_VERSION}-dev-wasm32 \
   libc++abi-${LLVM_VERSION}-dev-wasm32 \
   libclang-rt-${LLVM_VERSION}-dev-wasm32 \
-  libclang-rt-${LLVM_VERSION}-dev-wasm64                           
+  libclang-rt-${LLVM_VERSION}-dev-wasm64

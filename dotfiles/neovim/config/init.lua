@@ -32,6 +32,14 @@ vim.opt.textwidth = 0
 
 vim.opt.fixendofline = true
 
+-- Basic keybindings
+vim.keymap.set(
+  { "n", "v" },
+  "<leader><leader>n",
+  vim.cmd.nohlsearch,
+  { silent = true }
+)
+
 -- Quickfix
 --- Open quickfix
 vim.keymap.set(
@@ -76,7 +84,7 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
--- Populate the quickfix list with diagnostics
+--- Populate the quickfix list with diagnostics
 vim.keymap.set(
   "n",
   "<leader>cd",
