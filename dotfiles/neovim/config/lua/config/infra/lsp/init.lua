@@ -34,6 +34,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "css_variables",
   "somesass_ls",
   "stylelint_lsp",
+  "tailwindcss",
   -- TODO: rest
 })
 
@@ -1465,6 +1466,38 @@ local function configure_supported_lsp_servers()
         configFile = nil,
       },
     },
+  })
+
+  -- tailwindcss
+  --- https://github.com/tailwindlabs/tailwindcss-intellisense#extension-settings
+  vim.lsp.config("tailwindcss", {
+    settings = {
+      tailwindCSS = {
+        includeLanguages = {
+          eelixir = "html-eex",
+          eruby = "erb",
+          htmlangular = "html",
+          templ = "html"
+        },
+        emmetCompletions = true,
+        colorDecorators = true,
+        showPixelEquivalents = false,
+        hovers = true,
+        suggestions = true,
+        codeActions = true,
+        lint = {
+          invalidScreen = "error",
+          invalidVariant = "error",
+          invalidTailwindDirective = "error",
+          invalidApply = "error",
+          invalidConfigPath = "error",
+          cssConflict = "warning",
+          recommendedVariantOrder = "warning",
+          usedBlocklistedClass = "warning",
+        },
+        validate = true,
+      }
+    }
   })
 
   -- TODO: rest

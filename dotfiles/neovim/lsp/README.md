@@ -28,13 +28,13 @@ Supported LSP servers:
       - [x] HTML: `html`.
       - [x] JSON: `jsonls`.
       - [x] Emmet: [emmet-language-server](https://github.com/olrtg/emmet-language-server).
-      - CSS:
+      - [x] CSS:
         - [x] `cssls`.
         - [x] [`css_variables`](https://github.com/vunguyentuan/vscode-css-variables/tree/master/packages/css-variables-language-server)
         - [x] SCSS/SASS: [`somesass_ls`](https://github.com/wkillerud/some-sass/tree/main/packages/language-server).
         - [x] [`stylelint_lsp`](https://stylelint.io/).
-        - [ ] Tailwind: `tailwindcss` (https://github.com/tailwindlabs/tailwindcss-intellisense).
-      - JS:
+        - [x] Tailwind: `tailwindcss` (https://github.com/tailwindlabs/tailwindcss-intellisense).
+      - [ ] JS:
         - [ ] `eslint`.
         - [ ] `quick-lint-js`.
       - [ ] TS: `ts_ls` (typescript-language-server - https://github.com/typescript-language-server/typescript-language-server).

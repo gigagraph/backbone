@@ -6,6 +6,9 @@
     "package": "@olrtg/emmet-language-server"
   },
   {
+    "package": "@tailwindcss/language-server"
+  },
+  {
     "package": "bash-language-server"
   },
   {

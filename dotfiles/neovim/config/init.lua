@@ -769,8 +769,7 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
           "tlaplus",
 
           ---- Proof
-          -- Will possibly be avaialble after 0.9.3
-          -- "idris",
+          "idris",
 
           --- High-performance computing
           "cuda",

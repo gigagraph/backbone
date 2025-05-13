@@ -6,6 +6,7 @@ This setup recommends using the following LSP servers for CSS:
 - [`css_variables`][css-variables] to support CSS variables.
 - [`somesass_ls`][some-sass-lsp] to support SCSS and SASS.
 - [`stylelint-lsp`][stylelint].
+- [`tailwindcss`][tailwindcss-lsp].
 
 ## Installation
 
@@ -40,6 +41,14 @@ This guide recommends installing [`stylelint-lsp` from `npm` registry][stylelint
 npm install -g stylelint-lsp
 ```
 
+### `tailwindcss` instalaltion
+
+This guide recommends installing [`tailwindcss` from `npm` registry][tailwindcss-lsp-github] using the following command:
+
+```bash
+npm install -g @tailwindcss/language-server
+```
+
 ## Useful links
 
 - [css-variables][css-variables]
@@ -51,6 +60,7 @@ npm install -g stylelint-lsp
   - [stylelint-github][stylelint-github]
   - [stylelint-lsp][stylelint-lsp]
 - [tailwindcss-lsp][tailwindcss-lsp]
+  - [tailwindcss-lsp-github][tailwindcss-lsp-github]
 
 [css-variables]: https://github.com/vunguyentuan/vscode-css-variables/tree/master/packages/css-variables-language-server
 [css-variables-language-server-npm]: https://www.npmjs.com/package/css-variables-language-server
@@ -61,3 +71,4 @@ npm install -g stylelint-lsp
 [stylelint-github]: https://github.com/stylelint/stylelint
 [stylelint-lsp]: https://github.com/bmatcuk/stylelint-lsp
 [tailwindcss-lsp]: https://github.com/tailwindlabs/tailwindcss-intellisense
+[tailwindcss-lsp-github]: https://www.npmjs.com/package/@tailwindcss/language-server
