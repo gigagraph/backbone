@@ -4,6 +4,7 @@ Supported LSP servers:
 
 - [Lua](./lua.md).
 
+<!-- TODO -->
 - [ ] TODO: languages to support:
   - Definitely:
     - C/C++.
