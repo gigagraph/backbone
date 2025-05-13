@@ -6,6 +6,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "lua_ls",
   "clangd",
   "rust_analyzer",
+  "gopls",
 })
 
 local function configure_supported_lsp_servers()
@@ -416,6 +417,40 @@ local function configure_supported_lsp_servers()
             scope = "workspace",
           },
         },
+      },
+    },
+  })
+
+  -- gopls
+  -- Settings are taken from https://github.com/golang/tools/blob/master/gopls/doc/settings.md
+  vim.lsp.config("gopls", {
+    settings = {
+      gopls = {
+        codelenses = {
+          generate = true,
+          regenerate_cgo = true,
+          run_govulncheck = false,
+          tidy = true,
+          upgrade_dependency = true,
+          vendor = true,
+        },
+        semanticTokens = false,
+        usePlaceholders = false,
+        matcher = "Fuzzy",
+        experimentalPostfixCompletions = false,
+        completeFunctionCalls = true,
+        staticcheck = false,
+        vulncheck = "off",
+        analysisProgressReporting = true,
+        hoverKind = "FullDocumentation",
+        linkTarget = "godoc.org",
+        linksInHover = true,
+        importShortcut = "Both",
+        symbolMatcher = "FastFuzzy",
+        symbolStyle = "Dynamic",
+        symbolScope = "all",
+        verboseOutput = false,
+        gofumpt = true,
       },
     },
   })
