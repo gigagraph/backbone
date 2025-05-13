@@ -405,6 +405,8 @@ done
 - [youtube-tj-reads-whole-neovim-manual][youtube-tj-reads-whole-neovim-manual]
 - [youtube-tj-neovim-kickstart][youtube-tj-neovim-kickstart]
 - [youtube-tj-advent-of-neovim][youtube-tj-advent-of-neovim]
+  - [youtube-tj-quickfix][youtube-tj-quickfix]
+- [youtube-neovimconf-2024-ai][youtube-neovimconf-2024-ai]
 - [nvim-tree-sitter][nvim-tree-sitter]
 - Plugins
   - [catppucin-nvim][catppucin-nvim]
@@ -429,7 +431,6 @@ done
   - [plenary-nvim][plenary-nvim]
     - [plenary-test-harness][plenary-test-harness]
 - [lua-busted][lua-busted]
-- [youtube-neovimconf-2024-ai][youtube-neovimconf-2024-ai]
 
 [github-neovim]: <https://github.com/neovim/neovim>
 [neovim-build-deps]: <https://github.com/neovim/neovim/blob/master/BUILD.md#build-prerequisites>
@@ -438,6 +439,8 @@ done
 [youtube-tj-reads-whole-neovim-manual]: <https://youtu.be/rT-fbLFOCy0>
 [youtube-tj-neovim-kickstart]: <https://youtu.be/m8C0Cq9Uv9o?si=ieM47MFLWca9lt01>
 [youtube-tj-advent-of-neovim]: <https://www.youtube.com/watch?v=TQn2hJeHQbM&list=PLep05UYkc6wTyBe7kPjQFWVXTlhKeQejM>
+[youtube-tj-quickfix]: https://www.youtube.com/watch?v=wOdL2T4hANk
+[youtube-neovimconf-2024-ai]: <https://www.youtube.com/watch?v=GKQ9rJ12hjc&list=PLhlaLyAlbLlq9xWf2xm_9p422GgqvATXk&index=11>
 [nvim-tree-sitter]: <https://neovim.io/doc/user/treesitter.html>
 [catppucin-nvim]: <https://github.com/catppuccin/nvim>
 [gruvbox-nvim]: <https://github.com/ellisonleao/gruvbox.nvim>
@@ -461,4 +464,3 @@ done
 [plenary-nvim]: <https://github.com/nvim-lua/plenary.nvim>
 [plenary-test-harness]: <https://github.com/nvim-lua/plenary.nvim?tab=readme-ov-file#plenarytest_harness>
 [lua-busted]: <https://lunarmodules.github.io/busted/>
-[youtube-neovimconf-2024-ai]: <https://www.youtube.com/watch?v=GKQ9rJ12hjc&list=PLhlaLyAlbLlq9xWf2xm_9p422GgqvATXk&index=11>

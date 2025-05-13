@@ -1,13 +1,16 @@
 # LSP - Language Server Protocol
 
+Supported LSP servers:
+
+- [Lua](./lua.md).
+
 - [ ] TODO: languages to support:
   - Definitely:
-    - Lua.
     - C/C++.
     - Rust.
     - Go.
     - Python.
-    - Javascript/Typescript (+ the rest of the web stack).
+    - Javascript/Typescript (+ the rest of the web stack - HTLM, CSS, SCSS, SASS).
     - SQL.
     - Bash/Zsh.
     - Markdown.
