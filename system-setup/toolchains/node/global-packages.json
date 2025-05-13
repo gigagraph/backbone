@@ -1,5 +1,8 @@
 [
   {
+    "package": "@microsoft/compose-language-service"
+  },
+  {
     "package": "bash-language-server"
   },
   {

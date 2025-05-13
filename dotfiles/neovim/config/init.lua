@@ -153,6 +153,10 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Filetypes
+local bkb_filetypes = require("config.bkb-filetypes")
+bkb_filetypes.add_bkb_filetypes()
+
 -- nvimpager
 if nvimpager then
   nvimpager.maps = false

@@ -13,6 +13,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "sqls",
   "bashls",
   "texlab",
+  "docker_compose_language_service",
 })
 
 local function configure_supported_lsp_servers()
@@ -660,6 +661,13 @@ local function configure_supported_lsp_servers()
           labelReferencePrefixes = {},
         },
       },
+    },
+  })
+
+  -- docker_compose_language_service
+  vim.lsp.config("docker_compose_language_service", {
+    settings = {
+      -- This LSP does not take settings
     },
   })
 end
