@@ -37,7 +37,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "tailwindcss",
   "eslint",
   "quick_lint_js",
-  -- TODO: rest
+  "ts_ls",
 })
 
 local function configure_supported_lsp_servers()
@@ -1546,7 +1546,57 @@ local function configure_supported_lsp_servers()
     },
   })
 
-  -- TODO: rest
+  -- ts_ls
+  --- https://github.com/typescript-language-server/typescript-language-server/blob/master/docs/configuration.md
+  vim.lsp.config("ts_ls", {
+    settings = {
+      init_options = {
+        preferences = {
+          disableSuggestions = false,
+          quotePreference = "auto",
+          includeCompletionsForModuleExports = true,
+          includeCompletionsForImportStatements = true,
+          includeCompletionsWithSnippetText = true,
+          includeCompletionsWithInsertText = true,
+          includeAutomaticOptionalChainCompletions = true,
+          includeCompletionsWithClassMemberSnippets = true,
+          includeCompletionsWithObjectLiteralMethodSnippets = true,
+          useLabelDetailsInCompletionEntries = true,
+          allowIncompleteCompletions = true,
+          importModuleSpecifierPreference = "shortest",
+          importModuleSpecifierEnding = "auto",
+          allowTextChangesInNewFiles = true,
+          lazyConfiguredProjectsFromExternalProject = false,
+          maximumHoverLength = 500,
+          organizeImportsIgnoreCase = "auto",
+          organizeImportsCollation = "unicode",
+          organizeImportsLocale = "auto",
+          organizeImportsNumericCollation = false,
+          organizeImportsAccentCollation = true,
+          organizeImportsCaseFirst = false,
+          organizeImportsTypeOrder = "last",
+          preferTypeOnlyAutoImports = false,
+          providePrefixAndSuffixTextForRename = true,
+          provideRefactorNotApplicableReason = true,
+          allowRenameOfImportPath = true,
+          includePackageJsonAutoImports = "auto",
+          interactiveInlayHints = true,
+          jsxAttributeCompletionStyle = "auto",
+          displayPartsForJSDoc = true,
+          excludeLibrarySymbolsInNavTo = true,
+          generateReturnInDocTemplate = true,
+          includeInlayParameterNameHints = "literals",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+          includeInlayFunctionParameterTypeHints = false,
+          includeInlayVariableTypeHints = false,
+          includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+          includeInlayPropertyDeclarationTypeHints = false,
+          includeInlayFunctionLikeReturnTypeHints = false,
+          includeInlayEnumMemberValueHints = false,
+        },
+      },
+    },
+  })
 end
 
 ---@param deps { notify: table? }? The function will use notify to display LSP messages that a server may send, if the notify dependency is provided.

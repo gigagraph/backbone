@@ -20,24 +20,20 @@ Supported LSP servers:
 - [Cue](./cue.md).
 - [Haskell](./haskell/README.md).
 - [Nix](./nix.md).
-
-- [ ] TODO: languages to support:
-  - Definitely:
-    - [ ] [Web (html + css/scss/sass + js + ts + emmet)](./web/README.md).
-    - [ ] Web.
-      - [x] HTML: `html`.
-      - [x] JSON: `jsonls`.
-      - [x] Emmet: [emmet-language-server](https://github.com/olrtg/emmet-language-server).
-      - [x] CSS:
-        - [x] `cssls`.
-        - [x] [`css_variables`](https://github.com/vunguyentuan/vscode-css-variables/tree/master/packages/css-variables-language-server)
-        - [x] SCSS/SASS: [`somesass_ls`](https://github.com/wkillerud/some-sass/tree/main/packages/language-server).
-        - [x] [`stylelint_lsp`](https://stylelint.io/).
-        - [x] Tailwind: `tailwindcss` (https://github.com/tailwindlabs/tailwindcss-intellisense).
-      - [x] JS:
-        - [x] `eslint`.
-        - [x] `quick-lint-js`.
-      - [ ] TS: `ts_ls` (typescript-language-server - https://github.com/typescript-language-server/typescript-language-server).
+- [Web (html + css/scss/sass + js + ts + emmet)](./web/README.md).
+  - HTML: `html`.
+  - JSON: `jsonls`.
+  - Emmet: [emmet-language-server](https://github.com/olrtg/emmet-language-server).
+  - [CSS](./web/css.md):
+    - `cssls`.
+    - [`css_variables`](https://github.com/vunguyentuan/vscode-css-variables/tree/master/packages/css-variables-language-server)
+    - SCSS/SASS: [`somesass_ls`](https://github.com/wkillerud/some-sass/tree/main/packages/language-server).
+    - [`stylelint_lsp`](https://stylelint.io/).
+    - Tailwind: `tailwindcss` (https://github.com/tailwindlabs/tailwindcss-intellisense).
+  - [JS](./web/javascript.md):
+    - `eslint`.
+    - `quick-lint-js`.
+  - [TS](./web/typescript.md): `ts_ls` (typescript-language-server - https://github.com/typescript-language-server/typescript-language-server).
 
 Planned to be supported in future:
 - Zig/Ziggy/Ziggy Schema.

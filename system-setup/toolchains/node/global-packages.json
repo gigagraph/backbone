@@ -36,6 +36,12 @@
     "package": "stylelint-lsp"
   },
   {
+    "package": "typescript-language-server"
+  },
+  {
+    "package": "typescript"
+  },
+  {
     "package": "vscode-langservers-extracted"
   },
   {

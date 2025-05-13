@@ -4,7 +4,7 @@ This setup recommends using the following LSP servers for JavaScript:
 
 - `eslint` (a part of [vscode-langservers-extracted, covered in the Web README.md](./README.md#vscode-langservers-extracted-installation)).
 - [`quick-lint-js`][quick-lint-js].
-- [`typescript-language-server`](./typescript.md#typescript-language-server).
+- [`typescript-language-server`](./typescript.md#typescript-language-server-installation).
 
 ## Instalaltion
 
