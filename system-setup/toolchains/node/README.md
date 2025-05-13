@@ -164,13 +164,12 @@ yq --output-format yaml '.[].package' "${BACKBONE_BASE_DIR}/system-setup/toolcha
 
 If you are upgrading to a new `node` version set the new version to be the default (`fnm defualt "${TARGET_NODE_VERSION}"`) and uninstall the old version (`fnm uninstall "${OLD_NODE_VERSION}"`).
 
-"Oneliner" that installs packages from a different `fnm` `node` installation into the target:
+"Oneliner" that installs the same versions of packages from a different `fnm` `node` installation into the target:
 
 ```bash
 fnm exec --using="${OLD_NODE_VERSION}" npm list -g --depth=0 --json |
-  yq --output-format json '[.dependencies | to_entries[] | {"package": .key}]' |
-  yq --output-format yaml '.[].package' |
-  sed 's/$/@latest/' |
+  yq --output-format json '[.dependencies | to_entries[] | {"package": .key, "version": .value.version}]' |
+  yq --output-format yaml '.[] | "\(.package)@\(.version)"' |
   xargs fnm exec --using="${TARGET_NODE_VERSION}" npm install -g
 ```
 
