@@ -743,9 +743,8 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
           ---- Python
           "python",
           "requirements",
-          -- Will possibly be avaialble after 0.9.3
-          -- "jinja",
-          -- "jinja_inline",
+          "jinja",
+          "jinja_inline",
 
           ---- Go
           "go",
@@ -849,9 +848,8 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
           "jq",
 
           --- Git
-          -- Will possibly be avaialble after 0.9.3
-          -- "gitconfig",
-          -- "gitrebase",
+          "git_config",
+          "git_rebase",
           "gitattributes",
           "gitcommit",
           "gitignore",
