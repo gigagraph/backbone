@@ -10,6 +10,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "basedpyright",
   "ruff",
   "marksman",
+  "sqls",
 })
 
 local function configure_supported_lsp_servers()
@@ -569,6 +570,12 @@ local function configure_supported_lsp_servers()
         },
       },
     },
+  })
+
+  -- sqls
+  --- https://github.com/sqls-server/sqls
+  vim.lsp.config("sqls", {
+    settings = {},
   })
 end
 

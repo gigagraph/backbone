@@ -8,6 +8,7 @@ Supported LSP servers:
 - [Go](./go.md).
 - [Python](./python.md).
 - [Markdown](./markdown/README.md).
+- [SQL](./sql.md).
 
 ## Useful links
 
