@@ -2,6 +2,7 @@
 
 This setup recommends using the following LSP servers for Python:
 - [`basedpyright`][basedpyright].
+- [`ruff`][ruff-lsp].
 
 ## Installation
 
@@ -14,10 +15,18 @@ This setup recommends using the following LSP servers for Python:
 
 ### [`basedpyright`][basedpyright] installation
 
-Install the tool using `uv tool`:
+Install `basedpyright` using `uv tool`:
 
 ```bash
 uv tool install basedpyright
+```
+
+### [`ruff`][ruff-lsp] installation
+
+Install `ruff` using `uv tool`:
+
+```bash
+uv tool install ruff
 ```
 
 ## Useful links

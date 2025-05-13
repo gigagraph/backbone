@@ -8,11 +8,13 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "rust_analyzer",
   "gopls",
   "basedpyright",
+  "ruff",
 })
 
 local function configure_supported_lsp_servers()
   -- LuaLS
   --- The lua_ls configuration comes from `:help lspconfig-all` lua_ls section
+  -- https://luals.github.io/wiki/settings/
   vim.lsp.config("lua_ls", {
     on_init = function(client)
       if client.workspace_folders then
@@ -139,6 +141,7 @@ local function configure_supported_lsp_servers()
   })
 
   -- rust-analyzer
+  -- https://rust-analyzer.github.io/book/configuration.html
   vim.lsp.config("rust_analyzer", {
     settings = {
       ['rust-analyzer'] = {
@@ -467,6 +470,7 @@ local function configure_supported_lsp_servers()
   })
 
   -- basedpyright
+  -- https://docs.basedpyright.com/dev/configuration/language-server-settings/
   vim.lsp.config("basedpyright", {
     settings = {
       basedpyright = {
@@ -485,6 +489,51 @@ local function configure_supported_lsp_servers()
             genericTypes = true,
           },
         },
+      },
+    },
+  })
+
+  -- ruff
+  -- https://docs.astral.sh/ruff/editors/settings/
+  vim.lsp.config("ruff", {
+    on_init = function(client, _)
+      client.server_capabilities.hoverProvider = false
+    end,
+    init_options = {
+      configuration = {
+        lint = {
+          fixable = { "ALL" },
+          select = { "ALL" },
+        },
+        format = {
+          ["quote-style"] = "double",
+          ["indent-style"] = "space",
+          ["skip-magic-trailing-comma"] = false,
+          ["line-ending"] = "auto",
+        },
+      },
+    },
+    settings = {
+      lineLength = 120,
+      configurationPreference = "filesystemFirst",
+      fixAll = true,
+      organizeImports = true,
+      showSyntaxErrors = true,
+      codeAction = {
+        disableRuleComment = {
+          enable = true,
+        },
+        fixViolation = {
+          enable = false,
+        },
+      },
+      lint = {
+        enable = true,
+        preview = false,
+        select = { "ALL" },
+      },
+      format = {
+        preview = false,
       },
     },
   })
