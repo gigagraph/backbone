@@ -78,6 +78,10 @@ path+=(
   # pipx's install location
   "${HOME}/.local/bin"
 
+  # Haskell
+  "${HOME}/.ghcup/bin"
+  "${HOME}/.cabal/bin"
+
   # TeX Live
   "${TEX_LIVE_BASE_PATH}/bin/"$(uname -m)-*([1])
 )

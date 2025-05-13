@@ -11,6 +11,7 @@ TOOLCHAIN_VERSION_CMDS=(
   "fnm --version && node --version && npm --version && pnpm --version"
   "java --version && javac --version"
   "dotnet --version"
+  "ghcup --version && ghc --version && cabal --version && stack --version"
   "perl --version"
   "luajit -v"
   "luarocks --version"

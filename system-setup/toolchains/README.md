@@ -7,6 +7,7 @@
 - [Node](./node/README.md).
 - [Java](./java/README.md).
 - [.NET](./dotnet/README.md).
+- [Haskell](./haskell/README.md).
 - [Lua](./lua/README.md).
 - [Perl](./perl/README.md).
 - [TeX Live](./texlive/README.md).
