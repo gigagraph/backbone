@@ -82,7 +82,7 @@ If you use [zsh](../../../dotfiles/zsh/README.md) `zsh-completions` plugin provi
 However, this guide recommends [setting up completions for `stack` using `stack`][stack-autocompletions]. Assuming that `ZSH_COMPLETIONS_DIR` env points to a path on your system that is present in `fpath`, run the following script:
 
 ```bash
-stack --zsh-completion-script stack > "${ZSH_COMPLETIONS_DIR}/_stack"
+stack "--${SHELL##*/}-completion-script" stack > "${ZSH_COMPLETIONS_DIR}/_stack"
 ```
 
 #### `zsh` completions for `cabal`

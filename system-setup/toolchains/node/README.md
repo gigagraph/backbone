@@ -88,6 +88,16 @@ Use a specific node version
 fnm use "${NODE_VERSION_TO_INSTALL}"
 ```
 
+#### Completions
+
+##### `zsh` completions for `node`
+
+If you use [zsh](../../../dotfiles/zsh/README.md) your should install `zsh-completions`. See the [docs from this repo](../../../dotfiles/zsh/README.md#plugins) for more details.
+
+##### `zsh` completions for `npm`
+
+If you use [zsh](../../../dotfiles/zsh/README.md), it should come with the [default comptions script for `npm`](https://github.com/zsh-users/zsh/blob/master/Completion/Unix/Command/_npm).
+
 ### Integrate `fnm` with other programs
 
 #### zsh
@@ -108,6 +118,60 @@ Run the following command to ensure `pnpm` is installed for the current `node` i
 
 ```bash
 npm install -g pnpm@latest
+```
+
+##### `pnpm` completions
+
+###### `zsh` completions for `pnpm`
+
+Assuming that `ZSH_COMPLETIONS_DIR` env points to a path on your system that is present in `fpath`, run the following script:
+
+```bash
+pnpm completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_pnpm"
+```
+
+#### Install all global tools that this setup depends on
+
+Since (`fnm` does not support reinstallation of global packages](https://github.com/Schniz/fnm/issues/620), users can rely on this method to manage global package installation manually.
+
+> [!WARNING]
+>
+> This method will reinstall packages from the `npm` registry. I.e. if users globally installed packages from sources that have not been published to the `npm` registry, users will need to reinstall them manually.
+>
+> This might also be a potential security vulnerability if one of the packages gets compomized in the remote `npm` registry.
+
+Save the installed node packages into [`./global-packages.json`](./global-packages.json) in this directory:
+
+```bash
+fnm exec --using="${OLD_NODE_VERSION}" npm list -g --depth=0 --json |
+  yq --output-format json '[.dependencies | to_entries[] | {"package": .key}]' > \
+    "${BACKBONE_BASE_DIR}/system-setup/toolchains/node/global-packages.json"
+```
+
+Switch to the target `fnm` version where you want to install the dependencies:
+
+```bash
+fnm use "${TARGET_NODE_VERSION}"
+```
+
+Install the packages for the target `node` installation:
+
+```bash
+yq --output-format yaml '.[].package' "${BACKBONE_BASE_DIR}/system-setup/toolchains/node/global-packages.json" |
+  sed 's/$/@latest/' |
+  xargs npm install -g
+```
+
+If you are upgrading to a new `node` version set the new version to be the default (`fnm defualt "${TARGET_NODE_VERSION}"`) and uninstall the old version (`fnm uninstall "${OLD_NODE_VERSION}"`).
+
+"Oneliner" that installs packages from a different `fnm` `node` installation into the target:
+
+```bash
+fnm exec --using="${OLD_NODE_VERSION}" npm list -g --depth=0 --json |
+  yq --output-format json '[.dependencies | to_entries[] | {"package": .key}]' |
+  yq --output-format yaml '.[].package' |
+  sed 's/$/@latest/' |
+  xargs fnm exec --using="${TARGET_NODE_VERSION}" npm install -g
 ```
 
 ## Useful links

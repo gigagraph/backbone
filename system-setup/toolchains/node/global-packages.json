@@ -1,0 +1,14 @@
+[
+  {
+    "package": "bash-language-server"
+  },
+  {
+    "package": "corepack"
+  },
+  {
+    "package": "npm"
+  },
+  {
+    "package": "pnpm"
+  }
+]
