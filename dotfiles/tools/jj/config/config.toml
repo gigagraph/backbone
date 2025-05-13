@@ -2,6 +2,23 @@
 pager = "delta"
 paginate = "auto"
 conflict-marker-style = "snapshot"
+diff-instructions = false
+diff-editor = "meld-3"
+merge-editor = "meld"
+
+[merge-tools.meld]
+edit-args = ["--newtab", "$left", "$right", "--output=$output"]
+merge-args = ["$left", "$base", "$right", "-o", "$output", "--auto-merge"]
+
+[merge-tools.delta]
+diff-args = ["--color-only", "--line-numbers"]
+
+[ui.diff]
+format = "git"
+[ui]
+pager = "delta"
+paginate = "auto"
+conflict-marker-style = "snapshot"
 
 [merge-tools.delta]
 diff-args = ["--color-only", "--line-numbers"]
