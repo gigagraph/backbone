@@ -700,53 +700,186 @@ local function configure_supported_lsp_servers()
   })
 
   -- Java
+  --- jdtls
+  ---- https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
+  local jdtls_settings = {
+    java = {
+      autobuild = {
+        enabled = false,
+      },
+      cleanup = {
+        actionsOnSave = {
+          "qualifyMembers",
+          "qualifyStaticMembers",
+          "addOverride",
+          "addDeprecated",
+          "stringConcatToTextBlock",
+          "invertEquals",
+          "addFinalModifier",
+          "instanceofPatternMatch",
+          "lambdaExpression",
+          "switchExpression",
+        },
+      },
+      codeAction = {
+        sortMembers = {
+          avoidVolatileChanges = true,
+        }
+      },
+      completion = {
+        enabled = true,
+        matchCase = false,
+        maxResults = 50,
+      },
+      configuration = {
+        updateBuildConfiguration = "interactive",
+      },
+      contentProvider = {
+        preferred = nil,
+      },
+      eclipse = {
+        downloadSources = true,
+      },
+      errors = {
+        incompleteClasspath = {
+          severity = "warning",
+        }
+      },
+      executeCommand = {
+        enabled = false,
+      },
+      foldingRange = {
+        enabled = false,
+      },
+      format = {
+        enabled = true,
+        comments = {
+          enabled = true,
+        },
+        insertSpaces = true,
+        onType = {
+          enabled = true,
+        },
+        tabSize = 2,
+      },
+      implementationsCodeLens = {
+        enabled = true,
+      },
+      import = {
+        gradle = {
+          enabled = true,
+        },
+        maven = {
+          enabled = true,
+        },
+      },
+      inlayhints = {
+        parameterNames = {
+          enabled = "literals",
+        },
+      },
+      jdt = {
+        ls = {
+          androidSupport = {
+            enabled = true,
+          },
+          lombokSupport = {
+            enabled = true,
+          },
+          protofBufSupport = {
+            enabled = true,
+          },
+        },
+      },
+      maven = {
+        downloadSources = true,
+        updateSnapshots = false,
+      },
+      project = {
+        encoding = "WARNING",
+      },
+      referencesCodeLens = {
+        enabled = true,
+      },
+      references = {
+        includeAccessors = true,
+        includeDecompiledSources = true,
+      },
+      rename = {
+        enabled = true,
+      },
+      saveActions = {
+        organizeImports = true,
+      },
+      selectionRange = {
+        enabled = true,
+      },
+      signatureHelp = {
+        enabled = true,
+        description = {
+          enabled = true,
+        },
+      },
+      symbols = {
+        includeSourceMethodDeclarations = true,
+      },
+      trace = {
+        server = "off",
+      },
+      edit = {
+        validateAllOpenBuffersOnChanges = true,
+      },
+    }
+  }
+  vim.lsp.config("jdtls", {
+    -- Note, because this setup uses nvim-jdtls which requires the config to specify cmd when calling start_or_attach and since cmd for jdtls depends on the project being opened, cmd is calcualted and specified in autocmds below
+    settings = jdtls_settings,
+  })
+
+  --- java_language_server
+  vim.lsp.config("java_language_server", {
+    cmd = { "java-language-server" },
+    settings = {
+      -- This LSP does not take settings
+    },
+  })
+
+  local jdtls_cmd = nil
+  local jdtls_data_path = nil
   vim.api.nvim_create_autocmd(
     { "FileType" },
     {
-      desc = "Activate Java LSP(s) and setup keybindings to controls them.",
+      desc = "Setup keymappings to control Java LSPs.",
       pattern = { "java", "java.*" },
-      group = vim.api.nvim_create_augroup("bkb-java-lsp", { clear = true }),
+      group = vim.api.nvim_create_augroup("bkb-java-lsp-kemappings", { clear = true }),
       once = true,
       callback = function(_)
-        local path = require("plenary.path")
+        if not jdtls_data_path then
+          local path = require("plenary.path")
 
-        local cwd_last_component = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-        local jdtls_data_path = vim.fn.resolve(
-          tostring(
-            path.new(vim.fn.stdpath("cache"))
-              :joinpath("bkb/lsp_cache/jdtls")
-              :joinpath(cwd_last_component)
+          local cwd_last_component = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+          jdtls_data_path = vim.fn.resolve(
+            tostring(
+              path.new(vim.fn.stdpath("cache"))
+                :joinpath("bkb/lsp_cache/jdtls")
+                :joinpath(cwd_last_component)
+            )
           )
-        )
+        end
 
-        -- jdtls
-        --- https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
         jdtls_cmd = {
           "jdtls",
           "-data", jdtls_data_path
         }
-        vim.lsp.config("jdtls", {
-          cmd = jdtls_cmd,
-          settings = {
-            -- TODO
-          },
-        })
-
-        -- java_language_server
-        vim.lsp.config("java_language_server", {
-          cmd = { "java-language-server" },
-          settings = {
-            -- This LSP does not take settings
-          },
-        })
 
         -- Enable and start LSP
-        -- By default, enable jdtls and ensure that java-language-server is disabled
+        -- By default, enable jdtls and start/attach to it and ensure that java-language-server is disabled
         vim.lsp.enable("java-language-server", false)
-        local jdtls = require("jdtls")
-        jdtls.start_or_attach({ cmd = jdtls_cmd })
+        require("jdtls").start_or_attach({
+          cmd = jdtls_cmd,
+          settings = jdtls_settings
+        })
 
-        -- Add keymappings
         vim.keymap.set(
           "n",
           "<leader><leader>ljj1",
@@ -754,7 +887,11 @@ local function configure_supported_lsp_servers()
             vim.lsp.stop_client(vim.lsp.get_clients({ bufnr = 0 }))
             -- Ensure to first disable then enable. Order matters.
             vim.lsp.enable("java_language_server", false)
-            jdtls.start_or_attach({ cmd = jdtls_cmd })
+            require("jdtls").start_or_attach({
+              cmd = jdtls_cmd,
+              settings = jdtls_settings
+            })
+            vim.lsp.enable("jdtls", true)
             vim.cmd.edit()
           end,
           {
@@ -801,6 +938,21 @@ local function configure_supported_lsp_servers()
             desc = "Clean up jdtls data dir for the project."
           }
         )
+      end,
+    }
+  )
+
+  vim.api.nvim_create_autocmd(
+    { "FileType" },
+    {
+      desc = "Start jdtls.",
+      pattern = { "java", "java.*" },
+      group = vim.api.nvim_create_augroup("bkb-jdtls-init", { clear = true }),
+      callback = function(_)
+        if vim.lsp.is_enabled("jdtls") then
+          -- Note, since nvim guarantees that autocmds are executed in the same oreder in which they were registered, jdtls_cmd will be set by the previously registered autocmd.
+          require("jdtls").start_or_attach({ cmd = jdtls_cmd })
+        end
       end,
     }
   )

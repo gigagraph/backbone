@@ -1,5 +1,12 @@
 # Java
 
+2 main LSP server implementations exist in for the Java programming language:
+
+- [`java_language_server`][java-language-server].
+- [`jdtls`][jdtls].
+
+Both implement have some features that the other does not, so this setup recommends installing both and configuring your environment to enable easy switch between both. `jdtls` seem to have a better support, so this guide recommends using it as a default LSP server implementation. Additionally, for `neovim`, the setup recommends using the [`nvim-jdtls`][nvim-jdtls] plugin.
+
 ## [`java_language_server`][java-language-server] installation
 
 > [!NOTE]
@@ -101,6 +108,18 @@ EOF
 sudo chmod +x "${JDTLS_BIN_PATH}"
 ```
 
+> [!NOTE]
+>
+> When running `jdtls`, users must pass `-data` flag for the LSP server to function properly. The argument of the `-data /path/to/unique/dir/per/maven_or_gradle/project` flag is a path where `jdtls` will write its "index" and other files that it uses at runtime to respond to the LSP requests per project. This directory must be unique per Java project that is built with [maven][maven] or [gradle][gradle].
+
+> [!IMPORTANT]
+>
+> The procedure to detect the boundaries of a Java project might not be straightforward due to the possible mix of build systems and the usage of other build systems. At the moment the `neovim` config extracts the name of the immediate directory in the **current working** directory (let's name it a `PROJ_DIR_NAME`) and uses `$(nvim --headless -c 'lua print(vim.fn.stdpath("cache"))' -c 'quitall!')/bkb/lsp_cache/jdtls/${PROJ_DIR_NAME}` as a value for the `-data` flag. Therefore, this setup assumes that the users start `neovim` in the project root directory.
+
+> [!NOTE]
+>
+> In addition to installing `jdtls`, this guide recommends installing the [`nvim-jdtls`][nvim-jdtls] `neovim` plguin and running `jdtls` through it. The plugin adds additional features that `jdtls` supports to `neovim` on top of the vanilla `jdtls` LSP setup.
+
 ## Useful link
 
 - [java-language-server][java-language-server]
@@ -110,6 +129,8 @@ sudo chmod +x "${JDTLS_BIN_PATH}"
 - [jdtls-github][jdtls-github]
 - [jdtls-installation][jdtls-installation]
 - [nvim-jdtls][nvim-jdtls]
+- [maven][maven]
+- [gradle][gradle]
 
 [java-language-server]: https://github.com/georgewfraser/java-language-server
 [java-language-server-installation]: https://github.com/georgewfraser/java-language-server/tree/master#installation-other-editors
@@ -118,3 +139,5 @@ sudo chmod +x "${JDTLS_BIN_PATH}"
 [jdtls-github]: https://github.com/eclipse-jdtls/eclipse.jdt.ls
 [jdtls-installation]: https://github.com/eclipse-jdtls/eclipse.jdt.ls#installation
 [nvim-jdtls]: https://github.com/mfussenegger/nvim-jdtls
+[maven]: https://maven.apache.org/
+[gradle]: https://gradle.org/

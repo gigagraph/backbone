@@ -12,6 +12,29 @@ Supported LSP servers:
 - [Bash](./bash.md).
 - [Latex](./latex.md).
 - [Docker](./docker.md).
+- [Java](./java.md).
+
+<!-- TODO: tomorrow - setup LSP -->
+<!-- TODO -->
+- [ ] TODO: languages to support:
+  - Definitely:
+    - Protobuf (`buf_ls`).
+    - Yaml (`yamlls`).
+    - Helm (`helm_ls`).
+    - Bazel (`bazelrc_lsp`, `starpls`).
+    - Cue (`cue`).
+    - Nix (`nixd`).
+    - Haskell (`hls`).
+    - Javascript/Typescript (+ the rest of the web stack - HTLM, CSS, SCSS, SASS).
+      - Emmet LSP ([emmet-language-server](https://github.com/olrtg/emmet-language-server)).
+      - eslint.
+      - `tailwindcss`.
+      - `ts_ls` (typescript-language-server).
+      - ...
+      - Optionally:
+        - angularls.
+        - htmx.
+        - something for react.
 
 Planned to be supported in future:
 - Zig/Ziggy/Ziggy Schema.
