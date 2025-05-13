@@ -13,7 +13,7 @@ This setup recommends using [gopls][github-gopls] as an implementaion of LSP ser
 
 This guide recommends installing `gopls` following the [official installtion instructions][github-gopls].
 
-Go to https://golng.org/x/tools/gopls and find the latest version (`GOPLS_VERSION`).
+Go to https://golang.org/x/tools/gopls and find the latest version (`GOPLS_VERSION`).
 
 Install `gopls` using `go install`:
 

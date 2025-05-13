@@ -9,14 +9,21 @@ SCRIPT_DIR="$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)"
 NVIM_CONFIG_DIR="${XDG_CONFIG_HOME}/nvim"
 NVIMPAGER_CONFIG_DIR="${XDG_CONFIG_HOME}/nvimpager"
 
+MARKSMAN_CONFIG_DIR="${XDG_CONFIG_HOME}/marksman"
+
 commands_to_run=(
+  # nvim & nvim-pager
   "rm -rf ${NVIM_CONFIG_DIR}"
   "rm -rf ${NVIMPAGER_CONFIG_DIR}"
   "ln -s ${SCRIPT_DIR}/config/ ${NVIM_CONFIG_DIR}"
   "ln -s ${SCRIPT_DIR}/config/ ${NVIMPAGER_CONFIG_DIR}"
+
+  # Marksman
+  "rm -rf ${MARKSMAN_CONFIG_DIR}"
+  "ln -s ${SCRIPT_DIR}/lsp/markdown/marksman/config ${MARKSMAN_CONFIG_DIR}"
 )
 
-echo "The script will replace your neovim config with the config from this repo:"
+echo "The script will replace your neovim config and LSP configs with the configs from this repo:"
 for command in "${commands_to_run[@]}"; do
   echo "\$ ${command}"
 done

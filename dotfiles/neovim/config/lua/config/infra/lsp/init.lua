@@ -551,6 +551,7 @@ local function configure_supported_lsp_servers()
         },
         text_sync = "full",
         title_from_heading = false,
+        incremental_references = false,
         paranoid = false,
       },
       code_action = {
