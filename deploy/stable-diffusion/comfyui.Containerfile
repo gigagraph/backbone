@@ -23,16 +23,16 @@ ENV COMFYUI_CONTAINER_PORT="${COMFYUI_CONTAINER_PORT}"
 ENV COMFYUI_FRONTEND_VERSION="Comfy-Org/ComfyUI_frontend@latest"
 
 EXPOSE ${COMFYUI_CONTAINER_PORT}
-ENV CMD="comfy --workspace ${COMFY_HOME} launch -- --listen '*'"
-CMD [
-  "comfy",
-  "--workspace", "${COMFY_HOME}",
-  "launch",
-  "--",
-  "--listen", "*",
-  "--port", "${COMFYUI_CONTAINER_PORT}",
-  "--preview-method", "auto",
-  "--front-end-version", "${COMFYUI_FRONTEND_VERSION}"
+ENV CMD="comfy --workspace '${COMFY_HOME}' launch -- --listen '*' --port '${COMFYUI_CONTAINER_PORT}' --preview-method auto --front-end-version '${COMFYUI_FRONTEND_VERSION}'"
+CMD [ \
+  "comfy", \
+  "--workspace", "'${COMFY_HOME}'", \
+  "launch", \
+  "--", \
+  "--listen", "'*'", \
+  "--port", "'${COMFYUI_CONTAINER_PORT}'", \
+  "--preview-method", "auto", \
+  "--front-end-version", "'${COMFYUI_FRONTEND_VERSION}'"
 ]
 
 VOLUME [
