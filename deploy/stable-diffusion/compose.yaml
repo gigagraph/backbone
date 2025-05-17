@@ -14,7 +14,7 @@ services:
     environment:
       COMFYUI_FRONTEND_VERSION: "${COMFYUI_FRONTEND_VERSION}"
     ports:
-      - "${COMFYUI_HOST_PORT}:${COMFYUI_CONTAINER_PORT}"
+      - "${COMFYUI_HOST_PORT}:${COMFYUI_CONTAINER_PORT:-80}"
     volumes:
       - "./comfyui-persistence/models:/opt/ComfyUI/models"
       - "./comfyui-persistence/input:/opt/ComfyUI/input"

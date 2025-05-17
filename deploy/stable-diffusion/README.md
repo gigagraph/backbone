@@ -20,8 +20,8 @@ Service to interact with locally deployed GenAI models that work with images.
 Run the following command:
 
 ```bash
-env "COMFYUI_IMAGE_TAG=comfy<comfy-version>-api<api-version>-torch<pytorch-version>-cuda<cuda-version>-devel" \
-  "COMFYUI_FRONEND_VERSION=Comfy-Org/ComfyUI_frontend@<version>"
+env "COMFYUI_IMAGE_TAG=comfy<comfy-version>-torch<pytorch-version>-cuda<cuda-version>-devel" \
+  "COMFYUI_FRONTEND_VERSION=Comfy-Org/ComfyUI_frontend@<version>"
   "COMFYUI_HOST_PORT=<comfyui-port>" \
   docker compose up -d --build
 ```
