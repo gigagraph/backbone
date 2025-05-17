@@ -1,0 +1,3 @@
+include:
+  - "chat-llm/compose.yaml"
+  - "stable-diffusion/compose.yaml"
