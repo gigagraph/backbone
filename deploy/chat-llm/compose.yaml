@@ -195,4 +195,3 @@ services:
                 - "utility"
               driver: "nvidia"
               count: "all"
-

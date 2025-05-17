@@ -5,6 +5,7 @@ venv/
 deploy/chat-llm/ollama-state/
 deploy/chat-llm/data/
 deploy/chat-llm/open-webui-state/
+deploy/stable-diffusion/comfyui-persistence/
 
 # Neovim config tests
 dotfiles/neovim/tests/.tests
