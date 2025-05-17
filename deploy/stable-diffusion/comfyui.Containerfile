@@ -8,7 +8,7 @@ RUN comfy tracking disable
 
 RUN <<EOF
   groupadd comfyui
-  useradd -m -group comfyui comfy
+  useradd -m --group comfyui comfy
 EOF
 
 RUN <<EOF
@@ -32,14 +32,14 @@ CMD [ \
   "--listen", "'*'", \
   "--port", "'${COMFYUI_CONTAINER_PORT}'", \
   "--preview-method", "auto", \
-  "--front-end-version", "'${COMFYUI_FRONTEND_VERSION}'"
+  "--front-end-version", "'${COMFYUI_FRONTEND_VERSION}'" \
 ]
 
-VOLUME [
-  "/opt/ComfyUI/models",
-  "/opt/ComfyUI/input",
-  "/opt/ComfyUI/output",
-  "/opt/ComfyUI/user",
-  "/opt/ComfyUI/custom_nodes",
-  "/opt/ComfyUI/temp",
+VOLUME [ \
+  "/opt/ComfyUI/models", \
+  "/opt/ComfyUI/input", \
+  "/opt/ComfyUI/output", \
+  "/opt/ComfyUI/user", \
+  "/opt/ComfyUI/custom_nodes", \
+  "/opt/ComfyUI/temp", \
 ]
