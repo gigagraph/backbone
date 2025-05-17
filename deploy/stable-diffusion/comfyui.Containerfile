@@ -24,7 +24,7 @@ RUN . /opt/venv/bin/activate
 
 RUN pip install --no-cache-dir --upgrade pip
 ARG COMFYUI_TORCH_VERSION
-RUN pip install --no-cache-dir --pre "torch==${COMFYUI_TORCH_VERSION}" torchvision "torchaudio==${COMFYUI_TORCH_VERSION}" \
+RUN pip install --no-cache-dir --pre "torch==${COMFYUI_TORCH_VERSION}" torchvision torchaudio \
     --index-url https://download.pytorch.org/whl/nightly/cu128
 RUN pip install --no-cache-dir comfy-cli
 
