@@ -32,6 +32,20 @@ vim.opt.textwidth = 0
 
 vim.opt.fixendofline = true
 
+-- Diagnostic
+vim.diagnostic.config({
+  -- TODO: add a keybinding to run vim.diagnostic.setqflist()
+  -- TODO: add a keybinding to run :cnext
+  -- TODO: add a keybinding to run :cprev
+  underline = true,
+  virtual_text = true,
+  virtual_lines = false,
+  signs = true,
+  float = true,
+  update_in_insert = true,
+  severity_sort = true,
+})
+
 -- Manually control search results
 vim.opt.incsearch = true
 vim.opt.ignorecase = false
@@ -149,6 +163,23 @@ local catppuccin_lazy_spec = bpu:declare_lazy_spec(
         dap_ui = true,
         native_lsp = {
           enabled = true,
+          virtual_text = {
+            errors = { "italic" },
+            hints = { "italic" },
+            warnings = { "italic" },
+            information = { "italic" },
+            ok = { "italic" },
+          },
+          underlines = {
+            errors = { "underline" },
+            hints = { "underline" },
+            warnings = { "underline" },
+            information = { "underline" },
+            ok = { "underline" },
+          },
+          inlay_hints = {
+            background = true,
+          },
         },
         semantic_tokens = true,
         nvim_surround = true,
@@ -159,11 +190,10 @@ local catppuccin_lazy_spec = bpu:declare_lazy_spec(
           -- style = "",
         },
         which_key = true,
-        -- TODO: does LSP already does this?
-        -- illuminate = {
-        --   enabled = true,
-        --   lsp = true,
-        -- },
+        illuminate = {
+          enabled = false,
+          lsp = false,
+        },
       },
       -- Color customizations
       color_overrides = {
@@ -1142,6 +1172,7 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
 )
 
 ---- nvim-lspconfig
+    -- TODO
     -- TODO: configurer keybidning to force reload all LSPs + force reload LSPs related to the current buffer
     -- :lua vim.lsp.stop_client(vim.lsp.get_clients())
     -- :edit
@@ -1150,8 +1181,8 @@ local nvim_lspconfig_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.nvim-lspconfig",
   {
     config = function(lazy_plugin, opts)
-      -- TODO: configurer
-      -- TODO: configurer LSPs servers in a separate directory
+      local bkb_lsp_config = require("config.infra.lsp")
+      bkb_lsp_config.bkb_setup_suppotred_lsp_servers()
     end
   }
 )
