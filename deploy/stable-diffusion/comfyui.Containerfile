@@ -1,10 +1,44 @@
-ARG COMFYUI_IMAGE_TAG
-ARG COMFYUI_FRONTEND_VERSION
-ARG COMFYUI_IMAGE_NAME="ghcr.io/saladtechnologies/comfyui-api"
+ARG CUDNN_BASE=devel
+ARG COMFYUI_CUDA_VERSION
+ARG COMFYUI_UBUNTU_VERSION
+FROM nvcr.io/nvidia/cuda:${COMFYUI_CUDA_VERSION}-cudnn-${CUDNN_BASE}-ubuntu${COMFYUI_UBUNTU_VERSION}
+ENV DEBIAN_FRONTEND=noninteractive
 
-FROM "${COMFYUI_IMAGE_NAME}:${COMFYUI_IMAGE_TAG}"
+RUN <<EOF
+  apt update -y
+  apt install -y \
+    wget \
+    curl \
+    git \
+    python3 \
+    python3-pip \
+    python3-venv \
+    unzip
+  rm -rf /var/lib/apt/lists/*
+EOF
 
-RUN comfy tracking disable
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:${PATH}"
+RUN . /opt/venv/bin/activate
+
+RUN pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir --pre torch torchvision torchaudio \
+    --index-url https://download.pytorch.org/whl/nightly/cu128
+RUN pip install --no-cache-dir comfy-cli
+
+ARG COMFYUI_VERSION
+RUN git clone --depth 1 --branch "v${COMFYUI_VERSION}" https://github.com/comfyanonymous/ComfyUI.git /opt
+
+WORKDIR "/opt/ComfyUI"
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+ENV COMFYUI_HOME="/opt/ComfyUI"
+
+RUN <<EOF
+  comfy --skip-prompt tracking disable
+  comfy --skip-prompt set-default "${COMFYUI_HOME}"
+EOF
 
 RUN <<EOF
   groupadd comfyui
@@ -23,7 +57,21 @@ ENV COMFYUI_CONTAINER_PORT="${COMFYUI_CONTAINER_PORT}"
 ENV COMFYUI_FRONTEND_VERSION="Comfy-Org/ComfyUI_frontend@latest"
 
 EXPOSE ${COMFYUI_CONTAINER_PORT}
-ENV CMD="comfy --workspace '${COMFY_HOME}' launch -- --listen '*' --port '${COMFYUI_CONTAINER_PORT}' --preview-method auto --front-end-version '${COMFYUI_FRONTEND_VERSION}'"
+
+ENV MODEL_DIR="${COMFYUI_HOME}/models" \
+    OUTPUT_DIR="${COMFYUI_HOME}/output" \
+    INPUT_DIR="${COMFYUI_HOME}/input" \
+    CMD="comfy --workspace '${COMFY_HOME}' launch -- --listen '*' --port '${COMFYUI_CONTAINER_PORT}' --preview-method auto --front-end-version '${COMFYUI_FRONTEND_VERSION}'"
+
+VOLUME [ \
+  "/opt/ComfyUI/models", \
+  "/opt/ComfyUI/input", \
+  "/opt/ComfyUI/output", \
+  "/opt/ComfyUI/user", \
+  "/opt/ComfyUI/custom_nodes", \
+  "/opt/ComfyUI/temp", \
+]
+
 CMD [ \
   "comfy", \
   "--workspace", "'${COMFY_HOME}'", \
@@ -33,13 +81,4 @@ CMD [ \
   "--port", "'${COMFYUI_CONTAINER_PORT}'", \
   "--preview-method", "auto", \
   "--front-end-version", "'${COMFYUI_FRONTEND_VERSION}'" \
-]
-
-VOLUME [ \
-  "/opt/ComfyUI/models", \
-  "/opt/ComfyUI/input", \
-  "/opt/ComfyUI/output", \
-  "/opt/ComfyUI/user", \
-  "/opt/ComfyUI/custom_nodes", \
-  "/opt/ComfyUI/temp", \
 ]
