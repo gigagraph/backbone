@@ -17,9 +17,11 @@ Service to interact with locally deployed GenAI models that work with images.
 >
 > The `compose.yaml` deployment assumes users set `COMFYUI_IMAGE_TAG` to the one that [includes `cuda`][github-comfyui-api-docker-prebuilt].
 
-Run the following command:
+Run the following commands:
 
 ```bash
+# TODO mkdir -p
+
 env "COMFYUI_VERSION=<comfyui-version>" \
   "COMFYUI_FRONTEND_VERSION=Comfy-Org/ComfyUI_frontend@<version>" \
   "COMFYUI_CUDA_VERSION=<cuda-version>" \

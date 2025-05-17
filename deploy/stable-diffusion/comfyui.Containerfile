@@ -24,12 +24,11 @@ RUN . /opt/venv/bin/activate
 
 RUN pip install --no-cache-dir --upgrade pip
 ARG COMFYUI_TORCH_VERSION
-RUN pip install --no-cache-dir --pre "torch==${COMFYUI_TORCH_VERSION}" torchvision torchaudio \
-    --index-url https://download.pytorch.org/whl/nightly/cu128
+RUN pip install --no-cache-dir --pre "torch==${COMFYUI_TORCH_VERSION}" torchvision "torchaudio==${COMFYUI_TORCH_VERSION}"
 RUN pip install --no-cache-dir comfy-cli
 
 ARG COMFYUI_VERSION
-RUN git clone --depth 1 --branch "v${COMFYUI_VERSION}" https://github.com/comfyanonymous/ComfyUI.git /opt
+RUN git clone --depth 1 --branch "v${COMFYUI_VERSION}" https://github.com/comfyanonymous/ComfyUI.git /opt/ComfyUI
 
 WORKDIR "/opt/ComfyUI"
 
@@ -62,8 +61,7 @@ EXPOSE ${COMFYUI_CONTAINER_PORT}
 
 ENV MODEL_DIR="${COMFYUI_HOME}/models" \
     OUTPUT_DIR="${COMFYUI_HOME}/output" \
-    INPUT_DIR="${COMFYUI_HOME}/input" \
-    CMD="comfy --workspace '${COMFY_HOME}' launch -- --listen '*' --port '${COMFYUI_CONTAINER_PORT}' --preview-method auto --front-end-version '${COMFYUI_FRONTEND_VERSION}'"
+    INPUT_DIR="${COMFYUI_HOME}/input"
 
 VOLUME [ \
   "/opt/ComfyUI/models", \
@@ -71,16 +69,8 @@ VOLUME [ \
   "/opt/ComfyUI/output", \
   "/opt/ComfyUI/user", \
   "/opt/ComfyUI/custom_nodes", \
-  "/opt/ComfyUI/temp", \
+  "/opt/ComfyUI/temp" \
 ]
 
-CMD [ \
-  "comfy", \
-  "--workspace", "'${COMFY_HOME}'", \
-  "launch", \
-  "--", \
-  "--listen", "'*'", \
-  "--port", "'${COMFYUI_CONTAINER_PORT}'", \
-  "--preview-method", "auto", \
-  "--front-end-version", "'${COMFYUI_FRONTEND_VERSION}'" \
-]
+COPY ./comfyui-entrypoint.sh /home/comfy/entrypoint.sh
+ENTRYPOINT ["/home/comfy/entrypoint.sh"]
