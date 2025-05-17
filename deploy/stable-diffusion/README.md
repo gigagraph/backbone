@@ -23,6 +23,7 @@ Run the following command:
 env "COMFYUI_VERSION=<comfyui-version>" \
   "COMFYUI_FRONTEND_VERSION=Comfy-Org/ComfyUI_frontend@<version>" \
   "COMFYUI_CUDA_VERSION=<cuda-version>" \
+  "COMFYUI_CUDNN_VERSION=<cudnn-version>" \
   "COMFYUI_UBUNTU_VERSION=<ubuntu-version>" \
   "COMFYUI_TORCH_VERSION=<torch-version>" \
   "COMFYUI_HOST_PORT=<comfyui-port>" \
