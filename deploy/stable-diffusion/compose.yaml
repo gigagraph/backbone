@@ -7,7 +7,6 @@ services:
       context: "."
       dockerfile: "comfyui.Containerfile"
       args:
-        COMFYUI_IMAGE_TAG: "${COMFYUI_IMAGE_TAG}"
         COMFYUI_CONTAINER_PORT: "${COMFYUI_CONTAINER_PORT:-80}"
         COMFYUI_CUDA_VERSION: "${COMFYUI_CUDA_VERSION}"
         COMFYUI_UBUNTU_VERSION: "${COMFYUI_UBUNTU_VERSION}"
