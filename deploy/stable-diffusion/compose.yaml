@@ -12,6 +12,7 @@ services:
         COMFYUI_CUDA_VERSION: "${COMFYUI_CUDA_VERSION}"
         COMFYUI_UBUNTU_VERSION: "${COMFYUI_UBUNTU_VERSION}"
         COMFYUI_VERSION: "${COMFYUI_VERSION}"
+        COMFYUI_TORCH_VERSION: "${COMFYUI_TORCH_VERSION}"
     container_name: "stable-diffusion-comfyui"
     user: "comfy"
     environment:
