@@ -21,6 +21,7 @@ services:
     ports:
       - "${COMFYUI_HOST_PORT}:${COMFYUI_CONTAINER_PORT:-80}"
     volumes:
+      - "./comfyui-persistence/custom_nodes:/opt/ComfyUI/manager_custom_nodes"
       - "./comfyui-persistence/models:/opt/ComfyUI/models"
       - "./comfyui-persistence/input:/opt/ComfyUI/input"
       - "./comfyui-persistence/output:/opt/ComfyUI/output"

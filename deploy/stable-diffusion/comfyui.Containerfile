@@ -40,6 +40,9 @@ RUN git clone --depth 1 --branch "${COMFYUI_MANAGER_VERSION}" https://github.com
 RUN uv pip install --no-cache-dir --requirements ./custom_nodes/comfyui-manager/requirements.txt
 
 COPY ./comfyui-manager-config.ini ./custom_nodes/comfyui-manager/config.ini
+COPY ./extra_model_paths.yaml ./extra_model_paths.yaml
+
+RUN mkdir -p /opt/ComfyUI/manager_custom_nodes
 
 ENV COMFYUI_HOME="/opt/ComfyUI"
 ENV COMFYUI_PATH="${COMFYUI_HOME}"
@@ -72,6 +75,7 @@ ENV MODEL_DIR="${COMFYUI_HOME}/models" \
     INPUT_DIR="${COMFYUI_HOME}/input"
 
 VOLUME [ \
+  "/opt/ComfyUI/manager_custom_nodes", \
   "/opt/ComfyUI/models", \
   "/opt/ComfyUI/input", \
   "/opt/ComfyUI/output", \
