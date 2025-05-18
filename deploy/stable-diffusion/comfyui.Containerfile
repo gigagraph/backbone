@@ -23,18 +23,26 @@ ENV PATH="/opt/venv/bin:${PATH}"
 RUN . /opt/venv/bin/activate
 
 RUN pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir uv
 ARG COMFYUI_TORCH_VERSION
-RUN pip install --no-cache-dir --pre "torch==${COMFYUI_TORCH_VERSION}" torchvision "torchaudio==${COMFYUI_TORCH_VERSION}"
-RUN pip install --no-cache-dir comfy-cli
+RUN uv pip install --no-cache-dir --pre "torch==${COMFYUI_TORCH_VERSION}" torchvision "torchaudio==${COMFYUI_TORCH_VERSION}"
+RUN uv pip install --no-cache-dir comfy-cli
 
 ARG COMFYUI_VERSION
 RUN git clone --depth 1 --branch "v${COMFYUI_VERSION}" https://github.com/comfyanonymous/ComfyUI.git /opt/ComfyUI
 
 WORKDIR "/opt/ComfyUI"
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN uv pip install --no-cache-dir --requirements requirements.txt
+
+ARG COMFYUI_MANAGER_VERSION
+RUN git clone --depth 1 --branch "${COMFYUI_MANAGER_VERSION}" https://github.com/Comfy-Org/ComfyUI-Manager ./custom_nodes/comfyui-manager
+RUN uv pip install --no-cache-dir --requirements ./custom_nodes/comfyui-manager/requirements.txt
+
+COPY ./comfyui-manager-config.ini ./custom_nodes/comfyui-manager/config.ini
 
 ENV COMFYUI_HOME="/opt/ComfyUI"
+ENV COMFYUI_PATH="${COMFYUI_HOME}"
 
 RUN <<EOF
   comfy --skip-prompt tracking disable
@@ -68,7 +76,6 @@ VOLUME [ \
   "/opt/ComfyUI/input", \
   "/opt/ComfyUI/output", \
   "/opt/ComfyUI/user", \
-  "/opt/ComfyUI/custom_nodes", \
   "/opt/ComfyUI/temp" \
 ]
 

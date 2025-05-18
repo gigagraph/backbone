@@ -8,6 +8,7 @@ services:
       dockerfile: "comfyui.Containerfile"
       args:
         COMFYUI_CONTAINER_PORT: "${COMFYUI_CONTAINER_PORT:-80}"
+        COMFYUI_MANAGER_VERSION: "${COMFYUI_MANAGER_VERSION}"
         COMFYUI_CUDA_VERSION: "${COMFYUI_CUDA_VERSION}"
         COMFYUI_UBUNTU_VERSION: "${COMFYUI_UBUNTU_VERSION}"
         COMFYUI_VERSION: "${COMFYUI_VERSION}"
@@ -24,7 +25,6 @@ services:
       - "./comfyui-persistence/input:/opt/ComfyUI/input"
       - "./comfyui-persistence/output:/opt/ComfyUI/output"
       - "./comfyui-persistence/user:/opt/ComfyUI/user"
-      - "./comfyui-persistence/custom_nodes:/opt/ComfyUI/custom_nodes"
     restart: "unless-stopped"
     deploy:
       resources:
