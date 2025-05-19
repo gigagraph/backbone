@@ -35,14 +35,17 @@ WORKDIR "/opt/ComfyUI"
 
 RUN uv pip install --no-cache-dir --requirements requirements.txt
 
+# Install custom nodes
 ARG COMFYUI_MANAGER_VERSION
-RUN git clone --depth 1 --branch "${COMFYUI_MANAGER_VERSION}" https://github.com/Comfy-Org/ComfyUI-Manager ./custom_nodes/comfyui-manager
-RUN uv pip install --no-cache-dir --requirements ./custom_nodes/comfyui-manager/requirements.txt
-
-COPY ./comfyui-manager-config.ini ./custom_nodes/comfyui-manager/config.ini
-COPY ./extra_model_paths.yaml ./extra_model_paths.yaml
-
-RUN mkdir -p /opt/ComfyUI/manager_custom_nodes
+ARG COMFYUI_IMPACT_PACK_VERSION
+RUN <<EOF
+  git clone --depth 1 --branch "${COMFYUI_MANAGER_VERSION}" https://github.com/Comfy-Org/ComfyUI-Manager ./custom_nodes/comfyui-manager
+  uv pip install --no-cache-dir --requirements ./custom_nodes/comfyui-manager/requirements.txt
+EOF
+RUN <<EOF
+  git clone --depth 1 --branch "${COMFYUI_IMPACT_PACK_VERSION}" https://github.com/ltdrdata/ComfyUI-Impact-Pack ./custom_nodes/comfyui-impact-pack
+  uv pip install --no-cache-dir --requirements ./custom_nodes/comfyui-impact-pack/requirements.txt
+EOF
 
 ENV COMFYUI_HOME="/opt/ComfyUI"
 ENV COMFYUI_PATH="${COMFYUI_HOME}"
@@ -58,11 +61,19 @@ RUN <<EOF
 EOF
 
 RUN <<EOF
-  chown -R root:comfy /opt/ComfyUI
+  chown -R comfy:comfyui /opt/ComfyUI
   chmod -R g=u /opt/ComfyUI
+
+  chown -R comfy:comfyui /opt/venv
+  chmod -R g=u /opt/venv
 EOF
 
 USER comfy
+
+COPY --chown=comfy:comfyui ./comfyui-manager-config.ini ./custom_nodes/comfyui-manager/config.ini
+COPY --chown=comfy:comfyui ./extra_model_paths.yaml ./extra_model_paths.yaml
+
+RUN mkdir -p /opt/ComfyUI/{manager_custom_nodes,temp}
 
 ARG COMFYUI_CONTAINER_PORT=80
 ENV COMFYUI_CONTAINER_PORT="${COMFYUI_CONTAINER_PORT}"
@@ -83,5 +94,5 @@ VOLUME [ \
   "/opt/ComfyUI/temp" \
 ]
 
-COPY ./comfyui-entrypoint.sh /home/comfy/entrypoint.sh
+COPY --chown=comfy:comfyui ./comfyui-entrypoint.sh /home/comfy/entrypoint.sh
 ENTRYPOINT ["/home/comfy/entrypoint.sh"]

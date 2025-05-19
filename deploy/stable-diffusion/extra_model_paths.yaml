@@ -1,9 +1,5 @@
-comfyui_container_manager:
+comfyui:
   base_path: "/opt/ComfyUI"
   is_default: true
-  custom_nodes: "manager_custom_nodes/"
-  download_model_base: "models/"
-
-comfyui_container_manager:
-  base_path: "/opt/ComfyUI"
   custom_nodes: "custom_nodes/"
+  download_model_base: "models/"
