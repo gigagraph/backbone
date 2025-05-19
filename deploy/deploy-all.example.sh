@@ -24,7 +24,7 @@ SCRIPT_DIR="$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)"
   export COMFYUI_HOST_PORT="" # FIXME: Port on the host which will expose ComfyUI.
 
   # stable-diffusion deployment needs these directories
-  mkdir -p "${SCRIPT_DIR}/comfyui-persistence/"{models,input,output,user,custom_nodes}
+  mkdir -p "${SCRIPT_DIR}/stable-diffusion/comfyui-persistence/"{models,input,output,user,custom_nodes}
   chown -R 1000:1000 "${SCRIPT_DIR}/comfyui-persistence"
 
   docker compose up -d --build
