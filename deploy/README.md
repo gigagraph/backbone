@@ -14,9 +14,9 @@ This subdirecotry contains code and configuration to deploy various software ser
    cp deploy/deploy-all.example.sh deploy/deploy-all.sh
    ```
 2. Edit `deploy/deploy-all.sh` and set the variables according to the instructions in the file.
-3. Run:
+3. Run the script:
    ```bash
-   docker compose up -d --build
+   ./deploy/deploy-all.sh
    ```
 
 ## Useful links
