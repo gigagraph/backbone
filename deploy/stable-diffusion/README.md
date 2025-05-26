@@ -59,6 +59,7 @@ Put the downloaded models in [the corresponding directory under `./comfyui-persi
 - [github-comfyui-api-docker][github-comfyui-api-docker]
 - [github-comfyui-api-docker-prebuilt][github-comfyui-api-docker-prebuilt]
 - [comfyui-directory-structure][comfyui-directory-structure]
+- [comfyui-examples][comfyui-examples]
 
 [stable-diffusion-webui]: https://github.com/AUTOMATIC1111/stable-diffusion-webui
 [sd-webui-docker]: https://github.com/neggles/sd-webui-docker
@@ -68,3 +69,4 @@ Put the downloaded models in [the corresponding directory under `./comfyui-persi
 [github-comfyui-api-docker]: https://github.com/SaladTechnologies/comfyui-api
 [github-comfyui-api-docker-prebuilt]: https://github.com/SaladTechnologies/comfyui-api?tab=readme-ov-file#prebuilt-docker-images
 [comfyui-directory-structure]: https://comfyui-wiki.com/en/interface/files
+[comfyui-examples]: https://comfyanonymous.github.io/ComfyUI_examples/
