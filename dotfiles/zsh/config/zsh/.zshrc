@@ -210,11 +210,25 @@ zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' verbose true
 zstyle :compinstall filename "${HOME}/.config/zsh/.zshrc"
 
-ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${HOST}"
+## Configure completions cache and ensure that the completions cache direcotry exists
+COMPLETIONS_CACHE_DIR="${ZSH_CACHE_DIR}/.zcompcache"
+if [ ! -e "${COMPLETIONS_CACHE_DIR}" ]; then
+  mkdir -p "${COMPLETIONS_CACHE_DIR}"
+fi
 
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "${COMPLETIONS_CACHE_DIR}"
+
+## Configure bazel completions
+#### 1 week = 604800 seconds
+zstyle 'completion:init:bazel:*' cache-lifetime 604800
+
+## Add completions dir to fpath
 fpath+=("${ZSH_COMPLETIONS_DIR}")
 
 ## Enable zsh completions
+ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${HOST}"
+
 autoload -Uz compinit
 compinit -d "${ZSH_COMPDUMP}"
 

@@ -467,6 +467,41 @@ uvx --generate-shell-completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_uvx"
 
 After you generated the completions, ensure that the directory with the `_uv` and `_uvx` completions files is on your zsh `fpath`.
 
+#### [`bazel`](../../system-setup/toolchains/bazel/README.md)
+
+##### `bazel` completions
+
+Clone the `bazel` repo and optionally checkout the target version of `bazel` that you intend to use (the script should work with any version of bazel as it calls `bazel`):
+
+```bash
+git clone git@github.com:bazelbuild/bazel.git
+cd bazel
+git checkout "${BAZEL_VERSION}"
+```
+
+Copy the completions script to a completions directory on your zsh `fpath`:
+
+```bash
+cp './scripts/zsh_completion/_bazel' "${ZSH_COMPLETIONS_DIR}/_bazel"
+```
+
+Optionally, ensure that the `.zshrc` file enables completions cache before initializing `zsh` completions (taken from the instructions in the completion script):
+
+```bash
+## Configure completions cache and ensure that the completions cache direcotry exists
+COMPLETIONS_CACHE_DIR="${ZSH_CACHE_DIR}/.zcompcache"
+if [ ! -e "${COMPLETIONS_CACHE_DIR}" ]; then
+  mkdir -p "${COMPLETIONS_CACHE_DIR}"
+fi
+
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "${COMPLETIONS_CACHE_DIR}"
+
+## Configure bazel completions
+#### 1 week = 604800 seconds
+zstyle 'completion:init:bazel:*' cache-lifetime 604800
+```
+
 #### Deprecated plugins
 
 ##### `zsh-vi-mode`

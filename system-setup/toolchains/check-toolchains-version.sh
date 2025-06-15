@@ -16,6 +16,7 @@ TOOLCHAIN_VERSION_CMDS=(
   "lualatex --version"
   "docker version"
   "tree-sitter --version"
+  "bazelisk version"
 )
 
 for TOOLCHAIN_VERSION_CMD in "${TOOLCHAIN_VERSION_CMDS[@]}"; do

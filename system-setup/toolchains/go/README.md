@@ -6,7 +6,7 @@
 
 1. Remove the previous installation (depending), e.g.:
   - ```bash
-    rm -rf /usr/local/go &&
+    rm -rf /usr/local/go
     ```
 2. Download the desired version of go (`${GO_VERSION}`), e.g. from the [official mirror][download-go].
 3. Unpack the downloaded archive to a directory on the filesystem, where you want to be able to access it from. E.g. you can install it for a specific user by unpacking go to `${HOME}/.local/bin/go`, or you can install it system-wide at `/usr/local/go` Go calls this directory `${GOROOT}`.

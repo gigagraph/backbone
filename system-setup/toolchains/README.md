@@ -11,6 +11,7 @@
 - [TeX Live](./texlive/README.md).
 - [Docker](./docker/README.md).
 - [Tree-sitter](./tree-sitter/README.md).
+- [Bazel](./bazel).
 
 ## Verify versions of the installed toolchains
 

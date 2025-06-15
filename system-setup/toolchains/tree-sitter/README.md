@@ -49,7 +49,7 @@ cargo install --all-features --locked --path cli
 
 Use the [`tree-sitter complete` subcommand][tree-sitter-completions] to generate shell completions.
 
-For an example, see the corresponding section in the [zsh docs file in this repo](../../zsh/README.md#tree-sitter).
+For an example, see the corresponding section in the [zsh docs file in this repo](../../../zsh/README.md#tree-sitter).
 
 ## Useful links
 
