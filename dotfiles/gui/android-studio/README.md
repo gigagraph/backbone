@@ -7,8 +7,47 @@
 This guide recommend installing Android Studio by downloading it the build from the official website. Unfortunately, at the time of writing, [the AOSP build of Android Studio does not have clear instructions and the provided instructions do not work](#building-from-source-does-not-work).
 
 1. [Download Android Studio build from the official website for your OS and processor][android-studio].
-<!-- TODO: instructions to download and install -->
-2. TODO
+2. Unpack the downloaded archive to the `/opt` directory:
+   ```bash
+   sudo tar xf android-studio-*.tar.gz -C /opt
+   ```
+3. Create a group that will own the installation and add the current user to the group:
+   ```bash
+   ANDROID_STUDIO_GROUP="android-studio"
+   sudo groupadd "${ANDROID_STUDIO_GROUP}"
+   sudo usermod -aG "${ANDROID_STUDIO_GROUP}" "${USER}"
+   newgrp "${ANDROID_STUDIO_GROUP}"
+   # If the last command does not work install shadow-utils or relogin to the account
+
+   # After this, the current user must be have the firefox group
+   groups "${USER}"
+   ```
+4. Change the group ownership of the directory and allow the group to `rwx`:
+   ```bash
+   ANDROID_STUDIO_GROUP="android-studio"
+   sudo chgrp -R "${ANDROID_STUDIO_GROUP}" /opt/android-studio
+   sudo chmod g=rwx -R /opt/android-studio
+   ```
+5. Create a desktop entry:
+   ```bash
+   cat << EOF | sed 's/^[[:space:]]*//; s/[[:space:]]*$//' > ~/.local/share/applications/android_studio.desktop
+   [Desktop Entry]
+   Name=Android Studio
+   GenericName=Android Studio
+   Exec=/opt/android-studio/bin/studio %u
+   Terminal=false
+   Icon=/opt/android-studio/bin/studio.svg
+   Type=Application
+   Categories=Application;X-Developer;
+   Comment=Android Studio.
+   StartupWMClass=Android Studio
+   EOF
+   ```
+6. Give the desktop entry file execute permissions:
+   ```bash
+   chmod +x ~/.local/share/applications/android_studio.desktop
+   ```
+
 
 ### Building from source (does not work)
 

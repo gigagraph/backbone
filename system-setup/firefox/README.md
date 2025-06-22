@@ -20,13 +20,13 @@ Follow the instructions from [the guide][setup-firefox-developer-edition-on-ubun
    # After this, the current user must be have the firefox group
    groups "${USER}"
    ```
-3. Change the group ownership of the directory and allow the group to `rwx`:
+4. Change the group ownership of the directory and allow the group to `rwx`:
    ```bash
    FIREFOX_GROUP="firefox"
    sudo chgrp -R "${FIREFOX_GROUP}" /opt/firefox
    sudo chmod g=rwx -R /opt/firefox
    ```
-4. Create a desktop entry:
+5. Create a desktop entry:
    ```bash
    cat << EOF | sed 's/^[[:space:]]*//; s/[[:space:]]*$//' > ~/.local/share/applications/firefox_dev.desktop
    [Desktop Entry]
@@ -41,7 +41,7 @@ Follow the instructions from [the guide][setup-firefox-developer-edition-on-ubun
    StartupWMClass=Firefox Developer Edition
    EOF
    ```
-5. Give the desktop entry file execute permissions:
+6. Give the desktop entry file execute permissions:
    ```bash
    chmod +x ~/.local/share/applications/firefox_dev.desktop
    ```
