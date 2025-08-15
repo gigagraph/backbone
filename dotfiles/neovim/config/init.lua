@@ -1426,7 +1426,7 @@ local blinkcmp_lazy_spec = bpu:declare_lazy_spec(
           },
         },
         menu = {
-          enable = true,
+          enabled = true,
           auto_show = true,
           min_width = 15,
           max_height = 10,
@@ -1515,7 +1515,7 @@ local blinkcmp_lazy_spec = bpu:declare_lazy_spec(
         implementation = "prefer_rust_with_warning",
         use_frecency = true,
         use_proximity = true,
-        use_insafe_no_lock = false,
+        use_unsafe_no_lock = false,
         sorts = {
           "exact",
           "score",
