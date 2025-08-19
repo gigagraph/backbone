@@ -182,7 +182,7 @@ Follow Nvidia's official instructions to install the [GPU driver][nvidia-driver-
   - [intel-docs-install-npu-driver][intel-docs-install-npu-driver].
     - [github-intel-npu-driver][github-intel-npu-driver].
   - [intel-docs-install-oneapi-hpc-toolkit][intel-docs-install-oneapi-hpc-toolkit].
-Nvidia:
+- Nvidia:
   - [arch-wiki-nvidia][arch-wiki-nvidia].
   - [debian-nvidia-drivers][debian-nvidia-drivers].
   - [ubuntu-nvidia-drivers-installation][ubuntu-nvidia-drivers-installation].
