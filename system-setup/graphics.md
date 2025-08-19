@@ -20,7 +20,7 @@ sudo apt install -y \
   libxatracker-dev \
   mesa-vulkan-drivers \
   mesa-va-drivers \
-  mesa-opencl-icd \
+  mesa-opencl-icd
 ```
 
 ### Intel `compute-runtime` (Level Zero, OpenCL driver, and GPU driver)
