@@ -529,41 +529,41 @@ local function configure_supported_lsp_servers()
       client.server_capabilities.hoverProvider = false
     end,
     init_options = {
-      configuration = {
-        lint = {
-          fixable = { "ALL" },
-          select = { "ALL" },
+      settings = {
+        configuration = {
+          lint = {
+            fixable = { "ALL" },
+            select = { "ALL" },
+          },
+          format = {
+            ["quote-style"] = "double",
+            ["indent-style"] = "space",
+            ["skip-magic-trailing-comma"] = false,
+            ["line-ending"] = "auto",
+          },
         },
+        codeAction = {
+          disableRuleComment = {
+            enable = true
+          },
+          fixViolation = {
+            enable = false
+          }
+        },
+        configurationPreference = "filesystemFirst",
+        fixAll = true,
         format = {
-          ["quote-style"] = "double",
-          ["indent-style"] = "space",
-          ["skip-magic-trailing-comma"] = false,
-          ["line-ending"] = "auto",
+          preview = false
         },
-      },
-    },
-    settings = {
-      lineLength = 120,
-      configurationPreference = "filesystemFirst",
-      fixAll = true,
-      organizeImports = true,
-      showSyntaxErrors = true,
-      codeAction = {
-        disableRuleComment = {
+        lineLength = 120,
+        lint = {
           enable = true,
+          preview = false,
+          select = { "ALL" }
         },
-        fixViolation = {
-          enable = false,
-        },
-      },
-      lint = {
-        enable = true,
-        preview = false,
-        select = { "ALL" },
-      },
-      format = {
-        preview = false,
-      },
+        organizeImports = true,
+        showSyntaxErrors = true
+      }
     },
   })
 
