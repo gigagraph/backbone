@@ -278,12 +278,14 @@ compdef batgrep=rg
 local FZF_CUSTOM_FLAGS=(
   "--wrap"
   "--ansi"
+  "--preview-window=hidden"
 )
 
 local FZF_CUSTOM_KEYBINDINGS=(
   "--bind=ctrl-e:preview-down"
   "--bind=ctrl-y:preview-up"
   "--bind=ctrl-w:toggle-preview-wrap"
+  "--bind=ctrl-v:toggle-preview"
 )
 
 # Options the fzf command
