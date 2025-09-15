@@ -1390,10 +1390,10 @@ local blinkcmp_lazy_spec = bpu:declare_lazy_spec(
           show_on_accept_on_trigger_character = false,
           show_on_insert_on_trigger_character = false,
           show_on_insert = false,
-          -- show_on_blocked_trigger_characters = { " ", "\n", "\t", },
-          -- show_on_x_blocked_trigger_characters = {
-          --   "'", '"', "(", "{", "[",
-          -- },
+          show_on_blocked_trigger_characters = { " ", "\n", "\t", },
+          show_on_x_blocked_trigger_characters = {
+            "'", '"', "(", "{", "[",
+          },
         },
         list = {
           max_items = 200,
@@ -1495,9 +1495,9 @@ local blinkcmp_lazy_spec = bpu:declare_lazy_spec(
         trigger = {
           enabled = true,
           show_on_keyword = false,
-          show_on_trigger_character = true,
+          show_on_trigger_character = false,
           show_on_insert = false,
-          show_on_insert_on_trigger_character = true,
+          show_on_insert_on_trigger_character = false,
         },
         window = {
           min_width = 1,
