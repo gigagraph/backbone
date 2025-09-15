@@ -80,7 +80,7 @@ vim.keymap.set(
 -- Diagnostic
 vim.diagnostic.config({
   underline = true,
-  virtual_text = true,
+  virtual_text = false,
   virtual_lines = false,
   signs = true,
   float = true,
@@ -1390,10 +1390,10 @@ local blinkcmp_lazy_spec = bpu:declare_lazy_spec(
           show_on_accept_on_trigger_character = false,
           show_on_insert_on_trigger_character = false,
           show_on_insert = false,
-          show_on_blocked_trigger_characters = { " ", "\n", "\t", },
-          show_on_x_blocked_trigger_characters = {
-            "'", '"', "(", "{", "[",
-          },
+          -- show_on_blocked_trigger_characters = { " ", "\n", "\t", },
+          -- show_on_x_blocked_trigger_characters = {
+          --   "'", '"', "(", "{", "[",
+          -- },
         },
         list = {
           max_items = 200,
@@ -1568,11 +1568,26 @@ vim.keymap.set(
   { silent = true }
 )
 
+-- Toggle inlay hints
 vim.keymap.set(
   "n",
   "<leader><leader>lh",
   function()
     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+  end,
+  { silent = true }
+)
+
+-- Toggle virtual text (disabled by default to minimize distructions)
+vim.keymap.set(
+  "n",
+  "<leader><leader>dv",
+  function()
+    local current_virtual_text = vim.diagnostic.config().virtual_text
+
+    if type(current_virtual_text) == "boolean" then
+      vim.diagnostic.config({ virtual_text = not current_virtual_text, })
+    end
   end,
   { silent = true }
 )
