@@ -7,5 +7,6 @@
 - [Authentication](./authentication.md).
 - [Graphics](./graphics.md).
 - [Wayland](./wayland/README.md).
+- [Virtual Machines](./vitrual.md).
 - [Toolchains](./toolchains/README.md).
 - [Secrets](./secrets.md).
