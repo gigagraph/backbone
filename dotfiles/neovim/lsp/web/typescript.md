@@ -15,7 +15,7 @@ This setup recommends using the following LSP servers for TypeScript:
 
 ### `typescript-language-server` instalaltion
 
-This guide recommends installing [`typescript-language-server` from `npm` registry][npm-typescript-language-server] using the following command:
+This guide recommends installing [`typescript-language-server` from `npm` registry][npm-typescript-langugae-server] using the following command:
 
 ```bash
 npm install -g typescript-language-server typescript

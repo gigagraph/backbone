@@ -1,0 +1,63 @@
+profile = "openai-gpt5-codex"
+model_provider = "openai"
+
+approval_policy = "untrusted"
+sandbox_mode = "workspace-write"
+project_doc_max_bytes = 32768
+file_opener = "none"
+
+[tools]
+web_search = false
+
+[sandbox_workspace_write]
+network_access = false
+
+[shell_environment_policy]
+inherit = "core"
+ignore_default_excludes = false
+exclude = ["AWS_*", "AZURE_*", "*PASSWORD*", "*KEY*", "*SECRET*", "*TOKEN*"]
+
+[history]
+persistence = "save-all"
+max_bytes = 52428800 # 50 MiB
+
+[tui]
+notifications = true
+
+# Model providers
+[model_providers.ollama]
+name = "Ollama"
+
+[model_providers.openai]
+name = "OpenAI"
+base_url = "https://api.openai.com/v1"
+env_key = "OPENAI_API_KEY"
+
+# Profiles
+[profiles.ollama-devstral]
+model_provider = "ollama"
+model = "devstral:24b"
+model_supports_reasoning_summaries = false
+model_context_window = 128000
+
+[profiles.ollama-gpt-oss]
+model_provider = "ollama"
+model = "gpt-oss:20b"
+model_supports_reasoning_summaries = true
+model_context_window = 128000
+
+[profiles.ollama-mistral]
+model_provider = "ollama"
+model = "mistral:7b"
+model_supports_reasoning_summaries = false
+model_context_window = 32000
+
+[profiles.ollama-qwen]
+model_provider = "ollama"
+model = "qwen3:8b"
+model_supports_reasoning_summaries = true
+model_context_window = 40000
+
+[profiles.openai-gpt5-codex]
+model_provider = "openai"
+model = "gpt-5-codex"
