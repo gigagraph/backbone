@@ -8,3 +8,4 @@
 - [Graphics](./graphics.md).
 - [Wayland](./wayland/README.md).
 - [Toolchains](./toolchains/README.md).
+- [Secrets](./secrets.md).
