@@ -780,6 +780,7 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
           --- Web stack
           "javascript",
           "typescript",
+          "tsx",
           "html",
           "css",
           "scss",
