@@ -3,7 +3,7 @@
 # https://stackoverflow.com/questions/59895/how-do-i-get-the-directory-where-a-bash-script-is-located-from-within-the-script
 SCRIPT_DIR="$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)"
 
-JJ_CONFIG_DIR="$(jj config path --user)"
+JJ_CONFIG_DIR="$(dirname "$(jj config path --user)")"
 
 # Configs that this repository does not store and user should provide upon running the script. The script will try to get the values from the existing git config, otherwise the script will prompt the user for the config value.
 # Add more such private configs here if needed.

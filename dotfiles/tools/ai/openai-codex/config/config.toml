@@ -7,7 +7,7 @@ project_doc_max_bytes = 32768
 file_opener = "none"
 
 [tools]
-web_search = false
+web_search = true
 
 [sandbox_workspace_write]
 network_access = false
