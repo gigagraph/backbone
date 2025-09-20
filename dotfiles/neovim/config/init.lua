@@ -1569,7 +1569,7 @@ vim.keymap.set(
   { silent = true }
 )
 
--- Toggle inlay hints
+----- Toggle inlay hints
 vim.keymap.set(
   "n",
   "<leader><leader>lh",
@@ -1579,7 +1579,7 @@ vim.keymap.set(
   { silent = true }
 )
 
--- Toggle virtual text (disabled by default to minimize distructions)
+----- Toggle virtual text (disabled by default to minimize distructions)
 vim.keymap.set(
   "n",
   "<leader><leader>dv",
@@ -1691,6 +1691,40 @@ local nvim_emmet_nvim_lazy_spec = bpu:declare_lazy_spec(
         { "n", "v" },
         '<leader>xe',
         nvim_emmet.wrap_with_abbreviation
+      )
+    end,
+  }
+)
+
+---- nvim-colorizer
+local _ = bpu:declare_lazy_spec(
+  "config.infra.plugins.nvim-colorizer",
+  {
+    opts = {
+      {
+        RGB = true, -- #RGB hex codes
+        RRGGBB = true, -- #RRGGBB hex codes
+        names = true, -- "Name" codes like Blue
+        RRGGBBAA = false, -- #RRGGBBAA hex codes
+        mode = "background",
+      },
+    },
+    config = function(lazy_plugin, opts)
+      local nvim_colorizer = require(lazy_plugin.name)
+      nvim_colorizer.setup(
+        {
+          "html",
+          "css",
+          "less",
+          "postcss",
+          "sass",
+          "scss",
+          "javascript",
+          "typescriptreact",
+          "javascriptreact",
+          "markdown",
+        },
+        opts
       )
     end,
   }

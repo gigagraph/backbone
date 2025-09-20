@@ -327,6 +327,10 @@ This plugin requires installed [`hls` LSP server](./lsp/haskell/README.md).
 
 This setup uses `nvim-emmet` for enhanced `emmet-language-server` LSP server integration experience. Specifically, the plugin enables users to wrap text into the expansions of emmet abbreviations.
 
+#### [`nvim-colorizer`][nvim-colorizer]
+
+This setup uses `nvim-colorizer` to colorize color "literals" such as #00000 or #ffffff with their actual color.
+
 #### [`nvim-notify`][nvim-notify]
 
 This setup uses `nvim-notify` to display notifications from `vim.notify` asyncronously and store their history for later inspection. The setup also configures `vim.lsp.handlers` that handle messages from LSP servers to [print the received messages via `nvim-notify`][nvim-notify-usage-recipes].
@@ -509,14 +513,15 @@ done
   - [nvim-lspconfig][nvim-lspconfig]
   - [plenary-nvim][plenary-nvim]
     - [plenary-test-harness][plenary-test-harness]
+  - [nvim-colorizer][nvim-colorizer]
+  - [nvim-notify][nvim-notify]
+    - [nvim-notify-usage-recipes][nvim-notify-usage-recipes]
+  - [luasnip][luasnip]
+    - [luasnip-doc][luasnip-doc]
+    - [jsregexp][jsregexp]
+    - [youtube-tj-luasnip-basics][youtube-tj-luasnip-basics]
+    - [youtube-tj-luasnip-advanced][youtube-tj-luasnip-advanced]
 - [lua-busted][lua-busted]
-- [nvim-notify][nvim-notify]
-- [nvim-notify-usage-recipes][nvim-notify-usage-recipes]
-- [luasnip][luasnip]
-  - [luasnip-doc][luasnip-doc]
-  - [jsregexp][jsregexp]
-  - [youtube-tj-luasnip-basics][youtube-tj-luasnip-basics]
-  - [youtube-tj-luasnip-advanced][youtube-tj-luasnip-advanced]
 - [github-blink-cmp][github-blink-cmp]
   - [blink-cmp][blink-cmp]
 - [colorful-menu-nvim][colorful-menu-nvim]
@@ -556,6 +561,7 @@ done
 [nvim-lspconfig]: <https://github.com/neovim/nvim-lspconfig>
 [plenary-nvim]: <https://github.com/nvim-lua/plenary.nvim>
 [plenary-test-harness]: <https://github.com/nvim-lua/plenary.nvim?tab=readme-ov-file#plenarytest_harness>
+[nvim-colorizer]: <https://github.com/norcalli/nvim-colorizer.lua>
 [lua-busted]: <https://lunarmodules.github.io/busted/>
 [nvim-notify]: <https://github.com/rcarriga/nvim-notify>
 [nvim-notify-usage-recipes]: <https://github.com/rcarriga/nvim-notify/wiki/Usage-Recipes>
