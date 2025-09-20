@@ -36,6 +36,19 @@ vim.opt.termguicolors = true
 
 -- TODO: enable spell opt and set locales/spelllang: https://neovim.io/doc/user/spell.html
 
+-- Set options per filetype
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "Set backbone configs for 'python' filetype",
+  group = vim.api.nvim_create_augroup("bkb-ft-configs-python", { clear = true }),
+  pattern = "python",
+  callback = function(ev)
+    vim.opt_local.expandtab = true
+    vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.shiftwidth = 2
+  end,
+})
+
 -- Basic keybindings
 vim.keymap.set(
   { "n", "v" },
