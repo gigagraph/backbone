@@ -118,6 +118,7 @@ export EDITOR="$(which nvim)"
 export VISUAL="${EDITOR}"
 export PAGER="$(which nvimpager)"
 export MANPAGER="$(which nvimpager)"
+export DO_NOT_TRACK=1
 
 # Multibyte characters
 
