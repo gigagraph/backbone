@@ -27,10 +27,6 @@ Run the following command to build release distribution and install it:
 cargo install --all-features --locked --path cli
 ```
 
-> [!NOTE]
->
-> Do not forget to turn off telemetry in the model provider's configs before you start using `codex`.
-
 ### Integrate `codex` with other programs
 
 #### zsh
