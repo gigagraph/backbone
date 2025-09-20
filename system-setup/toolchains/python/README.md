@@ -6,7 +6,7 @@
 >
 > You need a [C/C++ toolchain](../llvm/README.md) to build Pyton.
 
-This section describes how to install the latest stable version of [Cpython][python] interpreter systemwide on a linux distribution. On Linux, system admns should build Cpython from source. This guide will use [python 3.12, because not all packages support 3.13 for now](#minor-version-upgrade).
+This section describes how to install the latest stable version of [Cpython][python] interpreter systemwide on a linux distribution. On Linux, system admins should build Cpython from source.
 
 ### Build dependencies
 
@@ -36,22 +36,6 @@ sudo make install
 ### Add to `PATH`
 
 Ensure `/usr/local/bin` is in `PATH` so that the system can locate the built python interpreter.
-
-### Minor version upgrade
-
-The latest python version is 3.13, although, the pacakge ecosystem does not yet provide builds for all major packages for 3.13. Use this version at your own risk.
-
-List of common packages that have support for 3.13.
-
-- [ ] https://pypi.org/project/tensorflow/#files
-- [x] https://pypi.org/project/numpy/#files
-- [x] https://pypi.org/project/numpy/#files
-- [x] https://pypi.org/project/numpy/#files
-- [x] https://pypi.org/project/yarl/#files
-- [x] https://pypi.org/project/PyYAML/#files
-- [x] https://pypi.org/project/fastapi/#files
-- [x] https://pypi.org/project/pydantic/#files
-- [x] https://pypi.org/project/pydantic/#files
 
 ## [`pipx`][python-key-projects-pipx]
 
