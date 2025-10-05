@@ -5,3 +5,4 @@ This subdirectory contains instructions and configuration for (primarily) CLI to
 - [`git`](./git/README.md).
 - [`jj`](./jj/README.md).
 - [AI](./ai/README.md).
+- [Networking](./networking/README.md).
