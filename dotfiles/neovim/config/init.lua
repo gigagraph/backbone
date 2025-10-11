@@ -588,6 +588,17 @@ local mini_lazy_spec = bpu:declare_lazy_spec(
         -- This also affects (purely informational) helper messages shown after
         -- idle time if user input is required.
         silent = false,
+
+        custom_surroundings = {
+          ["("] = { output = { left = "(", right = ")" } },
+          [")"] = { output = { left = "( ", right = " )" } },
+          ["["] = { output = { left = "[", right = "]" } },
+          ["]"] = { output = { left = "[ ", right = " ]" } },
+          ["{"] = { output = { left = "{", right = "}" } },
+          ["}"] = { output = { left = "{ ", right = " }" } },
+          ["<"] = { output = { left = "<", right = ">" } },
+          [">"] = { output = { left = "< ", right = " >" } },
+        },
       })
 
       ---- mini.basics
