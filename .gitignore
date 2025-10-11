@@ -11,3 +11,5 @@ deploy/stable-diffusion/comfyui-persistence/
 # Neovim config tests
 dotfiles/neovim/tests/.tests
 
+# Vim sessions
+/*.vim

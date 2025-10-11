@@ -512,6 +512,14 @@ Use `codex` to generate completions for zsh:
 codex completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_codex"
 ```
 
+#### [`minikube`](../../cloud/platfrom/k8s/local.md)
+
+Use `minikube` to generate completions for zsh:
+
+```bash
+minikube completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_minikube"
+```
+
 #### Deprecated plugins
 
 ##### `zsh-vi-mode`

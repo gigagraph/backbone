@@ -11,6 +11,7 @@ This repo hosts code, configuration, and setup instructions that computer power 
 - [`./ubuntu` - Ubuntu installation notes](./ubuntu/README.md).
 - [`./system-setup` - System setup](./system-setup/README.md).
 - [`./deploy` - Deploy](./deploy/README.md).
+- [`./cloud` - Cloud](./cloud/README.md).
 
 - [ ] TODO
   - Setup for this repo
