@@ -2,12 +2,10 @@
 pager = "delta"
 paginate = "auto"
 conflict-marker-style = "snapshot"
+diff-formatter = ":git"
 diff-instructions = false
 diff-editor = "meld-3"
 merge-editor = "meld"
-
-[ui.diff]
-format = "git"
 
 [merge-tools.meld]
 edit-args = ["--newtab", "$left", "$right", "--output=$output"]

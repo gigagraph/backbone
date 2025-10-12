@@ -8,9 +8,9 @@ JJ_CONFIG_DIR="$(dirname "$(jj config path --user)")"
 # Configs that this repository does not store and user should provide upon running the script. The script will try to get the values from the existing git config, otherwise the script will prompt the user for the config value.
 # Add more such private configs here if needed.
 JJ_USER_EMAIL="$(jj config get user.email)"
-[ -z "${JJ_USER_EMAIL}" ] && read -p "Enter user email to use in jj config:"$'\n' JJ_USER_EMAIL
+[ -z "${JJ_USER_EMAIL}" ] && read -r -p "Enter user email to use in jj config:"$'\n' JJ_USER_EMAIL
 JJ_USER_NAME="$(jj config get user.name)"
-[ -z "${JJ_USER_NAME}" ] && read -p "Enter user name to use in jj config:"$'\n' JJ_USER_NAME
+[ -z "${JJ_USER_NAME}" ] && read -r -p "Enter user name to use in jj config:"$'\n' JJ_USER_NAME
 
 commands_to_run=(
   "mkdir -p ${JJ_CONFIG_DIR}"

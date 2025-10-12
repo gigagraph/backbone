@@ -51,9 +51,44 @@ sudo install -C -D out/minikube /usr/local/bin/minikube
 
 See the corresponding section in the [zsh docs file in this repo](../../../dotfiles/zsh/README.md#minikube) to install `zhs` [completions][minikube-completion].
 
+#### `minikube` configuration
+
+Run the script to apply config from this repo to your `minikube` installation:
+
+```bash
+./minikube/setup-config.sh
+```
+
 ## Operating the local
 
-<!-- TODO: provision the cluster via `minikube` -->
+```bash
+minikube start \
+  \
+  --profile='local-k8s-cluster' \
+  \
+  --vm='true' \
+  --driver='kvm2' \
+  --kvm-qemu-uri='qemu:///system' \
+  \
+  --container-runtime='containerd' \
+  \
+  --ha='false' \
+  --nodes='3' \
+  \
+  --cpus='4' \
+  --memory='2g' \
+  --disk-size='20g' \
+  \
+  --dns-domain='cluster.local' \
+  \
+  --namespace='default' \
+  \
+  --addons='metrics-server,dashboard,ingress,' \
+  --install-addons='true' \
+  \
+  --interactive='false' \
+  --keep-context='true'
+```
 
 ## Useful links
 

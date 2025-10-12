@@ -76,6 +76,26 @@ sudo apt install -y \
   virtinst
 ```
 
+### Verify the setup with `virt-host-validate`
+
+Run `virt-host-validate` to verify the setup.
+
+#### cgroup 'devices' controller support
+
+```
+QEMU: Checking for cgroup 'devices' controller support : WARN (Enable 'devices' in kernel Kconfig file or mount/enable cgroup controller in your system)
+```
+
+When you see this warning, you can disregard it. It means that you are booted with pure cgroup v2 hierarchy. `devices` controller is only available in legacy v1 cgroup hierarchy.
+
+#### Secure guest support
+
+```
+QEMU: Checking for secure guest support : WARN (Unknown if this platform has Secure Guest support)
+```
+
+When you see this warning, you can disregard it. It means that your processor most probably does not support AMD SEV or Intel TDX technology to provide more isolation to virtual machines. The feature is mostly supported on server CPUs.
+
 ## Sharing host accelerators with VM(s)
 
 > [!NOTE]
