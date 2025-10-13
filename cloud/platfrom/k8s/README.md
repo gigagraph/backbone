@@ -5,6 +5,7 @@ Software strack that enables cloud service deployments and orchestration with [K
 ## Index
 
 - [`./local.md`](./local.md) - Local kubernetes setup for local dev environments, experiments, and training.
+- [`./kubectl`](kubectl/README.md) - `kubectl` installation and usage tips.
 
 ## Useful links
 

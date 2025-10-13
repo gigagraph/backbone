@@ -520,6 +520,14 @@ Use `minikube` to generate completions for zsh:
 minikube completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_minikube"
 ```
 
+#### [`kubectl`](../../cloud/platfrom/k8s/kubectl/README.md)
+
+Use `kubectl` to generate completions for zsh:
+
+```bash
+kubectl completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_kubectl"
+```
+
 #### Deprecated plugins
 
 ##### `zsh-vi-mode`
