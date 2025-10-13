@@ -61,6 +61,8 @@ Run the script to apply config from this repo to your `minikube` installation:
 
 ## Operating the local
 
+### Start local `minikube` cluster
+
 ```bash
 minikube start \
   \
@@ -75,19 +77,36 @@ minikube start \
   --ha='false' \
   --nodes='3' \
   \
-  --cpus='4' \
-  --memory='2g' \
+  --cpus='3' \
+  --memory='3g' \
   --disk-size='20g' \
   \
   --dns-domain='cluster.local' \
   \
   --namespace='default' \
   \
-  --addons='metrics-server,dashboard,ingress,' \
+  --addons='metrics-server,dashboard,ingress' \
   --install-addons='true' \
   \
   --interactive='false' \
   --keep-context='true'
+
+# Enable installed addons
+ADDONS_TO_ENABLE=(
+  'metrics-server'
+  'dashboard'
+  'ingress'
+)
+
+for addon in "${ADDONS_TO_ENABLE[@]}"; do
+  minikube --profile='local-k8s-cluster' addons enable "${addon}"
+done
+```
+
+### View k8s dashboard
+
+```bash
+minikube --profile='local-k8s-cluster' dashboard
 ```
 
 ## Useful links
