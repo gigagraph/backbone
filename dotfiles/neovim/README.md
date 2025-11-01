@@ -341,7 +341,7 @@ It is planned that later the setup will use `nvim-notify` with `nvim-dap` and `n
 
 This setup uses [`LuaSnip`][luasnip] to enable snippet support in `neovim`. Additionally, it helps [`blink.cmp`](#blink-cmp) completion engine to parse LSP completions.
 
-`LuaSnip` has an optional dependency on [`jsregexp`][jsregexp], which this guide recommends to install. Is sets `build = "make install_jsregexp"` when it defines the plugin. This may be a not reliable way to install `jsregexp`. For [temporary alternative installation methods see `LuaSnip`'s recommendations](https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md#transformations).
+`LuaSnip` has an optional dependency on [`jsregexp`][jsregexp], which this guide recommends to install. It sets `build = "make install_jsregexp"` when it defines the plugin. This may be a not reliable way to install `jsregexp`. For [temporary alternative installation methods see `LuaSnip`'s recommendations](https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md#transformations).
 
 #### [`blink.cmp`][github-blink-cmp]
 
@@ -366,9 +366,46 @@ This setup uses `colorful-menu.nvim` to highlight completion items from [`blink.
 >
 > Neovim has LSP client built in. However, it is the responsibility of LSP users to install the specific servers. See the [dedicated page](./lsp/README.md) for details about LSP and to find out how to install a specific LSP server that this setup supports.
 
+This setup uses `nvim-lspconfig` to provide default configuration for common LSP servers from the `nvim`'s built-in LSP client.
+
 Use `:help lsp` to find basic information about LSP integration in `neovim`.
 
 [`nvim-lspconfig`][nvim-lspconfig] facilitates configuration of popular LSP servers.
+
+#### [`telescope.nvim`][telescope-nvim]
+
+This setup uses `telescope.nvim` to search and select different types of objects (files, strings, LSP references, diagnostics, `nvim` buffers, registers, etc.). One of the primary features of the plugin is that it facilitates file navigation.
+
+Use `:help telescope` to find basic information.
+
+##### `telescope.nvim` dependencies
+
+`telescope.nvim` has an optional dependencies on the following software and this guide strongly recommends to install all of them:
+- [`ripgrep`](../terminal-utils/ripgrep/README.md).
+- [`fd`](../terminal-utils/fd/README.md).
+
+##### [`telescope-fzf-native.nvim`][telescope-fzf-native-nvim]
+
+This setup uses `telescope-fzf-native.nvim` to implement a performant version of the fuzzy search algorithm.
+
+`telescope-fzf-native.nvim` depends on [`cmake`](../../system-setup/toolchains/llvm/README.md#cmake) for installation, so users must install it before they can build the plugin.
+
+##### [`telescope-directory`][telescope-directory]
+
+This setup uses `telescope-directory` to run actions on directories that users select in [`telescope`](#telescopenvim). One of the main goals of this plugin in this setup is to fuzzy search for a directory in the current dir and open using [`oil`](#oil-nvim).
+
+`telescope-directory` knows how to use [`fd`](../terminal-utils/fd/README.md) to search for directories, so this guide strongly recommends installing it for the best performance.
+
+#### [`nvim-web-devicons`][nvim-web-devicons]
+
+This setup uses `nvim-web-devicons` to provide icons based on [Nerd Fonts](../../system-setup/fonts.md#nerd-fonts). Therefore, `nvim-web-devicons` depens on [Nerd Fonts](../../system-setup/fonts.md#nerd-fonts). Users must ensure that their terminal uses Nerd Fonts for this plugin to work correctly.
+
+Test if all the defined icons are supported with `:NvimWebDeviconsHiTest`.
+
+#### [`oil.nvim`][oil-nvim]
+
+<!-- TODO -->
+<!-- `:help oil` -->
 
 #### [`plenary.nvim`][plenary-nvim]
 
@@ -511,6 +548,11 @@ done
   - [nvim-treesitter-textobjects][nvim-treesitter-textobjects]
   - [nvim-treesitter-refactor][nvim-treesitter-refactor]
   - [nvim-lspconfig][nvim-lspconfig]
+  - [telescope-nvim][telescope-nvim]
+  - [telescope-fzf-native-nvim][telescope-fzf-native-nvim]
+  - [telescope-directory][telescope-directory]
+  - [nvim-web-devicons][nvim-web-devicons]
+  - [oil-nvim][oil-nvim]
   - [plenary-nvim][plenary-nvim]
     - [plenary-test-harness][plenary-test-harness]
   - [nvim-colorizer][nvim-colorizer]
@@ -559,6 +601,11 @@ done
 [nvim-treesitter-textobjects]: <https://github.com/nvim-treesitter/nvim-treesitter-textobjects>
 [nvim-treesitter-refactor]: https://github.com/nvim-treesitter/nvim-treesitter-refactor
 [nvim-lspconfig]: <https://github.com/neovim/nvim-lspconfig>
+[telescope-nvim]: <https://github.com/nvim-telescope/telescope.nvim>
+[telescope-fzf-native-nvim]: <https://github.com/nvim-telescope/telescope-fzf-native.nvim>
+[telescope-directory]: <https://github.com/fbuchlak/telescope-directory.nvim>
+[nvim-web-devicons]: <https://github.com/nvim-tree/nvim-web-devicons>
+[oil-nvim]: <https://github.com/stevearc/oil.nvim>
 [plenary-nvim]: <https://github.com/nvim-lua/plenary.nvim>
 [plenary-test-harness]: <https://github.com/nvim-lua/plenary.nvim?tab=readme-ov-file#plenarytest_harness>
 [nvim-colorizer]: <https://github.com/norcalli/nvim-colorizer.lua>

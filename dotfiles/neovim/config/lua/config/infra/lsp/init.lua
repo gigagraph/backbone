@@ -42,6 +42,7 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
 
 STATUS_UPDATES_DISABLED_FOR_LSP_SERVERS = Set.mk({
   "buf_ls",
+  "lua_ls",
 })
 
 local function configure_supported_lsp_servers()

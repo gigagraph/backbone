@@ -104,7 +104,7 @@ vim.diagnostic.config({
 --- Populate the quickfix list with diagnostics
 vim.keymap.set(
   "n",
-  "<leader>cd",
+  "<leader><leader>cd",
   vim.diagnostic.setqflist,
   { silent = true }
 )
@@ -154,7 +154,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking text",
   group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
   callback = function(ev)
-    vim.highlight.on_yank { timeout = 50 }
+    vim.hl.on_yank { timeout = 50 }
   end,
 })
 
@@ -1706,7 +1706,7 @@ local haskell_tools_nvim_nvim_lazy_spec = bpu:declare_lazy_spec(
 )
 
 ---- nvim-emmet
-local nvim_emmet_nvim_lazy_spec = bpu:declare_lazy_spec(
+local nvim_emmet_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.nvim-emmet",
   {
     config = function(lazy_plugin, opts)
@@ -1721,7 +1721,7 @@ local nvim_emmet_nvim_lazy_spec = bpu:declare_lazy_spec(
 )
 
 ---- nvim-colorizer
-local _ = bpu:declare_lazy_spec(
+local nvim_colorizer_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.nvim-colorizer",
   {
     opts = {
@@ -1754,17 +1754,238 @@ local _ = bpu:declare_lazy_spec(
   }
 )
 
+---- nvim-web-devicons
+local nvim_web_devicons_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.nvim-web-devicons",
+  {
+    opts = {
+      color_icons = true,
+      default = true,
+    },
+  }
+)
+
+---- oil.nvim 🛢️
+local oil_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.oil",
+  {
+    dependencies = {
+      "mini.nvim",
+      "nvim-web-devicons",
+    },
+    opts = {
+      -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
+      default_file_explorer = true,
+      columns = {
+        "permissions",
+        "size",
+        "mtime",
+        "icon",
+      },
+      buf_options = {
+        buflisted = false,
+        bufhidden = "hide",
+      },
+      -- Window-local options to use for oil buffers
+      win_options = {
+        wrap = false,
+        signcolumn = "no",
+        cursorcolumn = false,
+        foldcolumn = "0",
+        spell = false,
+        list = false,
+        conceallevel = 3,
+        concealcursor = "nvic",
+      },
+      -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
+      delete_to_trash = false,
+      -- Skip the confirmation popup for simple operations (:help oil.skip_confirm_for_simple_edits)
+      skip_confirm_for_simple_edits = false,
+      -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
+      -- (:help prompt_save_on_select_new_entry)
+      prompt_save_on_select_new_entry = false,
+      -- Oil will automatically delete hidden buffers after this delay
+      -- You can set the delay to false to disable cleanup entirely
+      -- Note that the cleanup process only starts when none of the oil buffers are currently displayed
+      cleanup_delay_ms = 2000,
+      lsp_file_methods = {
+        -- Enable or disable LSP file operations
+        enabled = true,
+        -- Time to wait for LSP file operations to complete before skipping
+        timeout_ms = 1000,
+        -- Set to true to autosave buffers that are updated with LSP willRenameFiles
+        -- Set to "unmodified" to only save unmodified buffers
+        autosave_changes = true,
+      },
+      -- Constrain the cursor to the editable parts of the oil buffer
+      -- Set to `false` to disable, or "name" to keep it on the file names
+      constrain_cursor = "editable",
+      -- Set to true to watch the filesystem for changes and reload oil
+      watch_for_changes = true,
+      -- Keymaps in oil buffer. Can be any value that `vim.keymap.set` accepts OR a table of keymap
+      -- options with a `callback` (e.g. { callback = function() ... end, desc = "", mode = "n" })
+      -- Additionally, if it is a string that matches "actions.<name>",
+      -- it will use the mapping at require("oil.actions").<name>
+      -- Set to `false` to remove a keymap
+      -- See :help oil-actions for a list of all available actions
+      keymaps = {
+        ["g?"] = { "actions.show_help", mode = "n" },
+        ["<CR>"] = "actions.select",
+        ["<C-s>"] = { "actions.select", opts = { vertical = true } },
+        ["<C-h>"] = { "actions.select", opts = { horizontal = true } },
+        ["<C-t>"] = { "actions.select", opts = { tab = true } },
+        ["<C-p>"] = "actions.preview",
+        ["<C-c>"] = { "actions.close", mode = "n" },
+        ["<C-l>"] = "actions.refresh",
+        ["-"] = { "actions.parent", mode = "n" },
+        ["_"] = { "actions.open_cwd", mode = "n" },
+        ["`"] = { "actions.cd", mode = "n" },
+        ["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
+        ["gs"] = { "actions.change_sort", mode = "n" },
+        ["gx"] = "actions.open_external",
+        ["g."] = { "actions.toggle_hidden", mode = "n" },
+        ["g\\"] = { "actions.toggle_trash", mode = "n" },
+      },
+    },
+    config = function(lazy_plugin, opts)
+      local oil = require(lazy_plugin.name)
+      oil.setup(opts)
+    end
+  }
+)
+
+---- telescope-fzf-native.nvim
+local telescope_fzf_native_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.telescope-fzf-native",
+  {}
+)
+
+---- telescope-directory.nvim
+local telescope_directory_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.telescope-directory",
+  {
+    -- Configured later as a part of telescope
+  }
+)
+
 ---- telescope
--- local telescope_spec = bpu:declare_lazy_spec(
---   -- TODO
---   "config.infra.plugins.telescope",
---   {
---     -- TODO: link to config
---     opts = {
---       -- TODO
---     },
---   }
--- )
+local telescope_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.telescope",
+  {
+    dependencies = {
+      -- Telescope deps
+      "plenary.nvim",
+      "nvim-web-devicons",
+      "nvim-treesitter",
+
+      -- Telescope extensions
+      "telescope-fzf-native.nvim",
+      "telescope-directory",
+
+      -- Extension dependencies
+      --- telescope-directory
+      "oil",
+    },
+    opts = {
+      pickers = {
+      },
+      extensions = {
+        fzf = {
+          fuzzy = true,
+          override_generic_sorter = true,
+          override_file_sorter = true,
+          case_mode = "smart_case",
+        },
+        directory = {
+          finder_cmd = nil, -- autodetect. Will use `fd`, if present.
+          features = {
+            {
+              name = "oil",
+              callback = function(dirs, feature_opts)
+                -- Open only the first selected dir in oil
+                require("oil").open(dirs[1])
+              end
+            },
+            {
+              name = "oil-float",
+              callback = function(dirs, feature_opts)
+                -- Open only the first selected dir in oil
+                require("oil").open_float(dirs[1])
+              end
+            }
+          },
+        },
+      },
+    },
+    config = function(lazy_plugin, opts)
+      -- Call the original plugin's setup code
+      local telescope = require(lazy_plugin.name)
+      local t_actions = require("telescope.actions")
+
+      local telescope_dependent_opts = {
+        defaults = {
+          mappings = {
+            -- Default mappings: https://github.com/nvim-telescope/telescope.nvim?tab=readme-ov-file#default-mappings
+            i = {
+              ["<C-f>"] = t_actions.results_scrolling_down,
+              ["<C-b>"] = t_actions.results_scrolling_up,
+            },
+            n = {
+              ["<C-f>"] = t_actions.results_scrolling_down,
+              ["<C-b>"] = t_actions.results_scrolling_up,
+            },
+          },
+        },
+      }
+      local telescope_final_opts = vim.tbl_deep_extend("force", telescope_dependent_opts, opts)
+      telescope.setup(telescope_final_opts)
+
+      -- Load extensions
+      local telescope_extensions_to_load = {
+        "fzf",
+        "directory",
+      }
+      for _, e in ipairs(telescope_extensions_to_load) do
+        telescope.load_extension(e)
+      end
+
+      local telescope_directory = require("telescope-directory")
+
+      -- Configure keybindings
+      local builtin = require("telescope.builtin")
+      -- File search
+      vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>fj", builtin.git_files, { desc = "Telescope find git files", noremap = true, silent = true })
+
+      -- String search in files
+      vim.keymap.set("n", "<leader>fl", builtin.live_grep, { desc = "Telescope live grep", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>fgs", builtin.grep_string, { desc = "Telescope string grep", noremap = true, silent = true })
+
+      -- Filesystem search
+      vim.keymap.set(
+        "n",
+        "<leader>o",
+        function() telescope_directory.directory({ feature = "oil" }) end,
+        { desc = "Telescope oil 🛢️ (buffer)", noremap = true, silent = true }
+      )
+      vim.keymap.set(
+        "n",
+        "<leader>of",
+        function() telescope_directory.directory({ feature = "oil-float" }) end,
+        { desc = "Telescope oil 🛢️ (float)", noremap = true, silent = true }
+      )
+
+      -- nvim objects search
+      vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>hc", builtin.command_history, { desc = "Telescope command history", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>hs", builtin.search_history, { desc = "Telescope search history", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>rr", builtin.registers, { desc = "Telescope registers", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>ss", builtin.spell_suggest, { desc = "Telescope spell suggest", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>grr", builtin.lsp_references, { desc = "Telescope LSP references", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>cd", builtin.diagnostics, { desc = "Telescope diagnostics", noremap = true, silent = true })
+    end,
+  }
+)
 
 --- Initialize lazy.nvim plugin manager
 local lazy_plugin_infra = require("config.infra.lazy")

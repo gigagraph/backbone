@@ -106,6 +106,28 @@ The following guides provide more details on how to install `clagd-indexer` and 
 
 Follow the [official instructions for apt to build LLVM from source][apt-llvm].
 
+## Build systems
+
+### CMake
+
+This guide recommends installing [`cmake`][getting-cmake] using the system's default packaging method, e.g. for debian-based systems:
+
+```bash
+sudo apt update -y
+sudo apt install -y \
+  cmake
+```
+
+### `ninja`
+
+This guide recommends installing [`ninja`][pre-built-ninja-packages] using the system's default packaging method, e.g. for debian-based systems:
+
+```bash
+sudo apt update -y
+sudo apt install -y \
+  ninja-build
+```
+
 ## Useful links
 
 - [apt-llvm][apt-llvm]
@@ -114,6 +136,8 @@ Follow the [official instructions for apt to build LLVM from source][apt-llvm].
 - [clangd-remote-index][clangd-remote-index]
 - [clangd-index-tools-installation][clangd-index-tools-installation]
 - [github-llvm-clangd-index-remote][github-llvm-clangd-index-remote]
+- [getting-cmake][getting-cmake]
+- [pre-built-ninja-packages][pre-built-ninja-packages]
 
 [apt-llvm]: https://apt.llvm.org/
 [apt-llvm-build-instructions]: https://apt.llvm.org/building-pkgs.php
@@ -121,3 +145,5 @@ Follow the [official instructions for apt to build LLVM from source][apt-llvm].
 [clangd-remote-index]: https://clangd.llvm.org/design/remote-index
 [clangd-index-tools-installation]: https://hackmd.io/@CTebJdsER6SJEnjnIrelSA/rk6F_nAJp
 [github-llvm-clangd-index-remote]: https://github.com/llvm/llvm-project/tree/main/clang-tools-extra/clangd/index/remote
+[getting-cmake]: https://cmake.org/cmake/help/latest/guide/tutorial/Before%20You%20Begin.html#getting-cmake
+[pre-built-ninja-packages]: https://github.com/ninja-build/ninja/wiki/Pre-built-Ninja-packages

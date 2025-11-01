@@ -9,11 +9,10 @@
    git clone --depth 1 git@github.com:ryanoasis/nerd-fonts.git
    cd ./nerd-fonts
    ```
-2. Checkout the desired version:
+2. Checkout the desired version (`NERD_FORNTS_VERSION`):
    ```bash
-   NERD_FONTS_VERSION="v3.2.1"
    git fetch --depth=1 origin "+refs/tags/${NERD_FONTS_VERSION}:refs/tags/${NERD_FONTS_VERSION}"
-   git checkout "${NERD_FORNTS_VERSION}"
+   git checkout "${NERD_FONTS_VERSION}"
    ```
 3. Install the fonts in the system:
    ```bash
