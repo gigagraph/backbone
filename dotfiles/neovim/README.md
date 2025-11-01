@@ -92,6 +92,39 @@ This setup uses plugins listed in this seciton. Each section describes how the p
 
 - [ ] TODO: specify the convention for plugin management and configuration in this config with lazy.
 
+Plugins to be considered for installation:
+
+- Uncategorized:
+  - [`noice.nvim`](https://github.com/folke/noice.nvim).
+  - [`nvim-surround`](https://github.com/kylechui/nvim-surround).
+  - [`zoxide.nvim`](https://github.com/nanotee/zoxide.vim).
+  - [`fzf-lua`](https://github.com/ibhagwan/fzf-lua).
+  - [`render-markdown.nvim`](https://github.com/MeanderingProgrammer/render-markdown.nvim).
+  - [`which-key.nvim`](https://github.com/folke/which-key.nvim).
+  - [`harpoon`](https://github.com/ThePrimeagen/harpoon/).
+  - [`vim-illuminate`](https://github.com/RRethy/vim-illuminate).
+  - [`flatten.nvim`](https://github.com/willothy/flatten.nvim).
+- Quicker navigation:
+  - [`hop.nvim`](https://github.com/smoka7/hop.nvim).
+  - [`flash.nvim`](https://github.com/folke/flash.nvim).
+  - [`mini.jump2d`](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-jump2d.md).
+  - [`vim-easymotion`](https://github.com/easymotion/vim-easymotion).
+- Explainability:
+  - [telescope cheatsheet](https://github.com/doctorfree/cheatsheet.nvim).
+- Debugging:
+  - [`nvim-dap`](https://github.com/mfussenegger/nvim-dap).
+  - [`nvim-dap-ui`](https://github.com/rcarriga/nvim-dap-ui).
+- VCS:
+  - [`gitsigns.nvim`](https://github.com/lewis6991/gitsigns.nvim).
+  - [`neogit`](https://github.com/NeogitOrg/neogit).
+- AI:
+  - [`CopilotChat.nvim`](https://github.com/CopilotC-Nvim/CopilotChat.nvim).
+  - [`gp.nvim`](https://github.com/Robitx/gp.nvim).
+  - [`gen.nvim`](https://github.com/David-Kunz/gen.nvim).
+  - [`minuet-ai.nvim`](https://github.com/milanglacier/minuet-ai.nvim).
+  - [`codecompanion.nvim`](https://github.com/olimorris/codecompanion.nvim).
+  - [`mcphub.nvim`](https://github.com/ravitemer/mcphub.nvim).
+
 #### Custom plugins
 
 [`lazy.nvim`][lazy-nvim] users may find it hard to install some plugins, e.g. those that reside in a subdirectory of another repostiory ([`quick-lint/quick-lint-js/issues/1195`](https://github.com/quick-lint/quick-lint-js/issues/1195), [`folke/lazy.nvim/issues/1319`](https://github.com/folke/lazy.nvim/issues/1319), [`folke/lazy.nvim/issues/183`](https://github.com/folke/lazy.nvim/issues/183), [`folke/lazy.nvim/issues/756`](https://github.com/folke/lazy.nvim/issues/756)).
