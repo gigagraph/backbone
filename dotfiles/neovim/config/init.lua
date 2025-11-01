@@ -1850,6 +1850,133 @@ local oil_lazy_spec = bpu:declare_lazy_spec(
     config = function(lazy_plugin, opts)
       local oil = require(lazy_plugin.name)
       oil.setup(opts)
+
+      -- Keybindings to open oil
+      vim.keymap.set(
+        "n",
+        "<leader><leader>o",
+        ":Oil<CR>",
+        { desc = "Oil for the current buffer", noremap = true, silent = true }
+      )
+      vim.keymap.set(
+        "n",
+        "<leader><leader>fo",
+        ":Oil --float<CR>",
+        { desc = "Oil (float) for the current buffer", noremap = true, silent = true }
+      )
+    end
+  }
+)
+
+----- oil-git.nvim
+local oil_git_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.oil-git",
+  {
+    dependencies = {
+      "oil"
+    },
+    opts = {},
+  }
+)
+
+----- oil-lps-diagnostics.nvim
+local oil_lsp_diagnostics_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.oil-lsp-diagnostics",
+  {
+    dependencies = {
+      "oil"
+    },
+    opts = {},
+  }
+)
+
+----- Otree.nvim
+local otree_lazy_spec = bpu:declare_lazy_spec(
+  "config.infra.plugins.otree",
+  {
+    dependencies = {
+      "oil",
+      "mini.nvim",
+      "nvim-web-devicons",
+    },
+    opts = {
+      win_size = 30,
+      open_on_startup = false,
+      hijack_netrw = false,
+      show_hidden = false,
+      show_ignore = false,
+      cursorline = true,
+      focus_on_enter = false,
+      open_on_left = true,
+      git_signs = true,
+      lsp_signs = true,
+      oil = "float",
+      ignore_patterns = {},
+      keymaps = {
+        ["<CR>"] = "actions.select",
+        ["l"] = "actions.select",
+        ["h"] = "actions.close_dir",
+        ["<Esc>"] = "actions.close_win",
+        ["<C-h>"] = "actions.goto_parent",
+        ["<C-l>"] = "actions.goto_dir",
+        ["<M-h>"] = "actions.goto_home_dir",
+        ["cd"] = "actions.change_home_dir",
+        ["L"] = "actions.open_dirs",
+        ["H"] = "actions.close_dirs",
+        ["o"] = "actions.oil_dir",
+        ["O"] = "actions.oil_into_dir",
+        ["t"] = "actions.open_tab",
+        ["v"] = "actions.open_vsplit",
+        ["s"] = "actions.open_split",
+        ["."] = "actions.toggle_hidden",
+        ["i"] = "actions.toggle_ignore",
+        ["r"] = "actions.refresh",
+        ["f"] = "actions.focus_file",
+        ["?"] = "actions.open_help",
+      },
+      tree = {
+        space_after_icon = " ",
+        space_after_connector = " ",
+        connector_space = " ",
+        connector_last = "└",
+        connector_middle = "├",
+        vertical_line = "│",
+      },
+      icons = {
+        title = " ",
+        default_file = "",
+        default_directory = "",
+        empty_dir = "",
+        trash = " ",
+        keymap = "⌨ ",
+        oil = " ",
+      },
+      float = {
+        center = true,
+        width_ratio = 0.4,
+        height_ratio = 0.7,
+        padding = 2,
+        cursorline = true,
+        border = "rounded",
+      },
+    },
+    config = function(lazy_plugin, opts)
+      local otree = require(lazy_plugin.name)
+      otree.setup(opts)
+
+      -- Keybindings
+      vim.keymap.set(
+        "n",
+        "<leader>to",
+        ":Otree<CR>",
+        { desc = "Toggle Otree", noremap = true, silent = true }
+      )
+      vim.keymap.set(
+        "n",
+        "<leader>tf",
+        ":OtreeFocus<CR>",
+        { desc = "Focus file in Otree", noremap = true, silent = true }
+      )
     end
   }
 )
@@ -1966,11 +2093,11 @@ local telescope_lazy_spec = bpu:declare_lazy_spec(
         "n",
         "<leader>o",
         function() telescope_directory.directory({ feature = "oil" }) end,
-        { desc = "Telescope oil 🛢️ (buffer)", noremap = true, silent = true }
+        { desc = "Telescope oil 🛢️", noremap = true, silent = true }
       )
       vim.keymap.set(
         "n",
-        "<leader>of",
+        "<leader>fo",
         function() telescope_directory.directory({ feature = "oil-float" }) end,
         { desc = "Telescope oil 🛢️ (float)", noremap = true, silent = true }
       )

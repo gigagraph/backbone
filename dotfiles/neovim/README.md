@@ -394,7 +394,7 @@ This setup uses `telescope-fzf-native.nvim` to implement a performant version of
 
 This setup uses `telescope-directory` to run actions on directories that users select in [`telescope`](#telescopenvim). One of the main goals of this plugin in this setup is to fuzzy search for a directory in the current dir and open using [`oil`](#oil-nvim).
 
-`telescope-directory` knows how to use [`fd`](../terminal-utils/fd/README.md) to search for directories, so this guide strongly recommends installing it for the best performance.
+`telescope-directory` can use [`fd`](../terminal-utils/fd/README.md) to search for directories, so this guide strongly recommends installing it for the best performance.
 
 #### [`nvim-web-devicons`][nvim-web-devicons]
 
@@ -404,8 +404,23 @@ Test if all the defined icons are supported with `:NvimWebDeviconsHiTest`.
 
 #### [`oil.nvim`][oil-nvim]
 
-<!-- TODO -->
-<!-- `:help oil` -->
+This setup uses `oil.nvim` to enble vim-style manipulation of files on the filesystem.
+
+Find out more with `:help oil`.
+
+##### [`oil-git.nvim`][oil-git-nvim]
+
+This setup uses `oil-git.nvim` to enrich [`oil.nvim`](#oil-nvim) listing with git-status-relate information.
+
+##### [`oil-lsp-diagnostics.nvim`][oil-lsp-diagnostics-nvim]
+
+This setup uses `oil-git.nvim` to enrich [`oil.nvim`](#oil-nvim) listing with LSP-diagnostic-related information.
+
+##### [`Otree.nvim`][otree-nvim]
+
+This setup uses `Otree.nvim` as a file tree that developers can use to naviate directories and files in the current working directory. `Otree` integrates with [`oil`](#oil-nvim) to manupulate the filesystem.
+
+`Otree.nvim` can use [`fd`](../terminal-utils/fd/README.md) to list files, so this guide strongly recommends installing it for the best performance.
 
 #### [`plenary.nvim`][plenary-nvim]
 
@@ -553,6 +568,9 @@ done
   - [telescope-directory][telescope-directory]
   - [nvim-web-devicons][nvim-web-devicons]
   - [oil-nvim][oil-nvim]
+  - [oil-git-nvim][oil-git-nvim]
+  - [oil-lsp-diagnostics-nvim][oil-lsp-diagnostics-nvim]
+  - [otree-nvim][otree-nvim]
   - [plenary-nvim][plenary-nvim]
     - [plenary-test-harness][plenary-test-harness]
   - [nvim-colorizer][nvim-colorizer]
@@ -606,6 +624,9 @@ done
 [telescope-directory]: <https://github.com/fbuchlak/telescope-directory.nvim>
 [nvim-web-devicons]: <https://github.com/nvim-tree/nvim-web-devicons>
 [oil-nvim]: <https://github.com/stevearc/oil.nvim>
+[oil-git-nvim]: <https://github.com/benomahony/oil-git.nvim>
+[oil-lsp-diagnostics-nvim]: <https://github.com/JezerM/oil-lsp-diagnostics.nvim>
+[otree-nvim]: <https://github.com/Eutrius/Otree.nvim>
 [plenary-nvim]: <https://github.com/nvim-lua/plenary.nvim>
 [plenary-test-harness]: <https://github.com/nvim-lua/plenary.nvim?tab=readme-ov-file#plenarytest_harness>
 [nvim-colorizer]: <https://github.com/norcalli/nvim-colorizer.lua>
