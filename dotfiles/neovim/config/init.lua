@@ -1854,13 +1854,13 @@ local oil_lazy_spec = bpu:declare_lazy_spec(
       -- Keybindings to open oil
       vim.keymap.set(
         "n",
-        "<leader><leader>o",
+        "<leader><leader>oo",
         ":Oil<CR>",
         { desc = "Oil for the current buffer", noremap = true, silent = true }
       )
       vim.keymap.set(
         "n",
-        "<leader><leader>fo",
+        "<leader><leader>of",
         ":Oil --float<CR>",
         { desc = "Oil (float) for the current buffer", noremap = true, silent = true }
       )
