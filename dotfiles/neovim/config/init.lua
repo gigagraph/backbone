@@ -1967,7 +1967,7 @@ local otree_lazy_spec = bpu:declare_lazy_spec(
       -- Keybindings
       vim.keymap.set(
         "n",
-        "<leader>to",
+        "<leader>tt",
         ":Otree<CR>",
         { desc = "Toggle Otree", noremap = true, silent = true }
       )
@@ -2091,13 +2091,13 @@ local telescope_lazy_spec = bpu:declare_lazy_spec(
       -- Filesystem search
       vim.keymap.set(
         "n",
-        "<leader>o",
+        "<leader>oo",
         function() telescope_directory.directory({ feature = "oil" }) end,
         { desc = "Telescope oil 🛢️", noremap = true, silent = true }
       )
       vim.keymap.set(
         "n",
-        "<leader>fo",
+        "<leader>of",
         function() telescope_directory.directory({ feature = "oil-float" }) end,
         { desc = "Telescope oil 🛢️ (float)", noremap = true, silent = true }
       )
