@@ -1728,9 +1728,9 @@ local function register_custom_on_attach()
     callback = function(args)
       local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
-      -- Enable inlay hints if LSP server supports them
+      -- Do not enable LSP hints by default automatically, even if if LSP server supports them
       if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+        vim.lsp.inlay_hint.enable(false, { bufnr = args.buf })
       end
 
       -- Explicitly set formatexpr if LSP server supports fomatting. Sometimes nvim does not automatically set it even when the LSP server supports it.
