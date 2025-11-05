@@ -91,15 +91,63 @@ vim.keymap.set(
 )
 
 -- Diagnostic
-vim.diagnostic.config({
-  underline = true,
+local _default_diagnostic_config = {
+  underline = false,
   virtual_text = false,
   virtual_lines = false,
   signs = true,
   float = true,
   update_in_insert = true,
   severity_sort = true,
-})
+}
+vim.diagnostic.config(_default_diagnostic_config)
+
+vim.keymap.set(
+  "n",
+  "<leader>dn",
+  function()
+    vim.diagnostic.config({ underline = false })
+  end,
+  { desc = "Disable all diagnostic underlines", noremap = true, silent = true }
+)
+vim.keymap.set(
+  "n",
+  "<leader>de",
+  function()
+    vim.diagnostic.config({
+      underline = {
+        severity = vim.diagnostic.severity.ERROR,
+      }
+    })
+  end,
+  { desc = "Enable diagnostic underlines only for errors", noremap = true, silent = true }
+)
+vim.keymap.set(
+  "n",
+  "<leader>dd",
+  function()
+    vim.diagnostic.config({
+      underline = {
+        severity = {
+          vim.diagnostic.severity.ERROR,
+          vim.diagnostic.severity.INFO,
+          vim.diagnostic.severity.HINT,
+        }
+      }
+    })
+  end,
+  { desc = "Enable diagnostic underlines for errors, info, and hints", noremap = true, silent = true }
+)
+vim.keymap.set(
+  "n",
+  "<leader>dh",
+  function()
+    vim.diagnostic.config({
+      underline = true,
+    })
+  end,
+  { desc = "Enable diagnostic underlines for all", noremap = true, silent = true }
+)
 
 --- Populate the quickfix list with diagnostics
 vim.keymap.set(
