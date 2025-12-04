@@ -1,5 +1,9 @@
 # OpenAI `codex`
 
+> [!WARNING]
+>
+> `codex` has been decomissioned from this setup.
+
 ## Installation
 
 > [!NOTE]
@@ -32,6 +36,12 @@ cargo install --all-features --locked --path codex-rs/cli
 #### zsh
 
 See the corresponding section in the [zsh docs file in this repo](../../zsh/README.md#codex).
+
+## Uninstall
+
+```bash
+cargo uninstall codex-cli
+```
 
 ## Configuration
 
