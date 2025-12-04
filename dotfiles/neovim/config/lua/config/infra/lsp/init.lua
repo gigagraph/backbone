@@ -38,6 +38,10 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "eslint",
   "quick_lint_js",
   "ts_ls",
+  -- TODO:
+  -- "zls",
+  -- "ziggy",
+  -- "ziggy_schema",
 })
 
 STATUS_UPDATES_DISABLED_FOR_LSP_SERVERS = Set.mk({
@@ -1722,7 +1726,9 @@ local function override_lsp_capabilities(deps)
   end
 end
 
-local function register_custom_on_attach()
+---@param format { format: bkblib.format? }?
+local function register_custom_on_attach(deps)
+  deps = deps or {}
   vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("bkb-lsp-attach", { clear = true }),
     callback = function(args)
@@ -1733,9 +1739,18 @@ local function register_custom_on_attach()
         vim.lsp.inlay_hint.enable(false, { bufnr = args.buf })
       end
 
-      -- Explicitly set formatexpr if LSP server supports fomatting. Sometimes nvim does not automatically set it even when the LSP server supports it.
-      if client.server_capabilities.documentFormattingProvider then
-        vim.opt_local.formatexpr = "v:lua.vim.lsp.formatexpr()"
+      -- Enable format on save
+      if deps.format and
+        (not client:supports_method("textDocument/willSaveWaitUntil") and
+        client:supports_method("textDocument/formatting")) then
+
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          group = vim.api.nvim_create_augroup("bkb-lsp-autoformat", { clear = false }),
+          buffer = args.buf,
+          callback = function()
+            deps.format.format({ bufnr = args.buf, client_id = client.id })
+          end,
+        })
       end
     end
   })
@@ -1747,13 +1762,13 @@ local function enable_suppored_lsp_servers()
   end
 end
 
----@param deps { notify: table?, blink_cmp: table? }? Dependnecies the module may use to initialize LSP
+---@param deps { notify: table?, blink_cmp: table?, format: bkblib.format? }? Dependnecies the module may use to initialize LSP
 function M.bkb_setup_suppotred_lsp_servers(deps)
   deps = deps or {}
   override_custom_lsp_handlers(deps)
   override_lsp_capabilities(deps)
   configure_supported_lsp_servers()
-  register_custom_on_attach()
+  register_custom_on_attach(deps)
   enable_suppored_lsp_servers()
 end
 

@@ -1677,7 +1677,17 @@ local nvim_lspconfig_lazy_spec = bpu:declare_lazy_spec(
       local notify = require("notify")
       local blink_cmp = require("blink.cmp")
       local bkb_lsp_config = require("config.infra.lsp")
-      bkb_lsp_config.bkb_setup_suppotred_lsp_servers({ notify = notify, blink_cmp = blink_cmp })
+      local format = require("bkblib.format")
+      bkb_lsp_config.bkb_setup_suppotred_lsp_servers({
+        notify = notify,
+        blink_cmp = blink_cmp,
+        format = format,
+      })
+
+      vim.keymap.set("n", "<leader>lf", function() format.format({ force = true }) end, { silent = true })
+      vim.keymap.set("n", "<leader>ltf", function() format.toggle({ global = true }) end, { silent = true })
+      vim.keymap.set("n", "<leader>lef", function() format.set_global_autoformat(true) end, { silent = true })
+      vim.keymap.set("n", "<leader>ldf", function() format.set_global_autoformat(false) end, { silent = true })
     end
   }
 )
