@@ -38,10 +38,9 @@ M.SUPPORTED_LSP_SERVERS = Set.mk({
   "eslint",
   "quick_lint_js",
   "ts_ls",
-  -- TODO:
-  -- "zls",
-  -- "ziggy",
-  -- "ziggy_schema",
+  "zls",
+  "ziggy",
+  "ziggy_schema",
 })
 
 STATUS_UPDATES_DISABLED_FOR_LSP_SERVERS = Set.mk({
@@ -1679,6 +1678,32 @@ local function configure_supported_lsp_servers()
           includeInlayEnumMemberValueHints = false,
         },
       },
+    },
+  })
+
+  -- zls
+  --- https://zigtools.org/zls/editors/vim/nvim/
+  vim.lsp.config("zls", {
+    settings = {
+      zls = {
+        -- This LSP does not take settings
+      }
+    },
+  })
+
+  -- ziggy
+  --- https://ziggy-lang.io/documentation/editors/neovim/
+  vim.lsp.config("ziggy", {
+    settings = {
+      -- This LSP does not take settings
+    },
+  })
+
+  -- ziggy_schema
+  --- https://ziggy-lang.io/documentation/editors/neovim/
+  vim.lsp.config("ziggy_schema", {
+    settings = {
+      -- This LSP does not take settings
     },
   })
 end

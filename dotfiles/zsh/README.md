@@ -140,6 +140,7 @@ This guide sets up the following plugins:
 - [`fzf-tab`](#use-fzf-to-match-completions-via-fzf-tab).
 - [`fzf-git`](#use-fzf-to-search-for-git-objects-via-fzf-git).
 - [`nix-zsh-completions`][github-nix-zsh-completions].
+- [`zig-shell-completions`][codeberg-zig-shell-completions].
 
 Additionally, see the [Integrations](#integrations) section to setup zsh to work with other tools.
 
@@ -626,6 +627,7 @@ To optimize zsh startup and usage performance, follow the [`diy++` installation 
 - [github-fzf-alt-c-in-vi-mode][github-fzf-alt-c-in-vi-mode]
 - [github-p10k][github-p10k]
 - [github-nix-zsh-completions][github-nix-zsh-completions]
+- [codeberg-zig-shell-completions][codeberg-zig-shell-completions]
 
 [arch-wiki-change-default-shell]: <https://wiki.archlinux.org/title/Command-line_shell#Changing_your_default_shell>
 [arch-wiki-startup-shutdown-files]: <https://wiki.archlinux.org/title/Zsh#Startup/Shutdown_files>
@@ -653,3 +655,4 @@ To optimize zsh startup and usage performance, follow the [`diy++` installation 
 [github-fzf-alt-c-in-vi-mode]: <https://github.com/junegunn/fzf/issues/1238>
 [github-p10k]: <https://github.com/romkatv/powerlevel10k>
 [github-nix-zsh-completions]: <https://github.com/nix-community/nix-zsh-completions>
+[codeberg-zig-shell-completions]: <https://codeberg.org/ziglang/shell-completions>

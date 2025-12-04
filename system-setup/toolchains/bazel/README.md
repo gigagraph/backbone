@@ -32,7 +32,7 @@ This guide recommends following [Bazel's offcial recommendation][bazel-installat
         ```
 2. Install the built binary to a location on the `PATH` & create a `bazel` symlink to `bazelisk`:
   - ```bash
-    sudo install -C -D "./bazel-bin/bazelisk-$(go env GOOS)_$(go env GOHOSTARCH)" '/usr/lcal/bin/bazelisk'
+    sudo install -C -D "./bazel-bin/bazelisk-$(go env GOOS)_$(go env GOHOSTARCH)" '/usr/local/bin/bazelisk'
     sudo ln -s '/usr/local/bin/bazelisk' '/usr/local/bin/bazel'
     ```
 

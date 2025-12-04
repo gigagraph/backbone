@@ -72,6 +72,9 @@ path+=(
   # LLVM binaries
   "/usr/lib/llvm-19/bin"
 
+  # zig binaries
+  "/usr/local/zig-current/bin"
+
   # Go binaries + program builds
   "/usr/local/go/bin"
 
