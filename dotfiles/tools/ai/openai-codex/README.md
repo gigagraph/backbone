@@ -24,7 +24,7 @@ cd codex-rs
 Run the following command to build release distribution and install it:
 
 ```bash
-cargo install --all-features --locked --path cli
+cargo install --all-features --locked --path codex-rs/cli
 ```
 
 ### Integrate `codex` with other programs
