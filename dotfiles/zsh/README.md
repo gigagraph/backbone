@@ -456,6 +456,18 @@ COMPLETE="${SHELL##*/}" jj > "${ZSH_COMPLETIONS_DIR}/_jj"
 
 After you generated the completions, ensure that the directory with the `_jj` completions file is on your zsh `fpath`.
 
+#### `ast-grep`
+
+##### `ast-grep` completions
+
+Use `ast-grep` to generate completions for zsh:
+
+```bash
+ast-grep completions "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_ast-grep"
+```
+
+After you generated the completions, ensure that the directory with the `_ast-grep` completions file is on your zsh `fpath`.
+
 #### `uv`
 
 ##### `uv` completions

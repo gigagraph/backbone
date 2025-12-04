@@ -2,16 +2,6 @@
 
 Configuration and setup instructions for the commonly used customized software.
 
-> [!NOTE]
->
-> To install some of the software listed here, users may require the following language toolhcains:
-> - [C/C++](../system-setup/toolchains/llvm/README.md).
-> - [Python](../system-setup/toolchains/python/README.md).
-> - [Go](../system-setup/toolchains/go/README.md).
-> - [Rust](../system-setup/toolchains/rust/README.md).
->
-> [You can verify the versions of the installed toolcahins with the script](../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
-
 ## Software
 
 ### Structure
@@ -25,12 +15,10 @@ The **top level** of this directory contains subdirectories that correspond to *
 - Usable:
   - [zsh](./zsh/README.md).
   - [Kitty](./kitty/README.md).
-- In progress:
   - [`neovim`](./neovim/README.md).
+- In progress:
   - [tmux](./tmux/README.md).
 - TODO:
-  - [ ] Code suggestions in text editors (perhaps using codellama).
-    - Consider sourcegraph's Cody for text editor integration.
   - [ ] Hyperland.
 
 ##### [Terminal utils](./terminal-utils/README.md)
@@ -64,13 +52,4 @@ The subtree under the [`./deprecated/`](./deprecated/) directory consists of the
 
 ## Future plans
 
-- [ ] TODO: Make this setup (or a part of it) into a nix package.
-
-<!--
-
-### `home-manager`
-
-Source: https://github.com/nix-community/home-manager
-Docs: https://nix-community.github.io/home-manager/
-
--->
+- [ ] TODO: Make this setup (or a part of it) a nix package.
