@@ -209,6 +209,13 @@ fi
 source "${ZSH_COMPLETIONS_DIR}/nix-zsh-completions/nix-zsh-completions.plugin.zsh"
 fpath+=("${ZSH_COMPLETIONS_DIR}/nix-zsh-completions")
 
+if [ ! -e "${ZSH_COMPLETIONS_DIR}/ziglang-shell-completions" ]; then
+  git clone ssh://git@codeberg.org/ziglang/shell-completions.git "${ZSH_COMPLETIONS_DIR}/ziglang-shell-completions"
+  git -C "${ZSH_COMPLETIONS_DIR}/ziglang-shell-completions" checkout 'c2983a75dcbcaf3a1df74ab563a9bd3c8e7f448e'
+  zcompile-many "${ZSH_COMPLETIONS_DIR}"/ziglang-shell-completions/{zig-shell-completions.plugin.zsh,_zig}
+fi
+source "${ZSH_COMPLETIONS_DIR}/ziglang-shell-completions/zig-shell-completions.plugin.zsh"
+
 # Configure completions
 
 setopt NOCORRECT

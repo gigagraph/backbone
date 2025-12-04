@@ -57,7 +57,7 @@ local function configure_supported_lsp_servers()
     on_init = function(client)
       if client.workspace_folders then
         local path = client.workspace_folders[1].name
-        if path ~= vim.fn.stdpath("config") and (vim.uv.fs_stat(path.."/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc")) then
+        if path ~= vim.fn.stdpath("config") and (vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc")) then
           return nil
         end
       end
@@ -398,7 +398,7 @@ local function configure_supported_lsp_servers()
               enable = false,
             },
             trait = {
-              enable = false ,
+              enable = false,
             },
           },
           run = {
@@ -445,8 +445,8 @@ local function configure_supported_lsp_servers()
             enable = false,
             separate = {
               macro = {
-                bang = false
-                ,  },
+                bang = false,
+              },
             },
             specialization = {
               enable = false,
@@ -890,8 +890,8 @@ local function configure_supported_lsp_servers()
           jdtls_data_path = vim.fn.resolve(
             tostring(
               path.new(vim.fn.stdpath("cache"))
-                :joinpath("bkb/lsp_cache/jdtls")
-                :joinpath(cwd_last_component)
+              :joinpath("bkb/lsp_cache/jdtls")
+              :joinpath(cwd_last_component)
             )
           )
         end
@@ -948,8 +948,8 @@ local function configure_supported_lsp_servers()
           "<leader><leader>ljjc",
           function()
             vim.ui.input({
-              prompt = "Remove the jdtls data directory (" .. jdtls_data_path .. ")? (`y` to confirm): ",
-            },
+                prompt = "Remove the jdtls data directory (" .. jdtls_data_path .. ")? (`y` to confirm): ",
+              },
               function(input)
                 if input == "y" then
                   vim.lsp.stop_client(vim.lsp.get_clients({ bufnr = 0 }))
@@ -998,28 +998,28 @@ local function configure_supported_lsp_servers()
   vim.lsp.config("yamlls", {
     settings = {
       yaml = {
-        yamlVersion = "1.2",
-        format = {
+        yamlVersion              = "1.2",
+        format                   = {
           enable = true,
           singleQuote = false,
           bracketSpacing = false,
           proseWrap = "Preserve",
           printWidth = 120,
         },
-        validate = true,
-        completion = true,
-        schemas = {},
-        schemaStore = {
+        validate                 = true,
+        completion               = true,
+        schemas                  = {},
+        schemaStore              = {
           enable = false,
         },
-        editor = {
+        editor                   = {
           formatOnType = true,
         },
         disableDefaultProperties = false,
-        suggest = {
+        suggest                  = {
           parentSkeletonSelectedFirst = false,
         },
-        keyOrdering  = false,
+        keyOrdering              = false,
       },
       redhat = {
         telemetry = {
@@ -1102,11 +1102,11 @@ local function configure_supported_lsp_servers()
         nixpkgs = {
           expr = "import <nixpkgs> { }",
         },
-         formatting = {
-            command = { "nixfmt" },
-         },
+        formatting = {
+          command = { "nixfmt" },
+        },
       },
-   },
+    },
   })
 
   -- emmet-language-server
@@ -1144,12 +1144,12 @@ local function configure_supported_lsp_servers()
           intUnit = "px",
           propertyEnd = ";",
           syntaxes = {
-                "css",
-                "less",
-                "sass",
-                "scss",
-                "stylus",
-                "styl",
+            "css",
+            "less",
+            "sass",
+            "scss",
+            "stylus",
+            "styl",
           },
           valueSeparator = ": ",
         },
@@ -1741,14 +1741,15 @@ local function register_custom_on_attach(deps)
 
       -- Enable format on save
       if deps.format and
-        (not client:supports_method("textDocument/willSaveWaitUntil") and
-        client:supports_method("textDocument/formatting")) then
-
+          (not client:supports_method("textDocument/willSaveWaitUntil") and
+            client:supports_method("textDocument/formatting")) then
         vim.api.nvim_create_autocmd("BufWritePre", {
-          group = vim.api.nvim_create_augroup("bkb-lsp-autoformat", { clear = false }),
+          group = vim.api.nvim_create_augroup("bkb-lsp-autoformat-" .. client.name, { clear = true }),
           buffer = args.buf,
           callback = function()
-            deps.format.format({ bufnr = args.buf, client_id = client.id })
+            -- Not passing the current client.id on purpose, delegate the
+            -- decision of which LSP to use to the format module,
+            deps.format.format({ bufnr = args.buf })
           end,
         })
       end
