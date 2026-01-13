@@ -112,6 +112,12 @@ alias gst="'git' status"
 
 alias q="'exit'"
 
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
+
+alias k="kubectl"
+
 # Envs
 
 export EDITOR="$(which nvim)"
