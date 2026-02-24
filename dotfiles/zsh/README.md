@@ -503,16 +503,6 @@ zstyle ':completion:*' cache-path "${COMPLETIONS_CACHE_DIR}"
 zstyle 'completion:init:bazel:*' cache-lifetime 604800
 ```
 
-#### [`codex`](../tools/ai/openai-codex/README.md)
-
-##### `codex` completions
-
-Use `codex` to generate completions for zsh:
-
-```bash
-codex completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_codex"
-```
-
 #### [`minikube`](../../cloud/platfrom/k8s/local.md)
 
 Use `minikube` to generate completions for zsh:

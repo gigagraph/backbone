@@ -9,9 +9,9 @@
 > [!NOTE]
 >
 > Ensure you have the following language toolhcains:
-> - [Rust](../../../../system-setup/toolchains/rust/README.md).
+> - [Rust](../../../../../system-setup/toolchains/rust/README.md).
 >
-> [You can verify the versions of the installed toolcahins with the script](../../../../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
+> [You can verify the versions of the installed toolcahins with the script](../../../../../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
 
 This guide recommends installing [`codex` source][codex-build-from-source].
 
@@ -35,12 +35,19 @@ cargo install --all-features --locked --path codex-rs/cli
 
 #### zsh
 
-See the corresponding section in the [zsh docs file in this repo](../../zsh/README.md#codex).
+##### `codex` completions
+
+Use `codex` to generate completions for zsh:
+
+```bash
+codex completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_codex"
+```
 
 ## Uninstall
 
 ```bash
 cargo uninstall codex-cli
+rm -rf "${ZSH_COMPLETIONS_DIR}/_codex"
 ```
 
 ## Configuration
