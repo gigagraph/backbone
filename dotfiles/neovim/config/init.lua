@@ -174,6 +174,8 @@ vim.opt.listchars = {
 }
 
 vim.opt.langremap = false
+-- stylua: ignore start
+---@format disable
 vim.opt.langmap = {
   -- Ukrainian 🇺🇦
   "'`",
@@ -197,6 +199,8 @@ vim.opt.langmap = {
         "ФA", "ЫS", "ВD", "АF", "ПG", --[[ | ]] "РH", "ОJ", "ЛK", "ДL", "Ж:", 'Э\\"',
         "ЯZ", "ЧX", "СC", "МV",       --[[ | ]] "ИB", "ТN", "ЬM", "Б<", "Ю>",
 }
+---@format enable
+-- stylua: ignore end
 
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking text",
