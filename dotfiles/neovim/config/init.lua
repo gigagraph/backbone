@@ -76,7 +76,7 @@ vim.keymap.set(
 
 --- Go to the next item in the quickfix list
 vim.keymap.set(
-  {"n", "v", "i", "c", "t"},
+  { "n", "v", "i", "c", "t" },
   "<C-M-S-j>",
   vim.cmd.cnext,
   { silent = true }
@@ -84,7 +84,7 @@ vim.keymap.set(
 
 --- Go to the previous item in the quickfix list
 vim.keymap.set(
-  {"n", "v", "i", "c", "t"},
+  { "n", "v", "i", "c", "t" },
   "<C-M-S-k>",
   vim.cmd.cprevious,
   { silent = true }
@@ -1908,6 +1908,21 @@ local oil_lazy_spec = bpu:declare_lazy_spec(
         ["g."] = { "actions.toggle_hidden", mode = "n" },
         ["g\\"] = { "actions.toggle_trash", mode = "n" },
       },
+      view_options = {
+        -- Show hidden files and directories
+        show_hidden = true,
+        is_always_hidden = function(name, bufnr)
+          local m = name:match("^%.%.$")
+          return m
+        end,
+        is_hidden_file = function(name, bufnr)
+          local m = name:match("^%.")
+          return m ~= nil
+        end,
+        -- Sorting config
+        natural_order = "fast",
+        case_insensitive = false,
+      },
     },
     config = function(lazy_plugin, opts)
       local oil = require(lazy_plugin.name)
@@ -1965,8 +1980,8 @@ local otree_lazy_spec = bpu:declare_lazy_spec(
       win_size = 30,
       open_on_startup = false,
       hijack_netrw = false,
-      show_hidden = false,
-      show_ignore = false,
+      show_hidden = true,
+      show_ignore = true,
       cursorline = true,
       focus_on_enter = false,
       open_on_left = true,
