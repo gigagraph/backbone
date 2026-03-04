@@ -175,7 +175,7 @@ vim.opt.listchars = {
 
 vim.opt.langremap = false
 -- stylua: ignore start
----@format disable
+---@format disable-next
 vim.opt.langmap = {
   -- Ukrainian 🇺🇦
   "'`",
@@ -199,7 +199,6 @@ vim.opt.langmap = {
         "ФA", "ЫS", "ВD", "АF", "ПG", --[[ | ]] "РH", "ОJ", "ЛK", "ДL", "Ж:", 'Э\\"',
         "ЯZ", "ЧX", "СC", "МV",       --[[ | ]] "ИB", "ТN", "ЬM", "Б<", "Ю>",
 }
----@format enable
 -- stylua: ignore end
 
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -249,11 +248,11 @@ local catppuccin_lazy_spec = bpu:declare_lazy_spec(
       show_end_of_buffer = true,
       term_colors = false,
       dim_inactive = {
-        enabled = true, -- dims the background color of inactive window
+        enabled = true,          -- dims the background color of inactive window
         shade = "dark",
-        percentage = 0.15, -- percentage of the shade to apply to the inactive window
+        percentage = 0.15,       -- percentage of the shade to apply to the inactive window
       },
-      styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+      styles = {                 -- Handles the styles of general hi groups (see `:h highlight-args`):
         comments = { "italic" }, -- Change the style of comments
         conditionals = { "italic" },
         loops = {},
@@ -610,16 +609,16 @@ local mini_lazy_spec = bpu:declare_lazy_spec(
 
         -- Module mappings. Use `""` (empty string) to disable one.
         mappings = {
-          add = "<leader>sa", -- Add surrounding in Normal and Visual modes
-          delete = "<leader>sd", -- Delete surrounding
-          find = "<leader>sf", -- Find surrounding (to the right)
-          find_left = "<leader>sF", -- Find surrounding (to the left)
-          highlight = "<leader>sh", -- Highlight surrounding
-          replace = "<leader>sr", -- Replace surrounding
+          add = "<leader>sa",            -- Add surrounding in Normal and Visual modes
+          delete = "<leader>sd",         -- Delete surrounding
+          find = "<leader>sf",           -- Find surrounding (to the right)
+          find_left = "<leader>sF",      -- Find surrounding (to the left)
+          highlight = "<leader>sh",      -- Highlight surrounding
+          replace = "<leader>sr",        -- Replace surrounding
           update_n_lines = "<leader>sn", -- Update `n_lines`
 
-          suffix_last = "l", -- Suffix to search with "prev" method
-          suffix_next = "n", -- Suffix to search with "next" method
+          suffix_last = "l",             -- Suffix to search with "prev" method
+          suffix_next = "n",             -- Suffix to search with "next" method
         },
 
         -- Number of lines within which surrounding is searched
@@ -974,18 +973,18 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
 
         context = {
           -- https://github.com/nvim-treesitter/nvim-treesitter-context?tab=readme-ov-file#configuration
-          enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-          multiwindow = true, -- Enable multiwindow support.
-          max_lines = 5, -- How many lines the window should span. Values <= 0 mean no limit.
-          min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+          enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
+          multiwindow = true,       -- Enable multiwindow support.
+          max_lines = 5,            -- How many lines the window should span. Values <= 0 mean no limit.
+          min_window_height = 0,    -- Minimum editor window height to enable context. Values <= 0 mean no limit.
           line_numbers = true,
           multiline_threshold = 20, -- Maximum number of lines to show for a single context
-          trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: "inner", "outer"
-          mode = "cursor", -- Line used to calculate context. Choices: "cursor", "topline"
+          trim_scope = "outer",     -- Which context lines to discard if `max_lines` is exceeded. Choices: "inner", "outer"
+          mode = "cursor",          -- Line used to calculate context. Choices: "cursor", "topline"
           -- Separator between context and content. Should be a single character string, like "-".
           -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
           separator = nil,
-          zindex = 20, -- The Z-index of the context window
+          zindex = 20,     -- The Z-index of the context window
           on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
         },
 
@@ -1184,10 +1183,10 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
             bkb_prev_foldlevel_buffer_var
           )
           local bkb_prev_vars_ok = (
-          bkb_prev_foldmethod_ok and
-          bkb_prev_foldexpr_ok and
-          bkb_prev_foldlevel_ok
-        )
+            bkb_prev_foldmethod_ok and
+            bkb_prev_foldexpr_ok and
+            bkb_prev_foldlevel_ok
+          )
 
           if bkb_prev_vars_ok then
             -- Revert the folding configuration back
@@ -1244,7 +1243,8 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
         "BkbTSToggleFolding",
         function(opts) try_toggle_treesitter_folding() end,
         {
-          desc = [[Try to toggle options that enable treesitter folding in the current window if the current buffer has a treesitter parser.
+          desc =
+          [[Try to toggle options that enable treesitter folding in the current window if the current buffer has a treesitter parser.
 
           Note: use `zx` followed by reloading the buffer contents (`:e`) to reset folds.]]
         }
@@ -1253,7 +1253,8 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
         "BkbTSEnableFolding",
         function(opts) try_enable_treesitter_folding() end,
         {
-          desc = [[Try to set option to enable treesitter folding in the current window if the current buffer has a treesitter parser. If successfuly, the function will save the current folding options to the buffer vars so that they can be restored when user wants to disable treesitter folding.
+          desc =
+          [[Try to set option to enable treesitter folding in the current window if the current buffer has a treesitter parser. If successfuly, the function will save the current folding options to the buffer vars so that they can be restored when user wants to disable treesitter folding.
 
           Note: use `zx` followed by reloading the buffer contents (`:e`) to reset folds.]]
         }
@@ -1262,7 +1263,8 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
         "BkbTSDisableFolding",
         function(opts) try_disable_treesitter_folding() end,
         {
-          desc = [[Try to revert the folding options to their previous values before enabling treesitter folding in the current window if the current buffer has a treesitter parser.
+          desc =
+          [[Try to revert the folding options to their previous values before enabling treesitter folding in the current window if the current buffer has a treesitter parser.
 
           Note: use `zx` followed by reloading the buffer contents (`:e`) to reset folds.]]
         }
@@ -1674,8 +1676,8 @@ local nvim_lspconfig_lazy_spec = bpu:declare_lazy_spec(
   {
     dependencies = {
       "nvim-notify", -- Because the setup uses nvim-notify to display LSP server to client messages
-      "luasnip", -- So that nvim LSP client can parse LSP server snippets
-      "blink.cmp", -- Some LSP completions require a completion and snippet engine to complete and expand snippets
+      "luasnip",     -- So that nvim LSP client can parse LSP server snippets
+      "blink.cmp",   -- Some LSP completions require a completion and snippet engine to complete and expand snippets
     },
     config = function(lazy_plugin, opts)
       local notify = require("notify")
@@ -1788,9 +1790,9 @@ local nvim_colorizer_lazy_spec = bpu:declare_lazy_spec(
   {
     opts = {
       {
-        RGB = true, -- #RGB hex codes
-        RRGGBB = true, -- #RRGGBB hex codes
-        names = true, -- "Name" codes like Blue
+        RGB = true,       -- #RGB hex codes
+        RRGGBB = true,    -- #RRGGBB hex codes
+        names = true,     -- "Name" codes like Blue
         RRGGBBAA = false, -- #RRGGBBAA hex codes
         mode = "background",
       },
@@ -2158,12 +2160,16 @@ local telescope_lazy_spec = bpu:declare_lazy_spec(
       -- Configure keybindings
       local builtin = require("telescope.builtin")
       -- File search
-      vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files", noremap = true, silent = true })
-      vim.keymap.set("n", "<leader>fj", builtin.git_files, { desc = "Telescope find git files", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>ff", builtin.find_files,
+        { desc = "Telescope find files", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>fj", builtin.git_files,
+        { desc = "Telescope find git files", noremap = true, silent = true })
 
       -- String search in files
-      vim.keymap.set("n", "<leader>fl", builtin.live_grep, { desc = "Telescope live grep", noremap = true, silent = true })
-      vim.keymap.set("n", "<leader>fgs", builtin.grep_string, { desc = "Telescope string grep", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>fl", builtin.live_grep,
+        { desc = "Telescope live grep", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>fgs", builtin.grep_string,
+        { desc = "Telescope string grep", noremap = true, silent = true })
 
       -- Filesystem search
       vim.keymap.set(
@@ -2181,12 +2187,18 @@ local telescope_lazy_spec = bpu:declare_lazy_spec(
 
       -- nvim objects search
       vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers", noremap = true, silent = true })
-      vim.keymap.set("n", "<leader>hc", builtin.command_history, { desc = "Telescope command history", noremap = true, silent = true })
-      vim.keymap.set("n", "<leader>hs", builtin.search_history, { desc = "Telescope search history", noremap = true, silent = true })
-      vim.keymap.set("n", "<leader>rr", builtin.registers, { desc = "Telescope registers", noremap = true, silent = true })
-      vim.keymap.set("n", "<leader>ss", builtin.spell_suggest, { desc = "Telescope spell suggest", noremap = true, silent = true })
-      vim.keymap.set("n", "<leader>grr", builtin.lsp_references, { desc = "Telescope LSP references", noremap = true, silent = true })
-      vim.keymap.set("n", "<leader>cd", builtin.diagnostics, { desc = "Telescope diagnostics", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>hc", builtin.command_history,
+        { desc = "Telescope command history", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>hs", builtin.search_history,
+        { desc = "Telescope search history", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>rr", builtin.registers,
+        { desc = "Telescope registers", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>ss", builtin.spell_suggest,
+        { desc = "Telescope spell suggest", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>grr", builtin.lsp_references,
+        { desc = "Telescope LSP references", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>cd", builtin.diagnostics,
+        { desc = "Telescope diagnostics", noremap = true, silent = true })
     end,
   }
 )
