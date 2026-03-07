@@ -4,18 +4,25 @@
 
 ### System go
 
-1. Remove the previous installation (depending), e.g.:
+1. Download the desired version of go (`${GOVERSION}`), e.g. from the [official mirror][download-go].
   - ```bash
-    rm -rf /usr/local/go
+    GOVERSION="<go-version>"
+    GO_DOWNLOAD_LOCATION="$(mktemp "go${GOVERSION}XXXXX.tar.gz")"
+
+    curl -L "https://go.dev/dl/go${GOVERSION}.$(go env GOOS)-$(go env GOARCH).tar.gz" -o "${GO_DOWNLOAD_LOCATION}"
     ```
-2. Download the desired version of go (`${GO_VERSION}`), e.g. from the [official mirror][download-go].
+2. Remove the previous installation (depending), e.g.:
+  - ```bash
+    sudo rm -rf /usr/local/go
+    ```
 3. Unpack the downloaded archive to a directory on the filesystem, where you want to be able to access it from. E.g. you can install it for a specific user by unpacking go to `${HOME}/.local/bin/go`, or you can install it system-wide at `/usr/local/go` Go calls this directory `${GOROOT}`.
- - ```bash
-   # Set the path you want to install go
-   GOROOT="/usr/local/go"
-   # Remove the /go part from the end of GOROOT, because the archive has this directory. Depending on the installation location, you may need to prepend the command with `sudo`
-   tar -C "${GOROOT%/*}" -xzf "go${GO_VERSION}.${OS}-${ARCH}.tar.gz"
-   ```
+  - ```bash
+    # Set the path you want to install go
+    GOROOT="/usr/local/go"
+    # Remove the /go part from the end of GOROOT, because the archive has this directory. Depending on the installation location, you may need to prepend the command with `sudo`
+    sudo tar -C "${GOROOT%/*}" -xzf "${GO_DOWNLOAD_LOCATION}"
+    rm -rf "${GO_DOWNLOAD_LOCATION}"
+    ```
 4. Add `${GOROOT}`, `${GOBIN}`, `${GOPATH}/bin`, and `${HOME}/go/bin` to your `${PATH}`, e.g.:
   - In bash:
     ```bash
