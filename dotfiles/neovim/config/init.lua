@@ -1834,7 +1834,7 @@ local nvim_dap_ui_lazy_spec = bpu:declare_lazy_spec(
       end
 
       -- Set keynidnings
-      vim.keymap.set("n", "<leader><leader>bo", ui.open)
+      vim.keymap.set("n", "<leader><leader>bo", function() ui.open({ reset = true }) end)
       vim.keymap.set("n", "<leader><leader>bc", ui.close)
     end
   }
