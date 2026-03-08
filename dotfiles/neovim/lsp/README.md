@@ -36,6 +36,7 @@ Supported LSP servers:
   - [TS](./web/typescript.md): `ts_ls` (typescript-language-server - https://github.com/typescript-language-server/typescript-language-server).
 
 Planned to be supported in future:
+- [`vue_ls`](https://github.com/vuejs/language-tools/wiki/Neovim).
 - Zig/Ziggy/Ziggy Schema.
 - Verilog.
 - VHDL.

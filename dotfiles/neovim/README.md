@@ -111,9 +111,6 @@ Plugins to be considered for installation:
   - [`vim-easymotion`](https://github.com/easymotion/vim-easymotion).
 - Explainability:
   - [telescope cheatsheet](https://github.com/doctorfree/cheatsheet.nvim).
-- Debugging:
-  - [`nvim-dap`](https://github.com/mfussenegger/nvim-dap).
-  - [`nvim-dap-ui`](https://github.com/rcarriga/nvim-dap-ui).
 - VCS:
   - [`gitsigns.nvim`](https://github.com/lewis6991/gitsigns.nvim).
   - [`neogit`](https://github.com/NeogitOrg/neogit).
@@ -405,6 +402,46 @@ Use `:help lsp` to find basic information about LSP integration in `neovim`.
 
 [`nvim-lspconfig`][nvim-lspconfig] facilitates configuration of popular LSP servers.
 
+Users must install LSP servers separately. This setup maintains configurations for supported LSP servers in [`config/lua/config/infra/lsp/init.lua`](./config/lua/config/infra/lsp/init.lua). Instructions to install specific LSP servers reside in [`lsp/`](./lsp/).
+
+#### [`nvim-nio`][nvim-nio]
+
+`nvim-nio` provides library for asynchronous IO in Neovim. It is also a dependency for other plugins.
+
+Plugins that are known to depend on it:
+
+- [`nvim-dap-ui`][nvim-dap-ui].
+
+#### [`nvim-dap`][nvim-dap]
+
+This setup uses `nvim-dap` to enable debugging capabilities in `neovim` via the .
+
+More info about DAP, its setup in neovim, and how to install specific degubbers resides in [dap/README.md](./dap/README.md).
+
+Use `:help dap.txt` to find the plugin's docs.
+
+#### [`nvim-dap-ui`][nvim-dap-ui]
+
+`nvim-dap-ui` provides UI for debugging programs via the [DAP protocol](#nvim-dap).
+
+Use `:help nvim-dap-ui` to find the plugin's docs.
+
+#### [`nvim-dap-virtual-text`][nvim-dap-virtual-text]
+
+`nvim-dap-virtual-text` ads virtual text to [DAP](#nvim-dap) debugging sessions.
+
+Use `:help nvim-dap-virtual-text-nvim-dap-virtual-text` to find the plugin docs.
+
+#### [`nvim-dap-go`][nvim-dap-go]
+
+Enables [`nvim-dap`](#nvim-dap) integration with Go's `delve` debugger. I.e. makes `nvim-dap` run `delve` as a DAP adapter to debug Go programs.
+
+Use `:help nvim-dap-go` to find the plugin docs.
+
+Dependencies:
+
+- [`delve`](./lsp/go.md#debugger).
+
 #### [`telescope.nvim`][telescope-nvim]
 
 This setup uses `telescope.nvim` to search and select different types of objects (files, strings, LSP references, diagnostics, `nvim` buffers, registers, etc.). One of the primary features of the plugin is that it facilitates file navigation.
@@ -596,6 +633,11 @@ done
   - [nvim-treesitter-textobjects][nvim-treesitter-textobjects]
   - [nvim-treesitter-refactor][nvim-treesitter-refactor]
   - [nvim-lspconfig][nvim-lspconfig]
+  - [nvim-dap]
+  - [dap]
+  - [nvim-dap-ui]
+  - [nvim-dap-virtual-text]
+  - [nvim-dap-go]
   - [telescope-nvim][telescope-nvim]
   - [telescope-fzf-native-nvim][telescope-fzf-native-nvim]
   - [telescope-directory][telescope-directory]
@@ -652,6 +694,11 @@ done
 [nvim-treesitter-textobjects]: <https://github.com/nvim-treesitter/nvim-treesitter-textobjects>
 [nvim-treesitter-refactor]: https://github.com/nvim-treesitter/nvim-treesitter-refactor
 [nvim-lspconfig]: <https://github.com/neovim/nvim-lspconfig>
+[nvim-dap]: <https://codeberg.org/mfussenegger/nvim-dap>
+[dap]: <https://microsoft.github.io/debug-adapter-protocol/>
+[nvim-dap-ui]: <https://github.com/rcarriga/nvim-dap-ui>
+[nvim-dap-virtual-text]: <https://github.com/theHamsta/nvim-dap-virtual-text>
+[nvim-dap-go]: <https://github.com/leoluz/nvim-dap-go>
 [telescope-nvim]: <https://github.com/nvim-telescope/telescope.nvim>
 [telescope-fzf-native-nvim]: <https://github.com/nvim-telescope/telescope-fzf-native.nvim>
 [telescope-directory]: <https://github.com/fbuchlak/telescope-directory.nvim>
