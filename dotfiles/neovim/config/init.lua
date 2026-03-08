@@ -1721,11 +1721,6 @@ local nvim_dap_lazy_spec = bpu:declare_lazy_spec(
       vim.keymap.set("n", "<leader>bc", dap.clear_breakpoints)
       vim.keymap.set("n", "<leader>bg", dap.run_to_cursor)
 
-      --- Eval var under cursor
-      vim.keymap.set("n", "<leader>?", function()
-        dapui.eval(nil, { enter = true })
-      end)
-
       vim.keymap.set("n", "<F1>", dap.continue)
       vim.keymap.set("n", "<F2>", dap.step_into)
       vim.keymap.set("n", "<F3>", dap.step_over)
@@ -1741,6 +1736,7 @@ local nvim_dap_ui_lazy_spec = bpu:declare_lazy_spec(
   {
     dependencies = {
       "dap",
+      "nvim-dap-virtual-text",
       "nvim-nio",
     },
     opts = {
@@ -1816,6 +1812,7 @@ local nvim_dap_ui_lazy_spec = bpu:declare_lazy_spec(
     config = function(lazy_plugin, opts)
       -- Call the original plugin's setup code
       local ui = require(lazy_plugin.name)
+      local dap_virt_text = require("nvim-dap-virtual-text")
       ui.setup(opts)
 
       -- Open and close UI autommatically when starting debugging
@@ -1834,8 +1831,17 @@ local nvim_dap_ui_lazy_spec = bpu:declare_lazy_spec(
       end
 
       -- Set keynidnings
-      vim.keymap.set("n", "<leader><leader>bo", function() ui.open({ reset = true }) end)
-      vim.keymap.set("n", "<leader><leader>bc", ui.close)
+      vim.keymap.set("n", "<leader><leader>bo", function()
+        ui.open({ reset = true })
+      end)
+      vim.keymap.set("n", "<leader><leader>bc", function()
+        ui.close()
+        dap_virt_text.refresh()
+      end)
+      --- Eval var under cursor
+      vim.keymap.set("n", "<leader>?", function()
+        ui.eval(nil, { enter = true })
+      end)
     end
   }
 )
