@@ -226,6 +226,7 @@ bkb_filetypes.add_bkb_filetypes()
 -- nvimpager
 if nvimpager then
   nvimpager.maps = false
+  vim.deprecate = function() end -- Disable deprecation messages when running in pager, because they mess up the output
 end
 
 -- Plugin management
@@ -765,7 +766,37 @@ local mini_lazy_spec = bpu:declare_lazy_spec(
 local nvim_treesitter_context_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.nvim-treesitter-context",
   {
-    -- Configured later as a part of nvim-treesitter
+    dependencies = {
+      "nvim-treesitter"
+    },
+    opts = {
+      -- https://github.com/nvim-treesitter/nvim-treesitter-context?tab=readme-ov-file#configuration
+      enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
+      multiwindow = true,       -- Enable multiwindow support.
+      max_lines = 5,            -- How many lines the window should span. Values <= 0 mean no limit.
+      min_window_height = 0,    -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+      line_numbers = true,
+      multiline_threshold = 20, -- Maximum number of lines to show for a single context
+      trim_scope = "outer",     -- Which context lines to discard if `max_lines` is exceeded. Choices: "inner", "outer"
+      mode = "cursor",          -- Line used to calculate context. Choices: "cursor", "topline"
+      -- Separator between context and content. Should be a single character string, like "-".
+      -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+      separator = nil,
+      zindex = 20,     -- The Z-index of the context window
+      on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
+    },
+    config = function(lazy_plugin, opts)
+      local ts_context = require("treesitter-context")
+      ts_context.setup(opts)
+
+      -- Keymappings
+      vim.keymap.set(
+        "n",
+        "<leader><leader>gc",
+        function() ts_context.go_to_context(vim.v.count1) end,
+        { silent = true }
+      )
+    end,
   }
 )
 
@@ -773,15 +804,81 @@ local nvim_treesitter_context_lazy_spec = bpu:declare_lazy_spec(
 local nvim_treesitter_textobjects_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.nvim-treesitter-textobjects",
   {
-    -- Configured later as a part of nvim-treesitter
-  }
-)
-
----- nvim-treesitter-refactor
-local nvim_treesitter_refactor_lazy_spec = bpu:declare_lazy_spec(
-  "config.infra.plugins.nvim-treesitter-refactor",
-  {
-    -- Configured later as a part of nvim-treesitter
+    dependencies = {
+      "nvim-treesitter"
+    },
+    opts = {
+      -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+      select = {
+        enable = true,
+        lookahead = true,
+        keymaps = {
+          ["af"] = "@function.outer",
+          ["if"] = "@function.inner",
+          ["ac"] = "@comment.outer",
+          ["ic"] = "@comment.inner",
+          ["ab"] = "@block.outer",
+          ["ib"] = "@block.inner",
+          ["as"] = {
+            query = "@local.scope",
+            query_group = "locals",
+            desc = "Select language scope",
+          },
+        },
+        selection_modes = {},
+        include_surrounding_whitespace = false, -- Note: can also be a function to have different behaviors for queries and selection modes
+      },
+      swap = {
+        enable = true,
+        swap_next = {
+          ["<leader><leader>abn"] = "@block.outer",
+          ["<leader><leader>abP"] = "@block.outer",
+          ["<leader><leader>ibn"] = "@block.inner",
+          ["<leader><leader>ibP"] = "@block.inner",
+          ["<leader><leader>afn"] = "@function.outer",
+          ["<leader><leader>afP"] = "@function.outer",
+          ["<leader><leader>ifn"] = "@function.inner",
+          ["<leader><leader>ifP"] = "@function.inner",
+        },
+        swap_previous = {
+          ["<leader><leader>abp"] = "@block.outer",
+          ["<leader><leader>abN"] = "@block.outer",
+          ["<leader><leader>ibp"] = "@block.inner",
+          ["<leader><leader>ibN"] = "@block.inner",
+          ["<leader><leader>afp"] = "@function.outer",
+          ["<leader><leader>afN"] = "@function.outer",
+          ["<leader><leader>ifp"] = "@function.inner",
+          ["<leader><leader>ifN"] = "@function.inner",
+        },
+      },
+      move = {
+        enable = true,
+        set_jumps = true,
+        goto_next_start = {
+          ["]m"] = "@function.inner",
+          ["]]"] = "@block.outer",
+        },
+        goto_next_end = {
+          ["]M"] = "@function.inner",
+          ["]}"] = "@block.outer",
+        },
+        goto_previous_start = {
+          ["[m"] = "@function.inner",
+          ["[["] = "@block.outer",
+        },
+        goto_previous_end = {
+          ["[M"] = "@function.inner",
+          ["[{"] = "@block.outer",
+        },
+      },
+      lsp_interop = {
+        enable = true,
+        floating_preview_opts = {
+          border = "shadow",
+        },
+        peek_definition_code = {}
+      },
+    },
   }
 )
 
@@ -790,314 +887,200 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.nvim-treesitter",
   {
     config = function(lazy_plugin, opts)
-      local configs = require("nvim-treesitter.configs")
+      local treesitter = require("nvim-treesitter")
 
-      configs.setup({
-        ensure_installed = {
-          -- General
-          "comment",
+      treesitter.setup({
+        install_dir = vim.fn.stdpath("data") .. "/site",
 
-          -- Development
-          --- Programming languages
-          "c",
-          "rust",
-          "llvm",
-          "lua",
-          "haskell",
-          "perl",
+        -- This configuration is for 0.10.0 version of the plugin
+        -- (https://github.com/nvim-treesitter/nvim-treesitter/tree/v0.10.0)
+        -- and is not supported on the version that supports nvim 0.12+
+        -- highlight = {
+        --   enable = true,
+        --   -- Disable highlighting for big files
+        --   disable = function(lang, bufnr)
+        --     local max_filesize_bytes = 2 * 1024 * 1024 -- 2 MB
+        --     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(bufnr))
+        --     if ok and stats and stats.size > max_filesize_bytes then
+        --       return true
+        --     end
 
-          --- C++
-          "cpp",
-          "doxygen",
+        --     return false
+        --   end,
 
-          --- Zig
-          "zig",
-          "ziggy",
-          "ziggy_schema",
+        --   -- Disable native vim highilighitng for the filetypes that have treesitter grammars
+        --   additional_vim_regex_highlighting = false,
+        -- },
 
-          ---- Python
-          "python",
-          "requirements",
-          "jinja",
-          "jinja_inline",
+        -- incremental_selection = {
+        --   enable = true,
+        --   keymaps = {
+        --     init_selection = "<leader>vv",
+        --     node_incremental = "<leader>vk",
+        --     node_decremental = "<leader>vj",
+        --     scope_incremental = "<leader>vp",
+        --   },
+        -- },
 
-          ---- Go
-          "go",
-          "gosum",
-          "gomod",
-          "gotmpl",
-
-          ---- JVM
-          "java",
-          -- Will possibly be avaialble after 0.9.3
-          -- "javadoc",
-          "scala",
-          "kotlin",
-
-          --- System scripting
-          "bash",
-
-          --- Formal
-
-          ---- Model verification
-          "tlaplus",
-
-          ---- Proof
-          "idris",
-
-          --- High-performance computing
-          "cuda",
-
-          --- Hardware definition
-          "verilog",
-          "vhdl",
-
-          --- Web stack
-          "javascript",
-          "typescript",
-          "tsx",
-          "html",
-          "css",
-          "scss",
-
-          --- Query languages
-          "promql",
-          "sql",
-
-          --- Protobuf
-          "proto",
-
-          --- Markdown
-          "markdown",
-          "markdown_inline",
-
-          --- TeX
-          "latex",
-          "bibtex",
-
-          -- nvim
-          "vim",
-          "vimdoc",
-
-          --- Treesitter
-          "query",
-
-          -- Build systems
-          "cmake",
-          "make",
-          "ninja",
-          "starlark",
-
-          -- DevOps
-          "hcl",
-          "terraform",
-          "cue",
-          "jsonnet",
-          "helm",
-          "dockerfile",
-          "nix",
-
-          --- Configuration formats for tools
-          "editorconfig",
-          "ssh_config",
-
-          -- Policies
-          "rego",
-
-          -- Configuration format
-          "hocon",
-          "ini",
-          "toml",
-          "yaml",
-
-          -- Data
-          "csv",
-          "xml",
-
-          --- JSON
-          "json",
-          "json5",
-          "jsonc",
-
-          -- CLI tools
-          "diff",
-          "jq",
-
-          --- Git
-          "git_config",
-          "git_rebase",
-          "gitattributes",
-          "gitcommit",
-          "gitignore",
-
-          -- Protocols
-          "http",
-
-          -- System configuration
-          "udev",
-        },
-
-        sync_install = false,
-        auto_install = false,
-
-        highlight = {
-          enable = true,
-          -- Disable highlighting for big files
-          disable = function(lang, bufnr)
-            local max_filesize_bytes = 2 * 1024 * 1024 -- 2 MB
-            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(bufnr))
-            if ok and stats and stats.size > max_filesize_bytes then
-              return true
-            end
-
-            return false
-          end,
-
-          -- Disable native vim highilighitng for the filetypes that have treesitter grammars
-          additional_vim_regex_highlighting = false,
-        },
-
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "<leader>vv",
-            node_incremental = "<leader>vk",
-            node_decremental = "<leader>vj",
-            scope_incremental = "<leader>vp",
-          },
-        },
-
-        indent = {
-          enable = true
-        },
-
-        context = {
-          -- https://github.com/nvim-treesitter/nvim-treesitter-context?tab=readme-ov-file#configuration
-          enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
-          multiwindow = true,       -- Enable multiwindow support.
-          max_lines = 5,            -- How many lines the window should span. Values <= 0 mean no limit.
-          min_window_height = 0,    -- Minimum editor window height to enable context. Values <= 0 mean no limit.
-          line_numbers = true,
-          multiline_threshold = 20, -- Maximum number of lines to show for a single context
-          trim_scope = "outer",     -- Which context lines to discard if `max_lines` is exceeded. Choices: "inner", "outer"
-          mode = "cursor",          -- Line used to calculate context. Choices: "cursor", "topline"
-          -- Separator between context and content. Should be a single character string, like "-".
-          -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
-          separator = nil,
-          zindex = 20,     -- The Z-index of the context window
-          on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
-        },
-
-        textobjects = {
-          -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-          select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@comment.outer",
-              ["ic"] = "@comment.inner",
-              ["ab"] = "@block.outer",
-              ["ib"] = "@block.inner",
-              ["as"] = {
-                query = "@local.scope",
-                query_group = "locals",
-                desc = "Select language scope",
-              },
-            },
-            selection_modes = {},
-            include_surrounding_whitespace = false, -- Note: can also be a function to have different behaviors for queries and selection modes
-          },
-          swap = {
-            enable = true,
-            swap_next = {
-              ["<leader><leader>abn"] = "@block.outer",
-              ["<leader><leader>abP"] = "@block.outer",
-              ["<leader><leader>ibn"] = "@block.inner",
-              ["<leader><leader>ibP"] = "@block.inner",
-              ["<leader><leader>afn"] = "@function.outer",
-              ["<leader><leader>afP"] = "@function.outer",
-              ["<leader><leader>ifn"] = "@function.inner",
-              ["<leader><leader>ifP"] = "@function.inner",
-            },
-            swap_previous = {
-              ["<leader><leader>abp"] = "@block.outer",
-              ["<leader><leader>abN"] = "@block.outer",
-              ["<leader><leader>ibp"] = "@block.inner",
-              ["<leader><leader>ibN"] = "@block.inner",
-              ["<leader><leader>afp"] = "@function.outer",
-              ["<leader><leader>afN"] = "@function.outer",
-              ["<leader><leader>ifp"] = "@function.inner",
-              ["<leader><leader>ifN"] = "@function.inner",
-            },
-          },
-          move = {
-            enable = true,
-            set_jumps = true,
-            goto_next_start = {
-              ["]m"] = "@function.inner",
-              ["]]"] = "@block.outer",
-            },
-            goto_next_end = {
-              ["]M"] = "@function.inner",
-              ["]}"] = "@block.outer",
-            },
-            goto_previous_start = {
-              ["[m"] = "@function.inner",
-              ["[["] = "@block.outer",
-            },
-            goto_previous_end = {
-              ["[M"] = "@function.inner",
-              ["[{"] = "@block.outer",
-            },
-          },
-          lsp_interop = {
-            enable = true,
-            floating_preview_opts = {
-              border = "shadow",
-            },
-            peek_definition_code = {}
-          },
-        },
-
-        refactor = {
-          -- https://github.com/nvim-treesitter/nvim-treesitter-refactor
-          highlight_definitions = {
-            enable = true,
-            clear_on_cursor_move = true, -- Set to false if you have an `updatetime` of ~100.
-          },
-          highlight_current_scope = {
-            enable = true,
-          },
-          smart_rename = {
-            enable = false,
-            -- Assign keymaps to false to disable them, e.g. `smart_rename = false`. Otherwise assign to a keymapping.
-            keymaps = {
-              smart_rename = false,
-            },
-          },
-          navigation = {
-            enable = false,
-            -- Assign keymaps to false to disable them, e.g. `goto_definition = false`.
-            keymaps = {
-              goto_definition_lsp_fallback = false,
-              list_definitions = false,
-              list_definitions_toc = false,
-              goto_next_usage = false,
-              goto_previous_usage = false,
-            },
-          },
-        },
+        -- indent = {
+        --   enable = true
+        -- },
       })
+
+      local ts_syntaxes_ensure_installed = {
+        -- General
+        "comment",
+
+        -- Development
+        --- Programming languages
+        "c",
+        "rust",
+        "llvm",
+        "lua",
+        "haskell",
+        "perl",
+
+        --- C++
+        "cpp",
+        "doxygen",
+
+        --- Zig
+        "zig",
+        "ziggy",
+        "ziggy_schema",
+
+        ---- Python
+        "python",
+        "requirements",
+        "jinja",
+        "jinja_inline",
+
+        ---- Go
+        "go",
+        "gosum",
+        "gomod",
+        "gotmpl",
+
+        ---- JVM
+        "java",
+        -- Will possibly be avaialble after 0.9.3
+        -- "javadoc",
+        "scala",
+        "kotlin",
+
+        --- System scripting
+        "bash",
+
+        --- Formal
+
+        ---- Model verification
+        "tlaplus",
+
+        ---- Proof
+        "idris",
+
+        --- High-performance computing
+        "cuda",
+
+        --- Hardware definition
+        "systemverilog",
+        "vhdl",
+
+        --- Web stack
+        "javascript",
+        "typescript",
+        "tsx",
+        "html",
+        "css",
+        "scss",
+
+        --- Query languages
+        "promql",
+        "sql",
+
+        --- Protobuf
+        "proto",
+
+        --- Markdown
+        "markdown",
+        "markdown_inline",
+
+        --- TeX
+        "latex",
+        "bibtex",
+
+        -- nvim
+        "vim",
+        "vimdoc",
+
+        --- Treesitter
+        "query",
+
+        -- Build systems
+        "cmake",
+        "make",
+        "ninja",
+        "starlark",
+
+        -- DevOps
+        "hcl",
+        "terraform",
+        "cue",
+        "jsonnet",
+        "helm",
+        "dockerfile",
+        "nix",
+
+        --- Configuration formats for tools
+        "editorconfig",
+        "ssh_config",
+
+        -- Policies
+        "rego",
+
+        -- Configuration format
+        "hocon",
+        "ini",
+        "toml",
+        "yaml",
+
+        -- Data
+        "csv",
+        "xml",
+
+        --- JSON
+        "json",
+        "json5",
+        "hjson",
+
+        -- CLI tools
+        "diff",
+        "jq",
+
+        --- Git
+        "git_config",
+        "git_rebase",
+        "gitattributes",
+        "gitcommit",
+        "gitignore",
+
+        -- Protocols
+        "http",
+
+        -- System configuration
+        "udev",
+      }
+
+      treesitter.install(ts_syntaxes_ensure_installed)
 
       -- Function to check if treesitter parser exists for the current buffer's filetype
       local function buffer_has_treesitter_parser(bufnr)
         local bufnr = bufnr or vim.fn.bufnr("%")
+        local buf_ft = ""
         if vim.fn.bufexists(bufnr) == 0 then
           return false
         else
-          local buf_ft = vim.bo[bufnr].filetype
+          buf_ft = vim.bo[bufnr].filetype
 
           if buf_ft == "" then
             return false
@@ -1105,9 +1088,13 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
         end
 
         -- try to get parser for the current filetype
-        local parser_ok, _ = pcall(vim.treesitter.get_parser, bufnr, buf_ft)
+        local _, parser = pcall(vim.treesitter.get_parser, bufnr, buf_ft)
 
-        return parser_ok
+        if parser then
+          return true
+        else
+          return false
+        end
       end
 
       local treesitter_folding_expected_foldmethod = "expr"
@@ -1270,7 +1257,22 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
         }
       )
 
-      -- Try enableing treesitter folding automatically
+      -- Autocmds
+      --- Enable treesitter highlighting
+      vim.api.nvim_create_autocmd(
+        { "FileType" },
+        {
+          desc = "Activate treesitter highlighting",
+          group = vim.api.nvim_create_augroup("bkb-treesitter-activate", { clear = true }),
+          callback = function(ev)
+            if buffer_has_treesitter_parser(ev.buf) then
+              vim.treesitter.start()
+            end
+          end,
+        }
+      )
+
+      --- Try enableing treesitter folding automatically
       vim.api.nvim_create_autocmd(
         {
           "BufWinEnter",
@@ -1278,7 +1280,7 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
         },
         {
           desc = "Activate treesitter-based folding in windows that host buffers that have treesitter grammars",
-          group = vim.api.nvim_create_augroup("treesitter-folding", { clear = true }),
+          group = vim.api.nvim_create_augroup("bkb-treesitter-folding", { clear = true }),
           callback = function(ev)
             -- Small delay to ensure neovim initialized buffer properly:
             -- - 'filetype' property is set.
@@ -1288,14 +1290,6 @@ local nvim_treesitter_lazy_spec = bpu:declare_lazy_spec(
             vim.defer_fn(function() try_enable_treesitter_folding(ev.buf) end, 100)
           end,
         }
-      )
-
-      -- Keymappings
-      vim.keymap.set(
-        "n",
-        "<leader><leader>gc",
-        function() require("treesitter-context").go_to_context(vim.v.count1) end,
-        { silent = true }
       )
     end,
   }
@@ -1412,7 +1406,7 @@ local luasnip_lazy_spec = bpu:declare_lazy_spec(
 )
 
 ---- colorful-menu.nvim
-local blinkcmp_lazy_spec = bpu:declare_lazy_spec(
+local colorful_menu_nvim_lazy_spec = bpu:declare_lazy_spec(
   "config.infra.plugins.colorful-menu",
   {
     opts = {
@@ -1592,9 +1586,11 @@ local blinkcmp_lazy_spec = bpu:declare_lazy_spec(
       },
       fuzzy = {
         implementation = "prefer_rust_with_warning",
-        use_frecency = true,
         use_proximity = true,
-        use_unsafe_no_lock = false,
+        frecency = {
+          enabled = true,
+          unsafe_no_lock = false,
+        },
         sorts = {
           "exact",
           "score",

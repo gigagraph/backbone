@@ -323,17 +323,6 @@ Ensure [`nvim-treesitter`][nvim-treesitter] is installed.
 
 This plugin uses tree-sitter to define and manipulate `nvim` textobjects that tree-sitter captures for available languages.
 
-#### [`nvim-treesitter-refactor`][nvim-treesitter-refactor]
-
-Ensure [`nvim-treesitter`][nvim-treesitter] is installed.
-
-This plugin uses tree-sitter to:
-
-- Highlight definition of the current symbol under the cursor.
-- Highlight the current scope in wihch the cursor resides.
-
-Additionally, it can perform symbol renaming and go to definition, but because it operates at the tree-sitter level, this functionality is not as robust as language-semantics-aware tooling, so this configuration does not recommend using these features of the plugin. Instead, users should rely on LSP for these features.
-
 #### [`nvim-jdtls`](./lsp/java.md#jdtls-installation)
 
 This setup uses `nvim-jdtls` to enable better integration with `jdtls` LSP server. Find more info about Java LSP servers and their usage specifics in `neovim` in [`./lsp/java.md`](./lsp/java.md). Additionally, users can view `nvim-jdtls` plugin help with: `:help jdtls`.
@@ -631,7 +620,6 @@ done
   - [nvim-treesitter][nvim-treesitter]
   - [nvim-treesitter-context][nvim-treesitter-context]
   - [nvim-treesitter-textobjects][nvim-treesitter-textobjects]
-  - [nvim-treesitter-refactor][nvim-treesitter-refactor]
   - [nvim-lspconfig][nvim-lspconfig]
   - [nvim-dap]
   - [dap]
@@ -692,7 +680,6 @@ done
 [nvim-treesitter]: <https://github.com/nvim-treesitter/nvim-treesitter>
 [nvim-treesitter-context]: <https://github.com/nvim-treesitter/nvim-treesitter-context>
 [nvim-treesitter-textobjects]: <https://github.com/nvim-treesitter/nvim-treesitter-textobjects>
-[nvim-treesitter-refactor]: https://github.com/nvim-treesitter/nvim-treesitter-refactor
 [nvim-lspconfig]: <https://github.com/neovim/nvim-lspconfig>
 [nvim-dap]: <https://codeberg.org/mfussenegger/nvim-dap>
 [dap]: <https://microsoft.github.io/debug-adapter-protocol/>

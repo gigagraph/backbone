@@ -1,7 +1,7 @@
 return {
   "benomahony/oil-git.nvim",
   name = "oil-git",
-  version = "d1f27a5982df35b70fb842aa6bbfac10735c7265",
+  version = "95b0d83f70e5e3e889f4d2f8b70eba5185ff67b6",
   pin = false,
   lazy = false,
 }

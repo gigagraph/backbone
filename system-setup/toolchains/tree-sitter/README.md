@@ -42,7 +42,7 @@ cd ../..
 Run the following command to build release distribution and install it:
 
 ```bash
-cargo install --all-features --locked --path cli
+cargo install --all-features --locked --path crates/cli
 ```
 
 ### Shell completions

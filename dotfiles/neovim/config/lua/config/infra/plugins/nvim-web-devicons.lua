@@ -1,7 +1,7 @@
 return {
   "nvim-tree/nvim-web-devicons",
   name = "nvim-web-devicons",
-  version = "8dcb311b0c92d460fac00eac706abd43d94d68af",
+  version = "c72328a5494b4502947a022fe69c0c47e53b6aa6",
   pin = false,
   lazy = false,
 }

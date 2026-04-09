@@ -34,6 +34,14 @@ export NIX_REMOTE='daemon'
 
 If you use [zsh](../../../dotfiles/zsh/README.md) your should install [`nix-zsh-completions`](https://github.com/nix-community/nix-zsh-completions). See the [docs from this repo](../../../dotfiles/zsh/README.md#plugins) for more details.
 
+### Upgrade `nix`
+
+```bash
+sudo --preserve-env=PATH -- bash -c 'nix-env --install --file "<nixpkgs>" --attr nix cacert -I nixpkgs=channel:nixpkgs-unstable'
+sudo systemctl daemon-reload
+sudo systemctl restart nix-daemon
+```
+
 ## Configuration
 
 Nix's main system config file resides in `${NIX_CONF_DIR:-etc}/nix/nix.conf`.

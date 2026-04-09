@@ -1,7 +1,7 @@
 return {
   "mrcjkb/haskell-tools.nvim",
   name = "haskell-tools-nvim",
-  version = "~6.1.1",
+  version = "~9.0.1",
   pin = false,
   lazy = false,
 }
