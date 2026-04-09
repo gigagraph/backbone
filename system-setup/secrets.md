@@ -145,6 +145,14 @@ keepassxc-cli edit -y "<otp-slot-num>:$(ykman info | grep 'Serial number:' | awk
 keepassxc-cli rm -y "<otp-slot-num>:$(ykman info | grep 'Serial number:' | awk '{ print $3 }')" --no-password "<path-to-the-db>" "<db-entry-name>"
 ```
 
+#### Browser integration
+
+##### [Firefox](./firefox/README.md) installation
+
+Users cannot build and install Firefox extensions from [sources][gh-keepassxc-browser], because, by default, they require to be signed by Mozilla. Workarounds exist only for development purposes and are harder to manage than installation from the official store.
+
+Therefore, this guide recommends installing the broser extension from the [official Firefox Add-ons page][keepassxc-browser-firefox-ext].
+
 ## Useful links
 
 - [github-keepassxc]
@@ -154,6 +162,8 @@ keepassxc-cli rm -y "<otp-slot-num>:$(ykman info | grep 'Serial number:' | awk '
   - [setup-keepassxc-build-env]
 - [keepassxc-docs]
   - [yubikey-keepassxc]
+- [gh-keepassxc-browser]
+  - [keepassxc-browser-firefox-ext]
 
 [github-keepassxc]: https://github.com/keepassxreboot/keepassxc
 [keepassxc-installation]: https://github.com/keepassxreboot/keepassxc/blob/develop/INSTALL.md
@@ -162,3 +172,5 @@ keepassxc-cli rm -y "<otp-slot-num>:$(ykman info | grep 'Serial number:' | awk '
 [setup-keepassxc-build-env]: https://github.com/keepassxreboot/keepassxc/wiki/Set-up-Build-Environment-on-Linux
 [keepassxc-docs]: https://keepassxc.org/docs/
 [yubikey-keepassxc]: https://keepassxc.org/docs/#faq-yubikey-howto
+[gh-keepassxc-browser]: https://github.com/keepassxreboot/keepassxc-browser
+[keepassxc-browser-firefox-ext]: https://addons.mozilla.org/en-CA/firefox/addon/keepassxc-browser/
