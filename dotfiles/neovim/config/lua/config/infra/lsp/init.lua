@@ -531,6 +531,80 @@ local function configure_supported_lsp_servers()
     },
   })
 
+  vim.api.nvim_create_autocmd(
+    { "FileType" },
+    {
+      desc = "Setup keymappings to control basedpyright.",
+      pattern = { "python" },
+      group = vim.api.nvim_create_augroup("bkb-basedpyright-lsp-kemappings", { clear = true }),
+      once = true,
+      callback = function(_)
+        vim.keymap.set(
+          "n",
+          "<leader><leader>lpp",
+          function()
+            local async = require("plenary.async")
+
+            local function set_basedpyright_python(python_path)
+              vim.cmd({ cmd = "LspPyrightSetPythonPath", args = { python_path } })
+              vim.notify("Set basedpyright python path to " .. python_path, vim.log.levels.INFO)
+            end
+
+            local find_python = function(is_three, cb)
+              local python_bin_name = is_three and "python3" or "python"
+              vim.system(
+                { "which", python_bin_name },
+                {
+                  text = true,
+                  timeout = 3000, -- ms
+                  detach = false,
+                },
+                cb
+              )
+            end
+            local find_plain_python = async.wrap(function(cb) find_python(false, cb) end, 1)
+            local find_python_3 = async.wrap(function(cb) find_python(true, cb) end, 1)
+
+            local python_path = nil
+            async.util.block_on(function()
+                local python_exec_res = find_plain_python()
+
+                if python_exec_res and (python_exec_res.code ~= 0 or vim.trim(python_exec_res.stdout) == "") then
+                  python_exec_res = find_python_3()
+
+                  if python_exec_res and (python_exec_res.code ~= 0 or vim.trim(python_exec_res.stdout) == "") then
+                    return
+                  end
+                end
+
+                local python_exec_stdout_lines = vim.split(python_exec_res.stdout, "\n",
+                  { plain = true, trimempty = true })
+
+                if #python_exec_stdout_lines > 0 and python_exec_stdout_lines[1] then
+                  python_path = python_exec_stdout_lines[1]
+                  return
+                else
+                  return
+                end
+              end,
+              3000 -- ms
+            )
+
+            if python_path then
+              set_basedpyright_python(python_path)
+            else
+              vim.notify("Could not find neither `python` nor `python3` in the current shell.", vim.log.levels.ERROR)
+              return
+            end
+          end,
+          {
+            desc = "Set python path to the value of `which python`",
+          }
+        )
+      end,
+    }
+  )
+
   -- ruff
   --- https://docs.astral.sh/ruff/editors/settings/
   vim.lsp.config("ruff", {
