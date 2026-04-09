@@ -44,7 +44,7 @@ env \
 Add the following `bin` directories to your `PATH` in your shell's `rc` file, e.g.:
 
 ```bash
-export PATH="${HOME}/.ghcup/bin,${HOME}/.cabal/bin,${PATH}"
+export PATH="${HOME}/.ghcup/bin:${HOME}/.cabal/bin:${PATH}"
 ```
 
 Then users should ensure that `ghcup` installed the recommended versions of Haskell tools:

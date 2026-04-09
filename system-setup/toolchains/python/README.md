@@ -114,6 +114,48 @@ Since this guide uses `pipx` to manage `uv`, run the following command to upgrad
 pipx upgrade uv
 ```
 
+## [`miniforge`][gh-miniforge]
+
+This guide recommends [installing `miniforge` from the installation script following the official instructions][miniforge-install-unix].
+
+Download the installer:
+
+```bash
+cd ~/Downloads
+
+MINIFORGE_INSTALL_SCRIPT_NAME="Miniforge3-$(uname)-$(uname -m).sh"
+curl -LO "https://github.com/conda-forge/miniforge/releases/latest/download/${MINIFORGE_INSTALL_SCRIPT_NAME}"
+```
+
+Open the installter with a text editor and ensure that it looks okay:
+
+```bash
+nvim "${MINIFORGE_INSTALL_SCRIPT_NAME}"
+```
+
+If it does, run it to install `miniforge`
+
+```bash
+mkdir -p "${HOME}/.local/opt/miniforge3"
+bash "${MINIFORGE_INSTALL_SCRIPT_NAME}" -p "${HOME}/.local/opt/miniforge3"
+```
+
+> [!NOTE]
+>
+> Pass `-u` to the script to update an existing installation.
+
+> [!WARNING]
+>
+> Prefer to not "Proceed with initialization", because it would modify the shell `rc` file.
+
+Follow the instructions to complete installation.
+
+Add the `bin` directory of the installation to your `PATH` in your shell's `rc` file, e.g.:
+
+```bash
+export PATH="${HOME}/.local/opt/miniforge3/bin:${PATH}"
+```
+
 ## Useful links
 
 - [python][python]
@@ -129,6 +171,9 @@ pipx upgrade uv
   - [uv-features][uv-features]
   - [uv-tools][uv-tools]
     - [uv-tools-bin-path][uv-tools-bin-path]
+- [gh-miniforge]
+- [miniforge-install-unix]
+- [miniforge-build-from-source]
 
 [python]: <https://www.python.org>
 [cpython-github]: <https://github.com/python/cpython>
@@ -143,3 +188,6 @@ pipx upgrade uv
 [uv-features]: https://docs.astral.sh/uv/getting-started/features/
 [uv-tools]: https://docs.astral.sh/uv/concepts/tools/
 [uv-tools-bin-path]: https://docs.astral.sh/uv/concepts/tools/#tool-executables
+[gh-miniforge]: https://github.com/conda-forge/miniforge
+[miniforge-install-unix]: https://github.com/conda-forge/miniforge#unix-like-platforms-macos-linux--wsl
+[miniforge-build-from-source]: https://github.com/conda-forge/miniforge#building-a-miniforge-installer

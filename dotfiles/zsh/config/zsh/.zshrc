@@ -78,6 +78,9 @@ path+=(
   # pipx's install location
   "${HOME}/.local/bin"
 
+  # Miniforge
+  "${HOME}/.local/opt/miniforge3/bin"
+
   # Haskell
   "${HOME}/.ghcup/bin"
   "${HOME}/.cabal/bin"
