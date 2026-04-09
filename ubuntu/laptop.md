@@ -109,6 +109,8 @@ If you do not manage to do this, see the [**Ensure GRUB configuration supports L
 
 #### Make GRUB ask for a password to decrypt the volumes on boot
 
+##### Using `initramfs` (phases out in Ubuntu 26)
+
 ```bash
 mount /dev/main/root /target
 for n in proc sys dev etc/resolv.conf; do mount --rbind /$n /target/$n; done
@@ -132,6 +134,88 @@ chmod u=r,go-rwx /etc/luks/boot_os.keyfile
 cryptsetup luksAddKey /dev/nvme0n1p2 /etc/luks/boot_os.keyfile
 cryptsetup luksAddKey /dev/nvme0n1p3 /etc/luks/boot_os.keyfile
 
+echo "luks-boot UUID=$(blkid -s UUID -o value /dev/nvme0n1p2) /etc/luks/boot_os.keyfile luks,discard" >> /etc/crypttab
+echo "luks-main UUID=$(blkid -s UUID -o value /dev/nvme0n1p3) /etc/luks/boot_os.keyfile luks,discard" >> /etc/crypttab
+
+# Update initialramfs files to add the cryptsetup unlocking scripts and the key-file
+update-initramfs -u -k all
+```
+
+##### Using [`dracut`][archwiki-dracut]
+
+```bash
+mount /dev/main/root /target
+for n in proc sys dev etc/resolv.conf; do mount --rbind /$n /target/$n; done
+chroot /target
+mount -a
+
+# Add a key to both partitions, so that GRUB decrypts the boot partition it can
+# also automatically decrypt the other partition.
+apt install -y dracut
+
+cat > /etc/dracut.conf.d/10-crypt.conf <<'EOF'
+hostonly=yes
+use_fstab=yes
+
+# enable luks + lvm
+add_dracutmodules+=" crypt lvm resume "
+
+# disable systemd modules because they don't work with rd.luks.key
+modules_to_disable=(
+  systemd
+  systemd-ask-password
+  systemd-battery-check
+  systemd-initrd
+  systemd-journald
+  systemd-modules-load
+  systemd-pcrextend
+  systemd-sysctl
+  systemd-tmpfiles
+  systemd-udevd
+  systemd-sysusers
+  dracut-systemd
+)
+omit_dracutmodules+=" ${modules_to_disable[*]} "
+
+# pass kernel parameters to enable support for luks & lvm
+boot_luks_id="luks-$(blkid -s uuid -o value /dev/nvme0n1p2)"
+root_luks_id="luks-$(blkid -s uuid -o value /dev/nvme0n1p3)"
+cmdline=(
+  rd.auto
+  rd.lvm=1
+  rd.dm=1
+  rd.md=1
+  rd.luks=1
+
+  # configure luks devices
+  rd.luks.uuid="${boot_luks_id}"
+  rd.luks.allow-discards="${boot_luks_id}"
+  rd.luks.uuid="${root_luks_id}"
+  rd.luks.allow-discards="${root_luks_id}"
+  rd.luks.key=/etc/luks/boot_os.keyfile
+  rd.luks.crypttab=1
+
+  # specify the boot volume
+  boot=/dev/mapper/luks-boot
+)
+kernel_cmdline=" ${cmdline[*]} "
+unset cmdline
+unset boot_luks_id
+unset root_luks_id
+
+# add the luks key to the initramfs
+install_items+=" /etc/luks/boot_os.keyfile "
+EOF
+
+# Create a key and add it to LUKS volumes
+mkdir /etc/luks
+dd if=/dev/urandom of=/etc/luks/boot_os.keyfile bs=512 count=1
+
+chmod u=rx,go-rwx /etc/luks
+chmod u=r,go-rwx /etc/luks/boot_os.keyfile
+
+cryptsetup luksAddKey /dev/nvme0n1p2 /etc/luks/boot_os.keyfile
+cryptsetup luksAddKey /dev/nvme0n1p3 /etc/luks/boot_os.keyfile
 
 echo "luks-boot UUID=$(blkid -s UUID -o value /dev/nvme0n1p2) /etc/luks/boot_os.keyfile luks,discard" >> /etc/crypttab
 echo "luks-main UUID=$(blkid -s UUID -o value /dev/nvme0n1p3) /etc/luks/boot_os.keyfile luks,discard" >> /etc/crypttab
@@ -280,6 +364,92 @@ sudo find / -name "snapd"
 
 Once you finish the setup from this section - perform the desired setup from the [`system-setup`](../system-setup/README.md).
 
+## Useful scripts
+
+### Rotate the LUKS key
+
+Run all the following commands in the same "blocks" as specified in this doc.
+
+Optionally, backup LUKS headers to external storage:
+
+```bash
+mkdir -p /etc/luks/backups
+
+cryptsetup luksHeaderBackup /dev/nvme0n1p2 --header-backup-file "${PATH_TO_P2_LUKS_HEADER_BACKUP}"
+cryptsetup luksHeaderBackup /dev/nvme0n1p3 --header-backup-file "${PATH_TO_P3_LUKS_HEADER_BACKUP}"
+```
+
+Add a new key:
+
+```bash
+# Backup the existing key
+cp /etc/luks/boot_os.keyfile /etc/luks/boot_os.keyfile.back
+
+# Generate the new key
+dd if=/dev/urandom of=/etc/luks/boot_os.keyfile.new bs=512 count=1
+
+# Add the new key
+cryptsetup luksAddKey --key-slot 2 /dev/nvme0n1p2 /etc/luks/boot_os.keyfile.new
+cryptsetup luksAddKey --key-slot 2 /dev/nvme0n1p3 /etc/luks/boot_os.keyfile.new
+mv /etc/luks/boot_os.keyfile.new /etc/luks/boot_os.keyfile
+
+# Test that both keys can be used to open the volume
+cryptsetup luksOpen --test-passphrase --key-slot 1 --key-file /etc/luks/boot_os.keyfile.back /dev/nvme0n1p2
+cryptsetup luksOpen --test-passphrase --key-slot 2 --key-file /etc/luks/boot_os.keyfile /dev/nvme0n1p2
+cryptsetup luksOpen --test-passphrase --key-slot 1 --key-file /etc/luks/boot_os.keyfile.back /dev/nvme0n1p3
+cryptsetup luksOpen --test-passphrase --key-slot 2 --key-file /etc/luks/boot_os.keyfile /dev/nvme0n1p3
+```
+
+Unenroll the old key:
+
+```bash
+# Remove the key from the 1 slot & add the same new key to that slot
+cryptsetup luksKillSlot /dev/nvme0n1p2 1
+cryptsetup luksKillSlot /dev/nvme0n1p3 1
+cryptsetup luksAddKey --key-slot 1 /dev/nvme0n1p2 /etc/luks/boot_os.keyfile
+cryptsetup luksAddKey --key-slot 1 /dev/nvme0n1p3 /etc/luks/boot_os.keyfile
+
+# Test that the key works for the 1st slot
+cryptsetup luksOpen --test-passphrase --key-slot 1 --key-file /etc/luks/boot_os.keyfile /dev/nvme0n1p2
+cryptsetup luksOpen --test-passphrase --key-slot 1 --key-file /etc/luks/boot_os.keyfile /dev/nvme0n1p2
+
+# Delete the duplicated key from slot 2
+cryptsetup luksKillSlot /dev/nvme0n1p2 2
+cryptsetup luksKillSlot /dev/nvme0n1p3 2
+
+# Test that the old key can no longer be used to access the volume
+if (sudo cryptsetup luksOpen --test-passphrase --key-slot 1 --key-file /etc/luks/boot_os.keyfile /dev/nvme0n1p2 &&
+    sudo cryptsetup luksOpen --test-passphrase --key-slot 1 --key-file /etc/luks/boot_os.keyfile /dev/nvme0n1p3) &&
+
+   ! (sudo cryptsetup luksOpen --test-passphrase --key-slot 2 --key-file /etc/luks/boot_os.keyfile /dev/nvme0n1p2 ||
+    sudo cryptsetup luksOpen --test-passphrase --key-slot 2 --key-file /etc/luks/boot_os.keyfile /dev/nvme0n1p3 ||
+
+    sudo cryptsetup luksOpen --test-passphrase --key-slot 1 --key-file /etc/luks/boot_os.keyfile.back /dev/nvme0n1p2 ||
+    sudo cryptsetup luksOpen --test-passphrase --key-slot 1 --key-file /etc/luks/boot_os.keyfile.back /dev/nvme0n1p3 ||
+
+    sudo cryptsetup luksOpen --test-passphrase --key-slot 2 --key-file /etc/luks/boot_os.keyfile.back /dev/nvme0n1p2 ||
+    sudo cryptsetup luksOpen --test-passphrase --key-slot 2 --key-file /etc/luks/boot_os.keyfile.back /dev/nvme0n1p3
+  ); then
+  echo "The new key can be used to open the volumes"
+  echo "The old key can no longer be used to open the volumes"
+  echo "Rotation succesful"
+else
+  echo "Rotation failed. Please, check the scripts and debug the volumes with luksDump"
+fi
+```
+
+Reboot to ensure the rotation has worked.
+
+### Clean up the old kernels
+
+> [!IMPORTANT]
+>
+> Ensure `/boot` and `/boot/efi` partitions are mounted.
+
+```bash
+dpkg --list | grep linux-image | awk '{ print $2 }' | tail +2 | head -n -1 | xargs -L1 apt purge -y
+```
+
 ## Useful links
 
 ### Ubuntu installer
@@ -334,3 +504,8 @@ Once you finish the setup from this section - perform the desired setup from the
 
 [baeldung-disable-snaps]: https://www.baeldung.com/linux/snap-remove-disable
 
+### Boot
+
+- [archwiki-dracut]
+
+[archwiki-dracut]: https://wiki.archlinux.org/title/Dracut

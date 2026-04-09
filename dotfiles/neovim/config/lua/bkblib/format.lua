@@ -8,8 +8,15 @@ vim.g.autoformat = true
 --- @return boolean # True if autoformatting is enabled in the current buffer, false otherwise.
 function M.is_enabled(bufnr)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
-  local is_enabled = vim.b[bufnr] and vim.b[bufnr].autoformat or vim.g.autoformat
-  return is_enabled or false
+  if vim.b[bufnr] then
+    if vim.b[bufnr].autoformat == nil then
+      return vim.g.autoformat
+    else
+      return vim.b[bufnr].autoformat
+    end
+  else
+    return vim.g.autoformat
+  end
 end
 
 -- Set global autoformat explicitly (true / false)
@@ -54,6 +61,8 @@ end
 ---
 --- @param opts? bkblib.format.FormatOpts
 function M.format(opts)
+  -- TODO: there is a bug with finding a language (after restarting LSP)
+
   opts = opts or {
     bufnr = vim.api.nvim_get_current_buf(),
     force = false,

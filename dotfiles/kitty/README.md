@@ -125,6 +125,14 @@ sudo update-alternatives --install \
 sudo update-alternatives --set x-terminal-emulator "$(which kitty)"
 ```
 
+### Update in Ubuntu config
+
+[Set kitty as default terminal in Ubuntu config `~/.config/ubuntu-xdg-terminals.list`][ubuntu-configure-default-terminal]:
+
+```bash
+echo 'kitty.desktop' > "${HOME}/.config/ubuntu-xdg-terminals.list"
+```
+
 ## Configuration
 
 Use the config from this repository on your system by creating symlinking the user config default directory to the config dir in this repo (the script will prompt you for confirmation before running any configuration commands):
@@ -195,6 +203,7 @@ env 'RUSTFLAGS=--cfg tokio_unstable' cargo install --all-features --locked --pat
   - [kitty-shell-integration-local][kitty-shell-integration-local]
     - [kitty-shell-integration][kitty-shell-integration]
 - [arch-wiki-kitty][arch-wiki-kitty]
+- [ubuntu-configure-default-terminal]
 
 [build-kitty-from-source]: <https://sw.kovidgoyal.net/kitty/build/>
 [kitty-deps]: <https://sw.kovidgoyal.net/kitty/build/#dependencies>
@@ -208,3 +217,4 @@ env 'RUSTFLAGS=--cfg tokio_unstable' cargo install --all-features --locked --pat
 [kitty-hints]: <https://sw.kovidgoyal.net/kitty/kittens/hints/>
 [arch-wiki-kitty]: <https://wiki.archlinux.org/title/Kitty>
 [github-tdf]: <https://github.com/itsjunetime/tdf>
+[ubuntu-configure-default-terminal]: https://documentation.ubuntu.com/desktop/en/latest/how-to/change-the-default-terminal/

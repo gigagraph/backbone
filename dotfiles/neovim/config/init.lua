@@ -1740,9 +1740,12 @@ local nvim_lspconfig_lazy_spec = bpu:declare_lazy_spec(
       })
 
       vim.keymap.set("n", "<leader>lf", function() format.format({ force = true }) end, { silent = true })
-      vim.keymap.set("n", "<leader>ltf", function() format.toggle({ global = true }) end, { silent = true })
-      vim.keymap.set("n", "<leader>lef", function() format.set_global_autoformat(true) end, { silent = true })
-      vim.keymap.set("n", "<leader>ldf", function() format.set_global_autoformat(false) end, { silent = true })
+
+      vim.keymap.set("n", "<leader>ltf", function() format.toggle({ global = false }) end, { silent = true })
+      vim.keymap.set("n", "<leader><leader>ltf", function() format.toggle({ global = true }) end, { silent = true })
+
+      vim.keymap.set("n", "<leader><leader>lef", function() format.set_global_autoformat(true) end, { silent = true })
+      vim.keymap.set("n", "<leader><leader>ldf", function() format.set_global_autoformat(false) end, { silent = true })
     end
   }
 )
