@@ -29,6 +29,7 @@ vim.opt.expandtab = true
 
 -- TODO: set this per filetype
 vim.opt.textwidth = 0
+vim.opt.colorcolumn = { 80, 120 }
 
 vim.opt.fixendofline = true
 
@@ -37,6 +38,7 @@ vim.opt.termguicolors = true
 -- TODO: enable spell opt and set locales/spelllang: https://neovim.io/doc/user/spell.html
 
 -- Set options per filetype
+-- TODO: move this to a separate file/organize with filetype plugins
 vim.api.nvim_create_autocmd("FileType", {
   desc = "Set backbone configs for 'python' filetype",
   group = vim.api.nvim_create_augroup("bkb-ft-configs-python", { clear = true }),
@@ -54,7 +56,27 @@ vim.keymap.set(
   { "n", "v" },
   "<leader><leader>n",
   vim.cmd.nohlsearch,
-  { silent = true }
+  { desc = "Clear highlight for the latest search", silent = true }
+)
+vim.keymap.set(
+  { "n", "v" },
+  "<leader><leader>bd",
+  function()
+    for _, buf in ipairs(vim.fn.getbufinfo()) do
+      if (buf.windows == nil or #buf.windows == 0) and buf.bufnr then
+        local is_deleted, delete_result = pcall(vim.api.nvim_buf_delete, buf.bufnr, {})
+
+        if not is_deleted then
+          vim.bo[buf.bufnr].buflisted = true
+          vim.notify(
+            "Failed to close the buffer " .. buf.bufnr .. " (" .. buf.name .. "):\n" .. delete_result,
+            vim.log.levels.ERROR
+          )
+        end
+      end
+    end
+  end,
+  { desc = "Delete all buffers completely that do not have windows", silent = true }
 )
 
 -- Quickfix
@@ -147,6 +169,16 @@ vim.keymap.set(
     })
   end,
   { desc = "Enable diagnostic underlines for all", noremap = true, silent = true }
+)
+vim.keymap.set(
+  "n",
+  "<leader>ds",
+  function()
+    vim.diagnostic.open_float({
+      severity_sort = true,
+    })
+  end,
+  { desc = "Show diagnostics under the cursor", noremap = true, silent = true }
 )
 
 --- Populate the quickfix list with diagnostics
@@ -772,7 +804,7 @@ local nvim_treesitter_context_lazy_spec = bpu:declare_lazy_spec(
     opts = {
       -- https://github.com/nvim-treesitter/nvim-treesitter-context?tab=readme-ov-file#configuration
       enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
-      multiwindow = true,       -- Enable multiwindow support.
+      multiwindow = false,      -- Enable multiwindow support.
       max_lines = 5,            -- How many lines the window should span. Values <= 0 mean no limit.
       min_window_height = 0,    -- Minimum editor window height to enable context. Values <= 0 mean no limit.
       line_numbers = true,
@@ -1637,10 +1669,31 @@ vim.keymap.set(
   "n",
   "<leader><leader>lr",
   function()
-    vim.lsp.stop_client(vim.lsp.get_clients({ bufnr = 0 }))
-    vim.cmd.edit()
+    local Set = require("bkblib.utils.set")
+
+    local buffers_to_restart = Set.mk({})
+
+    local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
+    for _, c in ipairs(buf_clients) do
+      for bufnr, is_atttached in pairs(c.attached_buffers) do
+        if is_atttached then
+          buffers_to_restart = buffers_to_restart + bufnr
+        end
+      end
+
+      c:stop()
+    end
+
+    for b, _ in buffers_to_restart:pairs() do
+      vim.api.nvim_buf_call(b, function()
+        vim.cmd.edit()
+      end)
+    end
   end,
-  { silent = true }
+  {
+    desc = "Restart all LSPs for the current buffer and reopen all buffers that were connected to the LSP",
+    silent = true
+  }
 )
 
 ----- Toggle inlay hints
