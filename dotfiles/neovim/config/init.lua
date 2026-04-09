@@ -2392,10 +2392,12 @@ local telescope_lazy_spec = bpu:declare_lazy_spec(
             i = {
               ["<C-f>"] = t_actions.results_scrolling_down,
               ["<C-b>"] = t_actions.results_scrolling_up,
+              ["<C-j>"] = t_actions.preview_scrolling_left,
             },
             n = {
               ["<C-f>"] = t_actions.results_scrolling_down,
               ["<C-b>"] = t_actions.results_scrolling_up,
+              ["<C-j>"] = t_actions.preview_scrolling_left,
             },
           },
         },
@@ -2456,6 +2458,8 @@ local telescope_lazy_spec = bpu:declare_lazy_spec(
         { desc = "Telescope LSP references", noremap = true, silent = true })
       vim.keymap.set("n", "<leader>cd", builtin.diagnostics,
         { desc = "Telescope diagnostics", noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>:", builtin.commands,
+        { desc = "Telescope all commands", noremap = true, silent = true })
     end,
   }
 )

@@ -516,7 +516,7 @@ local function configure_supported_lsp_servers()
         analysis = {
           autoImportCompletions = true,
           autoSearchPaths = true,
-          diagnosticMode = "openFilesOnly",
+          diagnosticMode = "workspace",
           useLibraryCodeForTypes = true,
           useTypingExtensions = true,
           fileEnumerationTimeout = 10,
