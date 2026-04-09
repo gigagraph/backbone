@@ -264,11 +264,11 @@ Install the `pam_ssh_agent_auth` PAM module:
      sudo vi /etc/pam.d/ftp
      sudo vi /etc/pam.d/imap
      sudo vi /etc/pam.d/login
-     sudo vi /etc/pam.d/other 
-     sudo vi /etc/pam.d/pop3 
-     sudo vi /etc/pam.d/sshd 
+     sudo vi /etc/pam.d/other
+     sudo vi /etc/pam.d/pop3
+     sudo vi /etc/pam.d/sshd
      sudo vi /etc/pam.d/su
-     sudo vi /etc/pam.d/system 
+     sudo vi /etc/pam.d/system
      sudo vi /etc/pam.d/xdm
      ```
    - Test the configuration by creating a new ssh session with the server (ensure that you forward the local ssh-agent with `-A` flag) and running `sudo ls` with the Yubikey plugged in.
@@ -376,6 +376,8 @@ sudo passwd --lock root
 - [pam-ssh-agent-auth-man][pam-ssh-agent-auth-man]
   - [pam-ssh-agent-auth-github][pam-ssh-agent-auth-github]
 - [arch-wiki-security-restricting-root][arch-wiki-security-restricting-root]
+- [yk-support-duplicate]
+- [yk-support-spare-key]
 
 [arch-wiki-yubikey]: <https://wiki.archlinux.org/title/YubiKey>
 [yubico-dev-docs]: <https://developers.yubico.com/>
@@ -405,3 +407,5 @@ sudo passwd --lock root
 [pam-ssh-agent-auth-man]: <https://linux.die.net/man/8/pam_ssh_agent_auth>
 [pam-ssh-agent-auth-github]: <https://github.com/jbeverly/pam_ssh_agent_auth-2.0>
 [arch-wiki-security-restricting-root]: <https://wiki.archlinux.org/title/Security#Restricting_root>
+[yk-support-duplicate]: https://support.yubico.com/s/article/Can-I-duplicate-a-YubiKey
+[yk-support-spare-key]: https://support.yubico.com/s/article/How-to-register-your-spare-key
