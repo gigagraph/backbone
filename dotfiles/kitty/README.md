@@ -13,11 +13,11 @@ Docs: https://sw.kovidgoyal.net/kitty/.
 >   - With [pipx](../../system-setup/toolchains/python/README.md#pipx).
 > - [Go](../../system-setup/toolchains/go/README.md).
 >
-> [You can verify the versions of the installed toolcahins with the script](../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
+> [You can verify the versions of the installed toolcahins with the script](../../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
 
 > [!NOTE]
 >
-> Additionally, ensure that you have [Nerd Fonts](../system-setup/fonts.md#nerd-fonts) installed and cloned on your system. The kitty's build requires `patched-fonts/NerdFontsSymbolsOnly/SymbolsNerdFontMono-Regular.ttf` to be available as `fonts/SymbolsNerdFontMono-Regular.ttf`.
+> Additionally, ensure that you have [Nerd Fonts](../../system-setup/fonts.md#nerd-fonts) installed and cloned on your system. The kitty's build requires `patched-fonts/NerdFontsSymbolsOnly/SymbolsNerdFontMono-Regular.ttf` to be available as `fonts/SymbolsNerdFontMono-Regular.ttf`.
 
 Checkout kitty's sources of the desired version (`${KITTY_VERSION}`):
 
@@ -87,7 +87,7 @@ make linux-package \
   LD="$(which ld.lld)"
 
 sudo mv /usr/bin/ld /usr/bin/ld.back.lld
-sudo mv /usr/bin/ld.back /usr/bin/ld 
+sudo mv /usr/bin/ld.back /usr/bin/ld
 ```
 
 Ensure that the `/ust/bin/ld` points to the native system's linker after the manupitations.

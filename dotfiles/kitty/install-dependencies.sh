@@ -16,8 +16,7 @@ sudo apt install -y \
   libxxhash0 \
   libxxhash-dev \
   openssl \
-  libssl-dev\
-  libfreetype6 \
+  libssl-dev libfreetype6 \
   libfreetype-dev \
   freetype2-doc \
   libfontconfig1 \
@@ -27,8 +26,8 @@ sudo apt install -y \
   libcanberra-dev \
   libcanberra-doc \
   libcanberra-gtk-common-dev \
-  libcanberra-gtk-dev \
-  libcanberra-gtk-module \
+  libcanberra-gtk3-dev \
+  libcanberra-gtk3-module \
   libcanberra-pulse \
   libsystemd-dev \
   libsystemd-shared \
