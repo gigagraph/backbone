@@ -2,4 +2,5 @@
 
 This subdirectory contains CLI tools for software developers.
 
-- [`astgrep`](./astgrep/README.md).
+- [`ast-grep`](./ast-grep/README.md).
+- [`sd`](./sd/README.md).

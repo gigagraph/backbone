@@ -27,7 +27,7 @@ cargo install --all-features --locked --path ./crates/cli
 
 #### zsh
 
-See the corresponding section in the [zsh docs file in this repo](../../zsh/README.md#ast-grep) to install `zhs` [completions][ast-grep-completions].
+See the corresponding section in the [zsh docs file in this repo](../../zsh/README.md#ast-grep) to install `zsh` [completions][ast-grep-completions].
 
 ## Useful links
 

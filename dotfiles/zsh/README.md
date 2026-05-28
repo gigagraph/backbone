@@ -468,6 +468,16 @@ ast-grep completions "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_ast-grep"
 
 After you generated the completions, ensure that the directory with the `_ast-grep` completions file is on your zsh `fpath`.
 
+#### `sd`
+
+##### `sd` completions
+
+This guide assumes you followed the [instructions from this repo and inslled `sd` from sources](../tools/dev/sd/README.md#installation). After the build, the target directory should now have the completions script. Copy it to where you install custom completions (`$ZSH_COMPLETIONS_DIR` in this guide):
+
+```bash
+cp "./gen/completions/_sd" "${ZSH_COMPLETIONS_DIR}/_sd"
+```
+
 #### `uv`
 
 ##### `uv` completions

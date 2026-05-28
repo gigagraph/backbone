@@ -44,7 +44,7 @@ sudo "$(which jj)" util install-man-pages /usr/local/share/man
 
 #### zsh
 
-See the corresponding section in the [zsh docs file in this repo](../../zsh/README.md#jj) to install `zhs` [completions][jj-install-completions].
+See the corresponding section in the [zsh docs file in this repo](../../zsh/README.md#jj) to install `zsh` [completions][jj-install-completions].
 
 #### [`meld`](../../gui/meld/README.md)
 
