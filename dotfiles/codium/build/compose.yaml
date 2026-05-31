@@ -1,0 +1,28 @@
+name: "vscodium-build"
+
+services:
+  vscodium-x64-build:
+    image: "vscodium-x64-build:latest"
+    build:
+      context: "./container"
+      dockerfile: "Containerfile.x64"
+      args:
+        BASE_IMAGE_ADDR: "${VSCODIUM_BUILD_UBUNTU_IMAGE_NAME:-mcr.microsoft.com/mirror/docker/library/ubuntu}"
+        TAG: "${VSCODIUM_BUILD_UBUNTU_IMAGE_TAG:-20.04}"
+
+        DEFAULT_UID: "${DEFAULT_UID}"
+        DEFAULT_GID: "${DEFAULT_GID}"
+        DEFAULT_USER: "builduser"
+        DEFAULT_GROUP: "builduser"
+    environment:
+      VSCODIUM_RELEASE_VERSION: "${VSCODIUM_RELEASE_VERSION}"
+    container_name: "vscodium-x64-build"
+    user: "builduser"
+    working_dir: "/home/builduser"
+    entrypoint:
+      # - "/home/builduser/scripts/entrypoint.sh"
+      - "/bin/bash"
+      - "-c"
+      - "while true; do sleep infinity; done"
+    volumes:
+      - "./workdir:/home/builduser/workdir"

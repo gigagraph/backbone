@@ -1,0 +1,147 @@
+# Inspired by https://github.com/VSCodium/vscode-linux-build-agent/blob/5e196d87928432be7c95725c2b38685994efac8c/focal-x64/Dockerfile
+
+ARG BASE_IMAGE_ADDR=mcr.microsoft.com/mirror/docker/library/ubuntu
+ARG TAG=20.04
+
+FROM ${BASE_IMAGE_ADDR}:${TAG}
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+ARG DEFAULT_LOCALE="en_US.utf8"
+ARG DEFAULT_UID=10001
+ARG DEFAULT_GID=10001
+ARG DEFAULT_USER="builduser"
+ARG DEFAULT_GROUP="builduser"
+
+RUN <<EOF
+groupadd \
+  --gid "${DEFAULT_GID}" \
+  "${DEFAULT_GROUP}"
+useradd \
+  --uid "${DEFAULT_UID}" --gid "${DEFAULT_GROUP}" \
+  --shell /bin/bash \
+  --create-home -d "/home/builduser" \
+  "${DEFAULT_USER}"
+EOF
+
+RUN mkdir -p "/home/builduser/setup"
+
+# Set up TEMP directory
+ENV TEMP=/tmp
+RUN chmod a+rwx /tmp
+
+# Avoid prompt for keyboard layout
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
+# Latest stable git
+RUN apt-get update && apt-get install -y software-properties-common
+RUN add-apt-repository ppa:git-core/ppa -y
+
+RUN apt-get update && apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    file \
+    git \
+    gnome-keyring \
+    iproute2 \
+    libfuse2 \
+    libgconf-2-4 \
+    libgdk-pixbuf2.0-0 \
+    libgl1 \
+    libgtk-3.0 \
+    libsecret-1-dev \
+    libkrb5-dev \
+    libssl-dev \
+    libx11-dev \
+    libx11-xcb-dev \
+    libxkbfile-dev \
+    locales \
+    lsb-release \
+    lsof \
+    python-dbus \
+    python3-pip \
+    sudo \
+    wget \
+    xvfb \
+    tzdata \
+    unzip \
+    # VSCodium
+    jq \
+    imagemagick \
+    gcc-10 \
+    g++-10 \
+  && curl https://chromium.googlesource.com/chromium/src/+/HEAD/build/install-build-deps.sh\?format\=TEXT | base64 --decode | cat > "/home/builduser/setup/install-build-deps.sh" \
+  && curl https://chromium.googlesource.com/chromium/src/+/HEAD/build/install-build-deps.py\?format\=TEXT | base64 --decode | cat > "/home/builduser/setup/install-build-deps.py" \
+  # Remove snapcraft to avoid issues on docker build
+  && sed -i 's/packages.append("snapcraft")/#packages.append("snapcraft")/g' "/home/builduser/setup/install-build-deps.py" \
+  && chmod +x "/home/builduser/setup/install-build-deps.sh" \
+  && chmod +x "/home/builduser/setup/install-build-deps.py" \
+  && bash "/home/builduser/setup/install-build-deps.sh" --no-syms --no-prompt --no-chromeos-fonts --no-arm --no-nacl \
+  && rm -rf /var/lib/apt/lists/*
+
+# No Sudo Prompt
+RUN echo "${DEFAULT_USER} ALL=NOPASSWD: ALL" >> /etc/sudoers.d/50-builduser \
+  && echo 'Defaults    env_keep += "DEBIAN_FRONTEND"' >> /etc/sudoers.d/env_keep
+
+# Node.js
+RUN <<EOF
+  curl --silent --location https://deb.nodesource.com/setup_22.x | sudo -E bash -
+  apt-get update && apt-get install -y nodejs
+  npm install -g npm@10 node-gyp yarn
+EOF
+
+# Set python3 as default
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+RUN python --version
+
+# TODO: remove if not needed?
+# # Install docker client
+# RUN sudo mkdir -m 0755 -p /etc/apt/keyrings
+# RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+# RUN echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+# RUN sudo apt-get update && sudo apt-get install -y docker-ce
+
+# Set gcc-10 as default
+RUN <<EOF
+  update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 10
+  update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 10
+  gcc --version
+  g++ --version
+EOF
+
+RUN chown "${DEFAULT_UID}:${DEFAULT_GID}" -R /home/builduser
+
+USER "${DEFAULT_USER}"
+WORKDIR "/home/builduser"
+
+# Configure the npm toolchain
+RUN <<EOF
+  # Fix the permissions with the npm build
+  mkdir -p "${HOME}/.npm-global"
+  npm config set prefix "${HOME}/.npm-global"
+EOF
+
+ENV PATH="/home/builduser/.npm-global/bin:${PATH}"
+
+# Install rust toolchain
+RUN <<EOF
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/install-rust.sh
+chmod +x /tmp/install-rust.sh
+sh /tmp/install-rust.sh -y
+. "${HOME}/.cargo/env"
+rm -rf /tmp/install-rust.sh
+EOF
+
+RUN <<EOF
+  mkdir -p /home/builduser/scripts
+  mkdir -p /home/builduser/workdir
+EOF
+
+ENV WORKSPACE_DIR="/home/builduser/workdir"
+VOLUME "${WORKSPACE_DIR}"
+
+ENV VSCODIUM_RELEASE_VERSION=""
+COPY entrypoint.sh "/home/builduser/scripts/entrypoint.sh"
+
+ENTRYPOINT ["/home/builduser/scripts/entrypoint.sh"]

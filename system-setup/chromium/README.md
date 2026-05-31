@@ -42,13 +42,13 @@
    Categories=Application;Network;X-Developer;
    Comment=Chromium Web Browser.
    StartupWMClass=Chromium
-   EOF"
+   "
 
-   echo "${chromium_desktop_entry_content}" | sed 's/^[[:space:]]*//; s/[[:space:]]*$//' > "${XDG_DATA_HOME:-${HOME}/.local/share/applications/chromium.desktop}"
+   echo "${chromium_desktop_entry_content}" | sed 's/^[[:space:]]*//; s/[[:space:]]*$//' > "${XDG_DATA_HOME:-${HOME}/.local/share}/applications/chromium.desktop"
    ```
 5. Give the desktop entry file execute permissions:
    ```bash
-   chmod +x "${XDG_DATA_HOME:-${HOME}/.local/share/applications/chromium.desktop}"
+   chmod +x "${XDG_DATA_HOME:-${HOME}/.local/share}/applications/chromium.desktop"
    ```
 
 ## Useful links

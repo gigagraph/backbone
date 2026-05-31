@@ -28,7 +28,7 @@ Follow the instructions from [the guide][setup-firefox-developer-edition-on-ubun
    ```
 5. Create a desktop entry:
    ```bash
-   cat << EOF | sed 's/^[[:space:]]*//; s/[[:space:]]*$//' > "${XDG_DATA_HOME:-${HOME}/.local/share/applications/firefox_dev.desktop}"
+   cat << EOF | sed 's/^[[:space:]]*//; s/[[:space:]]*$//' > "${XDG_DATA_HOME:-${HOME}/.local/share}/applications/firefox_dev.desktop"
    [Desktop Entry]
    Name=Firefox Developer
    GenericName=Firefox Developer Edition
@@ -43,7 +43,7 @@ Follow the instructions from [the guide][setup-firefox-developer-edition-on-ubun
    ```
 6. Give the desktop entry file execute permissions:
    ```bash
-   chmod +x "${XDG_DATA_HOME:-${HOME}/.local/share/applications/firefox_dev.desktop}"
+   chmod +x "${XDG_DATA_HOME:-${HOME}/.local/share}/applications/firefox_dev.desktop"
    ```
 
 ## Extensions
