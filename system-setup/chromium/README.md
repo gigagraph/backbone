@@ -4,6 +4,9 @@
 
 1. [Download Chromium][download-chromium] for your platform.
 2. Unpack the downloaded archive to the `/opt` directory:
+   ```bash
+   sudo unzip chrome-linux.zip -d /opt
+   ```
 3. Create a group that will own the installation and add the current user to the group:
    ```bash
    CHROMIUM_GROUP="chromium"
@@ -15,9 +18,10 @@
    # After this, the current user must be have the firefox group
    groups "${USER}"
    ```
-3. Ensure that the sandbox binary name is `chrome-sandbox`:
+3. Ensure that the sandbox binary name is `chrome-sandbox` and set proper permissions:
    ```bash
    sudo mv /opt/chrome-linux/chrome_sandbox /opt/chrome-linux/chrome-sandbox
+   sudo chmod 4755 ./chrome-sandbox
    ```
 4. Change the group ownership of the directory and allow the group to `rwx`:
    ```bash
@@ -40,11 +44,11 @@
    StartupWMClass=Chromium
    EOF"
 
-   echo "${chromium_desktop_entry_content}" | sed 's/^[[:space:]]*//; s/[[:space:]]*$//' > ~/.local/share/applications/chromium.desktop
+   echo "${chromium_desktop_entry_content}" | sed 's/^[[:space:]]*//; s/[[:space:]]*$//' > "${XDG_DATA_HOME:-${HOME}/.local/share/applications/chromium.desktop}"
    ```
 5. Give the desktop entry file execute permissions:
    ```bash
-   chmod +x ~/.local/share/applications/chromium.desktop
+   chmod +x "${XDG_DATA_HOME:-${HOME}/.local/share/applications/chromium.desktop}"
    ```
 
 ## Useful links

@@ -6,17 +6,29 @@
 
 #### Instalaltion
 
+##### Build from sources locally
+
+> [!NOTE]
+>
+> Ensure you have the following language toolhcains:
+> - [C/C++](./system-setup/toolchains/llvm/README.md).
+>
+> [You can verify the versions of the installed toolcahins with the script](../../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
+
 This guide recommends building [`keepassxc` from source][keepassxc-installation].
 
 Install dependencies:
 
 ```bash
 sudo apt update -y
-sudo apt install -y build-essential cmake g++ asciidoctor \
-    qtbase5-dev qtbase5-private-dev qttools5-dev qttools5-dev-tools \
-    libqt5svg5-dev libargon2-dev libminizip-dev libbotan-2-dev libqrencode-dev \
-    libkeyutils-dev zlib1g-dev libreadline-dev libpcsclite-dev libusb-1.0-0-dev \
-    libxi-dev libxtst-dev  libqt5x11extras5-dev
+sudo apt install -y \
+  build-essential cmake g++ asciidoctor \
+  \
+  qtbase5-private-dev \
+  \
+  qt6-base-dev qt6-svg-dev qt6-tools-dev libusb-1.0-0-dev \
+  libbotan-3-dev zlib1g-dev libminizip-dev libpcsclite-dev libkeyutils-dev \
+  libxi-dev libxtst-dev libqrencode-dev
 ```
 
 Clone the repo:
@@ -43,15 +55,15 @@ export CXX="$(which clang++)"
 export CXXFLAGS="--start-no-unused-arguments -fuse-ld=lld --end-no-unused-arguments"
 
 cmake \
-  -DWITH_XC_ALL=ON \
+  -DWITH_XC_ALL=OFF \
   -DWITH_XC_YUBIKEY=ON \
   -DWITH_XC_AUTOTYPE=ON \
   -DCMAKE_BUILD_TYPE=Release \
-  -DWITH_XC_BROWSER=OFF \
-  -DWITH_XC_BROWSER_PASSKEYS=OFF \
+  -DWITH_XC_BROWSER=ON \
+  -DWITH_XC_BROWSER_PASSKEYS=ON \
   -DWITH_XC_NETWORKING=OFF \
   -DWITH_XC_SSHAGENT=OFF \
-  -DWITH_XC_FDOSECRETS=OFF \
+  -DWITH_XC_FDOSECRETS=ON \
   -DWITH_XC_KEESHARE=OFF \
   \
   -DWITH_XC_UPDATECHECK=OFF \
@@ -66,7 +78,7 @@ cmake \
   -DKEEPASSXC_BUILD_TYPE=Release \
   -DKEEPASSXC_DIST_TYPE=Other \
   ..
-make
+make -j8
 ```
 
 Test the build:
@@ -84,7 +96,7 @@ sudo make install
 Create a desktop entry:
 
 ```bash
-cat << EOF | sed 's/^[[:space:]]*//; s/[[:space:]]*$//' > ~/.local/share/applications/keepassxc.desktop
+cat << EOF | sed 's/^[[:space:]]*//; s/[[:space:]]*$//' > "${XDG_DATA_HOME:-${HOME}/.local/share/applications/keepassxc.desktop}"
 [Desktop Entry]
 Name=KeePassXC
 GenericName=KeePassXC
@@ -135,16 +147,18 @@ keepassxc-cli rm -y "<otp-slot-num>:$(ykman info | grep 'Serial number:' | awk '
 
 ## Useful links
 
-- [github-keepassxc][github-keepassxc]
-  - [keepassxc-installation][keepassxc-installation]
-  - [build-keepassxc][build-keepassxc]
-  - [setup-keepassxc-build-env][setup-keepassxc-build-env]
-- [keepassxc-docs][keepassxc-docs]
-  - [yubikey-keepassxc][yubikey-keepassxc]
+- [github-keepassxc]
+  - [keepassxc-installation]
+  - [build-keepassxc]
+  - [build-keepassxc-in-container]
+  - [setup-keepassxc-build-env]
+- [keepassxc-docs]
+  - [yubikey-keepassxc]
 
 [github-keepassxc]: https://github.com/keepassxreboot/keepassxc
 [keepassxc-installation]: https://github.com/keepassxreboot/keepassxc/blob/develop/INSTALL.md
 [build-keepassxc]: https://github.com/keepassxreboot/keepassxc/wiki/Building-KeePassXC
+[build-keepassxc-in-container]: https://github.com/keepassxreboot/keepassxc/wiki/Building-KeePassXC#building-inside-a-docker-container
 [setup-keepassxc-build-env]: https://github.com/keepassxreboot/keepassxc/wiki/Set-up-Build-Environment-on-Linux
 [keepassxc-docs]: https://keepassxc.org/docs/
 [yubikey-keepassxc]: https://keepassxc.org/docs/#faq-yubikey-howto

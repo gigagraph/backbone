@@ -450,6 +450,36 @@ Reboot to ensure the rotation has worked.
 dpkg --list | grep linux-image | awk '{ print $2 }' | tail +2 | head -n -1 | xargs -L1 apt purge -y
 ```
 
+### `snap`
+
+#### Reinstall `snap`
+
+> [!IMPORTANT]
+>
+> Temporarily comment out snap deprioritization in apt preferences `/etc/apt/preferences.d/nosnap.pref`.
+
+If `snap` needs to be reinstalled run the following command:
+
+```bash
+# Reenable snap service
+sudo systemctl unmask snapd
+sudo systemctl enable snapd
+
+# Reinstall snap
+sudo apt update -y
+sudo apt install -y --allow-change-held-packages snapd
+```
+
+> [!IMPORTANT]
+>
+> Don't forget to [make `apt` deprioritgize installation of `snaps`](#configure-apt-to-not-install-snaps).
+
+#### Install `snapcraft`
+
+```bash
+snap install snapcraft --classic
+```
+
 ## Useful links
 
 ### Ubuntu installer
@@ -500,9 +530,11 @@ dpkg --list | grep linux-image | awk '{ print $2 }' | tail +2 | head -n -1 | xar
 
 ### Snaps
 
-- [baeldung-disable-snaps][baeldung-disable-snaps]
+- [baeldung-disable-snaps]
+- [ubuntu-install-snap]
 
 [baeldung-disable-snaps]: https://www.baeldung.com/linux/snap-remove-disable
+[ubuntu-install-snap]: https://snapcraft.io/docs/tutorials/install-the-daemon/ubuntu/
 
 ### Boot
 
