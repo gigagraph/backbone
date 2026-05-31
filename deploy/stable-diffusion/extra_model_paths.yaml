@@ -1,5 +1,3 @@
 comfyui:
   base_path: "/opt/ComfyUI"
   is_default: true
-  custom_nodes: "custom_nodes/"
-  download_model_base: "models/"

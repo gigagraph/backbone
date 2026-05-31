@@ -1,22 +1,91 @@
-ARG CUDNN_BASE=devel
-ARG COMFYUI_CUDA_VERSION
-ARG COMFYUI_CUDNN_VERSION=""
-ARG COMFYUI_UBUNTU_VERSION
-FROM nvcr.io/nvidia/cuda:${COMFYUI_CUDA_VERSION}-cudnn${COMFYUI_CUDNN_VERSION}-${CUDNN_BASE}-ubuntu${COMFYUI_UBUNTU_VERSION}
+ARG COMFYUI_UBUNTU_VERSION=24.10
+
+FROM ubuntu:${COMFYUI_UBUNTU_VERSION}
+
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN <<EOF
   apt update -y
   apt install -y \
     wget \
+    gnupg \
     curl \
     git \
     python3 \
     python3-pip \
     python3-venv \
-    unzip
+    unzip \
+    software-properties-common
+
   rm -rf /var/lib/apt/lists/*
 EOF
+
+# # Install intel GPU drivers
+# ## Add apt repositories and keys
+# RUN <<EOF
+# wget -O - https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB |
+#   gpg --dearmor |
+#   tee /etc/apt/trusted.gpg.d/apt.repos.intel.com.gpg |
+#   tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null
+
+# wget -qO - https://repositories.intel.com/gpu/intel-graphics.key |
+#     gpg --yes --dearmor --output /usr/share/keyrings/intel-graphics.gpg
+
+# # oneAPI HPC Toolkit
+# echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" | tee /etc/apt/sources.list.d/oneAPI.list
+
+# # OpenVino
+# echo "deb https://apt.repos.intel.com/openvino ubuntu24 main" | tee /etc/apt/sources.list.d/intel-openvino.list
+# EOF
+
+# ## Add the user to the ubuntu group
+# RUN <<EOF
+# groupadd render
+# gpasswd -a ubuntu render
+# EOF
+
+# ## Install intel drivers & HPC libs
+# RUN <<EOF
+# . /etc/os-release
+# if [[ ! " jammy noble " =~ " ${VERSION_CODENAME} " ]]; then
+#     echo "Ubuntu version ${VERSION_CODENAME} not supported"
+# else
+#     wget -qO - https://repositories.intel.com/gpu/intel-graphics.key | \
+#     gpg --yes --dearmor --output /usr/share/keyrings/intel-graphics.gpg
+#     echo "deb [arch=amd64 signed-by=/usr/share/keyrings/intel-graphics.gpg] https://repositories.intel.com/gpu/ubuntu ${VERSION_CODENAME}/lts/2523 unified" | \
+#     tee /etc/apt/sources.list.d/intel-gpu-${VERSION_CODENAME}.list
+#     apt update -y
+# fi
+
+# if [[ ! " jammy noble " =~ " ${VERSION_CODENAME} " ]]; then
+#     echo "Ubuntu version ${VERSION_CODENAME} not supported"
+# else
+#     wget https://repositories.intel.com/gpu/ubuntu/dists/${VERSION_CODENAME}/lts/2523/intel-gpu-ubuntu-${VERSION_CODENAME}-2523.run
+#     chmod +x intel-gpu-ubuntu-${VERSION_CODENAME}-2523.run
+#     ./intel-gpu-ubuntu-${VERSION_CODENAME}-2523.run
+# fi
+
+# apt update -y
+# apt install -y \
+#     "linux-headers-$(uname -r)" \
+#     "linux-modules-extra-$(uname -r)" \
+#     flex bison \
+#     intel-fw-gpu intel-i915-dkms xpu-smi
+#     \
+#     intel-opencl-icd libze-intel-gpu1 libze1 \
+#     intel-media-va-driver-non-free libmfx-gen1 libvpl2 \
+#     libegl-mesa0 libegl1-mesa-dev libgbm1 libgl1-mesa-dev libgl1-mesa-dri \
+#     libglapi-mesa libgles2-mesa-dev libglx-mesa0 libigdgmm12 libxatracker2 mesa-va-drivers \
+#     mesa-vdpau-drivers mesa-vulkan-drivers va-driver-all vainfo hwinfo clinfo \
+#     \
+#     libigc-dev intel-igc-cm libigdfcl-dev libigfxcmrt-dev libze-dev \
+#     \
+#     intel-oneapi-toolkit \
+#     \
+#     install-intel-deep-learning-essentials \
+#     \
+#     openvino-2026.2.0
+# EOF
 
 RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:${PATH}"
@@ -55,25 +124,28 @@ RUN <<EOF
   comfy --skip-prompt set-default "${COMFYUI_HOME}"
 EOF
 
-RUN <<EOF
-  groupadd comfyui
-  useradd -m --group comfyui comfy
-EOF
+# RUN <<EOF
+#   groupadd comfyui
+#   useradd -m --group comfyui comfy
+# EOF
+
+# RUN <<EOF
+#   chown -R comfy:comfyui /opt/ComfyUI
+#   chmod -R g=u /opt/ComfyUI
+
+#   chown -R comfy:comfyui /opt/venv
+#   chmod -R g=u /opt/venv
+# EOF
+
+# USER comfy
+
+COPY --chown=1000:1000 ./comfyui-manager-config.ini ./custom_nodes/comfyui-manager/config.ini
+COPY --chown=1000:1000 ./extra_model_paths.yaml ./extra_model_paths.yaml
 
 RUN <<EOF
-  chown -R comfy:comfyui /opt/ComfyUI
-  chmod -R g=u /opt/ComfyUI
-
-  chown -R comfy:comfyui /opt/venv
-  chmod -R g=u /opt/venv
+  mkdir -p /opt/ComfyUI/manager_custom_nodes
+  mkdir -p /opt/ComfyUI/temp
 EOF
-
-USER comfy
-
-COPY --chown=comfy:comfyui ./comfyui-manager-config.ini ./custom_nodes/comfyui-manager/config.ini
-COPY --chown=comfy:comfyui ./extra_model_paths.yaml ./extra_model_paths.yaml
-
-RUN mkdir -p /opt/ComfyUI/{manager_custom_nodes,temp}
 
 ARG COMFYUI_CONTAINER_PORT=80
 ENV COMFYUI_CONTAINER_PORT="${COMFYUI_CONTAINER_PORT}"
@@ -94,5 +166,5 @@ VOLUME [ \
   "/opt/ComfyUI/temp" \
 ]
 
-COPY --chown=comfy:comfyui ./comfyui-entrypoint.sh /home/comfy/entrypoint.sh
-ENTRYPOINT ["/home/comfy/entrypoint.sh"]
+COPY --chown=1000:1000 ./comfyui-entrypoint.sh /home/ubuntu/entrypoint.sh
+ENTRYPOINT ["/home/ubuntu/entrypoint.sh"]
