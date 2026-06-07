@@ -16,6 +16,7 @@ The **top level** of this directory contains subdirectories that correspond to *
   - [zsh](./zsh/README.md).
   - [Kitty](./kitty/README.md).
   - [`neovim`](./neovim/README.md).
+  - [vscodium](./codium/README.md).
 - In progress:
   - [tmux](./tmux/README.md).
 - TODO:

@@ -349,6 +349,36 @@ local catppuccin_lazy_spec = bpu:declare_lazy_spec(
       },
       -- Color customizations
       color_overrides = {
+        latte = {
+          -- Custom colorscheme based on catppuccin.
+          -- The name is: Summer Paper Sunset.
+          crust = "#fcf2cf",
+          mantle = "#fef9e7",
+          base = "#fdfdfc",
+          surface0 = "#f7f1ed",
+          surface1 = "#e2c8b6",
+          surface2 = "#e1bca3",
+          overlay0 = "#f1e3df",
+          overlay1 = "#ddc2bb",
+          overlay2 = "#c29589",
+          subtext0 = "#5a4a3f",
+          subtext1 = "#3d3129",
+          text = "#2b2622",
+          rosewater = "#ffbdbd",
+          flamingo = "#f184a5",
+          pink = "#fd9c9b",
+          mauve = "#e085c0",
+          red = "#f53d46",
+          maroon = "#f87c8f",
+          peach = "#cc7000",
+          yellow = "#f49106",
+          green = "#448b18",
+          teal = "#2eb8b2",
+          sky = "#81b4e4",
+          sapphire = "#62a9e9",
+          blue = "#3070e8",
+          lavender = "#685cd6",
+        },
         mocha = {
           -- Custom colorscheme based on catppuccin, but shifted more to the red rather than blue.
           -- It needs a custom name too - Catppuccin Cocoa.

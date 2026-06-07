@@ -480,6 +480,20 @@ sudo apt install -y --allow-change-held-packages snapd
 snap install snapcraft --classic
 ```
 
+### Themes
+
+Prefer light theme:
+
+```bash
+gsettings set org.gnome.desktop.interface color-scheme prefer-light
+```
+
+Prefer dark theme:
+
+```bash
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+```
+
 ## Useful links
 
 ### Ubuntu installer
