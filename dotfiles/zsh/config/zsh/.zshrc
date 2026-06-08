@@ -90,6 +90,9 @@ path+=(
 
   # TeX Live
   "${TEX_LIVE_BASE_PATH}/bin/"$(uname -m)-*([1])
+
+  # codium
+  "/opt/codium/bin"
 )
 export PATH
 

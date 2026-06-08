@@ -1,0 +1,23 @@
+{
+  // General
+  "workbench.startupEditor": "none",
+  "telemetry.feedback.enabled": false,
+  "keyboard.dispatch": "keyCode",
+
+  // Theming
+  "workbench.preferredDarkColorTheme": "Dark 2026",
+  "workbench.preferredLightColorTheme": "Light 2026",
+  "window.autoDetectColorScheme": true,
+  "workbench.iconTheme": "vscode-icons",
+  "editor.renderWhitespace": "all",
+  "editor.experimentalWhitespaceRendering": "font",
+
+  // Fonts
+  "editor.fontFamily": "'Iosevka NF', monospace",
+  "editor.fontSize": 16,
+  "editor.fontLigatures": true,
+  "terminal.integrated.fontFamily": "IosevkaTerm Nerd Font",
+  "terminal.integrated.fontLigatures.enabled": true,
+  "terminal.integrated.allowChords": false,
+  "terminal.integrated.sendKeybindingsToShell": true,
+}

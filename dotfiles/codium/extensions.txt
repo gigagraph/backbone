@@ -1,0 +1,9 @@
+llvm-vs-code-extensions.vscode-clangd
+mhutchie.git-graph
+golang.go
+ms-toolsai.jupyter
+james-yu.latex-workshop
+microsoft.cursor-pgsql
+ms-python.python
+vscodevim.vim
+vscode-icons-team.vscode-icons

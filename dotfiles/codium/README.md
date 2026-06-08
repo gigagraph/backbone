@@ -9,6 +9,10 @@
 >
 > [You can verify the versions of the installed toolcahins with the script](../system-setup/toolchains/README.md#verify-versions-of-the-installed-toolchains).
 
+> [!NOTE]
+>
+> Additionally, ensure that you have [Nerd Fonts](../../system-setup/fonts.md#nerd-fonts) installed and cloned on your system.
+
 This guide recommends [building VSCodium from sources][gh-codium-how-to-build] into a snap.
 
 Run the build in container.
@@ -49,11 +53,19 @@ CODIUM_INSTALL_BASE_DIR="/opt/codium"
 sudo mkdir -p "${CODIUM_INSTALL_BASE_DIR}"
 sudo tar xvf build/workdir/vscodium/assets/VSCodium*.tar.gz -C "${CODIUM_INSTALL_BASE_DIR}"
 
+## Upnack vscodium-cli
+CODIUM_CLI_TMP_DIR="$(mktemp -d)"
+sudo tar xvf build/workdir/vscodium/assets/vscodium-cli*.tar.gz -C "${CODIUM_CLI_TMP_DIR}"
+sudo mv "${CODIUM_CLI_TMP_DIR}/codium" "${CODIUM_INSTALL_BASE_DIR}/bin/codium-cli"
+rm -rf "${CODIUM_CLI_TMP_DIR}"
+
 # Set permissions
 sudo chown -R ":${CODIUM_GROUP}" "${CODIUM_INSTALL_BASE_DIR}"/*
 sudo chown root:root "${CODIUM_INSTALL_BASE_DIR}/chrome-sandbox"
 sudo chmod u=rwx,g=rx,o=rx,u+s "${CODIUM_INSTALL_BASE_DIR}/chrome-sandbox"
 ```
+
+Add `/opt/codium` to your `PATH`.
 
 Create a desktop entry:
 
@@ -73,13 +85,33 @@ StartupWMClass=VSCodium
 echo "${codium_desktop_entry_content}" | sed 's/^[[:space:]]*//; s/[[:space:]]*$//' > "${XDG_DATA_HOME:-${HOME}/.local/share}/applications/codium.desktop"
 ```
 
- Give the desktop entry file execute permissions:
+Give the desktop entry file execute permissions:
 
 ```bash
 chmod +x "${XDG_DATA_HOME:-${HOME}/.local/share}/applications/codium.desktop"
 ```
 
-<!-- TODO: instructions to customize -->
+## Configuration
+
+Use the config from this repository on your system by symlinking the user config default directory to the config dir in this repo (the script will prompt you for confirmation before running any configuration commands):
+
+```bash
+./setup-config.sh
+```
+
+### Manage extensions
+
+Install codium extensions managed in this repo:
+
+```bash
+./install-exts.sh
+```
+
+When a new extension is installed interatively, update the extension index in this repo to restore the setup later:
+
+```bash
+./export-exts.sh
+```
 
 ## Useful links
 
