@@ -120,19 +120,39 @@ Run the following command to ensure `pnpm` is installed for the current `node` i
 npm install -g pnpm@latest
 ```
 
+> [!NOTE]
+>
+> `bun` installation target is maintained in [`global-packages.json`](./global-packages.json)
+
 ##### `pnpm` completions
 
 ###### `zsh` completions for `pnpm`
 
-Assuming that `ZSH_COMPLETIONS_DIR` env points to a path on your system that is present in `fpath`, run the following script:
+See the corresponding section in the [zsh docs file in this repo](../../../dotfiles/zsh/README.md#pnpm) to install `zsh` completions.
+
+#### Install `bun`
+
+This guide recommends installing `bun` globally.
+
+Run the following command to ensure `bun` is installed for the current `node` installation:
 
 ```bash
-pnpm completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_pnpm"
+npm install -g bun@latest
 ```
+
+> [!NOTE]
+>
+> `bun` installation target is maintained in [`global-packages.json`](./global-packages.json)
+
+##### `bun` completions
+
+###### `zsh` completions for `pnpm`
+
+See the corresponding section in the [zsh docs file in this repo](../../../dotfiles/zsh/README.md#bun) to install `zsh` completions.
 
 #### Install all global tools that this setup depends on
 
-Since (`fnm` does not support reinstallation of global packages](https://github.com/Schniz/fnm/issues/620), users can rely on this method to manage global package installation manually.
+Since [`fnm` does not support reinstallation of global packages](https://github.com/Schniz/fnm/issues/620), users can rely on this method to manage global package installation manually.
 
 > [!WARNING]
 >

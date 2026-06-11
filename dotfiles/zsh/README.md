@@ -432,6 +432,43 @@ fnm completions --shell "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_fnm"
 
 After you generated the completions, ensure that the directory with the `_fnm` completions file is on your zsh `fpath`.
 
+#### [`pnpm`](../../system-setup/toolchains/node/README.md#install-pnpm)
+
+##### `pnpm` completions
+
+Use `pnpm` to generate completions for zsh:
+
+```bash
+pnpm completion "${SHELL##*/}" > "${ZSH_COMPLETIONS_DIR}/_pnpm"
+```
+
+After you generated the completions, ensure that the directory with the `_pnpm` completions file is on your zsh `fpath`.
+
+#### [`bun`](../../system-setup/toolchains/node/README.md#install-bun)
+
+##### `bun` completions
+
+Use `bun` to generate completions for zsh:
+
+```bash
+env "SHELL=${SHELL##*/}" bun completions > "${ZSH_COMPLETIONS_DIR}/_bun"
+```
+
+After you generated the completions, ensure that the directory with the `_bun` completions file is on your zsh `fpath`.
+
+
+#### [`opencode`](../tools/ai/opencode/README.md)
+
+##### `opencode` completions
+
+Use `opencode` to generate completions for zsh:
+
+```bash
+env "SHELL=${SHELL##*/}" opencode completion > "${ZSH_COMPLETIONS_DIR}/_opencode"
+```
+
+After you generated the completions, ensure that the directory with the `_opencode` completions file is on your zsh `fpath`.
+
 #### `yq`
 
 ##### `yq` completions

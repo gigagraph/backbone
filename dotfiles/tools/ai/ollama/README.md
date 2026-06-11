@@ -8,11 +8,11 @@ This guide recommends install `ollama` as per [official manual installation inst
 
 > [!NOTE]
 >
-> If you are upgrading from a prior version, you should remove the old libraries with `sudo rm -rf /usr/lib/ollama` first.
+> If you are upgrading from a prior version, you should remove the old libraries with `sudo rm -rf /usr/local/lib/ollama /usr/local/bin/ollama` first.
 
 ```bash
-curl -L "https://github.com/ollama/ollama/releases/download/${OLLAMA_VERSION}/ollama-linux-amd64.tgz" -o ollama-linux-amd64.tgz
-sudo tar -C /usr -xzf ollama-linux-amd64.tgz
+curl -L "https://github.com/ollama/ollama/releases/download/${OLLAMA_VERSION}/ollama-linux-$(go env GOARCH).tar.zst" -o "ollama-linux-$(go env GOARCH).tar.zst"
+sudo tar -C /usr/local -xf "ollama-linux-$(go env GOARCH).tar.zst"
 ```
 
 Add the [`systemd` service](#add-systemd-service).
@@ -39,7 +39,7 @@ Description=Ollama Service
 After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/ollama serve
+ExecStart=/usr/local/bin/ollama serve
 User=ollama
 Group=ollama
 Restart=always

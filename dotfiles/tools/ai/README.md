@@ -6,6 +6,7 @@ This subdirectory contains AI-related tools.
 
 - Usable:
   - [`ollama`](./ollama/README.md).
+  - [`opencode`](./opencode/README.md).
 
 - Decomissioned:
-  - [OpenAI `codex`](./decomissioned/openai-codex/README.md).
+  - [~OpenAI `codex`~](./decomissioned/openai-codex/README.md).
