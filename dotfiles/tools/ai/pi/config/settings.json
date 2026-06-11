@@ -1,0 +1,19 @@
+{
+  "defaultProjectTrust": "ask",
+  "enableAnalytics": "false",
+  "compaction": {
+    "enabled": true
+  },
+  "retry": {
+    "enabled": true,
+    "maxRetries": 3
+  },
+  "terminal": {
+    "showImages": true,
+    "clearOnShrink": false
+  },
+  "images": {
+    "autoResize": true,
+    "blockImages": false
+  }
+}

@@ -84,6 +84,9 @@ path+=(
   # Miniforge
   "${HOME}/.local/opt/miniforge3/bin"
 
+  # Pi
+  "${HOME}/.local/opt/pi"
+
   # Haskell
   "${HOME}/.ghcup/bin"
   "${HOME}/.cabal/bin"

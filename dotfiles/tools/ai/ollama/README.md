@@ -4,7 +4,7 @@
 
 ### Without Nvidia and AMD ROCm
 
-This guide recommends install `ollama` as per [official manual installation instructions][ollama-manual-install-linux].
+This guide recommends installing `ollama` as per [official manual installation instructions][ollama-manual-install-linux].
 
 > [!NOTE]
 >

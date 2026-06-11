@@ -38,7 +38,7 @@ env \
 Install the built binary:
 
 ```bash
-sudo install -C -D ./packages/opencode/dist/opencode-linux-x64/bin/opencode /usr/local/bin/opencode
+sudo install -C -D "./packages/opencode/dist/opencode-$(echo "$(uname -s)-$(uname -m | sed 's/x86_64/x64/')" | tr '[:upper:]' '[:lower:]')/bin/opencode" /usr/local/bin/opencode
 ```
 
 ### Integrate `opencode` with other programs
@@ -50,7 +50,12 @@ See the corresponding section in the [zsh docs file in this repo](../../../zsh/R
 ## Configuration
 
 `opencode` describes configuration in the [official doc page][opencode-config].
-- [ ] TODO
+
+Use the config from this repository on your system by creating symlinking the user config default directory to the config dir in this repo (the script will prompt you for confirmation before running any configuration commands):
+
+```bash
+./setup-config.sh
+```
 
 ## Useful links
 
