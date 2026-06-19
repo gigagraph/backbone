@@ -46,6 +46,7 @@ sudo apt install -y \
   libvirt-daemon-system \
   libvirt-clients \
   libvirt-doc \
+  libvirt-dev \
   bridge-utils
 ```
 
@@ -75,6 +76,10 @@ sudo apt install -y \
   virt-manager \
   virtinst
 ```
+
+> [!WARNING] **Python used to run `virt-manager`**
+>
+> [`virt-manager` is a Python application][gh-virtmanager]. It has a shebang in the script the will use `python3` from the current environment to run the application. Therefore, python that is used to run the application (it can be different from the system python), may not have the expected dependencies. If that's the case and you must use `virt-manager` in a script one of the workarounds is to update your script to take path to python that should run `virt-manager` as an input and pass the proper system python when calling the script.
 
 ### Install [`virtiofsd`][gl-virtiofsd]
 
@@ -249,6 +254,7 @@ Based of the [Windows KVM guest drivers guide for sharing directories][kvm-guest
 [virt-manager]: https://virt-manager.org/index.html
 [virt-manager-installation]: https://github.com/virt-manager/virt-manager/blob/main/INSTALL.md
 [ubuntu-virt-manager]: https://documentation.ubuntu.com/server/how-to/virtualisation/virtual-machine-manager/
+[gh-virtmanager]: https://github.com/virt-manager/virt-manager
 [arch-wiki-pci-passtrhough-in-vm]: https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF
 [wiki-gpu-virtualization]: https://en.wikipedia.org/wiki/GPU_virtualization
 [open-iov]: https://open-iov.org/index.php/Introduction

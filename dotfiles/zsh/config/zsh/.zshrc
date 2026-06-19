@@ -68,6 +68,7 @@ stty -ixon ixoff start "" stop ""
 local TEX_LIVE_BASE_PATH="/usr/local/texlive/current"
 
 typeset -U path PATH
+# Append to PATH
 path+=(
   # LLVM binaries
   "/usr/lib/llvm-19/bin"

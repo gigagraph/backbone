@@ -95,32 +95,36 @@ This setup uses plugins listed in this seciton. Each section describes how the p
 Plugins to be considered for installation:
 
 - Uncategorized:
-  - [`noice.nvim`](https://github.com/folke/noice.nvim).
-  - [`nvim-surround`](https://github.com/kylechui/nvim-surround).
-  - [`zoxide.nvim`](https://github.com/nanotee/zoxide.vim).
-  - [`fzf-lua`](https://github.com/ibhagwan/fzf-lua).
-  - [`render-markdown.nvim`](https://github.com/MeanderingProgrammer/render-markdown.nvim).
-  - [`which-key.nvim`](https://github.com/folke/which-key.nvim).
-  - [`harpoon`](https://github.com/ThePrimeagen/harpoon/).
-  - [`vim-illuminate`](https://github.com/RRethy/vim-illuminate).
-  - [`flatten.nvim`](https://github.com/willothy/flatten.nvim).
+  1. [`which-key.nvim`](https://github.com/folke/which-key.nvim).
+  1. [`nvim-spectre`](https://github.com/nvim-pack/nvim-spectre).
+  1. [`trouble.nvim`](https://github.com/folke/trouble.nvim).
+  1. [`noice.nvim`](https://github.com/folke/noice.nvim).
+  1. [`nvim-surround`](https://github.com/kylechui/nvim-surround).
+  1. [`zoxide.nvim`](https://github.com/nanotee/zoxide.vim).
+  1. [`fzf-lua`](https://github.com/ibhagwan/fzf-lua).
+  1. [`render-markdown.nvim`](https://github.com/MeanderingProgrammer/render-markdown.nvim).
+  1. [`harpoon`](https://github.com/ThePrimeagen/harpoon/).
+  1. [`vim-illuminate`](https://github.com/RRethy/vim-illuminate).
+  1. [`flatten.nvim`](https://github.com/willothy/flatten.nvim).
+  1. [`ssr.nvim`](https://github.com/cshuaimin/ssr.nvim).
 - Quicker navigation:
-  - [`hop.nvim`](https://github.com/smoka7/hop.nvim).
-  - [`flash.nvim`](https://github.com/folke/flash.nvim).
-  - [`mini.jump2d`](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-jump2d.md).
-  - [`vim-easymotion`](https://github.com/easymotion/vim-easymotion).
+  1. [`hop.nvim`](https://github.com/smoka7/hop.nvim).
+  1. [`flash.nvim`](https://github.com/folke/flash.nvim).
+  1. [`mini.jump2d`](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-jump2d.md).
+  1. [`vim-easymotion`](https://github.com/easymotion/vim-easymotion).
+  1. [`quicker.nvim`](https://github.com/stevearc/quicker.nvim).
 - Explainability:
-  - [telescope cheatsheet](https://github.com/doctorfree/cheatsheet.nvim).
+  1. [telescope cheatsheet](https://github.com/doctorfree/cheatsheet.nvim).
 - VCS:
-  - [`gitsigns.nvim`](https://github.com/lewis6991/gitsigns.nvim).
-  - [`neogit`](https://github.com/NeogitOrg/neogit).
+  1. [`gitsigns.nvim`](https://github.com/lewis6991/gitsigns.nvim).
+  1. [`neogit`](https://github.com/NeogitOrg/neogit).
 - AI:
-  - [`CopilotChat.nvim`](https://github.com/CopilotC-Nvim/CopilotChat.nvim).
-  - [`gp.nvim`](https://github.com/Robitx/gp.nvim).
-  - [`gen.nvim`](https://github.com/David-Kunz/gen.nvim).
-  - [`minuet-ai.nvim`](https://github.com/milanglacier/minuet-ai.nvim).
-  - [`codecompanion.nvim`](https://github.com/olimorris/codecompanion.nvim).
-  - [`mcphub.nvim`](https://github.com/ravitemer/mcphub.nvim).
+  1. [`CopilotChat.nvim`](https://github.com/CopilotC-Nvim/CopilotChat.nvim).
+  1. [`gp.nvim`](https://github.com/Robitx/gp.nvim).
+  1. [`gen.nvim`](https://github.com/David-Kunz/gen.nvim).
+  1. [`minuet-ai.nvim`](https://github.com/milanglacier/minuet-ai.nvim).
+  1. [`codecompanion.nvim`](https://github.com/olimorris/codecompanion.nvim).
+  1. [`mcphub.nvim`](https://github.com/ravitemer/mcphub.nvim).
 
 #### Custom plugins
 
