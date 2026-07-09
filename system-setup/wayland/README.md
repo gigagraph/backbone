@@ -57,12 +57,9 @@ sudo apt install -y wl-clipboard
 
 ## Configuration
 
-- [ ] TODO: guide on where to find wayland config file and how to configure different functionality wayland
+### Window management
 
-### Customization
-
-- [eww](./eww/README.md)
-- [rofi](./rofi/README.md)
+This setup eventually plans to integrate [Hyperland](./window-management/hyperland/README.md) as a window manager. See the corresponding docs about the configuration.
 
 ## Useful links
 
