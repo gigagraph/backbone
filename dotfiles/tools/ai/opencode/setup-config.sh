@@ -7,8 +7,8 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
 
 OPENCODE_CONFIG_DIR="${XDG_CONFIG_HOME}/opencode"
-OPENCODE_MAIN_CONFIG_FILE="${OPENCODE_CONFIG_DIR}/opencode.json"
-OPENCODE_TUI_CONFIG_FILE="${OPENCODE_CONFIG_DIR}/tui.json"
+OPENCODE_MAIN_CONFIG_FILE="${OPENCODE_CONFIG_DIR}/opencode.jsonc"
+OPENCODE_TUI_CONFIG_FILE="${OPENCODE_CONFIG_DIR}/tui.jsonc"
 
 commands_to_run=(
   # nvim & nvim-pager
@@ -17,10 +17,10 @@ commands_to_run=(
   "mkdir -p '${OPENCODE_CONFIG_DIR}'"
 
   "rm -rf '${OPENCODE_MAIN_CONFIG_FILE}'"
-  "ln -s '${SCRIPT_DIR}/config/opencode.json' '${OPENCODE_MAIN_CONFIG_FILE}'"
+  "ln -s '${SCRIPT_DIR}/config/opencode.jsonc' '${OPENCODE_MAIN_CONFIG_FILE}'"
 
   "rm -rf '${OPENCODE_TUI_CONFIG_FILE}'"
-  "ln -s '${SCRIPT_DIR}/config/tui.json' '${OPENCODE_TUI_CONFIG_FILE}'"
+  "ln -s '${SCRIPT_DIR}/config/tui.jsonc' '${OPENCODE_TUI_CONFIG_FILE}'"
 )
 
 echo "The script will replace your opencode config with the configs from this repo:"

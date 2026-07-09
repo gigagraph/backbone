@@ -3,6 +3,7 @@
   "workbench.startupEditor": "none",
   "telemetry.feedback.enabled": false,
   "keyboard.dispatch": "keyCode",
+  "editor.tabSize": 2,
 
   // Theming
   "workbench.preferredDarkColorTheme": "Dark 2026",
